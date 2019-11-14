@@ -1,7 +1,9 @@
 <template>
     <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png" />
-        <HelloWorld msg="Ceritanya web JOINTS gan" />
+        <img alt="Vue logo" src="@/assets/logo.png" />
+        <HelloWorld msg="Ceritanya web JOINTS gan, mantap kimac" />
+        <router-link v-if="$store.getters.user.loggedIn" to="/dashboard">Dashboard</router-link>
+        <router-link v-else to="/login">Login</router-link>
     </div>
 </template>
 

@@ -1,6 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import store from '@/store';
+import Home from '@/views/Home.vue';
+import Login from '@/views/Login.vue';
+import Dashboard from '@/views/Dashboard.vue';
+import Panitia from '@/views/Panitia.vue';
+import About from '@/views/About.vue';
 
 Vue.use(VueRouter);
 
@@ -11,13 +16,30 @@ const routes = [
         component: Home
     },
     {
+        path: '/login',
+        name: 'login',
+        component: Login
+    },
+    {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: Dashboard,
+        meta:{
+            harusLogin: true
+        }
+    },
+    {
+        path: '/panitia',
+        name: 'panitia',
+        component: Panitia,
+        meta:{
+            harusLogin: true
+        }
+    },
+    {
         path: '/about',
         name: 'about',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () =>
-            import(/* webpackChunkName: "about" */ '../views/About.vue')
+        component: About
     }
 ];
 
@@ -25,6 +47,19 @@ const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
+});
+
+
+router.beforeEach((to, from, next) => {
+    const harusLogin = to.matched.some(record => record.meta.harusLogin);
+    
+    if(store.getters.user.loggedIn) {
+        if(to.name == 'login') return next('/dashboard');
+        return next();
+    }
+
+    if(!harusLogin) return next();
+    return next('/login');
 });
 
 export default router;
