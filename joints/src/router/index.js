@@ -48,17 +48,11 @@ const routes = [
         path: '/dashboard',
         name: 'dashboard',
         component: Dashboard,
-        meta: {
-            harusLogin: true
-        }
     },
     {
         path: '/panitia',
         name: 'panitia',
         component: Panitia,
-        meta: {
-            harusLogin: true
-        }
     },
     {
         path: '/about',
@@ -74,15 +68,17 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    const harusLogin = to.matched.some(record => record.meta.harusLogin);
-
-    if (store.getters.user.loggedIn) {
-        if (to.name == 'login') return next('/dashboard');
-        return next();
+    if(to.name == 'dashboard'){
+        if(!store.getters.user.loggedIn) return next('/login');
+        if(store.getters.user.isPanitia) return next('/panitia');
     }
 
-    if (!harusLogin) return next();
-    return next('/login');
+    if(to.name == 'panitia'){
+        if(!store.getters.user.loggedIn) return next('/login');
+        if(!store.getters.user.isPanitia) return next('/dashboard');
+    }
+
+    return next();
 });
 
 export default router;

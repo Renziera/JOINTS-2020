@@ -23,8 +23,8 @@ firebase.initializeApp(firebaseConfig);
 
 let loaded = false;
 
-firebase.auth().onAuthStateChanged(user => {
-    store.dispatch('fetchUser', user);
+firebase.auth().onAuthStateChanged(async user => {
+    await store.dispatch('fetchUser', user);
 
     if (loaded) return;
 
