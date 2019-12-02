@@ -24,7 +24,7 @@ firebase.initializeApp(firebaseConfig);
 let loaded = false;
 
 firebase.auth().onAuthStateChanged(user => {
-    store.dispatch("fetchUser", user);
+    store.dispatch('fetchUser', user);
 
     if (loaded) return;
 
@@ -33,6 +33,6 @@ firebase.auth().onAuthStateChanged(user => {
         store,
         render: h => h(App)
     }).$mount('#app');
-    
+
     loaded = true;
 });
