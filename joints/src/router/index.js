@@ -11,6 +11,13 @@ import Dashboard from '@/views/Dashboard.vue';
 import Panitia from '@/views/Panitia.vue';
 import About from '@/views/About.vue';
 
+// Dashboard Router 
+import Announcement from '@/components/Dashboard/AnnounceDashboard.vue';
+import CompetitionsDash from '@/components/Dashboard/CompetitionsDash.vue';
+import PreEvents from '@/components/Dashboard/PreEvents.vue';
+import Events from '@/components/Dashboard/Events.vue';
+import Profil from '@/components/Dashboard/Profil.vue';
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -48,11 +55,38 @@ const routes = [
         path: '/dashboard',
         name: 'dashboard',
         component: Dashboard,
+        children: [
+            {
+                path: 'announcement',
+                name: 'announcement',
+                component: Announcement
+            },
+            {
+                path: 'preevents',
+                name: 'preevents',
+                component: PreEvents
+            },
+            {
+                path: 'competitions',
+                name: 'competitions',
+                component: CompetitionsDash
+            },
+            {
+                path: 'events',
+                name: 'events',
+                component: Events
+            },
+            {
+                path: 'profile',
+                name: 'profile',
+                component: Profil
+            }
+        ]
     },
     {
         path: '/panitia',
         name: 'panitia',
-        component: Panitia,
+        component: Panitia
     },
     {
         path: '/about',
@@ -68,14 +102,14 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    if(to.name == 'dashboard'){
-        if(!store.getters.user.loggedIn) return next('/login');
-        if(store.getters.user.isPanitia) return next('/panitia');
+    if (to.name == 'dashboard') {
+        if (!store.getters.user.loggedIn) return next('/login');
+        if (store.getters.user.isPanitia) return next('/panitia');
     }
 
-    if(to.name == 'panitia'){
-        if(!store.getters.user.loggedIn) return next('/login');
-        if(!store.getters.user.isPanitia) return next('/dashboard');
+    if (to.name == 'panitia') {
+        if (!store.getters.user.loggedIn) return next('/login');
+        if (!store.getters.user.isPanitia) return next('/dashboard');
     }
 
     return next();

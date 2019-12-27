@@ -6,6 +6,14 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+import BootstrapVue from 'bootstrap-vue';
+import vuetify from '@/plugins/vuetify';
+
+Vue.use(vuetify);
+Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;
 
@@ -31,6 +39,7 @@ firebase.auth().onAuthStateChanged(async user => {
     new Vue({
         router,
         store,
+        vuetify,
         render: h => h(App)
     }).$mount('#app');
 

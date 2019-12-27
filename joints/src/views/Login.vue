@@ -12,7 +12,10 @@
             <br />
             <input v-model="nomor" placeholder="Nomor HP" />
             <br />
-            <input v-model="instansi" placeholder="Universitas/Sekolah/Komunitas" />
+            <input
+                v-model="instansi"
+                placeholder="Universitas/Sekolah/Komunitas"
+            />
             <br />
             <button @click="submitBiodata">SUBMIT</button>
         </template>
@@ -81,7 +84,8 @@ export default {
                     nama: this.nama,
                     nomor: this.nomor,
                     instansi: this.instansi,
-                    email: this.$store.getters.user.data.email
+                    email: this.$store.getters.user.data.email,
+                    waktu: firebase.firestore.FieldValue.serverTimestamp()
                 });
             this.$router.push('/dashboard');
         }

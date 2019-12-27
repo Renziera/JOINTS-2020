@@ -10,11 +10,12 @@
         <br />
         <router-link to="/grandlaunching">Grand Launching</router-link>
         <br />
-        <router-link to="/jointstalk">JOINTS Talk</router-link>
+        <router-link to="/jointstalk">JOINTS Talku</router-link>
         <br />
         <router-link to="/jointscamp">JOINTS Camp</router-link>
         <br />
         <router-link to="/competitions">Competitions</router-link>
+        
     </div>
 </template>
 
