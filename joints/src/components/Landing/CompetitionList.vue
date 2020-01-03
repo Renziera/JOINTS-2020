@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="competitionlist-component">
         <b-card no-body>
             <b-tabs pills card vertical justified>
                 <b-tab>
@@ -9,12 +9,14 @@
                     <b-card-text>
                         <h2 class="list-title text-left">
                             Programming Competition
-                        </h2>   
+                        </h2>
                         <p class="list-subtitle text-left">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-                            in reprehenderit
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit
                         </p>
                         <h4 class="list-detail-title text-left">
                             Prize:
@@ -23,17 +25,17 @@
                             <div class="list-prizes">
                                 <div class="first-place">
                                     Champion
-                                    <br>
+                                    <br />
                                     Rp10.000.000
                                 </div>
                                 <div class="second-place">
                                     Runner Up
-                                    <br>
+                                    <br />
                                     Rp8.000.000
                                 </div>
                                 <div class="third-place">
                                     Third place
-                                    <br>
+                                    <br />
                                     Rp6.000.000
                                 </div>
                             </div>
@@ -57,10 +59,12 @@
                             Programming Competition
                         </h2>
                         <p class="list-subtitle text-left">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-                            in reprehenderit
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit
                         </p>
                         <h4 class="list-detail-title text-left">
                             Prize:
@@ -69,17 +73,17 @@
                             <div class="list-prizes">
                                 <div class="first-place">
                                     Champion
-                                    <br>
+                                    <br />
                                     Rp10.000.000
                                 </div>
                                 <div class="second-place">
                                     Runner Up
-                                    <br>
+                                    <br />
                                     Rp8.000.000
                                 </div>
                                 <div class="third-place">
                                     Third place
-                                    <br>
+                                    <br />
                                     Rp6.000.000
                                 </div>
                             </div>
@@ -103,10 +107,12 @@
                             Programming Competition
                         </h2>
                         <p class="list-subtitle text-left">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-                            in reprehenderit
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit
                         </p>
                         <h4 class="list-detail-title text-left">
                             Prize:
@@ -115,17 +121,17 @@
                             <div class="list-prizes">
                                 <div class="first-place">
                                     Champion
-                                    <br>
+                                    <br />
                                     Rp10.000.000
                                 </div>
                                 <div class="second-place">
                                     Runner Up
-                                    <br>
+                                    <br />
                                     Rp8.000.000
                                 </div>
                                 <div class="third-place">
                                     Third place
-                                    <br>
+                                    <br />
                                     Rp6.000.000
                                 </div>
                             </div>
@@ -149,10 +155,12 @@
                             Programming Competition
                         </h2>
                         <p class="list-subtitle text-left">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-                            in reprehenderit
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit
                         </p>
                         <h4 class="list-detail-title text-left">
                             Prize:
@@ -161,17 +169,17 @@
                             <div class="list-prizes">
                                 <div class="first-place">
                                     iCohanpm
-                                    <br>
+                                    <br />
                                     Rp10.000.000
                                 </div>
                                 <div class="second-place">
                                     Runner Up
-                                    <br>
+                                    <br />
                                     Rp8.000.000
                                 </div>
                                 <div class="third-place">
                                     Third place
-                                    <br>
+                                    <br />
                                     Rp6.000.000
                                 </div>
                             </div>
@@ -192,123 +200,124 @@
 </template>
 
 <script>
-    export default {
-        name: "CompetitionList",
-        data() {
-            return {
-                
-            }
-        }
+export default {
+    name: 'CompetitionList',
+    data() {
+        return {};
     }
+};
 </script>
 
 <style>
+.competitionlist-component .card{
+    border: none;
+    border-radius: 0;
+    background: transparent;
+}
 
-    #__BVID__9{
-        border: none;
-        border-radius: 0;
-    }
+.competitionlist-component .card .card-header{
+    background: white;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 24px;
+    padding-top: 0;
+}
 
-    #__BVID__9__BV_tab_controls_{
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: 50px;
-        margin-right: 50px;
-        background: transparent;
-        justify-content: center;
-    }
+.competitionlist-component .card .tab-content{
+    padding-left: 20px;
+    background-image: linear-gradient(90deg, #e750a4, #fc9ed2);
+}
 
-    #__BVID__9__BV_tab_controls_ li{
-        background: transparent;
-        border-bottom-right-radius: 50px;
-        border-top-right-radius: 50px;
-    }
+.competitionlist-component .card .nav-item .nav-link{
+    color: #13CEBB;
+    border-radius: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
-    #__BVID__9__BV_tab_controls_ li a{
-        background: transparent;
-        border-bottom-right-radius: 50px;
-        border-top-right-radius: 50px;
-        color: white;
-    }
+.competitionlist-component .card .nav-item .nav-link.active{
+    color: black;
+    background: #e750a4;
+}
 
-    #__BVID__9__BV_tab_controls_ li .active{
-       background: white;
-       color: black;
-       border-radius: 50px;
-    }
+.competitionlist-component #__BVID__9 {
+    border: none;
+    border-radius: 0;
+}
 
-    .list-title{
-        color: black;
-    }
+.competitionlist-component .list-title {
+    color: black;
+}
 
-    .list-subtitle{
-        color: white;
-    }
+.competitionlist-component .list-subtitle {
+    color: white;
+}
 
-    .list-detail-title{
-        color: white;
-    }
+.competitionlist-component .list-detail-title {
+    color: white;
+}
 
-    .list-detail{
-        display: flex;
-        align-items: stretch;
-        justify-content: left;
-    }
+.competitionlist-component .list-detail {
+    display: flex;
+    align-items: stretch;
+    justify-content: left;
+}
 
-    .first-place, .second-place, .third-place{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 20px;
-        width: 150px;
-    }
+.competitionlist-component .first-place,
+.competitionlist-component .second-place,
+.competitionlist-component .third-place {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    width: 150px;
+}
 
-    .first-place{
-        background-image: linear-gradient(135deg, #F8F187, #FEC111);
-        color: black;
-        font-weight: 600;
-    }
+.competitionlist-component .first-place {
+    background-image: linear-gradient(135deg, #f8f187, #fec111);
+    color: black;
+    font-weight: 600;
+}
 
-    .second-place{
-        background-image: linear-gradient(135deg, #F0F0F0, #A2A2A2);
-        color: black;
-        font-weight: 600;
-        margin-left: 15px;
-    }
+.competitionlist-component .second-place {
+    background-image: linear-gradient(135deg, #f0f0f0, #a2a2a2);
+    color: black;
+    font-weight: 600;
+    margin-left: 15px;
+}
 
-    .third-place{
-        background-image: linear-gradient(135deg, #FAAD51, #FE7E0C);
-        color: black;
-        font-weight: 600;
-        margin-left: 15px;
-    }
+.competitionlist-component .third-place {
+    background-image: linear-gradient(135deg, #faad51, #fe7e0c);
+    color: black;
+    font-weight: 600;
+    margin-left: 15px;
+}
 
-    .list-prizes{
-        display: flex;
-    }
+.competitionlist-component .list-prizes {
+    display: flex;
+}
 
-    .list-buttons button{
-        display: block !important;
-        width: 200px;
-        background: rgba(0, 0, 0, 0.5) !important;
-        color: white !important;
-        font-size: 20px;
-        border: none;
-        border-radius: 15px !important;
-        margin-left: 20px !important;
-    }
+.competitionlist-component .list-buttons button {
+    display: block !important;
+    width: 200px;
+    background: rgba(0, 0, 0, 0.5) !important;
+    color: white !important;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px !important;
+    margin-left: 20px !important;
+}
 
-    .list-button:nth-child(1){
-        margin-bottom: 7px;
-    }
+.competitionlist-component .list-button:nth-child(1) {
+    margin-bottom: 7px;
+}
 
-    .list-button:nth-child(2){
-        margin-top: 7px;
-    }
+.competitionlist-component .list-button:nth-child(2) {
+    margin-top: 7px;
+}
 
-    .list-buttons button:hover{
-        background: rgba(0, 0, 0, 0.8) !important;
-        color: white !important;
-    }
-
+.competitionlist-component .list-buttons button:hover {
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: white !important;
+}
 </style>

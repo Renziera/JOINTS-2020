@@ -10,7 +10,10 @@ export default new Vuex.Store({
         user: {
             loggedIn: false,
             isPanitia: false,
-            data: null
+            data: null,
+
+
+
         }
     },
     getters: {

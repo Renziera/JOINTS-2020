@@ -1,5 +1,19 @@
 <template>
-    <h1>Tab Events</h1>
+    <div>
+        <v-container color="white">
+        
+        <v-row>
+            <v-co md="9" lg="12"> 
+            
+            </v-co>
+
+        </v-row>
+        
+        </v-container>
+    
+    
+    </div>
+
 </template>
 
 <script>

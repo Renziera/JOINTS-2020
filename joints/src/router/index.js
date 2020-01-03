@@ -11,7 +11,7 @@ import Dashboard from '@/views/Dashboard.vue';
 import Panitia from '@/views/Panitia.vue';
 import About from '@/views/About.vue';
 
-// Dashboard Router 
+// Dashboard Router
 import Announcement from '@/components/Dashboard/AnnounceDashboard.vue';
 import CompetitionsDash from '@/components/Dashboard/CompetitionsDash.vue';
 import PreEvents from '@/components/Dashboard/PreEvents.vue';
