@@ -1,6 +1,7 @@
 <template>
     <div class="competition-page">
-        <Navbar accessFrom="competition" colorKind="gradient-competition"  > </Navbar>
+        <Navbar accessFrom="competition" colorKind="gradient-competition">
+        </Navbar>
         <section class="header">
             <b-container class="d-flex justify-content-center">
                 <b-row>
@@ -27,21 +28,24 @@
         </section>
 
         <div class="wave-container">
-            <svg  class="header-competition-gradient"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 196">
+            <svg
+                class="header-competition-gradient"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1440 196"
+            >
                 <defs>
                     <linearGradient id="header-competition-gradient">
                         <stop offset="0%" stop-color="var(--color-stop-1)" />
                         <stop offset="100%" stop-color="var(--color-stop-3)" />
                     </linearGradient>
                 </defs>
-                <path 
-                  fill="" 
-                  fill-opacity="1" 
-                  d="M0,128L34.3,117.3C68.6,107,137,85,206,69.3C274.3,53,343,43,411,64C480,85,549,139,617,144C685.7,149,754,107,823,85.3C891.4,64,960,64,1029,80C1097.1,96,1166,128,1234,133.3C1302.9,139,1371,117,1406,106.7L1440,96L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z" 
-                  data-darkreader-inline-fill="" 
-                  style="--darkreader-inline-fill:#007acc;"
-                  >
-                </path>
+                <path
+                    fill=""
+                    fill-opacity="1"
+                    d="M0,128L34.3,117.3C68.6,107,137,85,206,69.3C274.3,53,343,43,411,64C480,85,549,139,617,144C685.7,149,754,107,823,85.3C891.4,64,960,64,1029,80C1097.1,96,1166,128,1234,133.3C1302.9,139,1371,117,1406,106.7L1440,96L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"
+                    data-darkreader-inline-fill=""
+                    style="--darkreader-inline-fill:#007acc;"
+                ></path>
             </svg>
         </div>
 
@@ -60,7 +64,10 @@
                 </div>
             </b-container>
         </section>
-        <Footer accessFrom="competition" footerKind="gradient-competition-footer"></Footer>
+        <Footer
+            accessFrom="competition"
+            footerKind="gradient-competition-footer"
+        ></Footer>
     </div>
 </template>
 
@@ -81,8 +88,7 @@ export default {
 };
 </script>
 
-<style >
-
+<style>
 * {
     transition: 0.3s ease-in-out !important;
 }
@@ -138,18 +144,17 @@ export default {
     margin-top: 30px;
 }
 
-.competition-page .competition-list .container{
+.competition-page .competition-list .container {
     padding-top: 0;
     padding-bottom: 0;
 }
 
 .competition-page .header-competition-gradient path {
     fill: url('#header-competition-gradient');
-} 
-
-.competition-page #header-competition-gradient {
-  --color-stop-1: #bf5888;
-  --color-stop-3: #efa0c9; 
 }
 
+.competition-page #header-competition-gradient {
+    --color-stop-1: #bf5888;
+    --color-stop-3: #efa0c9;
+}
 </style>

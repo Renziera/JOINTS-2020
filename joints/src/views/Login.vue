@@ -1,22 +1,17 @@
 <template>
     <div>
-        <Navbar accessFrom="dashboardNavbar" colorKind="gradient-dashboard"> </Navbar>
+        <Navbar accessFrom="dashboardNavbar" colorKind="gradient-dashboard"></Navbar>
         <section class="login">
             <b-container>
                 <b-row>
                     <b-col lg="6" class="d-none d-lg-block">
-                        <div
-                            class="d-flex align-items-center justify-content-center h-100"
-                        >
-                            <img src="" alt="No image found" />
+                        <div class="d-flex align-items-center justify-content-center h-100">
+                            <img class="login-image" src="@/assets/login.png" alt="No image found" />
                         </div>
                     </b-col>
                     <template v-if="!biodata">
-                        <b-col lg="6" cols="12">
-                            <b-card
-                                title="Login with Google"
-                                class="text-left login-card"
-                            >
+                        <b-col lg="6" cols="12" class="d-flex align-items-center">
+                            <b-card title="Login with Google" class="text-left login-card">
                                 <b-card-text
                                     class="d-flex align-items-center justify-content-center"
                                 >
@@ -24,18 +19,21 @@
                                         @click="login"
                                         class="button-signin"
                                         variant="primary"
-                                        >Sign in with Google</b-button
                                     >
+                                        <div class="google-icon-wrapper">
+                                            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                                        </div>
+                                        <div class="btn-text-wrapper">
+                                            <p class="btn-text">Sign in with google</p>
+                                        </div>
+                                    </b-button>
                                 </b-card-text>
                             </b-card>
                         </b-col>
                     </template>
                     <template v-else>
-                        <b-col lg="6" cols="12">
-                            <b-card
-                                title="Biodata Umum"
-                                class="text-left biodata-card"
-                            >
+                        <b-col lg="6" cols="12" class="d-flex align-items-center">
+                            <b-card title="Biodata Umum" class="text-left biodata-card">
                                 <b-card-text
                                     class="d-flex align-items-center justify-content-center flex-column"
                                 >
@@ -92,8 +90,7 @@
                                         @click="submitBiodata"
                                         class="button-submit"
                                         variant="primary"
-                                        >Submit</b-button
-                                    >
+                                    >Submit</b-button>
                                 </b-card-text>
                             </b-card>
                         </b-col>
@@ -101,33 +98,13 @@
                 </b-row>
             </b-container>
         </section>
-        <Footer accessFrom="dashboardNavbar" footerKind="gradient-dashboard-footer"> </Footer>
-        <!--<template v-if="!biodata">
-            <h1>Login</h1>
-            <button @click="login">Masuk dengan Google</button>
-        </template>
-        <template v-else>
-            <h1>Biodata Umum</h1>
-            <input v-model="nama" placeholder="Nama Lengkap" />
-            <br />
-            {{ $store.getters.user.data.email }}
-            <br />
-            <input v-model="nomor" placeholder="Nomor HP" />
-            <br />
-            <input
-                v-model="instansi"
-                placeholder="Universitas/Sekolah/Komunitas"
-            />
-            <br />
-            <button @click="submitBiodata">SUBMIT</button>
-        </template> -->
+        <Footer accessFrom="dashboardNavbar" footerKind="gradient-dashboard-footer"></Footer>
     </div>
 </template>
 
 <script>
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import 'firebase/firestore';
 import Navbar from '@/components/Landing/Navbar.vue';
 import Footer from '@/components/Landing/Footer.vue';
 
@@ -143,16 +120,7 @@ export default {
     async created() {
         if (this.$store.getters.user.loggedIn) {
             let uid = this.$store.getters.user.data.uid;
-            let doc = await firebase
-                .firestore()
-                .collection('users')
-                .doc(uid)
-                .get();
-            if (doc.exists) {
-                this.$router.push('/dashboard');
-            } else {
-                this.biodata = true;
-            }
+            
         }
     },
     methods: {
@@ -161,37 +129,13 @@ export default {
 
             try {
                 let cred = await firebase.auth().signInWithPopup(googleLogin);
-                let doc = await firebase
-                    .firestore()
-                    .collection('users')
-                    .doc(cred.user.uid)
-                    .get();
-
-                if (doc.exists) {
-                    this.$router.push('/dashboard');
-                } else {
-                    this.biodata = true;
-                }
+                
+                
             } catch (error) {
                 console.log(error);
             }
         },
         async submitBiodata() {
-            if (this.nama == '' || this.nomor == '' || this.instansi == '')
-                return;
-
-            await firebase
-                .firestore()
-                .collection('users')
-                .doc(this.$store.getters.user.data.uid)
-                .set({
-                    nama: this.nama,
-                    nomor: this.nomor,
-                    instansi: this.instansi,
-                    email: this.$store.getters.user.data.email,
-                    waktu: firebase.firestore.FieldValue.serverTimestamp()
-                });
-            this.$router.push('/dashboard');
         }
     },
     components: {
@@ -205,6 +149,10 @@ export default {
 .login {
     min-height: 70vh;
     padding-top: 220px;
+}
+
+.login .login-image{
+    width: 300px;
 }
 
 .login .card {
@@ -239,9 +187,31 @@ export default {
 
 .login .button-signin {
     font-size: 14px;
+    background: #4285F4;
+    padding: 3px 12px 3px 3px;
+}
+
+.login .button-signin div{
+    display: inline-block;
+}
+
+.login .button-signin .google-icon-wrapper{
+    background: white;
+    padding: 5px;
+    width: auto;
+}
+
+.login .button-signin .google-icon-wrapper .google-icon{
+    width: 20px;
+}
+
+.login .button-signin .btn-text{
+    margin-bottom: 0;
+    margin-left: 10px;
 }
 
 .login label {
     font-size: 16px !important;
 }
+
 </style>

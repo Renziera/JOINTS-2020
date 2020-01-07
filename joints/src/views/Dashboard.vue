@@ -1,57 +1,36 @@
 <template>
     <div>
-        
-        <Navbar accessFrom="dashboardNavbar" colorKind="gradient-dashboard"> </Navbar>
+  
+        <Navbar accessFrom="dashboardNavbar" colorKind="gradient-dashboard"></Navbar>
 
         <div class="container all-container">
-            
             <div>
-                
                 <div class="dashboard">
                     <h1 class="dashboard">Dashboard</h1>
                     <h2>Welcome, {{ $store.getters.user.data.displayName }}</h2>
                     <div>
-                        <v-btn depressed small @click="logout">Log OUT</v-btn>
-                        thi is the menu bar
+                        <v-btn depressed small @click="logout">LOGOUT</v-btn>
                     </div>
                 </div>
-                <v-app>
-            
-                <v-tabs
-                    v-model="active"
-                    color="cyan"
-                    slider-color="yellow"
-                    show-arrows
-                >
-                    <v-tabs-slider color="yellow"></v-tabs-slider>
-                    <v-tab v-for="tab of tabs" :key="tab.id" :to="tab.route">
-                        {{ tab.name }}
-                    </v-tab>
-
-                    <v-tab-item
-                        v-for="tab of tabs"
-                        :key="tab.id"
-                        :value="tab.route"
-                    >
-                        <router-view></router-view>
-                    </v-tab-item>
-                </v-tabs>
-
+                <v-app >
+                    <v-tabs v-model="active" color="cyan" slider-color="yellow" show-arrows>
+                        <v-tabs-slider color="yellow"></v-tabs-slider>
+                        <v-tab v-for="tab of tabs" :key="tab.id" :to="tab.route">{{ tab.name }}</v-tab>
+                        <v-tab-item v-for="tab of tabs" :key="tab.id" :value="tab.route">
+                            <router-view></router-view>
+                        </v-tab-item>
+                    </v-tabs>
                 </v-app>
             </div>
-            
         </div>
-
-
-        <Footer accessFrom="dashboardNavbar" footerKind="gradient-dashboard-footer"> </Footer>
+    
+        <Footer accessFrom="dashboardNavbar" footerKind="gradient-dashboard-footer"></Footer>
     </div>
-
 </template>
 
 <script>
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import 'firebase/firestore';
 
 import Announcement from '@/components/Dashboard/AnnounceDashboard.vue';
 import PreEvents from '@/components/Dashboard/PreEvents.vue';
@@ -66,7 +45,7 @@ export default {
         Navbar,
         Footer
     },
-    data: () => {
+    data() {
         return {
             index: 1,
             konten: Announcement,
@@ -89,12 +68,6 @@ export default {
     },
     async created() {
         let uid = this.$store.getters.user.data.uid;
-        let doc = await firebase
-            .firestore()
-            .collection('users')
-            .doc(uid)
-            .get();
-        if (!doc.exists) this.$router.push('/login');
     },
     methods: {
         async logout() {
@@ -123,8 +96,6 @@ export default {
 };
 </script>
 
-
-
 <style>
 .dashboard {
     text-align: left;
@@ -147,9 +118,6 @@ v-button {
 }
 
 svg {
-    
     fill: url(#gradient-horizontal);
 }
-
-
 </style>

@@ -1,25 +1,27 @@
 <template>
     <div>
         <div class="wave-container">
-            <svg  :class="footerKind"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 196">
+            <svg
+                :class="footerKind"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1440 196"
+            >
                 <defs>
                     <linearGradient :id="footerKind">
-                            <stop offset="0%" stop-color="var(--color-stop-1)" />
-                            <stop offset="100%" stop-color="var(--color-stop-3)" />
-                        </linearGradient>
-                    </defs>
-                <path 
-                  fill="" 
-                  fill-opacity="1" 
-                  d="M0,160L60,154.7C120,149,240,139,360,149.3C480,160,600,192,720,181.3C840,171,960,117,1080,112C1200,107,1320,149,1380,170.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" 
-                  data-darkreader-inline-fill="" 
-                  style="--darkreader-inline-fill:#007acc;"
-                  >
-                  </path>
-                </svg>
-
-            </div>
-        <section :id="accessFrom" class="footer d-lg-block" >
+                        <stop offset="0%" stop-color="var(--color-stop-1)" />
+                        <stop offset="100%" stop-color="var(--color-stop-3)" />
+                    </linearGradient>
+                </defs>
+                <path
+                    fill=""
+                    fill-opacity="1"
+                    d="M0,160L60,154.7C120,149,240,139,360,149.3C480,160,600,192,720,181.3C840,171,960,117,1080,112C1200,107,1320,149,1380,170.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+                    data-darkreader-inline-fill=""
+                    style="--darkreader-inline-fill:#007acc;"
+                ></path>
+            </svg>
+        </div>
+        <section :id="accessFrom" class="footer d-lg-block">
             <b-container>
                 <b-row>
                     <b-col lg="6">
@@ -103,54 +105,53 @@ export default {
 };
 </script>
 
-<style >
-
+<style>
 .gradient-dashboard-footer path {
     fill: url('#gradient-dashboard-footer');
-} 
+}
 
 .gradient-competition-footer path {
     fill: url('#gradient-competition-footer');
-} 
+}
 
 .gradient-talk-footer path {
     fill: url('#gradient-talk-footer');
-} 
+}
 
 #gradient-dashboard-footer {
-  --color-stop-1: #13CEBB;
-  --color-stop-3: #6C4DA8;
+    --color-stop-1: #13cebb;
+    --color-stop-3: #6c4da8;
 }
 
 #gradient-competition-footer {
-  --color-stop-3: #bf5888;
-  --color-stop-1: #efa0c9;
+    --color-stop-3: #bf5888;
+    --color-stop-1: #efa0c9;
 }
 
 #gradient-talk-footer {
-  --color-stop-1: #18cebe;
-  --color-stop-3: #82c9fb; 
+    --color-stop-1: #18cebe;
+    --color-stop-3: #82c9fb;
 }
 
 #gradient-horizontal {
-  --color-stop-1: #13CEBB;
-  --color-stop-3: #6B4EA8;
+    --color-stop-1: #13cebb;
+    --color-stop-3: #6b4ea8;
 }
 
-#dashboardNavbar{
-    background-image: linear-gradient(90deg, #13CEBB, #6C4DA8);
+#dashboardNavbar {
+    background-image: linear-gradient(90deg, #13cebb, #6c4da8);
 }
 
-.footer#competition{
+.footer#competition {
     background-image: linear-gradient(-90deg, #bf5888, #efa0c9);
 }
 
-.footer#talk{
+.footer#talk {
     background-image: linear-gradient(-90deg, #82c9fb, #18cebe) !important;
 }
 
-.footer#default{
-    background-image: linear-gradient(135deg, #E475B2, #16CDBB);
+.footer#default {
+    background-image: linear-gradient(135deg, #e475b2, #16cdbb);
 }
 
 .footer {
@@ -158,7 +159,7 @@ export default {
     padding: 20px;
 }
 
-.footer .footer-title{
+.footer .footer-title {
     text-align: left;
 }
 
@@ -192,21 +193,21 @@ export default {
     border: none;
 }
 
-.footer .footer-button:hover{
+.footer .footer-button:hover {
     background: transparent;
-    color: #491FA7 !important;
+    color: #491fa7 !important;
 }
 
 @media (max-width: 991.98px) {
-    .footer .footer-title{
+    .footer .footer-title {
         text-align: center !important;
     }
 
-    .footer .footer-alamat{
+    .footer .footer-alamat {
         text-align: center !important;
     }
 
-    .footer .footer-copyright{
+    .footer .footer-copyright {
         text-align: center !important;
     }
 }

@@ -27,40 +27,46 @@
         </section>
 
         <div class="wave-container header-bottom-wave">
-            <svg  class="header-talk-gradient"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 196">
+            <svg
+                class="header-talk-gradient"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1440 196"
+            >
                 <defs>
                     <linearGradient id="header-talk-gradient">
                         <stop offset="0%" stop-color="var(--color-stop-1)" />
                         <stop offset="100%" stop-color="var(--color-stop-3)" />
                     </linearGradient>
                 </defs>
-                <path 
-                  fill="" 
-                  fill-opacity="1" 
-                  d="M0,128L34.3,117.3C68.6,107,137,85,206,69.3C274.3,53,343,43,411,64C480,85,549,139,617,144C685.7,149,754,107,823,85.3C891.4,64,960,64,1029,80C1097.1,96,1166,128,1234,133.3C1302.9,139,1371,117,1406,106.7L1440,96L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z" 
-                  data-darkreader-inline-fill="" 
-                  style="--darkreader-inline-fill:#007acc;"
-                  >
-                </path>
+                <path
+                    fill=""
+                    fill-opacity="1"
+                    d="M0,128L34.3,117.3C68.6,107,137,85,206,69.3C274.3,53,343,43,411,64C480,85,549,139,617,144C685.7,149,754,107,823,85.3C891.4,64,960,64,1029,80C1097.1,96,1166,128,1234,133.3C1302.9,139,1371,117,1406,106.7L1440,96L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"
+                    data-darkreader-inline-fill=""
+                    style="--darkreader-inline-fill:#007acc;"
+                ></path>
             </svg>
         </div>
 
         <div class="wave-container about-top-wave">
-            <svg  class="about-talk-gradient"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 196">
+            <svg
+                class="about-talk-gradient"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1440 196"
+            >
                 <defs>
                     <linearGradient id="about-talk-gradient">
                         <stop offset="0%" stop-color="var(--color-stop-1)" />
                         <stop offset="100%" stop-color="var(--color-stop-3)" />
                     </linearGradient>
                 </defs>
-                <path 
-                  fill="" 
-                  fill-opacity="1" 
-                  d="M0,160L60,154.7C120,149,240,139,360,149.3C480,160,600,192,720,181.3C840,171,960,117,1080,112C1200,107,1320,149,1380,170.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" 
-                  data-darkreader-inline-fill="" 
-                  style="--darkreader-inline-fill:#007acc;"
-                  >
-                </path>
+                <path
+                    fill=""
+                    fill-opacity="1"
+                    d="M0,160L60,154.7C120,149,240,139,360,149.3C480,160,600,192,720,181.3C840,171,960,117,1080,112C1200,107,1320,149,1380,170.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+                    data-darkreader-inline-fill=""
+                    style="--darkreader-inline-fill:#007acc;"
+                ></path>
             </svg>
         </div>
 
@@ -117,22 +123,25 @@
             </b-container>
         </section>
 
-         <div class="wave-container about-bottom-wave">
-            <svg  class="about-talk-gradient"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 196">
+        <div class="wave-container about-bottom-wave">
+            <svg
+                class="about-talk-gradient"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1440 196"
+            >
                 <defs>
                     <linearGradient id="about-talk-gradient">
                         <stop offset="0%" stop-color="var(--color-stop-1)" />
                         <stop offset="100%" stop-color="var(--color-stop-3)" />
                     </linearGradient>
                 </defs>
-                <path 
-                  fill="" 
-                  fill-opacity="1" 
-                  d="M0,96L48,101.3C96,107,192,117,288,106.7C384,96,480,64,576,53.3C672,43,768,53,864,74.7C960,96,1056,128,1152,122.7C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z" 
-                  data-darkreader-inline-fill="" 
-                  style="--darkreader-inline-fill:#007acc;"
-                  >
-                </path>
+                <path
+                    fill=""
+                    fill-opacity="1"
+                    d="M0,96L48,101.3C96,107,192,117,288,106.7C384,96,480,64,576,53.3C672,43,768,53,864,74.7C960,96,1056,128,1152,122.7C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+                    data-darkreader-inline-fill=""
+                    style="--darkreader-inline-fill:#007acc;"
+                ></path>
             </svg>
         </div>
 
@@ -261,7 +270,7 @@ hr {
         display: flex;
     }
 
-    .about-desc{
+    .about-desc {
         margin-top: 30px;
     }
 }
@@ -272,43 +281,43 @@ hr {
         flex-direction: column !important;
     }
 
-    .img-wrapper{
+    .img-wrapper {
         margin-left: auto;
         margin-right: auto;
     }
 
-    .w-2{
+    .w-2 {
         margin-top: 20px;
     }
 
-    .header-bottom-wave{
+    .header-bottom-wave {
         margin-bottom: 50px;
     }
 
-    .about-bottom-wave{
+    .about-bottom-wave {
         margin-bottom: 50px;
     }
 
-    .about-desc{
+    .about-desc {
         margin-top: 0px;
     }
 }
 
 .about-talk-gradient path {
     fill: url('#about-talk-gradient');
-} 
+}
 
 #about-talk-gradient {
-  --color-stop-3: #18cebe;
-  --color-stop-1: #82c9fb; 
+    --color-stop-3: #18cebe;
+    --color-stop-1: #82c9fb;
 }
 
 .header-talk-gradient path {
     fill: url('#header-talk-gradient');
-} 
+}
 
 #header-talk-gradient {
-  --color-stop-1: #18cebe;
-  --color-stop-3: #82c9fb; 
+    --color-stop-1: #18cebe;
+    --color-stop-3: #82c9fb;
 }
 </style>

@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import firebase from 'firebase/app';
-import 'firebase/firestore';
 
 Vue.use(Vuex);
 
@@ -10,10 +9,7 @@ export default new Vuex.Store({
         user: {
             loggedIn: false,
             isPanitia: false,
-            data: null,
-
-
-
+            data: null
         }
     },
     getters: {
@@ -42,12 +38,6 @@ export default new Vuex.Store({
                     email: user.email,
                     uid: user.uid
                 });
-                let doc = await firebase
-                    .firestore()
-                    .collection('panitia')
-                    .doc(user.uid)
-                    .get();
-                commit('SET_PANITIA', doc.exists);
             } else {
                 commit('SET_USER', null);
             }

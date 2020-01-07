@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "joints-ugm"
+  },
+  "targets": {
+    "joints-ugm": {
+      "hosting": {
+        "web": [
+          "joints-ugm"
+        ],
+        "api": [
+          "joints-api"
+        ]
+      }
+    }
   }
 }

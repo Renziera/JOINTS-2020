@@ -209,13 +209,13 @@ export default {
 </script>
 
 <style>
-.competitionlist-component .card{
+.competitionlist-component .card {
     border: none;
     border-radius: 0;
     background: transparent;
 }
 
-.competitionlist-component .card .card-header{
+.competitionlist-component .card .card-header {
     background: white;
     padding-left: 0;
     padding-right: 0;
@@ -223,19 +223,19 @@ export default {
     padding-top: 0;
 }
 
-.competitionlist-component .card .tab-content{
+.competitionlist-component .card .tab-content {
     padding-left: 20px;
     background-image: linear-gradient(90deg, #e750a4, #fc9ed2);
 }
 
-.competitionlist-component .card .nav-item .nav-link{
-    color: #13CEBB;
+.competitionlist-component .card .nav-item .nav-link {
+    color: #13cebb;
     border-radius: 0;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 
-.competitionlist-component .card .nav-item .nav-link.active{
+.competitionlist-component .card .nav-item .nav-link.active {
     color: black;
     background: #e750a4;
 }

@@ -5,15 +5,15 @@ Vue.use(Vuetify);
 
 const opts = {
     theme: {
-      options: {
-        customProperties: true,
-      },
-      themes: {
-        dark: {
-          background: '#ffffff',
+        options: {
+            customProperties: true
         },
-      },
-        dark: false,
-    },
-  }
+        themes: {
+            dark: {
+                background: '#ffffff'
+            }
+        },
+        dark: false
+    }
+};
 export default new Vuetify(opts);

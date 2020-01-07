@@ -10,6 +10,8 @@ import Login from '@/views/Login.vue';
 import Dashboard from '@/views/Dashboard.vue';
 import Panitia from '@/views/Panitia.vue';
 import About from '@/views/About.vue';
+import NotFound from '@/views/NotFound.vue'
+
 
 // Dashboard Router
 import Announcement from '@/components/Dashboard/AnnounceDashboard.vue';
@@ -17,6 +19,7 @@ import CompetitionsDash from '@/components/Dashboard/CompetitionsDash.vue';
 import PreEvents from '@/components/Dashboard/PreEvents.vue';
 import Events from '@/components/Dashboard/Events.vue';
 import Profil from '@/components/Dashboard/Profil.vue';
+import Registration from '@/components/Dashboard/RegistrationPage.vue';
 
 Vue.use(VueRouter);
 
@@ -68,9 +71,17 @@ const routes = [
             },
             {
                 path: 'competitions',
-                name: 'competitions',
-                component: CompetitionsDash
+                name: 'competition',
+                component: CompetitionsDash,
             },
+            {
+                path: 'competitions/:section',
+                name: 'registration',
+                component: Registration,
+                props: true
+            }
+            ,
+            
             {
                 path: 'events',
                 name: 'events',
@@ -92,6 +103,10 @@ const routes = [
         path: '/about',
         name: 'about',
         component: About
+    },
+    {
+        path: '*',
+        component: NotFound
     }
 ];
 
