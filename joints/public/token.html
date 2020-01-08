@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Hanya untuk development purposes -->
+<!-- Jangan lupa dihapus saat production -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TOKEN JOINTS</title>
+</head>
+
+<body>
+    <p id="token"></p>
+    <button onclick="getToken()">GET TOKEN</button>
+    <button onclick="signIn()">SIGN IN</button>
+
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAvwS9hac8KtPC-5qt3v5c9rQIadcu30jw",
+            authDomain: "joints-ugm.firebaseapp.com",
+            databaseURL: "https://joints-ugm.firebaseio.com",
+            projectId: "joints-ugm",
+            storageBucket: "joints-ugm.appspot.com",
+            messagingSenderId: "382054057518",
+            appId: "1:382054057518:web:571099e5c44e83ed40c1bf"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script>
+        async function getToken() {
+            document.getElementById('token').innerHTML = '';
+            let token = await firebase.auth().currentUser.getIdToken(true);
+            document.getElementById('token').innerHTML = token;
+        }
+
+        async function signIn() {
+            document.getElementById('token').innerHTML = '';
+            await firebase.auth().signOut();
+            let provider = new firebase.auth.GoogleAuthProvider();
+            await firebase.auth().signInWithPopup(provider);
+            getToken();
+        }
+    </script>
+</body>
+
+</html>

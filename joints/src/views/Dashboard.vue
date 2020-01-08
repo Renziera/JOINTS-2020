@@ -13,8 +13,8 @@
                     </div>
                 </div>
                 <v-app >
-                    <v-tabs v-model="active" color="cyan" slider-color="yellow" show-arrows>
-                        <v-tabs-slider color="yellow"></v-tabs-slider>
+                    <v-tabs v-model="active" color="#94119F" slider-color="yellow" show-arrows>
+                        <v-tabs-slider  color="#4DE2D2"></v-tabs-slider>
                         <v-tab v-for="tab of tabs" :key="tab.id" :to="tab.route">{{ tab.name }}</v-tab>
                         <v-tab-item v-for="tab of tabs" :key="tab.id" :value="tab.route">
                             <router-view></router-view>
@@ -55,14 +55,23 @@ export default {
                     name: 'Announcement',
                     route: `/dashboard/Announcement`
                 },
-                { id: 2, name: 'Pre-Events', route: `/dashboard/preevents` },
-                { id: 3, name: 'Events', route: `/dashboard/events` },
+                { 
+                    id: 2, 
+                    name: 'ITDay', 
+                    route: `/dashboard/preevents` },
+                { 
+                    id: 3,
+                    name: 'Grand Launching', 
+                    route: `/dashboard/events` },
                 {
                     id: 4,
                     name: 'Competitions',
                     route: `/dashboard/competitions`
                 },
-                { id: 5, name: 'Profile', route: `/dashboard/profile` }
+                { 
+                    id: 5, 
+                    name: 'Profile', 
+                    route: `/dashboard/profile` }
             ]
         };
     },
@@ -109,9 +118,7 @@ export default {
 h1 {
     color: blue;
 }
-a {
-    text-decoration: none;
-}
+
 
 v-button {
     align-content: left;
@@ -120,4 +127,5 @@ v-button {
 svg {
     fill: url(#gradient-horizontal);
 }
+
 </style>

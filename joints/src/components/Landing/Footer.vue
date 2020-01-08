@@ -48,7 +48,20 @@
                                 </b-col>
                             </b-row>
                             <b-row>
-                                <b-col lg="6" md="12"> </b-col>
+                                <b-col lg="6" md="12" class="d-flex justify-content-center align-items-center">
+                                    <div class="footer-contact-item ml-auto mr-auto">
+                                        <a href="/">I1</a>
+                                    </div>
+                                    <div class="footer-contact-item ml-auto mr-auto">
+                                        <a href="/">I2</a>
+                                    </div>
+                                    <div class="footer-contact-item ml-auto mr-auto">
+                                        <a href="/">I3</a>
+                                    </div>
+                                    <div class="footer-contact-item ml-auto mr-auto">
+                                        <a href="/">I4</a>
+                                    </div>
+                                </b-col>
                                 <b-col lg="6" md="12">
                                     <p class="footer-copyright">
                                         &copy; Copyright JOINTS 2020. All Rights
@@ -193,9 +206,26 @@ export default {
     border: none;
 }
 
-.footer .footer-button:hover {
+.footer .footer-button:hover{
     background: transparent;
     color: #491fa7 !important;
+}
+ 
+.footer .footer-button:focus, .footer .footer-button:active  .footer .footer-button:active:focus{
+    background: transparent !important;
+    border: none;
+    outline: none !important;
+    box-shadow: none;
+}
+
+.footer .footer-contact .footer-contact-item a{
+    color: white;
+    text-decoration: none;
+}
+
+.footer .footer-contact .footer-contact-item a:hover{
+    color: #F0F0F0;
+    text-decoration: none;
 }
 
 @media (max-width: 991.98px) {

@@ -12,6 +12,7 @@
                     <b-nav-item to="/grandlaunching">Grand Launching</b-nav-item>
                     <b-nav-item to="/jointstalk">Seminar</b-nav-item>
                     <b-nav-item to="/competitions">Kompetisi</b-nav-item>
+                    <b-nav-item to="/jointscamp">JointsCamp</b-nav-item>
                     <b-nav-item
                         v-if="$store.getters.user.loggedIn"
                         class="nav-item-login"
@@ -26,7 +27,7 @@
                 class="positionNav"
                 :class="colorKind"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 175 1440 150"
+                viewBox="0 0 1440 50"
             >
                 <defs>
                     <linearGradient :id="colorKind">
@@ -37,7 +38,7 @@
                 <path
                     fill
                     fill-opacity="1"
-                    d="M0,224L48,224C96,224,192,224,288,213.3C384,203,480,181,576,176C672,171,768,181,864,192C960,203,1056,213,1152,213.3C1248,213,1344,203,1392,197.3L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+                    d="M1440,50c-8.5,0.1-21.1-0.3-36-3.3c-24.2-4.9-36.5-12.9-55-20c-22-8.5-38.7-10.3-70.3-13.7c-9.7-1-39.6-3.9-92.3,0c-47.1,3.5-82.2,10.1-88.7,11.3C1020,38.7,952.1,25,711,14c-99.9-4.6-140.6-4.6-189.5-1c-51.6,3.8-48,7-130,15C321.8,34.8,254.6,38.8,182,38c-39.8-0.5-69.7-2.3-104.7-8.3C46,24.2,19.8,16.9,0,10.5C0,7,0,3.5,0,0h1440V50z"
                 />
             </svg>
         </div>
@@ -181,6 +182,12 @@ export default {
 
 .navbar .custom-toggler.navbar-toggler {
     border: none;
+}
+
+.navbar .custom-toggler.navbar-toggler:focus {
+    border: none;
+    outline: none !important;
+    box-shadow:none;
 }
 
 .custom-toggler .navbar-toggler-icon {

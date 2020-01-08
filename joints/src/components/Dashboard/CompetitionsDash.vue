@@ -1,242 +1,142 @@
 <template>
     <div class="container">
     <v-app class="white">
-        <v-item-group>
-            <v-row justify="space-around">
-                <v-col class="col-sm-6 col-lg-4 col-12">
-                    <v-card
-                       
-                        class="rounded-card"
-                        max-width="300"
-                        max-height="170"
-                        outlined
-                        flat
-                    >
-                        <v-list-item three-line>
+        <v-container>
+        <v-row  dense justify="space-around" align="start">      
+        <v-col
+          v-for="(item, i) in items"
+          :key="i"
+          class="col-sm-12 col-lg-6 col-lg-6 col-xs-12"
+        >
+          <v-card
+            max-width="500"
+            outlined 
+          > 
+            <div class="d-flex flex-no-wrap justify-content-start text-left">
+             <v-avatar
+                class="compe-avatar ma-3 mr-0 mb-6"
+                size="115"
+                tile
+              >
+                <v-img class="border border-dark" :src="item.src"></v-img>
+              </v-avatar>
 
-                        <v-list-item-avatar
-                                class="compe-avatar"
-                                tile
-                                size="100"
-                                outlined
-                            >
-                                <v-img
-                                   
-                                    src="https://cdn.vuetifyjs.com/images/cards/store.jpg"
-                                    
-                                ></v-img>
-                            </v-list-item-avatar>
-                           
+              <div class="justify-content-start">
+                <v-card-title 
+                  class="pt-1 title "
+                  v-text="item.title"
+                ></v-card-title>
 
-                            <v-list-item-content class="content-compe">
-                            
-                                <v-list-item-title class="headline mb-1">Helo 5</v-list-item-title>
-                                <v-list-item-subtitle>Greyhound divisely hello coldly
-                                    fonwderfully Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil doloremque quasi ducimus ab, minima laboriosam reiciendis esse quo possimus soluta repellat ut? Fuga ducimus, pariatur laborum mollitia aut veniam vitae?
-                                </v-list-item-subtitle>
-                            </v-list-item-content>
-                        </v-list-item>
+                <v-card-subtitle class="caption font-weight-medium text-justify"> {{item.artist}}</v-card-subtitle>
+              </div>
 
-                        <v-card-actions class="competition-actions">
+            </div>
+
+            <v-divider class="mt-0 mb-0 card-divier"></v-divider>
+
+                            <v-card-actions>
+                            <v-btn color="#13CEBB" rounded  outlined class="mr-2 daftar-button " min-width="200">Guide Book</v-btn>
                             <v-spacer></v-spacer>
-                            <v-btn text color="deep-purple accent-4">
-                                Read
-                            </v-btn>
-                            <v-btn text color="deep-purple accent-4">
-                                Bookmark
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-col>
-
-
-                <v-col class="col-sm-6 col-lg-4 col-12">
-                    <v-card
-                        class="mx-auto"
-                        max-width="400"
-                        max-height="170"
-                        raised
-                    >
-                        <v-list-item three-line>
-                             
-
-                            <v-list-item-content>
-                                <div class="overline mb-10">OVERLINE</div>
-                                <v-list-item-title class="headline mb-1"
-                                    >Headline 5</v-list-item-title
-                                >
-                                <v-list-item-subtitle
-                                    >Greyhound divisely hello coldly
-                                    fonwderfully</v-list-item-subtitle
-                                >
-                            </v-list-item-content>
-                        </v-list-item>
-
-                        <v-card-actions class="competition-actions">
-                            <v-spacer></v-spacer>
-                            <v-btn text color="deep-purple accent-4">
-                                Read
-                            </v-btn>
-                            <v-btn text color="deep-purple accent-4">
-                                Bookmark
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-col>
-
-                <v-col class="col-sm-6 col-lg-4 col-12">
-                    <v-card
-                        class="mx-auto"
-                        max-width="400"
-                        max-height="170"
-                        raised
-                    >
-                        <v-list-item three-line>
-                            <v-list-item-avatar tile size="100">
-                                <v-img
-                                    src="https://cdn.vuetifyjs.com/images/cards/store.jpg"
-                                ></v-img>
-                            </v-list-item-avatar>
-
-                            <v-list-item-content>
-                                <div class="overline mb-10">OVERLINE</div>
-                                <v-list-item-title class="headline mb-1"
-                                    >Headline 5</v-list-item-title
-                                >
-                                <v-list-item-subtitle
-                                    >Greyhound divisely hello coldly
-                                    fonwderfully</v-list-item-subtitle
-                                >
-                            </v-list-item-content>
-                        </v-list-item>
-
-                        <v-card-actions class="competition-actions">
-                            <v-spacer></v-spacer>
-                            <v-btn text color="deep-purple accent-4">
-                                Read
-                            </v-btn>
-                            <v-btn text color="deep-purple accent-4">
-                                Bookmark
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-col>
-
-                <v-col class="col-sm-6 col-lg-4 col-12">
-                    <v-card
-                        class="mx-auto"
-                        max-width="400"
-                        max-height="170"
-                        raised
-                    >
-                        <v-list-item three-line>
-                            <v-list-item-avatar tile size="100">
-                                <v-img
-                                    src="https://cdn.vuetifyjs.com/images/cards/store.jpg"
-                                ></v-img>
-                            </v-list-item-avatar>
-
-                            <v-list-item-content>
-                                <div class="overline mb-10">OVERLINE</div>
-                                <v-list-item-title class="headline mb-1"
-                                    >Headline 5</v-list-item-title
-                                >
-                                <v-list-item-subtitle
-                                    >Greyhound divisely hello coldly
-                                    fonwderfully</v-list-item-subtitle
-                                >
-                            </v-list-item-content>
-                        </v-list-item>
-
-                        <v-card-actions class="competition-actions">
-                            <v-spacer></v-spacer>
-                            <v-btn text color="deep-purple accent-4">
-                                Read
-                            </v-btn>
-                            <v-btn text color="deep-purple accent-4">
-                                Bookmark
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-col>
-
-                <v-col class="col-sm-6 col-lg-4 col-12">
-                    <v-card
-                        class="mx-auto"
-                        max-width="400"
-                        max-height="170"
-                        raised
-                    >
-                        <v-list-item three-line>
-                            <v-list-item-avatar tile size="100">
-                                <v-img
-                                    src="https://cdn.vuetifyjs.com/images/cards/store.jpg"
-                                ></v-img>
-                            </v-list-item-avatar>
-
-                            <v-list-item-content>
-                                <div class="overline mb-10">OVERLINE</div>
-                                <v-list-item-title class="headline mb-1"
-                                    >Headline 5</v-list-item-title
-                                >
-                                <v-list-item-subtitle
-                                    >Greyhound divisely hello coldly
-                                    fonwderfully</v-list-item-subtitle
-                                >
-                            </v-list-item-content>
-                        </v-list-item>
-
-                        <v-card-actions class="competition-actions">
-                            <v-spacer></v-spacer>
-                            <v-btn text color="deep-purple accent-4">
-                                Read
-                            </v-btn>
-                            <v-btn text color="deep-purple accent-4">
-                                Bookmark
-                            </v-btn>
-                        </v-card-actions>
-                    </v-card>
-                </v-col>
+                            <v-btn color="#13CEBB" rounded  outlined class="mr-2 daftar-button " min-width="200">Daftar</v-btn>
+                            </v-card-actions>
+          </v-card>
+        </v-col>
+  
+               
             </v-row>
-        </v-item-group>
+        </v-container>
     </v-app>
     </div>
 </template>
 
 <script>
-export default {};
+export default {
+
+    data: () => ({
+      items: [
+        {
+          
+          src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
+          title: 'Hackathon',
+          artist: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aliquam maxime culpa inventore aut corrupti possimus assumenda, deleniti ab necessitatibus dolorem impedit voluptatum. maMinima quisquam libero dolorem blanditiis sequi eius',
+        },
+        {
+          color: '#952175',
+          src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
+          title: 'Datathon',
+          artist: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ',
+        },
+        {
+          color: '#952175',
+          src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
+          title: 'Wathon',
+          artist: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aliquam maxime culpa inventore aut corrupti possimus assumenda, deleniti ab necessitatibus dolorem impedit voluptatum.',
+        },
+        {
+          color: '#952175',
+          src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
+          title: 'Muthon',
+          artist: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aliquam maxime culpa inventore aut corrupti possimus assumenda, deleniti ab necessitatibus dolorem impedit voluptat',
+        },
+      ],
+    }),
+
+};
 </script>
 
 <style scoped>
-.competition-actions {
-    position: relative;
-    top: -13px;
-   
-}
 
 
 .v-card:not(.v-sheet--tile):not(.v-card--shaped){
-    border-radius: 30px;
+    border-radius: 18px;
+    border: solid 6px;
+    border-color: #E475B2;
 }
 
 .compe-avatar{
-    position: relative;
-    left: -65px;
-    top: 11px;
-    border: solid;
-    border-radius: 20px
+    border-radius: 18px
+}
+
+.border-dark{
+    border-color : #94119F !important; 
+     border-width: 6px !important;
 }
 
 .content-compe{
     position: relative;
-    left: -75px;
-    width: 400px;
+
+    align-items:left;
 
 }
 
-div .v-list-item__content .content-compe{
-    width: 500px;
+.content-div {
+    
+    max-width: 500px;
+    top: -30px;
+    left: -78px;
+    position: relative;
 }
 
 
+.subtitle-wrap{
+
+    width: auto;
+    display: inline-block;
+    position: inherit;
+    
+}
+
+.caption {
+    color: #841749 !important;
+}
+
+.daftar-button{
+    border: solid 3px;
+  
+    
+}
+
+.card-divider{
+    color: red;
+}
 </style>

@@ -227,7 +227,7 @@ export default {
 .about-subtitle {
     font-size: 20px;
     color: white;
-    font-weight: 100;
+    font-weight: 400;
 }
 
 .about-button {
@@ -302,6 +302,25 @@ hr {
         margin-top: 0px;
     }
 }
+
+@media (max-width: 575.98px) {
+    .header-title{
+        font-size: 50px;
+    }
+
+    .header-subtitle{
+        font-size: 18px;
+    }
+
+    .header-button{
+        font-size: 16px;
+    }
+
+    .header-button:hover{
+        font-size: 20px;
+    }
+}
+
 
 .about-talk-gradient path {
     fill: url('#about-talk-gradient');

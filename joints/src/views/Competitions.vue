@@ -19,7 +19,7 @@
                             reprehenderit
                         </p>
                         <br />
-                        <b-button class="header-button" variant="dark">
+                        <b-button class="header-button" variant="danger">
                             Yuk Daftar
                         </b-button>
                     </b-col>
@@ -156,5 +156,23 @@ export default {
 .competition-page #header-competition-gradient {
     --color-stop-1: #bf5888;
     --color-stop-3: #efa0c9;
+}
+
+@media (max-width: 575.98px) {
+    .competition-page .header-title{
+        font-size: 50px;
+    }
+
+    .competition-page .header-subtitle{
+        font-size: 18px;
+    }
+
+    .competition-page .header-button{
+        font-size: 16px;
+    }
+
+    .competition-page .header-button:hover{
+        font-size: 20px;
+    }
 }
 </style>

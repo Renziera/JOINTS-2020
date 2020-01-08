@@ -3,12 +3,12 @@
         <Navbar accessFrom="home" colorKind="gradient-home"> </Navbar>
         <div class="wave-container header-background d-none d-lg-block">
             <svg
-                class="events-gradient"
+                class="home-header-gradient"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 500 1440 1020"
+                viewBox="0 0 1440 820"
             >
                 <defs>
-                    <linearGradient id="header-gradient">
+                    <linearGradient id="home-header-gradient">
                         <stop offset="0%" stop-color="var(--color-stop-1)" />
                         <stop offset="100%" stop-color="var(--color-stop-3)" />
                     </linearGradient>
@@ -16,9 +16,18 @@
                 <path
                     fill=""
                     fill-opacity="1"
-                    d="M1698.3,1218.6c-38.6,8-96.8,18.7-168,26.7c-218.6,24.6-490.6,55.2-726.7-68.9c-194.4-102.2-185-214.9-386.7-271.1c-114.7-32-128.7,1.5-272.5-38.9c-95.1-26.7-276.7-77.8-356.4-234.4c-29.3-57.6-36.2-112.4-37.8-146.7h1948C1698.3,729.7,1698.3,974.1,1698.3,1218.6z"
+                    d="M1441,0c-0.4,194-0.8,388-1.2,582c-523.8,85.9-747.4,3.5-853.7-92.4c-33.4-30.1-69.3-74.3-146.9-115.2c-159.8-84.3-242.8-20.9-427.8-103.3C7.9,269.5,4,267.8,0,266V0H1441z"
                     data-darkreader-inline-fill=""
                     style="--darkreader-inline-fill:#007acc;"
+                    class="d-xl-block d-lg-none"
+                ></path> 
+                <path
+                    fill=""
+                    fill-opacity="1"
+                    d="M1441,0c-0.4,257.4-0.8,514.8-1.2,772.2c-523.8,113.9-747.4,4.7-853.7-122.6c-33.4-40-69.3-98.6-146.9-152.9c-159.8-111.9-242.8-27.8-427.8-137c-3.6-2.1-7.5-4.4-11.5-6.9V0H1441z"
+                    data-darkreader-inline-fill=""
+                    style="--darkreader-inline-fill:#007acc;"
+                    class="d-lg-block d-xl-none"
                 ></path>
             </svg>
         </div>
@@ -59,7 +68,7 @@
                         </p>
                         <b-button
                             class="header-button"
-                            variant="success"
+                            variant="light"
                             to="/"
                         >
                             Detail Joints
@@ -465,8 +474,7 @@ export default {
 
 <style scoped>
 .home-page .header {
-    padding-top: 200px;
-    padding-bottom: 200px;
+    padding-top: 150px;
     min-height: 65vh;
 }
 
@@ -499,7 +507,7 @@ export default {
 }
 
 .home-page .header-image {
-    width: 300px;
+    width: 400px;
 }
 
 .home-page .header-title {
@@ -600,13 +608,13 @@ export default {
     --color-stop-3: #e273b1;
 }
 
-.header-gradient path {
-    fill: url('#header-gradient');
+.home-header-gradient path {
+    fill: url('#home-header-gradient');
 }
 
-#header-gradient {
-    --color-stop-1: #a729a4;
-    --color-stop-3: #e273b1;
+#home-header-gradient {
+    --color-stop-1: #19c4b9;
+    --color-stop-3: #90169f;
 }
 
 .home-page .timeline .timeline-title {
@@ -726,6 +734,7 @@ export default {
     .home-page .header {
         margin-bottom: -250px;
         padding-top: 120px;
+        padding-bottom: 200px;
         background-image: linear-gradient(90deg, #19c4b9, #90169f);
     }
 
