@@ -20,6 +20,8 @@ import PreEvents from '@/components/Dashboard/PreEvents.vue';
 import Events from '@/components/Dashboard/Events.vue';
 import Profil from '@/components/Dashboard/Profil.vue';
 import Registration from '@/components/Dashboard/RegistrationPage.vue';
+import JointsCampDash from '@/components/Dashboard/JointsCamp.vue';
+import PaymentDash from '@/components/Dashboard/PaymentDash.vue';
 
 Vue.use(VueRouter);
 
@@ -73,15 +75,30 @@ const routes = [
                 path: 'competitions',
                 name: 'competition',
                 component: CompetitionsDash,
+
             },
             {
-                path: 'competitions/:section',
+                path: 'competitions/:section/register',
                 name: 'registration',
                 component: Registration,
-                props: true
-            }
-            ,
-            
+                props: true,
+                beforeEnter: (to, from, next) => {
+                const id = to.params.section;
+                if (!['datamining','ctf','uiux','pcs'].includes(id)) next('/not-found');
+                else next();
+                }
+            },
+            {
+                path: 'competitions/:section/payment',
+                name: 'payment',
+                component: PaymentDash,
+                props: true,
+                beforeEnter: (to, from, next) => {
+                const id = to.params.section;
+                if (!['datamining','ctf','uiux','pcs'].includes(id)) next('/not-found');
+                else next();
+                }
+            },
             {
                 path: 'events',
                 name: 'events',
@@ -91,6 +108,21 @@ const routes = [
                 path: 'profile',
                 name: 'profile',
                 component: Profil
+            },
+            {
+                path: 'jointscamp',
+                name: 'jointscamp',
+                component: JointsCampDash
+            },
+            {
+                path: 'jointscamp/:section/register',
+                name: 'jointscamp',
+                component: Registration,
+                props: true,
+                beforeEnter: (to, from, next) => {
+                const id = to.params.section;
+                if (!['datamining','ctf','uiux','pcs'].includes(id)) next('/not-found');
+                else next();}
             }
         ]
     },

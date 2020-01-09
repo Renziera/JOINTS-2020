@@ -58,18 +58,26 @@ export default {
                 { 
                     id: 2, 
                     name: 'ITDay', 
-                    route: `/dashboard/preevents` },
+                    route: `/dashboard/preevents` 
+                },
                 { 
                     id: 3,
                     name: 'Grand Launching', 
-                    route: `/dashboard/events` },
-                {
+                    route: `/dashboard/events`
+                },
+                { 
                     id: 4,
+                    name: 'Joints Camp', 
+                    route: `/dashboard/jointscamp`
+                },
+
+                {
+                    id: 5,
                     name: 'Competitions',
                     route: `/dashboard/competitions`
                 },
                 { 
-                    id: 5, 
+                    id: 6, 
                     name: 'Profile', 
                     route: `/dashboard/profile` }
             ]
