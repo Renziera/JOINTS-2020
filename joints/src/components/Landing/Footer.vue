@@ -31,9 +31,9 @@
                         <div class="footer-content footer-contact">
                             <b-row>
                                 <b-col lg="6" md="12" class="footer-logo">
-                                    <img src="" alt="Image not found" />
+                                    <img src="@/./assets/joints.png" alt="Image not found" />
                                 </b-col>
-                                <b-col lg="6" md="12">
+                                <b-col lg="6" md="12" class="d-flex align-items-center footer-alamat-wrapper">
                                     <p class="footer-alamat">
                                         Sekertariat Himakom
                                         <br />
@@ -48,7 +48,7 @@
                                 </b-col>
                             </b-row>
                             <b-row>
-                                <b-col lg="6" md="12" class="d-flex justify-content-center align-items-center">
+                                <b-col lg="6" cols="4" offset="4" offset-lg="0" class="d-flex justify-content-center align-items-center">
                                     <div class="footer-contact-item ml-auto mr-auto">
                                         <a href="/">I1</a>
                                     </div>
@@ -169,7 +169,7 @@ export default {
 
 .footer {
     color: white;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
 }
 
 .footer .footer-title {
@@ -185,11 +185,13 @@ export default {
 .footer .footer-alamat {
     font-size: 16px;
     text-align: left;
+    margin-bottom: 0;
 }
 
 .footer .footer-copyright {
     font-size: 14px;
     text-align: left;
+    margin-bottom: 0;
 }
 
 .footer .footer-contact .row:nth-child(2) {
@@ -228,6 +230,10 @@ export default {
     text-decoration: none;
 }
 
+.footer .footer-logo img{
+    width: 100%;
+}
+
 @media (max-width: 991.98px) {
     .footer .footer-title {
         text-align: center !important;
@@ -237,8 +243,17 @@ export default {
         text-align: center !important;
     }
 
+    .footer .footer-alamat-wrapper{
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
     .footer .footer-copyright {
         text-align: center !important;
+    }
+
+    .footer .footer-logo img{
+        width: 200px;
     }
 }
 </style>

@@ -2,7 +2,7 @@
     <div>
         <b-navbar id="navbar" fixed="top" toggleable="lg" :class="accessFrom">
             <b-navbar-brand to="/">
-                <img src alt="Image not found" class="d-none d-lg-block" />
+                <img src="@/./assets/joints.png" alt="Image not found" class="d-none d-lg-block" />
                 <span class="d-lg-none">JOINTS</span>
             </b-navbar-brand>
             <b-navbar-toggle target="nav-collapse" class="custom-toggler"></b-navbar-toggle>
@@ -64,7 +64,7 @@ export default {
 .positionNav {
     position: fixed;
     left: 0;
-    top: 54.6px;
+    top: 60px;
     z-index: 99999;
     margin-bottom: 1000px;
 }
@@ -108,7 +108,7 @@ export default {
 .gradient-dashboard {
     --color-stop-4: #bf5888;
     --color-stop-5: #18cebe;
-}
+}   
 
 .gradient-talk {
     --color-stop-4: #18cebe;
@@ -116,7 +116,7 @@ export default {
 }
 
 .navbar {
-    padding-top: 15px !important;
+    padding-top: 0px;
     padding-bottom: 0px !important;
 }
 
@@ -146,6 +146,10 @@ export default {
 
 .navbar .nav-link {
     color: white !important;
+}
+
+.navbar .navbar-brand img{
+    width: 70px;
 }
 
 .navbar.dashboardNavbar .nav-link:hover {
@@ -195,8 +199,13 @@ export default {
 }
 
 @media (max-width: 991.98px) {
+    .navbar{
+        padding-top: 15px;
+    }
+
     .positionNav {
         z-index: 1000;
+        top: 48px;
     }
 
     .home {

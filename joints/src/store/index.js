@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import firebase from 'firebase/app';
+import Api from '@/services/Api.js'
+import axios from 'axios'
 
 Vue.use(Vuex);
 
@@ -10,12 +12,26 @@ export default new Vuex.Store({
             loggedIn: false,
             isPanitia: false,
             data: null
+        },
+        profils : {
+            nama: '',
+            email: '',
+            nomor: '', 
+            instansi: ''
+            
         }
     },
     getters: {
         user(state) {
             return state.user;
-        }
+        },
+        nama: state => state.profils.nama,
+        email: state => state.profils.email,
+        nomor: state => state.profils.nomor,
+        instansi: state => state.profils.instansi, 
+
+    
+
     },
     mutations: {
         SET_LOGGED_IN(state, value) {
@@ -26,7 +42,16 @@ export default new Vuex.Store({
         },
         SET_PANITIA(state, value) {
             state.user.isPanitia = value;
+        },
+        SET_PROFIL(state, value){
+            state.profils = value
+        },
+        ADD_PROFIL(state, value){
+            let profil = state.profils.concat(value);
+            state.profils = profil;
         }
+
+
     },
     actions: {
         async fetchUser({ commit }, user) {
@@ -41,7 +66,18 @@ export default new Vuex.Store({
             } else {
                 commit('SET_USER', null);
             }
+        },
+        async submitProfil({commit}, profil) {
+            let response = await Api().post('/biodata', profils)
+            commit('ADD_PROFIL', profil)
+            console.log(response)
+        },
+
+        getTheform() {
+            axios.get('')
         }
+        
+
     },
     modules: {}
 });

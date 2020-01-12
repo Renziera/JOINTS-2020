@@ -47,37 +47,27 @@ export default {
     },
     data() {
         return {
-            index: 1,
-            konten: Announcement,
+    
             tabs: [
                 {
                     id: 1,
                     name: 'Announcement',
-                    route: `/dashboard/Announcement`
+                    route: `/dashboard/announcement`
                 },
+                
                 { 
-                    id: 2, 
-                    name: 'ITDay', 
-                    route: `/dashboard/preevents` 
-                },
-                { 
-                    id: 3,
-                    name: 'Grand Launching', 
+                    id: 2,
+                    name: 'Events', 
                     route: `/dashboard/events`
-                },
-                { 
-                    id: 4,
-                    name: 'Joints Camp', 
-                    route: `/dashboard/jointscamp`
                 },
 
                 {
-                    id: 5,
+                    id: 3,
                     name: 'Competitions',
                     route: `/dashboard/competitions`
                 },
                 { 
-                    id: 6, 
+                    id: 4, 
                     name: 'Profile', 
                     route: `/dashboard/profile` }
             ]

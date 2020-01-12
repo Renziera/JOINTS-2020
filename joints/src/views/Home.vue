@@ -45,7 +45,7 @@
                             class="header-image d-none d-lg-block"
                         />
                         <img
-                            src="@/assets/logo.png"
+                            src="@/assets/joints.png"
                             alt="JOINTS 2020"
                             class="header-image d-lg-none"
                         />

@@ -266,6 +266,9 @@ hr {
 }
 
 @media (max-width: 991.98px) {
+    .header{
+        padding-top: 80px;
+    }
     .about-pembicara {
         display: flex;
     }

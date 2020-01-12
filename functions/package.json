@@ -17,6 +17,7 @@
     "express-bearer-token": "^2.4.0",
     "firebase-admin": "^8.6.0",
     "firebase-functions": "^3.3.0",
+    "googleapis": "^46.0.0",
     "multer": "github:emadalam/multer#master",
     "uuid": "^3.3.3"
   },

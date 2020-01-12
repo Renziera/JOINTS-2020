@@ -9,6 +9,7 @@ const cors = require('cors');
 const bearerToken = require('express-bearer-token');
 const multer = require('multer');
 const uuid = require('uuid/v4');
+const { google } = require('googleapis');
 const app = express();
 
 app.use(cors());
@@ -568,6 +569,232 @@ app.get('/admin/apps_innovation', async (req, res) => {
     qs.forEach(doc => results.push(getUserData(doc)));
 
     return res.send({ status: 'ok', results: await Promise.all(results) });
+});
+
+app.get('/admin/export', async (req, res) => {
+    const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets'] });
+    const sheets = google.sheets({ version: 'v4', auth });
+
+    async function pembarayan() {
+        let qs = await db.collectionGroup('pendaftaran').orderBy('waktu_daftar', 'desc').get();
+        let results = [
+            ['Nama', 'Email', 'Nomor', 'Instansi', 'Event', 'Kompetisi', 'Nominal', 'Status'],
+        ];
+
+        async function getUserData(doc) {
+            let userDoc = await doc.ref.parent.parent.get();
+            let data = { ...doc.data(), ...userDoc.data() };
+            return [
+                data.nama, data.email, data.nomor, data.instansi, data.event || '', data.competition || '', data.harga || 0, data.status,
+            ];
+        }
+
+        qs.forEach(doc => results.push(getUserData(doc)));
+
+        await sheets.spreadsheets.values.update({
+            spreadsheetId: '1UyIheoyez5pJrJFNebzUhFbi8C6zvpNxuJ8HJrbicQ4',
+            range: 'Pembayaran',
+            valueInputOption: 'RAW',
+            resource: {
+                values: await Promise.all(results),
+            },
+        });
+    }
+
+    async function grand_launching() {
+        let qs = await db.collectionGroup('pendaftaran').where('event', '==', 'grand_launching').where('status', '==', 'lunas').get();
+        let results = [
+            ['Nama', 'Email', 'Nomor', 'Instansi'],
+        ];
+
+        async function getUserData(doc) {
+            let userDoc = await doc.ref.parent.parent.get();
+            let data = { ...doc.data(), ...userDoc.data() };
+            return [
+                data.nama, data.email, data.nomor, data.instansi,
+            ];
+        }
+
+        qs.forEach(doc => results.push(getUserData(doc)));
+
+        await sheets.spreadsheets.values.update({
+            spreadsheetId: '1UyIheoyez5pJrJFNebzUhFbi8C6zvpNxuJ8HJrbicQ4',
+            range: 'Grand Launching',
+            valueInputOption: 'RAW',
+            resource: {
+                values: await Promise.all(results),
+            },
+        });
+    }
+
+    async function it_day() {
+        let qs = await db.collectionGroup('pendaftaran').where('event', '==', 'it_day').where('status', '==', 'lunas').get();
+        let results = [
+            ['Nama', 'Email', 'Nomor', 'Instansi'],
+        ];
+
+        async function getUserData(doc) {
+            let userDoc = await doc.ref.parent.parent.get();
+            let data = { ...doc.data(), ...userDoc.data() };
+            return [
+                data.nama, data.email, data.nomor, data.instansi,
+            ];
+        }
+
+        qs.forEach(doc => results.push(getUserData(doc)));
+
+        await sheets.spreadsheets.values.update({
+            spreadsheetId: '1UyIheoyez5pJrJFNebzUhFbi8C6zvpNxuJ8HJrbicQ4',
+            range: 'IT Day',
+            valueInputOption: 'RAW',
+            resource: {
+                values: await Promise.all(results),
+            },
+        });
+    }
+
+    async function joints_camp() {
+        let qs = await db.collectionGroup('pendaftaran').where('event', '==', 'joints_camp').where('status', '==', 'lunas').get();
+        let results = [
+            ['Nama', 'Email', 'Nomor', 'Instansi'],
+        ];
+
+        async function getUserData(doc) {
+            let userDoc = await doc.ref.parent.parent.get();
+            let data = { ...doc.data(), ...userDoc.data() };
+            return [
+                data.nama, data.email, data.nomor, data.instansi,
+            ];
+        }
+
+        qs.forEach(doc => results.push(getUserData(doc)));
+
+        await sheets.spreadsheets.values.update({
+            spreadsheetId: '1UyIheoyez5pJrJFNebzUhFbi8C6zvpNxuJ8HJrbicQ4',
+            range: 'Joints Camp',
+            valueInputOption: 'RAW',
+            resource: {
+                values: await Promise.all(results),
+            },
+        });
+    }
+
+    async function pcs() {
+        let qs = await db.collectionGroup('pendaftaran').where('competition', '==', 'pcs').where('status', '==', 'lunas').get();
+        let results = [
+            ['Nama', 'Email', 'Nomor', 'Instansi', 'Nama Tim', 'Anggota 1', 'Anggota 2'],
+        ];
+
+        async function getUserData(doc) {
+            let userDoc = await doc.ref.parent.parent.get();
+            let data = { ...doc.data(), ...userDoc.data() };
+            return [
+                data.nama, data.email, data.nomor, data.instansi, data.nama_tim, data.nama_1, data.nama_2,
+            ];
+        }
+
+        qs.forEach(doc => results.push(getUserData(doc)));
+
+        await sheets.spreadsheets.values.update({
+            spreadsheetId: '1UyIheoyez5pJrJFNebzUhFbi8C6zvpNxuJ8HJrbicQ4',
+            range: 'PCS',
+            valueInputOption: 'RAW',
+            resource: {
+                values: await Promise.all(results),
+            },
+        });
+    }
+
+    async function ctf() {
+        let qs = await db.collectionGroup('pendaftaran').where('competition', '==', 'ctf').where('status', '==', 'lunas').get();
+        let results = [
+            ['Nama', 'Email', 'Nomor', 'Instansi', 'Nama Tim', 'Anggota 1', 'Anggota 2', 'SMA'],
+        ];
+
+        async function getUserData(doc) {
+            let userDoc = await doc.ref.parent.parent.get();
+            let data = { ...doc.data(), ...userDoc.data() };
+            return [
+                data.nama, data.email, data.nomor, data.instansi, data.nama_tim, data.nama_1, data.nama_2, data.sma,
+            ];
+        }
+
+        qs.forEach(doc => results.push(getUserData(doc)));
+
+        await sheets.spreadsheets.values.update({
+            spreadsheetId: '1UyIheoyez5pJrJFNebzUhFbi8C6zvpNxuJ8HJrbicQ4',
+            range: 'CTF',
+            valueInputOption: 'RAW',
+            resource: {
+                values: await Promise.all(results),
+            },
+        });
+    }
+
+    async function data_mining() {
+        let qs = await db.collectionGroup('pendaftaran').where('competition', '==', 'data_mining').where('status', '==', 'lunas').get();
+        let results = [
+            ['Nama', 'Email', 'Nomor', 'Instansi', 'Nama Tim', 'Anggota 1', 'Anggota 2'],
+        ];
+
+        async function getUserData(doc) {
+            let userDoc = await doc.ref.parent.parent.get();
+            let data = { ...doc.data(), ...userDoc.data() };
+            return [
+                data.nama, data.email, data.nomor, data.instansi, data.nama_tim, data.nama_1, data.nama_2,
+            ];
+        }
+
+        qs.forEach(doc => results.push(getUserData(doc)));
+
+        await sheets.spreadsheets.values.update({
+            spreadsheetId: '1UyIheoyez5pJrJFNebzUhFbi8C6zvpNxuJ8HJrbicQ4',
+            range: 'Data Mining',
+            valueInputOption: 'RAW',
+            resource: {
+                values: await Promise.all(results),
+            },
+        });
+    }
+
+    async function apps_innovation() {
+        let qs = await db.collectionGroup('pendaftaran').where('competition', '==', 'apps_innovation').where('status', '==', 'lunas').get();
+        let results = [
+            ['Nama', 'Email', 'Nomor', 'Instansi', 'Nama Tim', 'Anggota 1', 'Anggota 2'],
+        ];
+
+        async function getUserData(doc) {
+            let userDoc = await doc.ref.parent.parent.get();
+            let data = { ...doc.data(), ...userDoc.data() };
+            return [
+                data.nama, data.email, data.nomor, data.instansi, data.nama_tim, data.nama_1, data.nama_2,
+            ];
+        }
+
+        qs.forEach(doc => results.push(getUserData(doc)));
+
+        await sheets.spreadsheets.values.update({
+            spreadsheetId: '1UyIheoyez5pJrJFNebzUhFbi8C6zvpNxuJ8HJrbicQ4',
+            range: 'Apps Innovation',
+            valueInputOption: 'RAW',
+            resource: {
+                values: await Promise.all(results),
+            },
+        });
+    }
+
+    await Promise.all([
+        pembarayan(),
+        grand_launching(),
+        it_day(),
+        joints_camp(),
+        pcs(),
+        ctf(),
+        data_mining(),
+        apps_innovation(),
+    ]);
+
+    res.send({ status: 'ok', sheet: 'https://docs.google.com/spreadsheets/d/1UyIheoyez5pJrJFNebzUhFbi8C6zvpNxuJ8HJrbicQ4' });
 });
 
 app.all('*', (req, res) => res.send('INVALID ROUTE'));

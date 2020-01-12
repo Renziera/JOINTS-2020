@@ -16,10 +16,8 @@
                      <div class="title text-left">Yuk Tranfers ke Nomor Berikut:</div>
                       <div class="subtitle-1 text-left">Sistem kami akan otomati mendeteksi hasil pembayaran anda:</div>
                     
-
                     </v-card>
 
-                  
               </v-col>
 
 

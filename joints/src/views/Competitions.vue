@@ -158,6 +158,12 @@ export default {
     --color-stop-3: #efa0c9;
 }
 
+@media (max-width: 991.98px){
+    .competition-page .header{
+        padding-top: 80px;
+    }
+}
+
 @media (max-width: 575.98px) {
     .competition-page .header-title{
         font-size: 50px;

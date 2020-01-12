@@ -67,11 +67,6 @@ const routes = [
                 component: Announcement
             },
             {
-                path: 'preevents',
-                name: 'preevents',
-                component: PreEvents
-            },
-            {
                 path: 'competitions',
                 name: 'competition',
                 component: CompetitionsDash,
@@ -105,17 +100,7 @@ const routes = [
                 component: Events
             },
             {
-                path: 'profile',
-                name: 'profile',
-                component: Profil
-            },
-            {
-                path: 'jointscamp',
-                name: 'jointscamp',
-                component: JointsCampDash
-            },
-            {
-                path: 'jointscamp/:section/register',
+                path: 'events/:section/register',
                 name: 'jointscamp',
                 component: Registration,
                 props: true,
@@ -123,7 +108,13 @@ const routes = [
                 const id = to.params.section;
                 if (!['datamining','ctf','uiux','pcs'].includes(id)) next('/not-found');
                 else next();}
-            }
+            },
+            {
+                path: 'profile',
+                name: 'profile',
+                component: Profil
+            },
+            
         ]
     },
     {

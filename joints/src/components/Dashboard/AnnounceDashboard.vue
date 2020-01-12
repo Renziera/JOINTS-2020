@@ -1,37 +1,82 @@
 <template>
-    <div>
-        <div class="container">
-            <v-app class="white">
-                <v-row>
-                    <v-col md="12" lg="12" xs="12">
-                        <div class="announce">
-                            <v-expansion-panels multiple flat tile>
-                                <v-expansion-panel v-for="(item, i) in announcements" :key="i">
-                                    <v-expansion-panel-header>{{ item.judul }}</v-expansion-panel-header>
-                                    <v-expansion-panel-content>{{ item.konten }}</v-expansion-panel-content>
-                                </v-expansion-panel>
-                            </v-expansion-panels>
-                        </div>
-                    </v-col>
-                </v-row>
-            </v-app>
-        </div>
+    <div class="container">
+  
+        <template>
+            <v-expansion-panels
+             outlined
+
+             multiple
+             accordion 
+            
+            >
+                <v-expansion-panel
+                v-for="item in items"
+                :key="title"
+               
+                >
+
+                <v-expansion-panel-header>Item</v-expansion-panel-header>
+                <v-expansion-panel-content>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </v-expansion-panel-content>
+                </v-expansion-panel>
+            </v-expansion-panels>
+        </template>
+            
+       
+    
+  
     </div>
 </template>
 
 <script>
-import firebase from 'firebase/app';
-
 export default {
-    data: () => {
-        return {
-            announcements: []
-        };
-    },
-    mounted() {
 
-    }
+    data: () => ({
+      items: [
+        {
+          
+          src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
+          title: 'Hackathon',
+          artist: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aliquam maxime culpa inventore aut corrupti possimus assumenda, deleniti ab necessitatibus dolorem impedit voluptatum. maMinima quisquam libero dolorem blanditiis sequi eius',
+        },
+        {
+          color: '#952175',
+          src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
+          title: 'Datathon',
+          artist: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ',
+        },
+        {
+          color: '#952175',
+          src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
+          title: 'Wathon',
+          artist: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aliquam maxime culpa inventore aut corrupti possimus assumenda, deleniti ab necessitatibus dolorem impedit voluptatum.',
+        },
+        {
+          color: '#952175',
+          src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
+          title: 'Muthon',
+          artist: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aliquam maxime culpa inventore aut corrupti possimus assumenda, deleniti ab necessitatibus dolorem impedit voluptat',
+        },
+      ],
+       accordion: false,
+      popout: false,
+      inset: false,
+      multiple: false,
+      disabled: false,
+      readonly: false,
+      focusable: false,
+      flat: false,
+      hover: false,
+      tile: false,
+    }),
+
 };
 </script>
 
-<style></style>
+<style>
+.v-expansion-panels {
+    z-index: -1;
+}
+
+</style>
