@@ -43,7 +43,7 @@
 
                             <v-card-actions>
                             <v-spacer></v-spacer>
-                            <v-btn color="#13CEBB" rounded  outlined class="mr-2 daftar-button btn-block">Daftar</v-btn>
+                            <v-btn color="#13CEBB" rounded  outlined class="mr-2 daftar-button btn-block "  :to="item.link" >Daftar</v-btn>
                             </v-card-actions>
           </v-card>
         </v-col>
@@ -63,27 +63,25 @@ export default {
         {
           
           src: 'https://cdn.vuetifyjs.com/images/cards/foster.jpg',
-          title: 'Hackathon',
-          artist: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aliquam maxime culpa inventore aut corrupti possimus assumenda, deleniti ab necessitatibus dolorem impedit voluptatum. maMinima quisquam libero dolorem blanditiis sequi eius',
+          title: 'Grand Launching',
+          artist: 'Grand Launching merupakan salah satu rangkaian acara dari JOINTS 2020. Bentuk kegiatan ini adalah seminar dan workshop dengan mengangkat tema besar “Society 5.0” yang difokuskan pada Apps Innovation.',
+          link: '/dashboard/events/grandlaunching/register'
         },
         {
           color: '#952175',
           src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
-          title: 'Datathon',
+          title: 'ITDay',
           artist: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ',
+          link: '/dashboard/events/grandlaunching/register'
         },
         {
           color: '#952175',
           src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
-          title: 'Wathon',
+          title: 'JointsCamp',
           artist: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aliquam maxime culpa inventore aut corrupti possimus assumenda, deleniti ab necessitatibus dolorem impedit voluptatum.',
+          link: '/dashboard/events/grandlaunching/register'
         },
-        {
-          color: '#952175',
-          src: 'https://cdn.vuetifyjs.com/images/cards/halcyon.png',
-          title: 'Muthon',
-          artist: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aliquam maxime culpa inventore aut corrupti possimus assumenda, deleniti ab necessitatibus dolorem impedit voluptat',
-        },
+        
       ],
     }),
 
@@ -164,5 +162,9 @@ export default {
 .the-container{
     position: relative;
     overflow: hidden;
+}
+
+.daftar-button{
+  padding-top: 5px !important;
 }
 </style>

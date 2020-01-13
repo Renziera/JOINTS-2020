@@ -1,8 +1,16 @@
 <template>
-    <div class="has-text-centered">
-        <h1 class="title">Sorry. Page Not Found :(</h1>
-            <p>Use the navigation links above to navigate between the product and
-            cart screens.</p>
+    <div class="notfound d-flex align-items-center">
+        <b-container>
+            <b-row>
+                <b-col cols="12" lg="6" class="d-flex justify-content-center notfound-image-wrapper">
+                    <img class="notfound-image" src="@/assets/404.png"/>
+                </b-col>
+                <b-col cols="12" lg="6" class="d-flex justify-content-center flex-column">
+                    <h1 class="notfound-title text-left">Maaf, halaman yang anda cari tidak ditemukan</h1>
+                    <b-button class="notfound-button" variant="success" to="/">Home</b-button>
+                </b-col>
+            </b-row>
+        </b-container>
     </div>
 </template>
 
@@ -13,4 +21,16 @@
 
 
 <style scoped>
+.notfound{
+    height: 100vh;
+}
+
+.notfound-image{
+    width: 400px;
+}
+
+.notfound-button{
+    width: 100px;
+}
+
 </style>

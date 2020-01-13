@@ -22,6 +22,7 @@ import Profil from '@/components/Dashboard/Profil.vue';
 import Registration from '@/components/Dashboard/RegistrationPage.vue';
 import JointsCampDash from '@/components/Dashboard/JointsCamp.vue';
 import PaymentDash from '@/components/Dashboard/PaymentDash.vue';
+import EventRegist from '@/components/Dashboard/EventRegist.vue';
 
 Vue.use(VueRouter);
 
@@ -102,11 +103,11 @@ const routes = [
             {
                 path: 'events/:section/register',
                 name: 'jointscamp',
-                component: Registration,
+                component: EventRegist,
                 props: true,
                 beforeEnter: (to, from, next) => {
-                const id = to.params.section;
-                if (!['datamining','ctf','uiux','pcs'].includes(id)) next('/not-found');
+                const section = to.params.section;
+                if (!['grandlaunching','itday','jointscamp','jointscamp2'].includes(section)) next('/not-found');
                 else next();}
             },
             {

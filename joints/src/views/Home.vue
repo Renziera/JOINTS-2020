@@ -189,6 +189,26 @@
                                     </b-card>
                                 </div>
                             </CarouselCardItem>
+                            <CarouselCardItem class="carousel-item-jointscamp">
+                                <div>
+                                    <b-card>
+                                        <b-card-text>
+                                            <div class="card-image">
+                                                <img
+                                                    src="@/assets/logo.png"
+                                                    alt="JOINTS 2020"
+                                                />
+                                            </div>
+                                        </b-card-text>
+                                        <b-button
+                                            to="/jointscamp"
+                                            variant="primary"
+                                            class="carousel-card-button"
+                                            >Joints Camp</b-button
+                                        >
+                                    </b-card>
+                                </div>
+                            </CarouselCardItem>
                         </CarouselCard>
                     </b-col>
                     <b-col
@@ -247,6 +267,32 @@
                     >
                         <h2 class="events-title">
                             Kompetisi
+                        </h2>
+                        <p class="events-subtitle">
+                            At vero eos et accusamus et iusto odio dignissimos
+                            ducimus qui blanditiis praesentium voluptatum
+                            deleniti atque corrupti quos dolores et quas
+                            molestias excepturi sint occaecati cupiditate non
+                            provident, similique sunt in culpa qui officia
+                            deserunt mollitia animi, id est laborum et dolorum
+                            fuga.
+                        </p>
+                        <b-button
+                            class="events-button"
+                            variant="success"
+                            to="/"
+                        >
+                            Yuk Daftar
+                        </b-button>
+                    </b-col>
+                    <b-col
+                        cols="12"
+                        lg="6"
+                        id="events-desc-jointscamp"
+                        class="flex-column events-desc justify-content-center text-left events-desc-jointcamp"
+                    >
+                        <h2 class="events-title">
+                            Joints Camp
                         </h2>
                         <p class="events-subtitle">
                             At vero eos et accusamus et iusto odio dignissimos
@@ -454,18 +500,28 @@ export default {
             let competition = document.getElementById(
                 'events-desc-competition'
             );
+            let camp = document.getElementById('events-desc-jointscamp');
             if (newIndex == 0) {
                 gl.style.display = 'flex';
                 talk.style.display = 'none';
                 competition.style.display = 'none';
+                camp.style.display = 'none';
             } else if (newIndex == 1) {
                 gl.style.display = 'none';
                 talk.style.display = 'flex';
                 competition.style.display = 'none';
-            } else {
+                camp.style.display = 'none';
+            } else if(newIndex == 2) {
                 gl.style.display = 'none';
                 talk.style.display = 'none';
                 competition.style.display = 'flex';
+                camp.style.display = 'none';
+            }
+            else{
+                gl.style.display = 'none';
+                talk.style.display = 'none';
+                competition.style.display = 'none';
+                camp.style.display = 'flex';
             }
         }
     }
@@ -561,6 +617,11 @@ export default {
     border: none;
 }
 
+.home-page .carousel-card .carousel-item-jointscamp .card {
+    background-image: linear-gradient(-135deg, #b41a1a, #f65959);
+    border: none;
+}
+
 .home-page .carousel-card .carousel-card-button {
     background: transparent;
     border: 1.5px solid rgba(0, 0, 0, 0.8);
@@ -579,6 +640,10 @@ export default {
 }
 
 #events-desc-competition {
+    display: none;
+}
+
+#events-desc-jointscamp {
     display: none;
 }
 

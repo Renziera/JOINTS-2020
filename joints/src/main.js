@@ -10,8 +10,12 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import BootstrapVue from 'bootstrap-vue';
 import vuetify from '@/plugins/vuetify';
 
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 Vue.use(vuetify);
 Vue.use(BootstrapVue);
+Vue.use(ElementUI);
 
 Vue.config.productionTip = false;
 

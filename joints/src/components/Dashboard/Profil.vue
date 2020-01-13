@@ -1,10 +1,36 @@
 <template>
     <div>
-        <v-container>
-            <v-app class="white">           
-                <v-row justify="center">
+
+            <v-app class="white"> 
+                <v-container> 
+                <v-row no-gutters  md='12' justify="center" class="flex-column align-end text-left " >
+
+                    <v-col v-for=" profil in profiles" :key="profil">
+                               {{ profil }}
+                    </v-col>
+
+
+
+
+
+
+                    <v-col class="justify-start align-content-start">
+                    Nama : Nurrizky Imani
+                    </v-col>
+                     <v-col class="">
+                    Email : indieunicreative@gmail.com
+                    </v-col>
+                     <v-col class="">
+                    Nomor Hp : indieunicreative@gmail.com
+                    </v-col>
+                     <v-col class="pa-4 ">
+                    Instansi : indieunicreative@gmail.com
+                    </v-col>
+
+                    <v-col>
                     <v-dialog v-model="dialog" persistent max-width="600px">
                     <template v-slot:activator="{ on }">
+                        <h2>halo halo halo</h2>
                         <v-btn color="primary" dark v-on="on">Open Dialog</v-btn>
                     </template>
                     <v-card>
@@ -97,9 +123,12 @@
                         </v-card-actions>
                     </v-card>
                     </v-dialog>
+
+                    </v-col>
                 </v-row>
+                </v-container>        
             </v-app>
-        </v-container>
+       
     </div>
 </template>
 
@@ -115,7 +144,14 @@ export default {
         minDate: "2019-07-04",
         maxDate: "2021-08-30",
         profilData: {nama:'', email: '', nomor:'', instansi:''},
-        dialog: false
+        dialog: false,
+        profiles: {
+            'nama' : 'Nurrizky Imani',
+            'email' : 'imanni@',
+            'nomor' : '0883418736491',
+            'universitas' : ';ldkgja;ldfjk',
+            
+        }
       };
     },
     computed: {

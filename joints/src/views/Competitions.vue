@@ -136,17 +136,7 @@ export default {
 }
 
 .competition-page .competition-list {
-    background-image: linear-gradient(90deg, #e750a4, #e750a4);
-    background-repeat: no-repeat;
-    background-position: top left;
-    background-size: 50%;
-    background-color: #fc9ed2;
-    margin-top: 30px;
-}
-
-.competition-page .competition-list .container {
-    padding-top: 0;
-    padding-bottom: 0;
+    background-image: linear-gradient(-90deg, #bf5888, #efa0c9);
 }
 
 .competition-page .header-competition-gradient path {
