@@ -13,24 +13,12 @@ export default new Vuex.Store({
             isPanitia: false,
             data: null
         },
-        profils : {
-            nama: '',
-            email: '',
-            nomor: '', 
-            instansi: ''
-            
-        }
+        profils : null
     },
     getters: {
         user(state) {
             return state.user;
         },
-        nama: state => state.profils.nama,
-        email: state => state.profils.email,
-        nomor: state => state.profils.nomor,
-        instansi: state => state.profils.instansi, 
-
-    
 
     },
     mutations: {

@@ -2,7 +2,7 @@
     <div class="container">
     <v-app class="white">
         <v-container>
-        <v-row  dense justify="space-around" align="start">      
+        <v-row  dense justify="space-around" align="star" class="align-start">      
         <v-col
           v-for="(item, i) in items"
           :key="i"

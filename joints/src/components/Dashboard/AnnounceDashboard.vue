@@ -1,80 +1,50 @@
 <template>
-    <div class="container">
+    <div>
         <v-app class="white">
+        <v-container>
+          <v-row class="flex-column">
+            <v-col 
+              v-for="i in 4"
+              :key="i">
+              <v-card
+              class=" display-block"
+              >
+              
+              <div >
+                <div class=" mx-auto pl-2">
+              <v-card-actions>
+                <v-card-title class="pa-0">
+                Pengumunan Pemenang kompetisi {{pengumuman.judul}}
+                </v-card-title>
 
-             <v-row align="start">
+                <v-spacer></v-spacer>
 
-                <v-expansion-panels
-                :accordion="accordion"
-                :multiple="multiple"
-                :flat="flat"
-             
-            
-                >
-                <v-expansion-panel
-                    v-for="(item,i) in 5"
-                    :key="i"
-                >
-                    <v-expansion-panel-header>Item</v-expansion-panel-header>
-                    <v-expansion-panel-content>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </v-expansion-panel-content>
-                </v-expansion-panel>
-                </v-expansion-panels>
-            </v-row>
-        
-         <v-card
-            class="mx-auto"
-            max-width="344"
-        >
-            <v-img
-            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-            height="200px"
-            ></v-img>
+              <v-btn
+                  icon
+                  @click="show = !show"
+              >
+                  <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+              </v-btn>
 
-            <v-card-title>
-            Top western road trips
-            </v-card-title>
+              </v-card-actions>
+                </div>
+              <v-expand-transition>
+              <div v-show="show">
+                  <v-divider class="my-0"></v-divider>
+                  <v-card-text class="text-justify" >
+                  I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet magnam, pariatur ipsa eaque eos cupiditate similique totam culpa atque ad omnis neque minus aspernatur ipsum? Rerum amet tempora asperiores cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto atque quibusdam minima asperiores, excepturi cupiditate sit! Rem nemo nostrum praesentium autem voluptas iste, culpa, non facere dolores qui nisi inventore.
+                  </v-card-text>
+              </div>
+              </v-expand-transition>
+              </div>
+              </v-card>  
 
-            <v-card-subtitle>
-            1,000 miles of wonder
-            </v-card-subtitle>
+            </v-col>
+ 
+          </v-row>
 
-            <v-card-actions>
-            <v-btn text>Share</v-btn>
-
-            <v-btn
-                color="purple"
-                text
-            >
-                Explore
-            </v-btn>
-
-            <v-spacer></v-spacer>
-
-            <v-btn
-                icon
-                @click="show = !show"
-            >
-                <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-            </v-btn>
-            </v-card-actions>
-
-            <v-expand-transition>
-            <div v-show="show">
-                <v-divider></v-divider>
-
-                <v-card-text>
-                I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-                </v-card-text>
-            </div>
-            </v-expand-transition>
-        </v-card>  
-           
-          
-            
-
-       
+        </v-container>
+      
        </v-app>
     
   
@@ -82,8 +52,6 @@
 </template>
 
 <script>
-
-
 
 export default {
 
@@ -106,10 +74,10 @@ export default {
             }
         ],
         accordion: true,
- 
-
         multiple: true,
         flat: true,
+        show: false,
+        pengumuman: [ {judul: 'Judul', konten: ' '}]
 
     
 

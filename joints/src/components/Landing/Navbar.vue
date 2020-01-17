@@ -10,14 +10,16 @@
                 <b-navbar-nav class="ml-auto">
                     <b-nav-item to="/">Home</b-nav-item>
                     <b-nav-item to="/grandlaunching">Grand Launching</b-nav-item>
-                    <b-nav-item to="/jointstalk">Seminar</b-nav-item>
+                    <b-nav-item to="/jointstalk">IT Day</b-nav-item>
                     <b-nav-item to="/competitions">Kompetisi</b-nav-item>
-                    <b-nav-item to="/jointscamp">JointsCamp</b-nav-item>
-                    <b-nav-item
-                        v-if="$store.getters.user.loggedIn"
-                        class="nav-item-login"
-                        to="/dashboard"
-                    >Dashboard</b-nav-item>
+                    <b-nav-item to="/jointscamp">Joints Camp</b-nav-item>
+                    <b-nav-item-dropdown v-if="$store.getters.user.loggedIn" class="nav-item-login" right>
+                        <template v-slot:button-content>
+                            {{ $store.getters.user.data.displayName.split(" ")[0] }}
+                        </template>
+                        <b-dropdown-item to="/dashboard">Dashboard</b-dropdown-item>
+                        <b-dropdown-item href="#">Log Out</b-dropdown-item>
+                    </b-nav-item-dropdown>
                     <b-nav-item v-else class="nav-item-login" to="/login">Login</b-nav-item>
                 </b-navbar-nav>
             </b-collapse>
@@ -65,7 +67,7 @@ export default {
     position: fixed;
     left: 0;
     top: 60px;
-    z-index: 99999;
+    z-index: 1029;
     margin-bottom: 1000px;
 }
 
@@ -85,14 +87,18 @@ export default {
     fill: url('#gradient-home');
 }
 
+.gradient-camp path {
+    fill: url('#gradient-camp');
+}
+
 #gradient-navbar {
     --color-stop-4: #bf5888;
     --color-stop-5: #18cebe;
 }
 
 #gradient-competition {
-    --color-stop-4: #bf5888;
-    --color-stop-5: #efa0c9;
+    --color-stop-5: #a729a4;
+    --color-stop-4: #e273b1;
 }
 
 #gradient-talk {
@@ -103,6 +109,11 @@ export default {
 #gradient-home {
     --color-stop-4: #19c4b9;
     --color-stop-5: #90169f;
+}
+
+#gradient-camp {
+    --color-stop-4: #6753A8;
+    --color-stop-5: #18C6BA;
 }
 
 .gradient-dashboard {
@@ -125,7 +136,7 @@ export default {
 }
 
 .competition {
-    background-image: linear-gradient(90deg, #bf5888, #efa0c9);
+    background-image: linear-gradient(-90deg, #a729a4, #e273b1);
 }
 
 .dashboardNavbar {
@@ -144,6 +155,10 @@ export default {
     background-image: linear-gradient(90deg, #19c4b9, #90169f);
 }
 
+.camp {
+    background-image: linear-gradient(-90deg, #19c4b9, #6753A8);
+}
+
 .navbar .nav-link {
     color: white !important;
 }
@@ -160,8 +175,12 @@ export default {
     color: #15e677 !important;
 }
 
-.navbar.competition .nav-link:hover {
+.navbar.camp .nav-link:hover {
     color: #491fa7 !important;
+}
+
+.navbar.competition .nav-link:hover {
+    color: #13cebb !important;
 }
 
 .navbar.talk .nav-link:hover {
@@ -176,8 +195,12 @@ export default {
     color: #15e677 !important;
 }
 
-.navbar.competition .nav-item-login .nav-link {
+.navbar.camp .nav-item-login .nav-link {
     color: #491fa7 !important;
+}
+
+.navbar.competition .nav-item-login .nav-link {
+    color: #13cebb !important;
 }
 
 .navbar.talk .nav-item-login .nav-link {
@@ -216,5 +239,9 @@ export default {
         --color-stop-4: #b22abe;
         --color-stop-5: #b22abe;
     }
+}
+
+.navbar .dropdown-menu{
+    z-index: 1029;
 }
 </style>

@@ -8,12 +8,10 @@
                 <div class="dashboard">
                     <h1 class="dashboard">Dashboard</h1>
                     <h2>Welcome, {{ $store.getters.user.data.displayName }}</h2>
-                    <div>
-                        <v-btn depressed small @click="logout">LOGOUT</v-btn>
-                    </div>
+                 
                 </div>
                 <v-app >
-                    <v-tabs v-model="active" color="#94119F" slider-color="yellow" show-arrows>
+                    <v-tabs color="#94119F" slider-color="yellow" show-arrows>
                         <v-tabs-slider  color="#4DE2D2"></v-tabs-slider>
                         <v-tab v-for="tab of tabs" :key="tab.id" :to="tab.route">{{ tab.name }}</v-tab>
                         <v-tab-item v-for="tab of tabs" :key="tab.id" :value="tab.route">
@@ -81,24 +79,6 @@ export default {
             await firebase.auth().signOut();
             this.$router.push('/login');
         },
-        opentab(index) {
-            if (this.index == index) return;
-            this.index = index;
-            switch (index) {
-                case 1:
-                    this.konten = Announcement;
-                    break;
-                case 2:
-                    this.konten = PreEvents;
-                    break;
-                case 3:
-                    this.konten = Competitions;
-                    break;
-                case 4:
-                    this.konten = Events;
-                    break;
-            }
-        }
     }
 };
 </script>

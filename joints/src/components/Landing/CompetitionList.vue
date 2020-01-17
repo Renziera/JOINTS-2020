@@ -1,6 +1,6 @@
 <template>
     <div class="competitionlist-component">
-        <section class="events">
+        <section class="competitions">
             <b-container>
                 <b-row>
                     <b-col
@@ -9,55 +9,15 @@
                         class="d-flex align-items-center justify-content-center"
                     >
                         <CarouselCard
-                            :interval="7000"
+                            :interval="120000"
                             :autoPlay="false"
                             type="card"
                             arrow="never"
                             @change="changeSlide"
                         >
                             <CarouselCardItem
-                                class="carousel-item-grandlaunching"
+                                class="carousel-item-pcs"
                             >
-                                <div>
-                                    <b-card>
-                                        <b-card-text>
-                                            <div class="card-image">
-                                                <img
-                                                    src="@/assets/logo.png"
-                                                    alt="JOINTS 2020"
-                                                />
-                                            </div>
-                                        </b-card-text>
-                                        <b-button
-                                            to="/grandlaunching"
-                                            variant="primary"
-                                            class="carousel-card-button"
-                                            >Grand Launching</b-button
-                                        >
-                                    </b-card>
-                                </div>
-                            </CarouselCardItem>
-                            <CarouselCardItem class="carousel-item-talk">
-                                <div>
-                                    <b-card>
-                                        <b-card-text>
-                                            <div class="card-image">
-                                                <img
-                                                    src="@/assets/logo.png"
-                                                    alt="JOINTS 2020"
-                                                />
-                                            </div>
-                                        </b-card-text>
-                                        <b-button
-                                            to="/jointstalk"
-                                            variant="primary"
-                                            class="carousel-card-button"
-                                            >Tech Talk</b-button
-                                        >
-                                    </b-card>
-                                </div>
-                            </CarouselCardItem>
-                            <CarouselCardItem class="carousel-item-competition">
                                 <div>
                                     <b-card>
                                         <b-card-text>
@@ -72,12 +32,12 @@
                                             to="/competitions"
                                             variant="primary"
                                             class="carousel-card-button"
-                                            >Kompetisi</b-button
+                                            >PCS</b-button
                                         >
                                     </b-card>
                                 </div>
                             </CarouselCardItem>
-                            <CarouselCardItem class="carousel-item-jointscamp">
+                            <CarouselCardItem class="carousel-item-ctf">
                                 <div>
                                     <b-card>
                                         <b-card-text>
@@ -89,10 +49,50 @@
                                             </div>
                                         </b-card-text>
                                         <b-button
-                                            to="/jointscamp"
+                                            to="/competitions"
                                             variant="primary"
                                             class="carousel-card-button"
-                                            >Joints Camp</b-button
+                                            >CTF</b-button
+                                        >
+                                    </b-card>
+                                </div>
+                            </CarouselCardItem>
+                            <CarouselCardItem class="carousel-item-dm">
+                                <div>
+                                    <b-card>
+                                        <b-card-text>
+                                            <div class="card-image">
+                                                <img
+                                                    src="@/assets/logo.png"
+                                                    alt="JOINTS 2020"
+                                                />
+                                            </div>
+                                        </b-card-text>
+                                        <b-button
+                                            to="/competitions"
+                                            variant="primary"
+                                            class="carousel-card-button"
+                                            >Data Mining</b-button
+                                        >
+                                    </b-card>
+                                </div>
+                            </CarouselCardItem>
+                            <CarouselCardItem class="carousel-item-ux">
+                                <div>
+                                    <b-card>
+                                        <b-card-text>
+                                            <div class="card-image">
+                                                <img
+                                                    src="@/assets/logo.png"
+                                                    alt="JOINTS 2020"
+                                                />
+                                            </div>
+                                        </b-card-text>
+                                        <b-button
+                                            to="/competitions"
+                                            variant="primary"
+                                            class="carousel-card-button"
+                                            >UX Design</b-button
                                         >
                                     </b-card>
                                 </div>
@@ -102,36 +102,53 @@
                     <b-col
                         cols="12"
                         lg="6"
-                        id="events-desc-grandlaunching"
-                        class="flex-column justify-content-center text-left events-desc events-desc-grandlaunching"
+                        id="competitions-desc-pcs"
+                        class="flex-column justify-content-center text-left competitions-desc competitions-desc-pcs"
                     >
-                        <h2 class="events-title">
-                            Grand Launching
+                        <h2 class="competitions-title">
+                            Programming Competition Session
                         </h2>
-                        <p class="events-subtitle">
+                        <p class="competitions-subtitle">
                             Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit, sed do eiusmod tempor incididunt ut labore et
                             dolore magna aliqua. Ut enim ad minim veniam, quis
                             nostrud exercitation ullamco.
                         </p>
-                        <b-button
-                            class="events-button"
-                            variant="success"
-                            to="/"
-                        >
-                            Yuk Daftar
-                        </b-button>
+                        <h4 class="competition-detail-title">Prize: </h4>
+                        <div class="competition-detail-wrapper d-flex">
+                            <div class="competition-prize">
+                                <div class="competition-prize-1 text-center">
+                                    Juara 1
+                                    <br>
+                                    Rp. 1000000
+                                </div>
+                                <div class="competition-prize-2 text-center">
+                                    Juara 2
+                                    <br>
+                                    Rp. 1000000
+                                </div>
+                                <div class="competition-prize-3 text-center">
+                                    Juara 3
+                                    <br>
+                                    Rp. 1000000
+                                </div>
+                            </div>
+                            <div class="competition-detail">    
+                                <b-button class="competition-detail-button">Guidebook</b-button>
+                                <b-button href="#timeline-pcs" class="competition-detail-button">Timeline</b-button>
+                            </div>
+                        </div>
                     </b-col>
                     <b-col
                         cols="12"
                         lg="6"
-                        id="events-desc-talk"
-                        class="flex-column events-desc justify-content-center text-left events-desc-talk"
+                        id="competitions-desc-ctf"
+                        class="flex-column competitions-desc justify-content-center text-left competitions-desc-ctf"
                     >
-                        <h2 class="events-title">
-                            Tech Talk
+                        <h2 class="competitions-title">
+                            Capture The Flag
                         </h2>
-                        <p class="events-subtitle">
+                        <p class="competitions-subtitle">
                             Sed ut perspiciatis unde omnis iste natus error sit
                             voluptatem accusantium doloremque laudantium, totam
                             rem aperiam, eaque ipsa quae ab illo inventore
@@ -139,24 +156,41 @@
                             sunt explicabo. Nemo enim ipsam voluptatem quia
                             voluptas sit aspernatur aut odit aut fugit,
                         </p>
-                        <b-button
-                            class="events-button"
-                            variant="success"
-                            to="/"
-                        >
-                            Yuk Daftar
-                        </b-button>
+                        <h4 class="competition-detail-title">Prize: </h4>
+                        <div class="competition-detail-wrapper d-flex">
+                            <div class="competition-prize">
+                                <div class="competition-prize-1 text-center">
+                                    Juara 1
+                                    <br>
+                                    Rp. 1000000
+                                </div>
+                                <div class="competition-prize-2 text-center">
+                                    Juara 2
+                                    <br>
+                                    Rp. 1000000
+                                </div>
+                                <div class="competition-prize-3 text-center">
+                                    Juara 3
+                                    <br>
+                                    Rp. 1000000
+                                </div>
+                            </div>
+                            <div class="competition-detail">    
+                                <b-button class="competition-detail-button">Guidebook</b-button>
+                                <b-button href="#timeline-ctf" class="competition-detail-button">Timeline</b-button>
+                            </div>
+                        </div>
                     </b-col>
                     <b-col
                         cols="12"
                         lg="6"
-                        id="events-desc-competition"
-                        class="flex-column events-desc justify-content-center text-left events-desc-competition"
+                        id="competitions-desc-dm"
+                        class="flex-column competitions-desc justify-content-center text-left competitions-desc-dm"
                     >
-                        <h2 class="events-title">
-                            Kompetisi
+                        <h2 class="competitions-title">
+                            Data Mining
                         </h2>
-                        <p class="events-subtitle">
+                        <p class="competitions-subtitle">
                             At vero eos et accusamus et iusto odio dignissimos
                             ducimus qui blanditiis praesentium voluptatum
                             deleniti atque corrupti quos dolores et quas
@@ -165,24 +199,41 @@
                             deserunt mollitia animi, id est laborum et dolorum
                             fuga.
                         </p>
-                        <b-button
-                            class="events-button"
-                            variant="success"
-                            to="/"
-                        >
-                            Yuk Daftar
-                        </b-button>
+                        <h4 class="competition-detail-title">Prize: </h4>
+                        <div class="competition-detail-wrapper d-flex">
+                            <div class="competition-prize">
+                                <div class="competition-prize-1 text-center">
+                                    Juara 1
+                                    <br>
+                                    Rp. 1000000
+                                </div>
+                                <div class="competition-prize-2 text-center">
+                                    Juara 2
+                                    <br>
+                                    Rp. 1000000
+                                </div>
+                                <div class="competition-prize-3 text-center">
+                                    Juara 3
+                                    <br>
+                                    Rp. 1000000
+                                </div>
+                            </div>
+                            <div class="competition-detail">    
+                                <b-button class="competition-detail-button">Guidebook</b-button>
+                                <b-button href="#timeline-dm" class="competition-detail-button">Timeline</b-button>
+                            </div>
+                        </div>
                     </b-col>
                     <b-col
                         cols="12"
                         lg="6"
-                        id="events-desc-jointscamp"
-                        class="flex-column events-desc justify-content-center text-left events-desc-jointcamp"
+                        id="competitions-desc-ux"
+                        class="flex-column competitions-desc justify-content-center text-left competitions-desc-ux"
                     >
-                        <h2 class="events-title">
-                            Joints Camp
+                        <h2 class="competitions-title">
+                            UX Design Competition
                         </h2>
-                        <p class="events-subtitle">
+                        <p class="competitions-subtitle">
                             At vero eos et accusamus et iusto odio dignissimos
                             ducimus qui blanditiis praesentium voluptatum
                             deleniti atque corrupti quos dolores et quas
@@ -191,13 +242,30 @@
                             deserunt mollitia animi, id est laborum et dolorum
                             fuga.
                         </p>
-                        <b-button
-                            class="events-button"
-                            variant="success"
-                            to="/"
-                        >
-                            Yuk Daftar
-                        </b-button>
+                        <h4 class="competition-detail-title">Prize: </h4>
+                        <div class="competition-detail-wrapper d-flex">
+                            <div class="competition-prize">
+                                <div class="competition-prize-1 text-center">
+                                    Juara 1
+                                    <br>
+                                    Rp. 1000000
+                                </div>
+                                <div class="competition-prize-2 text-center">
+                                    Juara 2
+                                    <br>
+                                    Rp. 1000000
+                                </div>
+                                <div class="competition-prize-3 text-center">
+                                    Juara 3
+                                    <br>
+                                    Rp. 1000000
+                                </div>
+                            </div>
+                            <div class="competition-detail">    
+                                <b-button class="competition-detail-button">Guidebook</b-button>
+                                <b-button href="#timeline-ux" class="competition-detail-button">Timeline</b-button>
+                            </div>
+                        </div>
                     </b-col>
                 </b-row>
             </b-container>
@@ -220,33 +288,59 @@ export default {
     },
     methods: {
         changeSlide(newIndex) {
-            let gl = document.getElementById('events-desc-grandlaunching');
-            let talk = document.getElementById('events-desc-talk');
-            let competition = document.getElementById(
-                'events-desc-competition'
+            let pcs = document.getElementById('competitions-desc-pcs');
+            let ctf = document.getElementById('competitions-desc-ctf');
+            let dm = document.getElementById(
+                'competitions-desc-dm'
             );
-            let camp = document.getElementById('events-desc-jointscamp');
+            let ux = document.getElementById('competitions-desc-ux');
+
+            let timelinePCS =  document.getElementById('timeline-pcs');
+            let timelineCTF =  document.getElementById('timeline-ctf');
+            let timelineDM =  document.getElementById('timeline-dm');
+            let timelineUX =  document.getElementById('timeline-ux');
+
             if (newIndex == 0) {
-                gl.style.display = 'flex';
-                talk.style.display = 'none';
-                competition.style.display = 'none';
-                camp.style.display = 'none';
+                pcs.style.display = 'flex';
+                ctf.style.display = 'none';
+                dm.style.display = 'none';
+                ux.style.display = 'none';
+
+                timelinePCS.style.display = "block";
+                timelineCTF.style.display = "none";
+                timelineDM.style.display = "none";
+                timelineUX.style.display = "none";
             } else if (newIndex == 1) {
-                gl.style.display = 'none';
-                talk.style.display = 'flex';
-                competition.style.display = 'none';
-                camp.style.display = 'none';
+                pcs.style.display = 'none';
+                ctf.style.display = 'flex';
+                dm.style.display = 'none';
+                ux.style.display = 'none';
+
+                timelinePCS.style.display = "none";
+                timelineCTF.style.display = "block";
+                timelineDM.style.display = "none";
+                timelineUX.style.display = "none";
             } else if(newIndex == 2) {
-                gl.style.display = 'none';
-                talk.style.display = 'none';
-                competition.style.display = 'flex';
-                camp.style.display = 'none';
+                pcs.style.display = 'none';
+                ctf.style.display = 'none';
+                dm.style.display = 'flex';
+                ux.style.display = 'none';
+
+                timelinePCS.style.display = "none";
+                timelineCTF.style.display = "none";
+                timelineDM.style.display = "block";
+                timelineUX.style.display = "none";
             }
             else{
-                gl.style.display = 'none';
-                talk.style.display = 'none';
-                competition.style.display = 'none';
-                camp.style.display = 'flex';
+                pcs.style.display = 'none';
+                ctf.style.display = 'none';
+                dm.style.display = 'none';
+                ux.style.display = 'flex';
+
+                timelinePCS.style.display = "none";
+                timelineCTF.style.display = "none";
+                timelineDM.style.display = "none";
+                timelineUX.style.display = "block";
             }
         }
     }
@@ -274,81 +368,151 @@ export default {
     padding-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
-    -webkit-box-shadow: -5px 5px 11px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: -5px 5px 11px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: -5px 5px 11px 0px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
 }
 
-.competitionlist-component .carousel-card .carousel-item-grandlaunching .card {
+.competitionlist-component .carousel-card .carousel-item-pcs .card {
     background-image: linear-gradient(-135deg, #b41a1a, #f65959);
     border: none;
 }
 
-.competitionlist-component .carousel-card .carousel-item-talk .card {
+.competitionlist-component .carousel-card .carousel-item-ctf .card {
     background-image: linear-gradient(-135deg, #7ea2c4, #5b99b6);
     border: none;
 }
 
-.competitionlist-component .carousel-card .carousel-item-competition .card {
+.competitionlist-component .carousel-card .carousel-item-dm .card {
     background-image: linear-gradient(-135deg, #8e45d9, #b797db);
     border: none;
 }
 
-.competitionlist-component .carousel-card .carousel-item-jointscamp .card {
-    background-image: linear-gradient(-135deg, #b41a1a, #f65959);
+.competitionlist-component .carousel-card .carousel-item-ux .card {
+    background-image: linear-gradient(-135deg, #82c9fb, #18cebe);
     border: none;
 }
 
 .competitionlist-component .carousel-card .carousel-card-button {
     background: transparent;
-    border: 1.5px solid rgba(0, 0, 0, 0.8);
-    color: rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(0, 0, 0, 0.8);
+    color: rgba(0, 0, 0, 1);
     border-radius: 10px;
     width: 100%;
     height: auto;
 }
 
-#events-desc-grandlaunching {
+#competitions-desc-pcs {
     display: flex;
 }
 
-#events-desc-talk {
+#competitions-desc-ctf {
     display: none;
 }
 
-#events-desc-competition {
+#competitions-desc-dm {
     display: none;
 }
 
-#events-desc-jointscamp {
+#competitions-desc-ux {
     display: none;
 }
 
-.competitionlist-component .events-desc .events-title {
+.competitionlist-component .competitions-desc .competitions-title {
     color: white;
     margin-bottom: 25px;
 }
 
-.competitionlist-component .events-desc .events-subtitle {
+.competitionlist-component .competitions-desc .competitions-subtitle {
     color: white;
     margin-bottom: 25px;
 }
 
-.competitionlist-component .events-desc .events-button {
+.competitionlist-component .competitions-desc .competitions-button {
     width: 120px;
     background: #13cebb;
     border-radius: 10px;
     border: none;
 }
 
-.events-gradient path {
-    fill: url('#events-gradient');
+.competitions-gradient path {
+    fill: url('#competitions-gradient');
 }
 
-#events-gradient {
+#competitions-gradient {
     --color-stop-1: #a729a4;
     --color-stop-3: #e273b1;
+}
+
+.competition-prize div{
+    display: inline-block;
+}
+
+.competition-prize{
+    margin-bottom: 15px;
+}
+
+.competition-detail{
+    width: 150px;
+}
+
+.competition-prize-1{
+    background-image: linear-gradient(135deg, #F8F693, #FFC211);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 700;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.competition-prize-2{
+    background-image: linear-gradient(135deg, #F1F1F1, #9C9C9C);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 700;
+    border-radius: 15px;
+    margin-left: 15px;
+    padding: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.competition-prize-3{
+    background-image: linear-gradient(135deg, #FAAE53, #FC7E28);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 700;
+    border-radius: 15px;
+    margin-left: 15px;
+    padding: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.competition-detail-title{
+    color: white;
+}
+
+.competition-detail .competition-detail-button{
+    display: block;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 10px;
+    border: none;
+    margin-top: 10px;
+}
+
+.competition-detail .competition-detail-button:hover{
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.competition-detail .competition-detail-button:nth-child(1){
+    margin-bottom: 10px;
+}
+
+.competition-detail-wrapper{
+    flex-direction: column;
 }
 
 
@@ -362,7 +526,7 @@ export default {
 
     .competitionlist-component
         .carousel-card
-        .carousel-item-grandlaunching
+        .carousel-item-dm
         .card
         .carousel-card-button {
         font-size: 14px;
@@ -388,22 +552,57 @@ export default {
 
     .competitionlist-component
         .carousel-card
-        .carousel-item-grandlaunching
+        .carousel-item-dm
         .card
         .carousel-card-button {
         padding-right: 12px;
         padding-left: 12px;
     }
 
-    .competitionlist-component .events-desc .events-title {
+    .competitionlist-component .competitions-desc .competitions-title {
         text-align: center;
     }
 
-    .competitionlist-component .events-desc .events-subtitle {
+    .competitionlist-component .competitions-desc .competitions-subtitle {
         text-align: center;
     }
 
-    .competitionlist-component .events-desc .events-button {
+    .competitionlist-component .competitions-desc .competitions-button {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .competition-detail-title{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .competition-detail-wrapper{
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .competition-prize-1{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .competition-prize-2{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .competition-prize-3{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .competition-prize{
+        text-align: center;
+    }
+
+    .competition-detail .competition-detail-button{
         margin-left: auto;
         margin-right: auto;
     }
@@ -412,7 +611,7 @@ export default {
 @media (max-width: 1199.98px) {
     .competitionlist-component
         .carousel-card
-        .carousel-item-grandlaunching
+        .carousel-item-dm
         .card
         .carousel-card-button {
         padding-right: 5px;

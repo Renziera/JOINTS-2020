@@ -43,7 +43,7 @@
                                         <br />
                                         Yogyakarta 55281
                                         <br />
-                                        Phone: 12345678910(ABCDE)
+                                        Phone: 12345678910 (ABCDE)
                                     </p>
                                 </b-col>
                             </b-row>
@@ -78,13 +78,19 @@
                                             to="/jointstalk"
                                             class="footer-button"
                                             variant="light"
-                                            >Tech Talk&nbsp;-&nbsp;</b-button
+                                            >IT Day&nbsp;-&nbsp;</b-button
                                         >
                                         <b-button
                                             to="/competitions"
                                             class="footer-button"
                                             variant="light"
-                                            >Kompetisi</b-button
+                                            >Kompetisi&nbsp;-&nbsp;</b-button
+                                        >
+                                        <b-button
+                                            to="/jointscamp"
+                                            class="footer-button"
+                                            variant="light"
+                                            >Joints Camp</b-button
                                         >
                                     </p>
                                 </b-col>
@@ -137,8 +143,8 @@ export default {
 }
 
 #gradient-competition-footer {
-    --color-stop-3: #bf5888;
-    --color-stop-1: #efa0c9;
+    --color-stop-3: #a729a4;
+    --color-stop-1: #e273b1;
 }
 
 #gradient-talk-footer {
@@ -156,7 +162,7 @@ export default {
 }
 
 .footer#competition {
-    background-image: linear-gradient(-90deg, #bf5888, #efa0c9);
+    background-image: linear-gradient(-90deg, #a729a4, #e273b1);
 }
 
 .footer#talk {

@@ -815,7 +815,7 @@ function getHarga(event) {
 
     switch (event) {
         case 'grand_launching':
-            return 150000;
+            return 40000;
         case 'it_day':
             if (now < IT_DAY_REG) return 25000;
             return 50000;

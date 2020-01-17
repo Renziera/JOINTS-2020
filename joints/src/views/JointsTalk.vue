@@ -6,16 +6,16 @@
                 <b-row>
                     <b-col cols="12">
                         <h1 class="header-title">
-                            TECH TALK
+                            IT DAY
                         </h1>
                         <br />
                         <p class="header-subtitle ml-auto mr-auto">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit
+                            TechTalk merupakan seminar yang ditujukan untuk berbagi 
+                            wawasan terkait beberapa bidang penting dalam dunia teknologi (IT) 
+                            yang hanya membutuhkan sedikit bahkan nyaris tidak sama sekali kemampuan coding. 
+                            TechTalk diadakan dalam serangkaian acara IT Day tanggal 18-19 April 2020. Adapun 
+                            topik utama TechTalk di tahun 2020 adalah IoT (Internet of Things) dengan sub-topik yaitu AI 
+                            (Artificial Intelligence) dan Big Data. 
                         </p>
                         <br />
                         <b-button class="header-button" variant="primary">
@@ -102,13 +102,7 @@
                                 sit
                             </h2>
                             <p class="about-subtitle">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation
-                                ullamco. nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in
-                                reprehenderit
+                                Techtalk merupakan sebuah seminar yang ditujukan untuk berbagi wawasan terkait berbagai beberapa bidang penting dalam dunia teknologi (IT) yang hanya membutuhkan sedikit atau nyaris tidak sama sekali kemampuan coding. Dengan tujuan untuk menghapus stigma dan momok pada dunia teknologi (IT) sehingga dapat meningkatkan kesadaran, ketertarikan, dan antusiasme masyarakat pada dunia teknologi (IT).
                             </p>
                             <b-button
                                 class="about-button"
@@ -122,7 +116,6 @@
                 </div>
             </b-container>
         </section>
-
         <div class="wave-container about-bottom-wave">
             <svg
                 class="about-talk-gradient"
@@ -144,7 +137,10 @@
                 ></path>
             </svg>
         </div>
-
+        
+        <section id="timeline-talk">
+            <Timeline accessFrom="Talk" title="Timeline"></Timeline> 
+        </section>
         <Footer accessFrom="talk" footerKind="gradient-talk-footer"></Footer>
     </div>
 </template>
@@ -152,11 +148,13 @@
 <script>
 import Navbar from '@/components/Landing/Navbar.vue';
 import Footer from '@/components/Landing/Footer.vue';
+import Timeline from '@/components/Landing/Timeline.vue';
 
 export default {
     components: {
         Navbar,
-        Footer
+        Footer,
+        Timeline
     }
 };
 </script>
@@ -276,6 +274,10 @@ hr {
     .about-desc {
         margin-top: 30px;
     }
+    
+    .header-subtitle{
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 767.98px) {
@@ -311,12 +313,8 @@ hr {
         font-size: 50px;
     }
 
-    .header-subtitle{
-        font-size: 18px;
-    }
-
     .header-button{
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .header-button:hover{

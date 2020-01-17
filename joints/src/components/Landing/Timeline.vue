@@ -1,0 +1,436 @@
+<template>
+    <div>
+        <section class="timeline" :id="accessFrom">
+            <b-container>
+                <div
+                    class="d-flex justify-content-center align-items-center flex-column"
+                >
+                    <h3 class="timeline-title">
+                        {{ title }}
+                    </h3>
+                    <template>
+                        <v-timeline
+                                v-if="accessFrom == 'PCS'">
+                            <v-timeline-item
+                                small
+                                fillDot
+                                v-for="(timeline, i) in timelinePCS"
+                                 :key="i"
+                            >
+                                <div v-if="i % 2 == 0" class="text-left">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                                <div v-else-if="i % 2 == 1" class="text-right">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                            </v-timeline-item>
+                        </v-timeline>
+
+                        <v-timeline
+                            v-if="accessFrom == 'CTF'">
+                            <v-timeline-item
+                                small
+                                fillDot
+                                v-for="(timeline, i) in timelineCTF"
+                                :key="i"
+                            >
+                                <div v-if="i % 2 == 0" class="text-left">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                                <div v-else-if="i % 2 == 1" class="text-right">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                            </v-timeline-item>
+                        </v-timeline>
+
+                        <v-timeline
+                            v-if="accessFrom == 'DM'">
+                            <v-timeline-item
+                                small
+                                fillDot
+                                v-for="(timeline, i) in timelineDM"
+                                :key="i"
+                            >
+                                <div v-if="i % 2 == 0" class="text-left">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                                <div v-else-if="i % 2 == 1" class="text-right">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                            </v-timeline-item>
+                        </v-timeline>
+
+                        <v-timeline
+                            v-if="accessFrom == 'UX'">
+                            <v-timeline-item
+                                small
+                                fillDot
+                                v-for="(timeline, i) in timelineUX"
+                                :key="i"
+                            >
+                                <div v-if="i % 2 == 0" class="text-left">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                                <div v-else-if="i % 2 == 1" class="text-right">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                            </v-timeline-item>
+                        </v-timeline>
+
+                        <v-timeline
+                            v-if="accessFrom == 'GL'">
+                            <v-timeline-item
+                                small
+                                fillDot
+                                v-for="(timeline, i) in timelineGL"
+                                :key="i"
+                            >
+                                <div v-if="i % 2 == 0" class="text-left">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                                <div v-else-if="i % 2 == 1" class="text-right">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                            </v-timeline-item>
+                        </v-timeline>
+
+                        <v-timeline
+                            v-if="accessFrom == 'Talk'">
+                            <v-timeline-item
+                                small
+                                fillDot
+                                v-for="(timeline, i) in timelineTalk"
+                                :key="i"
+                            >
+                                <div v-if="i % 2 == 0" class="text-left">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                                <div v-else-if="i % 2 == 1" class="text-right">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                            </v-timeline-item>
+                        </v-timeline>
+
+                        <v-timeline
+                            v-if="accessFrom == 'Camp'">
+                            <v-timeline-item
+                                small
+                                fillDot
+                                v-for="(timeline, i) in timelineCamp"
+                                :key="i"
+                            >
+                                <div v-if="i % 2 == 0" class="text-left">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                                <div v-else-if="i % 2 == 1" class="text-right">
+                                    <span class="timeline-date">{{
+                                        timeline.date
+                                    }}</span>
+                                    <div class="timeline-desc">
+                                        {{ timeline.desc }}
+                                    </div>
+                                </div>
+                            </v-timeline-item>
+                        </v-timeline>
+                    </template>
+                </div>
+            </b-container>
+        </section>
+    </div>
+</template>
+
+<script>
+
+export default {
+    data() {
+        return {
+            timelinePCS: [
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                }
+            ],
+            timelineCTF: [
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                }
+            ],
+            timelineDM: [
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                }
+            ],
+            timelineUX: [
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                }
+            ],
+            timelineGL: [
+                {
+                    date: '18 Januari 2020',
+                    desc: 'Open Registrasi Grand Launching'
+                },
+                {
+                    date: '26 Februari 2020',
+                    desc: 'Close Registrasi Grand Launching'
+                },
+                {
+                    date: '29 Februari 2020',
+                    desc: 'D-Day Grand Launching'
+                }
+            ],
+            timelineTalk: [
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                },
+                {
+                    date: '11 Desember 2019',
+                    desc: 'But I must explain to you how all this mistaken idea'
+                }
+            ],
+            timelineCamp: [
+                {
+                    date: '23 Januari 2020',
+                    desc: 'Open Registrasi Joints Camp'
+                },
+                {
+                    date: '1 Maret 2020',
+                    desc: 'Close Registrasi Joints Camp'
+                },
+                {
+                    date: '14 Maret 2020',
+                    desc: 'Bootcamp'
+                },
+                {
+                    date: '21 Maret 2020',
+                    desc: 'Bootcamp'
+                },
+                {
+                    date: '28 Maret 2020',
+                    desc: 'Bootcamp'
+                },
+                {
+                    date: '4 April 2020',
+                    desc: 'Bootcamp'
+                }
+            ]
+        };
+    },
+    name: 'timeline',
+    props: {
+        accessFrom: String,
+        title: String
+    }
+};
+
+</script>
+
+
+<style scoped>
+.timeline .timeline-title {
+    color: #707070;
+    margin-bottom: 30px;
+}
+
+.timeline .v-timeline {
+    width: 100%;
+}
+
+.timeline .theme--light.v-timeline::before {
+    background: #707070 !important;
+}
+
+.timeline .timeline-date {
+    color: #707070;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.timeline .timeline-desc {
+    color: #707070;
+    font-weight: 600;
+}
+
+@media (max-width: 991.98px){
+    #PCS, #CTF, #DM, #UX{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
+</style>
+
+<style>
+
+.timeline .v-timeline-item__inner-dot {
+    border: 2px solid #707070 !important;
+}
+
+.timeline .v-timeline-item__inner-dot:hover {
+    background: #707070 !important;
+}
+</style>

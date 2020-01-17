@@ -10,12 +10,9 @@
                         </h1>
                         <br />
                         <p class="header-subtitle ml-auto mr-auto">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip
-                            ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit
+                            Grand Launching merupakan rangkaian acara JOINTS 2020 berupa talkshow 
+                            dan workshop dengan mengangkat topik Apps Innovation yang akan disampaikan 
+                            oleh beberapa pembicara.
                         </p>
                         <br />
                         <b-button class="header-button" variant="primary">
@@ -60,6 +57,7 @@
                                     <div class="about-left-profile-work">
                                         <span>Pekerjaan 1</span>
                                     </div>
+                                    <!--
                                     <div class="about-left-profile-sosmed d-flex justify-content-end">
                                         <div class="about-profile-item">
                                             <a href="/">I1</a>
@@ -74,6 +72,7 @@
                                             <a href="/">I4</a>
                                         </div>
                                     </div>
+                                    -->
                                 </b-col>
                                 <b-col cols="12" lg="6">
                                     <div class="about-left-image-container">
@@ -96,6 +95,7 @@
                                     <div class="about-right-profile-work">
                                         <span>Pekerjaan 3</span>
                                     </div>
+                                    <!--
                                     <div class="about-right-profile-sosmed d-flex justify-content-start">
                                         <div class="about-profile-item">
                                             <a href="/">I1</a>
@@ -110,6 +110,7 @@
                                             <a href="/">I4</a>
                                         </div>
                                     </div>
+                                    -->
                                 </b-col>
                             </b-row>
                         </b-col>
@@ -134,6 +135,7 @@
                                     <div class="about-mobile-profile-work">
                                         <span>Pekerjaan 1</span>
                                     </div>
+                                    <!--
                                     <div class="about-mobile-profile-sosmed d-flex justify-content-center">
                                         <div class="about-profile-item">
                                             <a href="/">I1</a>
@@ -148,6 +150,7 @@
                                             <a href="/">I4</a>
                                         </div>
                                     </div>
+                                    -->
                                 </b-col>
                             </b-row>
                             <b-row class="about-mobile-profile text-center">
@@ -163,6 +166,7 @@
                                     <div class="about-mobile-profile-work">
                                         <span>Pekerjaan 2</span>
                                     </div>
+                                    <!--
                                     <div class="about-mobile-profile-sosmed d-flex justify-content-center">
                                         <div class="about-profile-item">
                                             <a href="/">I1</a>
@@ -177,12 +181,19 @@
                                             <a href="/">I4</a>
                                         </div>
                                     </div>
+                                    -->
                                 </b-col>
                             </b-row>
                         </b-col>
                     </b-row>
                 </div>
             </b-container>
+        </section>
+        <section id="lokasi-gl">
+            <Lokasi></Lokasi>
+        </section>
+        <section id="timeline-gl">
+            <Timeline accessFrom="GL" title="Timeline"></Timeline> 
         </section>
         <Footer accessFrom="dashboardNavbar" footerKind="gradient-dashboard-footer"></Footer>
     </div>
@@ -191,11 +202,15 @@
 <script>
 import Navbar from '@/components/Landing/Navbar.vue';
 import Footer from '@/components/Landing/Footer.vue';
+import Timeline from '@/components/Landing/Timeline.vue';
+import Lokasi from '@/components/Landing/Lokasi.vue';
 
 export default {
     components: {
         Navbar,
-        Footer
+        Footer,
+        Timeline,
+        Lokasi
     }
 };
 </script>
@@ -309,6 +324,14 @@ export default {
     text-decoration: none;
 }
 
+#lokasi-gl{
+    margin-top: 100px;
+}
+
+#timeline-gl{
+    margin-top: 50px;
+}
+
 @media (max-width: 991.98px){
     .header{
         padding-top: 80px;
@@ -316,11 +339,22 @@ export default {
 
     .about{
         padding-bottom: 0;
-        margin-bottom: 100px;
     }
 
     .about-title{
         margin-bottom: 0;
+    }
+
+    #lokasi-gl{
+        margin-top: 50px;
+    }
+
+    #timeline-gl{
+        margin-top: 30px;
+    }
+
+    .header-subtitle{
+        font-size: 16px;
     }
 }
 
@@ -329,12 +363,9 @@ export default {
         font-size: 50px;
     }
 
-    .header-subtitle{
-        font-size: 18px;
-    }
 
     .header-button{
-        font-size: 16px;
+        font-size: 18px;
     }
 
     .header-button:hover{

@@ -16,13 +16,12 @@ import NotFound from '@/views/NotFound.vue'
 // Dashboard Router
 import Announcement from '@/components/Dashboard/AnnounceDashboard.vue';
 import CompetitionsDash from '@/components/Dashboard/CompetitionsDash.vue';
-import PreEvents from '@/components/Dashboard/PreEvents.vue';
 import Events from '@/components/Dashboard/Events.vue';
 import Profil from '@/components/Dashboard/Profil.vue';
 import Registration from '@/components/Dashboard/RegistrationPage.vue';
-import JointsCampDash from '@/components/Dashboard/JointsCamp.vue';
 import PaymentDash from '@/components/Dashboard/PaymentDash.vue';
 import EventRegist from '@/components/Dashboard/EventRegist.vue';
+import EventPayment from '@/components/Dashboard/EventPayment.vue';
 
 Vue.use(VueRouter);
 
@@ -107,9 +106,10 @@ const routes = [
                 props: true,
                 beforeEnter: (to, from, next) => {
                 const section = to.params.section;
-                if (!['grandlaunching','itday','jointscamp','jointscamp2'].includes(section)) next('/not-found');
+                if (!['grandlaunching','itday','jointscamp'].includes(section)) next('/not-found');
                 else next();}
             },
+           
             {
                 path: 'profile',
                 name: 'profile',

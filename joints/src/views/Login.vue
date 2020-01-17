@@ -214,4 +214,13 @@ export default {
     font-size: 16px !important;
 }
 
+@media (max-width: 991.98px){
+    .login {
+        padding-top: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 70vh;
+    }
+}
 </style>

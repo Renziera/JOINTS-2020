@@ -59,12 +59,10 @@
                             Apa itu Joints?
                         </h2>
                         <p class="header-subtitle">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco. nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in
-                            reprehenderit
+                            Merupakan acara terbesar yang diselenggarakan oleh Himpunan Mahasiswa 
+                            Ilmu Komputer Universitas Gadjah Mada, Jogja Information Technology Session 
+                            (JOINTS) UGM mengajak para pengguna teknologi (IT) di Indonesia untuk lebih bijak 
+                            serta cerdas dalam memanfaatkan teknologi yang tersedia.
                         </p>
                         <b-button
                             class="header-button"
@@ -164,7 +162,7 @@
                                             to="/jointstalk"
                                             variant="primary"
                                             class="carousel-card-button"
-                                            >Tech Talk</b-button
+                                            >IT Day</b-button
                                         >
                                     </b-card>
                                 </div>
@@ -221,10 +219,9 @@
                             Grand Launching
                         </h2>
                         <p class="events-subtitle">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco.
+                            Grand Launching merupakan rangkaian acara JOINTS 2020 berupa talkshow 
+                            dan workshop dengan mengangkat topik Apps Innovation yang akan disampaikan 
+                            oleh beberapa pembicara.
                         </p>
                         <b-button
                             class="events-button"
@@ -241,15 +238,15 @@
                         class="flex-column events-desc justify-content-center text-left events-desc-talk"
                     >
                         <h2 class="events-title">
-                            Tech Talk
+                            IT Day
                         </h2>
                         <p class="events-subtitle">
-                            Sed ut perspiciatis unde omnis iste natus error sit
-                            voluptatem accusantium doloremque laudantium, totam
-                            rem aperiam, eaque ipsa quae ab illo inventore
-                            veritatis et quasi architecto beatae vitae dicta
-                            sunt explicabo. Nemo enim ipsam voluptatem quia
-                            voluptas sit aspernatur aut odit aut fugit,
+                            TechTalk merupakan seminar yang ditujukan untuk berbagi 
+                            wawasan terkait beberapa bidang penting dalam dunia teknologi (IT) 
+                            yang hanya membutuhkan sedikit bahkan nyaris tidak sama sekali kemampuan coding. 
+                            TechTalk diadakan dalam serangkaian acara IT Day tanggal 18-19 April 2020. Adapun 
+                            topik utama TechTalk di tahun 2020 adalah IoT (Internet of Things) dengan sub-topik yaitu AI 
+                            (Artificial Intelligence) dan Big Data. 
                         </p>
                         <b-button
                             class="events-button"
@@ -269,13 +266,10 @@
                             Kompetisi
                         </h2>
                         <p class="events-subtitle">
-                            At vero eos et accusamus et iusto odio dignissimos
-                            ducimus qui blanditiis praesentium voluptatum
-                            deleniti atque corrupti quos dolores et quas
-                            molestias excepturi sint occaecati cupiditate non
-                            provident, similique sunt in culpa qui officia
-                            deserunt mollitia animi, id est laborum et dolorum
-                            fuga.
+                            Kompetisi JOINTS 2020 mengajak teman-teman pelajar/mahasiswa untuk mengukur 
+                            kemampuannya di beberapa bidang khusus seperti : Programming Competition 
+                            Session, Capture The Flag, Data Mining, dan UX Design. Pengen tau seberapa 
+                            hebat skill kamu dibanding teman-teman yang lain? Tunggu apa lagi, yuk ikut kompetisi JOINTS 2020!
                         </p>
                         <b-button
                             class="events-button"
@@ -295,13 +289,10 @@
                             Joints Camp
                         </h2>
                         <p class="events-subtitle">
-                            At vero eos et accusamus et iusto odio dignissimos
-                            ducimus qui blanditiis praesentium voluptatum
-                            deleniti atque corrupti quos dolores et quas
-                            molestias excepturi sint occaecati cupiditate non
-                            provident, similique sunt in culpa qui officia
-                            deserunt mollitia animi, id est laborum et dolorum
-                            fuga.
+                            JOINTS Camp merupakan suatu pelatihan atau bootcamp dengan tema Web Development. 
+                            Diselenggarakan selama 4 minggu dengan pertemuan intensif 1 kali di setiap minggu nya, 
+                            pelatihan ini terkonsep dari pembentukan mindset, pemahaman alur, pengembangan 
+                            perangkat lunak, hingga cara membangun sebuah produk digital.
                         </p>
                         <b-button
                             class="events-button"
@@ -337,45 +328,6 @@
             </svg>
         </div>
 
-        <section class="timeline">
-            <b-container>
-                <div
-                    class="d-flex justify-content-center align-items-center flex-column"
-                >
-                    <h3 class="timeline-title">
-                        Timeline
-                    </h3>
-                    <template>
-                        <v-timeline>
-                            <v-timeline-item
-                                small
-                                fillDot
-                                v-for="(timeline, i) in timelines"
-                                :key="i"
-                            >
-                                <div v-if="i % 2 == 0" class="text-left">
-                                    <span class="timeline-date">{{
-                                        timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
-                                </div>
-                                <div v-else-if="i % 2 == 1" class="text-right">
-                                    <span class="timeline-date">{{
-                                        timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
-                                </div>
-                            </v-timeline-item>
-                        </v-timeline>
-                    </template>
-                </div>
-            </b-container>
-        </section>
-
         <section class="documentation">
             <b-container>
                 <div class="text-center documentation-title-wrapper">
@@ -390,24 +342,6 @@
                 </div>
             </b-container>
         </section>
-
-        <!--
-        <img alt="Vue logo" src="@/assets/logo.png" />
-        <HelloWorld msg="Ceritanya web JOINTS gan, mantap kimac" />
-        <router-link v-if="$store.getters.user.loggedIn" to="/dashboard"
-            >Dashboard</router-link
-        >
-        <router-link v-else to="/login">Login</router-link>
-        <br />
-        <br />
-        <router-link to="/grandlaunching">Grand Launching</router-link>
-        <br />
-        <router-link to="/jointstalk">JOINTS Talku</router-link>
-        <br />
-        <router-link to="/jointscamp">JOINTS Camp</router-link>
-        <br />
-        <router-link to="/competitions">Competitions</router-link>
-        -->
         <section class="sponsorship d-lg-none">
             <b-container>
                 <div class="text-center sponsorship-title-wrapper">
@@ -596,36 +530,33 @@ export default {
     padding-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
-    -webkit-box-shadow: -5px 5px 11px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: -5px 5px 11px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: -5px 5px 11px 0px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
 }
 
 .home-page .carousel-card .carousel-item-grandlaunching .card {
-    background-image: linear-gradient(-135deg, #b41a1a, #f65959);
-    border: none;
-}
-
-.home-page .carousel-card .carousel-item-talk .card {
     background-image: linear-gradient(-135deg, #7ea2c4, #5b99b6);
     border: none;
 }
 
+.home-page .carousel-card .carousel-item-talk .card {
+    background-image: linear-gradient(-135deg, #82c9fb, #18cebe);
+    border: none;
+}
+
 .home-page .carousel-card .carousel-item-competition .card {
-    background-image: linear-gradient(-135deg, #8e45d9, #b797db);
+    background-image: linear-gradient(-135deg, #b41a1a, #f65959);
     border: none;
 }
 
 .home-page .carousel-card .carousel-item-jointscamp .card {
-    background-image: linear-gradient(-135deg, #b41a1a, #f65959);
+    background-image: linear-gradient(-135deg, #8e45d9, #b797db);
     border: none;
 }
 
 .home-page .carousel-card .carousel-card-button {
     background: transparent;
-    border: 1.5px solid rgba(0, 0, 0, 0.8);
-    color: rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(0, 0, 0, 1);
+    color: rgba(0, 0, 0, 1);
     border-radius: 10px;
     width: 100%;
     height: auto;

@@ -248,17 +248,7 @@ export default {
 
 <style>
 
-.v-card--outlined {
-    border-radius: 18px;
-    border: solid 6px;
-    border-color: #E475B2;
-}    
 
-.theme--light.v-card.v-card--outlined{
-    border: solid 6px;
-    border-color: #E475B2;
-     border-radius: 18px;
-}
 .v-text-field fieldset {
     border-radius: 5px;
 }
