@@ -13,6 +13,17 @@ import vuetify from '@/plugins/vuetify';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+    faFacebook,
+    faLinkedin,
+    faInstagram,
+    faLine
+} from '@fortawesome/free-brands-svg-icons';
+library.add(faFacebook, faLinkedin, faLine, faInstagram);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+
 Vue.use(vuetify);
 Vue.use(BootstrapVue);
 Vue.use(ElementUI);
@@ -35,6 +46,7 @@ let loaded = false;
 
 firebase.auth().onAuthStateChanged(async user => {
     await store.dispatch('fetchUser', user);
+    await store.dispatch('fetchIsPanitia');
 
     if (loaded) return;
 

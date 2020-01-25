@@ -26,7 +26,7 @@
     color: #42b983;
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 </style>

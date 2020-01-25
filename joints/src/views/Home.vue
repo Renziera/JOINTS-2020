@@ -1,6 +1,6 @@
 <template>
     <div class="home-page">
-        <Navbar accessFrom="home" colorKind="gradient-home"> </Navbar>
+        <Navbar accessFrom="home" colorKind="gradient-home"></Navbar>
         <div class="wave-container header-background d-none d-lg-block">
             <svg
                 class="home-header-gradient"
@@ -14,21 +14,21 @@
                     </linearGradient>
                 </defs>
                 <path
-                    fill=""
+                    fill
                     fill-opacity="1"
                     d="M1441,0c-0.4,194-0.8,388-1.2,582c-523.8,85.9-747.4,3.5-853.7-92.4c-33.4-30.1-69.3-74.3-146.9-115.2c-159.8-84.3-242.8-20.9-427.8-103.3C7.9,269.5,4,267.8,0,266V0H1441z"
-                    data-darkreader-inline-fill=""
+                    data-darkreader-inline-fill
                     style="--darkreader-inline-fill:#007acc;"
                     class="d-xl-block d-lg-none"
-                ></path> 
+                />
                 <path
-                    fill=""
+                    fill
                     fill-opacity="1"
                     d="M1441,0c-0.4,257.4-0.8,514.8-1.2,772.2c-523.8,113.9-747.4,4.7-853.7-122.6c-33.4-40-69.3-98.6-146.9-152.9c-159.8-111.9-242.8-27.8-427.8-137c-3.6-2.1-7.5-4.4-11.5-6.9V0H1441z"
-                    data-darkreader-inline-fill=""
+                    data-darkreader-inline-fill
                     style="--darkreader-inline-fill:#007acc;"
                     class="d-lg-block d-xl-none"
-                ></path>
+                />
             </svg>
         </div>
         <section class="header">
@@ -55,22 +55,21 @@
                         cols="12"
                         class="d-none d-lg-flex flex-column justify-content-center text-left header-desc"
                     >
-                        <h2 class="header-title">
-                            Apa itu Joints?
-                        </h2>
+                        <h2 class="header-title">Apa itu JOINTS?</h2>
                         <p class="header-subtitle">
-                            Merupakan acara terbesar yang diselenggarakan oleh Himpunan Mahasiswa 
-                            Ilmu Komputer Universitas Gadjah Mada, Jogja Information Technology Session 
-                            (JOINTS) UGM mengajak para pengguna teknologi (IT) di Indonesia untuk lebih bijak 
-                            serta cerdas dalam memanfaatkan teknologi yang tersedia.
+                            Jogja Information Technology Session (JOINTS) UGM
+                            merupakan acara terbesar yang diselenggarakan oleh
+                            Himpunan Mahasiswa Ilmu Komputer Universitas Gadjah
+                            Mada. JOINTS UGM mengajak para pengguna teknologi
+                            informasi di Indonesia untuk lebih bijak serta
+                            cerdas dalam memanfaatkan teknologi yang tersedia.
                         </p>
                         <b-button
                             class="header-button"
                             variant="light"
-                            to="/"
+                            href="#href-events"
+                            >More info</b-button
                         >
-                            Detail Joints
-                        </b-button>
                     </b-col>
                     <b-col
                         cols="12"
@@ -79,16 +78,15 @@
                         <b-button
                             class="header-button-mobile"
                             variant="success"
-                            to="/"
+                            href="#href-events"
+                            >More info</b-button
                         >
-                            Yuk Daftar
-                        </b-button>
                     </b-col>
                 </b-row>
             </b-container>
         </section>
 
-        <div class="wave-container events-top-wave">
+        <div class="wave-container events-top-wave" id="href-events">
             <svg
                 class="events-gradient"
                 xmlns="http://www.w3.org/2000/svg"
@@ -101,12 +99,12 @@
                     </linearGradient>
                 </defs>
                 <path
-                    fill=""
+                    fill
                     fill-opacity="1"
                     d="M0,256L60,261.3C120,267,240,277,360,266.7C480,256,600,224,720,224C840,224,960,256,1080,256C1200,256,1320,224,1380,208L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-                    data-darkreader-inline-fill=""
+                    data-darkreader-inline-fill
                     style="--darkreader-inline-fill:#007acc;"
-                ></path>
+                />
             </svg>
         </div>
 
@@ -133,7 +131,7 @@
                                         <b-card-text>
                                             <div class="card-image">
                                                 <img
-                                                    src="@/assets/logo.png"
+                                                    src="@/assets/grand-launching-dark.png"
                                                     alt="JOINTS 2020"
                                                 />
                                             </div>
@@ -153,16 +151,17 @@
                                         <b-card-text>
                                             <div class="card-image">
                                                 <img
-                                                    src="@/assets/logo.png"
+                                                    src="@/assets/techtalk-dark.png"
                                                     alt="JOINTS 2020"
                                                 />
                                             </div>
                                         </b-card-text>
                                         <b-button
-                                            to="/jointstalk"
+                                            disabled
+                                            to="/techtalk"
                                             variant="primary"
                                             class="carousel-card-button"
-                                            >IT Day</b-button
+                                            >TechTalk</b-button
                                         >
                                     </b-card>
                                 </div>
@@ -173,16 +172,17 @@
                                         <b-card-text>
                                             <div class="card-image">
                                                 <img
-                                                    src="@/assets/logo.png"
+                                                    src="@/assets/competitions-dark.png"
                                                     alt="JOINTS 2020"
                                                 />
                                             </div>
                                         </b-card-text>
                                         <b-button
+                                            disabled
                                             to="/competitions"
                                             variant="primary"
                                             class="carousel-card-button"
-                                            >Kompetisi</b-button
+                                            >Competitions</b-button
                                         >
                                     </b-card>
                                 </div>
@@ -193,16 +193,17 @@
                                         <b-card-text>
                                             <div class="card-image">
                                                 <img
-                                                    src="@/assets/logo.png"
+                                                    src="@/assets/joints-camp-dark.png"
                                                     alt="JOINTS 2020"
                                                 />
                                             </div>
                                         </b-card-text>
                                         <b-button
+                                            disabled
                                             to="/jointscamp"
                                             variant="primary"
                                             class="carousel-card-button"
-                                            >Joints Camp</b-button
+                                            >JointsCamp</b-button
                                         >
                                     </b-card>
                                 </div>
@@ -215,21 +216,19 @@
                         id="events-desc-grandlaunching"
                         class="flex-column justify-content-center text-left events-desc events-desc-grandlaunching"
                     >
-                        <h2 class="events-title">
-                            Grand Launching
-                        </h2>
+                        <h2 class="events-title">Grand Launching</h2>
                         <p class="events-subtitle">
-                            Grand Launching merupakan rangkaian acara JOINTS 2020 berupa talkshow 
-                            dan workshop dengan mengangkat topik Apps Innovation yang akan disampaikan 
-                            oleh beberapa pembicara.
+                            Grand Launching merupakan rangkaian acara JOINTS
+                            2020 berupa talkshow dan workshop dengan mengangkat
+                            topik Apps Innovation yang akan disampaikan oleh
+                            beberapa pembicara.
                         </p>
                         <b-button
                             class="events-button"
                             variant="success"
-                            to="/"
+                            to="/login"
+                            >Yuk Daftar</b-button
                         >
-                            Yuk Daftar
-                        </b-button>
                     </b-col>
                     <b-col
                         cols="12"
@@ -237,24 +236,25 @@
                         id="events-desc-talk"
                         class="flex-column events-desc justify-content-center text-left events-desc-talk"
                     >
-                        <h2 class="events-title">
-                            IT Day
-                        </h2>
+                        <h2 class="events-title">TechTalk</h2>
                         <p class="events-subtitle">
-                            TechTalk merupakan seminar yang ditujukan untuk berbagi 
-                            wawasan terkait beberapa bidang penting dalam dunia teknologi (IT) 
-                            yang hanya membutuhkan sedikit bahkan nyaris tidak sama sekali kemampuan coding. 
-                            TechTalk diadakan dalam serangkaian acara IT Day tanggal 18-19 April 2020. Adapun 
-                            topik utama TechTalk di tahun 2020 adalah IoT (Internet of Things) dengan sub-topik yaitu AI 
-                            (Artificial Intelligence) dan Big Data. 
+                            TechTalk merupakan seminar yang ditujukan untuk
+                            berbagi wawasan terkait beberapa bidang penting
+                            dalam dunia teknologi (IT) yang hanya membutuhkan
+                            sedikit bahkan nyaris tidak sama sekali kemampuan
+                            coding. TechTalk diadakan dalam serangkaian acara IT
+                            Day tanggal 18-19 April 2020. Adapun topik utama
+                            TechTalk di tahun 2020 adalah IoT (Internet of
+                            Things) dengan sub-topik yaitu AI (Artificial
+                            Intelligence) dan Big Data.
                         </p>
                         <b-button
+                            disabled
                             class="events-button"
                             variant="success"
                             to="/"
+                            >Coming Soon</b-button
                         >
-                            Yuk Daftar
-                        </b-button>
                     </b-col>
                     <b-col
                         cols="12"
@@ -262,22 +262,23 @@
                         id="events-desc-competition"
                         class="flex-column events-desc justify-content-center text-left events-desc-competition"
                     >
-                        <h2 class="events-title">
-                            Kompetisi
-                        </h2>
+                        <h2 class="events-title">Competitions</h2>
                         <p class="events-subtitle">
-                            Kompetisi JOINTS 2020 mengajak teman-teman pelajar/mahasiswa untuk mengukur 
-                            kemampuannya di beberapa bidang khusus seperti : Programming Competition 
-                            Session, Capture The Flag, Data Mining, dan UX Design. Pengen tau seberapa 
-                            hebat skill kamu dibanding teman-teman yang lain? Tunggu apa lagi, yuk ikut kompetisi JOINTS 2020!
+                            Kompetisi JOINTS 2020 mengajak teman-teman
+                            pelajar/mahasiswa untuk mengukur kemampuannya di
+                            beberapa bidang khusus seperti : Programming
+                            Competition Session, Capture The Flag, Data Mining,
+                            dan UX Design. Pengen tau seberapa hebat skill kamu
+                            dibanding teman-teman yang lain? Tunggu apa lagi,
+                            yuk ikut kompetisi JOINTS UGM 2020!
                         </p>
                         <b-button
+                            disabled
                             class="events-button"
                             variant="success"
                             to="/"
+                            >Coming Soon</b-button
                         >
-                            Yuk Daftar
-                        </b-button>
                     </b-col>
                     <b-col
                         cols="12"
@@ -285,22 +286,22 @@
                         id="events-desc-jointscamp"
                         class="flex-column events-desc justify-content-center text-left events-desc-jointcamp"
                     >
-                        <h2 class="events-title">
-                            Joints Camp
-                        </h2>
+                        <h2 class="events-title">JointsCamp</h2>
                         <p class="events-subtitle">
-                            JOINTS Camp merupakan suatu pelatihan atau bootcamp dengan tema Web Development. 
-                            Diselenggarakan selama 4 minggu dengan pertemuan intensif 1 kali di setiap minggu nya, 
-                            pelatihan ini terkonsep dari pembentukan mindset, pemahaman alur, pengembangan 
-                            perangkat lunak, hingga cara membangun sebuah produk digital.
+                            JointsCamp merupakan suatu pelatihan atau bootcamp
+                            dengan tema Web Development. Diselenggarakan selama
+                            4 minggu dengan pertemuan intensif 1 kali di setiap
+                            minggunya, pelatihan ini terkonsep dari pembentukan
+                            mindset, pemahaman alur, pengembangan perangkat
+                            lunak, hingga cara membangun sebuah produk digital.
                         </p>
                         <b-button
+                            disabled
                             class="events-button"
                             variant="success"
                             to="/"
+                            >Coming Soon</b-button
                         >
-                            Yuk Daftar
-                        </b-button>
                     </b-col>
                 </b-row>
             </b-container>
@@ -319,25 +320,26 @@
                     </linearGradient>
                 </defs>
                 <path
-                    fill=""
+                    fill
                     fill-opacity="1"
                     d="M0,96L60,85.3C120,75,240,53,360,58.7C480,64,600,96,720,112C840,128,960,128,1080,112C1200,96,1320,64,1380,48L1440,32L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-                    data-darkreader-inline-fill=""
+                    data-darkreader-inline-fill
                     style="--darkreader-inline-fill:#007acc;"
-                ></path>
+                />
             </svg>
         </div>
 
         <section class="documentation">
             <b-container>
                 <div class="text-center documentation-title-wrapper">
-                    <h3 class="documentation-title">
-                        Grand Launching
-                    </h3>
+                    <h3 class="documentation-title">Galeri</h3>
                 </div>
                 <div class="text-center documentation-image-wrapper">
                     <div v-for="(documentation, i) in documentations" :key="i">
-                        <img src="@/assets/logo.png" alt="JOINTS 2020" />
+                        <img
+                            :src="getImgUrl(documentation)"
+                            alt="JOINTS 2020"
+                        />
                     </div>
                 </div>
             </b-container>
@@ -345,9 +347,7 @@
         <section class="sponsorship d-lg-none">
             <b-container>
                 <div class="text-center sponsorship-title-wrapper">
-                    <h3 class="sponsorship-title">
-                        Sponsorship
-                    </h3>
+                    <h3 class="sponsorship-title">Sponsorship</h3>
                 </div>
                 <div class="text-center sponsorship-item-wrapper">
                     <div class="sponsorship-item>"></div>
@@ -358,9 +358,7 @@
         <section class="mediapartner d-lg-none">
             <b-container>
                 <div class="text-center mediapartner-title-wrapper">
-                    <h3 class="mediapartner-title">
-                        Media Partner
-                    </h3>
+                    <h3 class="mediapartner-title">Media Partner</h3>
                 </div>
                 <div class="text-center mediapartner-item-wrapper">
                     <div class="mediapartner-item>"></div>
@@ -371,8 +369,7 @@
         <Footer
             accessFrom="dashboardNavbar"
             footerKind="gradient-dashboard-footer"
-        >
-        </Footer>
+        ></Footer>
     </div>
 </template>
 
@@ -385,38 +382,13 @@ import 'vue-carousel-card/styles/index.css';
 export default {
     data() {
         return {
-            timelines: [
-                {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
-                },
-                {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
-                },
-                {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
-                },
-                {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
-                },
-                {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
-                },
-                {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
-                }
-            ],
             documentations: [
-                '@/assets/logo.png',
-                '@/assets/logo.png',
-                '@/assets/logo.png',
-                '@/assets/logo.png',
-                '@/assets/logo.png'
+                'galeri1.jpg',
+                'galeri2.jpg',
+                'galeri3.jpg',
+                'galeri4.jpg',
+                'galeri5.jpg',
+                'galeri6.jpg'
             ]
         };
     },
@@ -428,6 +400,9 @@ export default {
         CarouselCardItem
     },
     methods: {
+        getImgUrl(img) {
+            return require('../assets/galeri/' + img);
+        },
         changeSlide(newIndex) {
             let gl = document.getElementById('events-desc-grandlaunching');
             let talk = document.getElementById('events-desc-talk');
@@ -445,13 +420,12 @@ export default {
                 talk.style.display = 'flex';
                 competition.style.display = 'none';
                 camp.style.display = 'none';
-            } else if(newIndex == 2) {
+            } else if (newIndex == 2) {
                 gl.style.display = 'none';
                 talk.style.display = 'none';
                 competition.style.display = 'flex';
                 camp.style.display = 'none';
-            }
-            else{
+            } else {
                 gl.style.display = 'none';
                 talk.style.display = 'none';
                 competition.style.display = 'none';
@@ -468,15 +442,15 @@ export default {
     min-height: 65vh;
 }
 
-.header-background{
+.header-background {
     position: absolute;
     top: 0;
-    left: 0;    
+    left: 0;
     width: 100%;
 }
 
 .home-page .header-button {
-    margin-left: 100px;
+    /* margin-left: 100px; */
     border: 1px solid white;
     color: white;
     background: transparent;

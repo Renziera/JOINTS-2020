@@ -1,17 +1,33 @@
 <template>
     <div>
-        <Navbar accessFrom="dashboardNavbar" colorKind="gradient-dashboard"></Navbar>
+        <Navbar
+            accessFrom="dashboardNavbar"
+            colorKind="gradient-dashboard"
+        ></Navbar>
         <section class="login">
             <b-container>
                 <b-row>
                     <b-col lg="6" class="d-none d-lg-block">
-                        <div class="d-flex align-items-center justify-content-center h-100">
-                            <img class="login-image" src="@/assets/login.png" alt="No image found" />
+                        <div
+                            class="d-flex align-items-center justify-content-center h-100"
+                        >
+                            <img
+                                class="login-image"
+                                src="@/assets/login.png"
+                                alt="No image found"
+                            />
                         </div>
                     </b-col>
                     <template v-if="!biodata">
-                        <b-col lg="6" cols="12" class="d-flex align-items-center">
-                            <b-card title="Login with Google" class="text-left login-card">
+                        <b-col
+                            lg="6"
+                            cols="12"
+                            class="d-flex align-items-center"
+                        >
+                            <b-card
+                                title="Sign in with Google"
+                                class="text-left login-card"
+                            >
                                 <b-card-text
                                     class="d-flex align-items-center justify-content-center"
                                 >
@@ -21,10 +37,15 @@
                                         variant="primary"
                                     >
                                         <div class="google-icon-wrapper">
-                                            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                                            <img
+                                                class="google-icon"
+                                                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                                            />
                                         </div>
                                         <div class="btn-text-wrapper">
-                                            <p class="btn-text">Sign in with google</p>
+                                            <p class="btn-text">
+                                                Sign in with Google
+                                            </p>
                                         </div>
                                     </b-button>
                                 </b-card-text>
@@ -32,8 +53,15 @@
                         </b-col>
                     </template>
                     <template v-else>
-                        <b-col lg="6" cols="12" class="d-flex align-items-center">
-                            <b-card title="Biodata Umum" class="text-left biodata-card">
+                        <b-col
+                            lg="6"
+                            cols="12"
+                            class="d-flex align-items-center"
+                        >
+                            <b-card
+                                title="Biodata Umum"
+                                class="text-left biodata-card"
+                            >
                                 <b-card-text
                                     class="d-flex align-items-center justify-content-center flex-column"
                                 >
@@ -83,14 +111,15 @@
                                             id="input-instansi"
                                             v-model="instansi"
                                             required
-                                            placeholder="Universitas/Sekolah/Komunitas"
+                                            placeholder="Universitas/Instansi/Komunitas"
                                         ></b-form-input>
                                     </b-form-group>
                                     <b-button
                                         @click="submitBiodata"
                                         class="button-submit"
                                         variant="primary"
-                                    >Submit</b-button>
+                                        >Submit</b-button
+                                    >
                                 </b-card-text>
                             </b-card>
                         </b-col>
@@ -98,7 +127,10 @@
                 </b-row>
             </b-container>
         </section>
-        <Footer accessFrom="dashboardNavbar" footerKind="gradient-dashboard-footer"></Footer>
+        <Footer
+            accessFrom="dashboardNavbar"
+            footerKind="gradient-dashboard-footer"
+        ></Footer>
     </div>
 </template>
 
@@ -119,23 +151,18 @@ export default {
     },
     async created() {
         if (this.$store.getters.user.loggedIn) {
-            let uid = this.$store.getters.user.data.uid;
-            
+            this.$router.push('/dashboard');
         }
     },
     methods: {
         async login() {
             let googleLogin = new firebase.auth.GoogleAuthProvider();
-
             try {
-                let cred = await firebase.auth().signInWithPopup(googleLogin);
-                
-                
+                await firebase.auth().signInWithPopup(googleLogin);
+                this.$router.push('/dashboard');
             } catch (error) {
                 console.log(error);
             }
-        },
-        async submitBiodata() {
         }
     },
     components: {
@@ -151,7 +178,7 @@ export default {
     padding-top: 220px;
 }
 
-.login .login-image{
+.login .login-image {
     width: 300px;
 }
 
@@ -187,25 +214,25 @@ export default {
 
 .login .button-signin {
     font-size: 14px;
-    background: #4285F4;
+    background: #4285f4;
     padding: 3px 12px 3px 3px;
 }
 
-.login .button-signin div{
+.login .button-signin div {
     display: inline-block;
 }
 
-.login .button-signin .google-icon-wrapper{
+.login .button-signin .google-icon-wrapper {
     background: white;
     padding: 5px;
     width: auto;
 }
 
-.login .button-signin .google-icon-wrapper .google-icon{
+.login .button-signin .google-icon-wrapper .google-icon {
     width: 20px;
 }
 
-.login .button-signin .btn-text{
+.login .button-signin .btn-text {
     margin-bottom: 0;
     margin-left: 10px;
 }
@@ -214,7 +241,7 @@ export default {
     font-size: 16px !important;
 }
 
-@media (max-width: 991.98px){
+@media (max-width: 991.98px) {
     .login {
         padding-top: 100px;
         display: flex;

@@ -61,10 +61,12 @@
                             Apa itu Joints Camp?
                         </h3>
                         <p class="about-subtitle">
-                            JOINTS Camp merupakan suatu pelatihan atau bootcamp dengan tema Web Development. 
-                            Diselenggarakan selama 4 minggu dengan pertemuan intensif 1 kali di setiap minggu nya, 
-                            pelatihan ini terkonsep dari pembentukan mindset, pemahaman alur, pengembangan 
-                            perangkat lunak, hingga cara membangun sebuah produk digital.
+                            JOINTS Camp merupakan suatu pelatihan atau bootcamp
+                            dengan tema Web Development. Diselenggarakan selama
+                            4 minggu dengan pertemuan intensif 1 kali di setiap
+                            minggu nya, pelatihan ini terkonsep dari pembentukan
+                            mindset, pemahaman alur, pengembangan perangkat
+                            lunak, hingga cara membangun sebuah produk digital.
                         </p>
                     </b-col>
                 </b-row>
@@ -102,13 +104,16 @@
                         <b-col cols="12" lg="6" class="mentor-left">
                             <div class="mentor-profile-wrapper">
                                 <div class="mentor-image-wrapper">
-                                    <img src="@/assets/joints.png" class="mentor-image"/>
+                                    <img
+                                        src="@/assets/joints.png"
+                                        class="mentor-image"
+                                    />
                                 </div>
                                 <div class="mentor-profile">
                                     <span class="mentor-name">
                                         Nama Mentor 1
                                     </span>
-                                    <br>
+                                    <br />
                                     <span class="mentor-job">
                                         Pekerjaan Mentor 1
                                     </span>
@@ -118,13 +123,16 @@
                         <b-col cols="12" lg="6" class="mentor-right">
                             <div class="mentor-profile-wrapper">
                                 <div class="mentor-image-wrapper">
-                                    <img src="@/assets/joints.png" class="mentor-image"/>
+                                    <img
+                                        src="@/assets/joints.png"
+                                        class="mentor-image"
+                                    />
                                 </div>
                                 <div class="mentor-profile">
                                     <span class="mentor-name">
                                         Nama Mentor 2
                                     </span>
-                                    <br>
+                                    <br />
                                     <span class="mentor-job">
                                         Pekerjaan Mentor 2
                                     </span>
@@ -156,9 +164,9 @@
                 ></path>
             </svg>
         </div>
-        
+
         <section id="timeline-camp">
-            <Timeline accessFrom="Camp" title="Timeline"></Timeline> 
+            <Timeline accessFrom="Camp" title="Timeline"></Timeline>
         </section>
 
         <section class="faq">
@@ -172,7 +180,10 @@
             </b-container>
         </section>
 
-        <Footer accessFrom="dashboardNavbar" footerKind="gradient-dashboard-footer"></Footer>
+        <Footer
+            accessFrom="dashboardNavbar"
+            footerKind="gradient-dashboard-footer"
+        ></Footer>
     </div>
 </template>
 
@@ -195,7 +206,7 @@ export default {
 <style scoped>
 .header {
     padding-top: 130px;
-    background-image: linear-gradient(90deg, #6753A8, #18C6BA);
+    background-image: linear-gradient(90deg, #6753a8, #18c6ba);
 }
 
 .header-title {
@@ -205,7 +216,7 @@ export default {
 }
 
 .header-button {
-    background: #576AAC;
+    background: #576aac;
     margin-top: -40px;
     border-radius: 10px;
     color: white;
@@ -215,41 +226,41 @@ export default {
 
 .header-button:hover {
     color: white;
-    background: #576AAC;
+    background: #576aac;
     font-size: 25px;
 }
 
-.about-title{
-    color: #00CAB6;
+.about-title {
+    color: #00cab6;
 }
 
-.about-image{
+.about-image {
     width: 100%;
 }
 
-.about-desc{
+.about-desc {
     text-align: left;
 }
 
-.mentor{
-    background-image: linear-gradient(-90deg, #6753A8, #18C6BA);
+.mentor {
+    background-image: linear-gradient(-90deg, #6753a8, #18c6ba);
 }
 
-.mentor-profile-wrapper{
+.mentor-profile-wrapper {
     width: 200px;
 }
 
-.mentor-left .mentor-profile-wrapper{
+.mentor-left .mentor-profile-wrapper {
     margin-left: auto;
     margin-right: 80px;
 }
 
-.mentor-right .mentor-profile-wrapper{
+.mentor-right .mentor-profile-wrapper {
     margin-left: 80px;
     margin-right: auto;
 }
 
-.mentor-image-wrapper{
+.mentor-image-wrapper {
     background: wheat;
     display: flex;
     align-items: center;
@@ -260,34 +271,35 @@ export default {
     overflow: hidden;
 }
 
-.mentor-image{
+.mentor-image {
     width: 200px;
 }
 
-.mentor-profile{
+.mentor-profile {
     text-align: center;
     margin-top: 10px;
 }
 
-.mentor-title{
+.mentor-title {
     color: white;
     margin-bottom: 20px;
 }
 
-.mentor-name, .mentor-job{
+.mentor-name,
+.mentor-job {
     font-size: 20px;
     color: white;
 }
 
-.mentor-name{
+.mentor-name {
     font-weight: 500;
 }
 
-.mentor-job{
+.mentor-job {
     font-weight: 300;
 }
 
-.faq{
+.faq {
     margin-top: 50px;
 }
 
@@ -296,44 +308,44 @@ export default {
     color: #707070;
 }
 
-@media (max-width: 991.98px){
-    .header{
+@media (max-width: 991.98px) {
+    .header {
         padding-top: 80px;
     }
 
-    .about-image{
+    .about-image {
         width: 200px;
     }
 
-    .about-desc{
+    .about-desc {
         text-align: center;
     }
 
-    .mentor-left .mentor-profile-wrapper{
+    .mentor-left .mentor-profile-wrapper {
         margin-left: auto;
         margin-right: auto;
     }
 
-    .mentor-right .mentor-profile-wrapper{
+    .mentor-right .mentor-profile-wrapper {
         margin-left: auto;
         margin-right: auto;
     }
 
-    .faq{
+    .faq {
         margin-top: 30px;
     }
 }
 
 @media (max-width: 575.98px) {
-    .header-title{
+    .header-title {
         font-size: 50px;
     }
 
-    .header-button{
+    .header-button {
         font-size: 18px;
     }
 
-    .header-button:hover{
+    .header-button:hover {
         font-size: 20px;
     }
 }
@@ -343,8 +355,8 @@ export default {
 }
 
 #header-camp-gradient {
-    --color-stop-1: #6753A8;
-    --color-stop-3: #18C6BA;
+    --color-stop-1: #6753a8;
+    --color-stop-3: #18c6ba;
 }
 
 .mentor-camp-gradient path {
@@ -352,12 +364,12 @@ export default {
 }
 
 #mentor-camp-gradient {
-    --color-stop-3: #6753A8;
-    --color-stop-1: #18C6BA;
+    --color-stop-3: #6753a8;
+    --color-stop-1: #18c6ba;
 }
 
 #mentor-camp-gradient {
-    --color-stop-3: #6753A8;
-    --color-stop-1: #18C6BA;
+    --color-stop-3: #6753a8;
+    --color-stop-1: #18c6ba;
 }
 </style>

@@ -1,102 +1,147 @@
 <template>
     <div>
         <v-app class="white">
-        <v-container>
-          <v-row class="flex-column">
-            <v-col 
-              v-for="i in 4"
-              :key="i">
-              <v-card
-              class=" display-block"
-              >
-              
-              <div >
-                <div class=" mx-auto pl-2">
-              <v-card-actions>
-                <v-card-title class="pa-0">
-                Pengumunan Pemenang kompetisi {{pengumuman.judul}}
-                </v-card-title>
+            <v-container>
+                <v-row class="flex-column">
+                    <v-col
+                        v-for="(pengumuman, i) in pengumumans"
+                        :key="i"
+                        class="py-0"
+                    >
+                        <v-card
+                            v-if="!others.isNoPengumuman"
+                            class=" display-block elevation-0 mb-0 py-0 rounded-0 border-top-0  border-left-0 border-right-0 pengumuman-card"
+                            outlined
+                        >
+                            <div class="pengumuman-title">
+                                <div
+                                    class=" mx-auto pl-2  py-0 pengumuman-title"
+                                >
+                                    <v-card-actions>
+                                        <v-card-title
+                                            class="py-0 my-0  subtitle-1 font-weight-bold  px-0  pb-0 "
+                                        >
+                                            {{ pengumuman.eventsData.judul }}
+                                        </v-card-title>
 
-                <v-spacer></v-spacer>
+                                        <v-spacer></v-spacer>
 
-              <v-btn
-                  icon
-                  @click="show = !show"
-              >
-                  <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-              </v-btn>
+                                        <v-btn
+                                            color="white "
+                                            rounded
+                                            depressed
+                                            x-small
+                                            class=" button-announce "
+                                            @click="
+                                                pengumuman.isExpand = !pengumuman.isExpand
+                                            "
+                                            >{{
+                                                pengumuman.isExpand
+                                                    ? 'minimize'
+                                                    : 'details'
+                                            }}</v-btn
+                                        >
+                                    </v-card-actions>
+                                </div>
 
-              </v-card-actions>
-                </div>
-              <v-expand-transition>
-              <div v-show="show">
-                  <v-divider class="my-0"></v-divider>
-                  <v-card-text class="text-justify" >
-                  I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet magnam, pariatur ipsa eaque eos cupiditate similique totam culpa atque ad omnis neque minus aspernatur ipsum? Rerum amet tempora asperiores cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto atque quibusdam minima asperiores, excepturi cupiditate sit! Rem nemo nostrum praesentium autem voluptas iste, culpa, non facere dolores qui nisi inventore.
-                  </v-card-text>
-              </div>
-              </v-expand-transition>
-              </div>
-              </v-card>  
-
-            </v-col>
- 
-          </v-row>
-
-        </v-container>
-      
-       </v-app>
-    
-  
+                                <v-expand-transition>
+                                    <div v-show="pengumuman.isExpand">
+                                        <v-divider
+                                            class="my-0 ml-4"
+                                        ></v-divider>
+                                        <v-card-text class="text-justify ml-5">
+                                            {{ pengumuman.eventsData.konten }}
+                                        </v-card-text>
+                                    </div>
+                                </v-expand-transition>
+                            </div>
+                        </v-card>
+                        <v-card
+                            v-else
+                            class="title grey--text font-weight-regular text-left pl-3 border-0 pt-4"
+                            outlined
+                        >
+                            Tidak Ada Pengumuman
+                        </v-card>
+                    </v-col>
+                </v-row>
+            </v-container>
+        </v-app>
     </div>
 </template>
 
 <script>
+import firebase from 'firebase/app';
+import Axios from 'axios';
 
 export default {
-
     data: () => ({
-        items: [
-            {
-                id: 1,
-                title: 'Pengumuman 1',
-                content: 'lorem ipsum dolor siamet'
-            },
-             {
-                id: 2,
-                title: 'Pengumuman 1',
-                content: 'lorem ipsum dolor siamet'
-            },
-             {
-                id: 3,
-                title: 'Pengumuman 1',
-                content: 'lorem ipsum dolor siamet'
-            }
-        ],
-        accordion: true,
-        multiple: true,
-        flat: true,
-        show: false,
-        pengumuman: [ {judul: 'Judul', konten: ' '}]
+        pengumumans: null,
+        loading: false,
+        others: {
+            isNoPengumuman: false
+        }
+    }),
 
-    
-
-    })
-}
+    methods: {
+        async directFetchPengumuman() {
+            let token = await firebase.auth().currentUser.getIdToken(true);
+            const config = {
+                headers: { Authorization: 'Bearer ' + token }
+            };
+            const pengumumanDatas = [];
+            const BASE_URL = 'https://api.joints.id';
+            Axios.get(BASE_URL + '/announcement', config)
+                .then(response => {
+                    // console.log('ini dari vuex which is fetchPengumuan is berhasil')
+                    // console.log(response)
+                    response.data.announcements.forEach((value, index) => {
+                        pengumumanDatas.push({
+                            eventsData: value,
+                            isIndex: index,
+                            isExpand: false
+                        });
+                    });
+                    this.pengumumans = pengumumanDatas;
+                    // console.log(this.pengumumans);
+                    this.loading = false;
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+                .then(() => {
+                    if (this.pengumumans.length <= 0) {
+                        this.others.isNoPengumuman = true;
+                        // console.log('pengumuman is null')
+                    } else {
+                        // console.log('pengumuman  is  ada ');
+                        this.others.isNoPengumuman = false;
+                    }
+                });
+        }
+    },
+    created() {
+        this.directFetchPengumuman();
+    }
+};
 </script>
 
 <style>
+.pengumuman-title .button-announce {
+    background-image: linear-gradient(90deg, #30c9bb, #30c9bb) !important;
+    color: white !important;
+    border: none !important;
+}
+
 .v-expansion-panels__content {
     box-shadow: none !important;
 }
-
 
 .v-item-group__content {
     box-shadow: none !important;
 }
 
 .v-expansion-panel::before {
-  box-shadow: none;
+    box-shadow: none;
 }
-
 </style>

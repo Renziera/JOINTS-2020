@@ -10,6 +10,8 @@ const bearerToken = require('express-bearer-token');
 const multer = require('multer');
 const uuid = require('uuid/v4');
 const { google } = require('googleapis');
+const nodemailer = require("nodemailer");
+const fs = require('fs');
 const app = express();
 
 app.use(cors());
@@ -36,10 +38,12 @@ app.post('/mutasi_masuk', async (req, res) => {
     async function checkTransaction(transaction) {
         let qs = await db.collectionGroup('pendaftaran').where('harga', '==', parseInt(transaction.amount)).where('status', '==', 'menunggu_pembayaran').get();
         if (qs.empty) return;
-        await qs.docs[0].ref.update({
+        let doc = qs.docs[0];
+        await doc.ref.update({
             status: 'lunas',
             waktu_lunas: admin.firestore.FieldValue.serverTimestamp(),
         });
+        await kirimEmail(doc.get('event') || doc.get('competition'), (await doc.ref.parent.parent.get()).get('email'));
     }
 
     for (const transaction of data) {
@@ -66,6 +70,11 @@ app.use('/admin/*', async (req, res, next) => {
     let doc = await db.collection('panitia').doc(req.uid).get();
     if (!doc.exists) return res.send({ status: 'bukan_admin' });
     return next();
+});
+
+app.get('/cek_panitia', async (req, res) => {
+    let doc = await db.collection('panitia').doc(req.uid).get();
+    res.send({ panitia: doc.exists });
 });
 
 app.get('/announcement', async (req, res) => {
@@ -848,4 +857,25 @@ function getHarga(event) {
         default:
             return 1000000;
     }
+}
+
+async function kirimEmail(bidang, email) {
+    let transporter = nodemailer.createTransport({
+        host: 'mail.joints.id',
+        port: 465,
+        secure: true,
+        auth: { user: 'noreply@joints.id', pass: 'NNVuE$QZ2ezsw]h^' },
+    });
+    await transporter.sendMail({
+        from: 'JOINTS UGM <noreply@joints.id>',
+        to: email,
+        subject: 'Pendaftaran JOINTS UGM 2020 Berhasil',
+        text: '',
+        html: fs.readFileSync(__dirname + '/email_content/' + bidang + '.html'),
+        attachments: [{
+            filename: 'logo.png',
+            path: './email_content/logo.png',
+            cid: 'logo',
+        }],
+    });
 }

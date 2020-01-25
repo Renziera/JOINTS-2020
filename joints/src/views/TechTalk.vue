@@ -10,12 +10,15 @@
                         </h1>
                         <br />
                         <p class="header-subtitle ml-auto mr-auto">
-                            TechTalk merupakan seminar yang ditujukan untuk berbagi 
-                            wawasan terkait beberapa bidang penting dalam dunia teknologi (IT) 
-                            yang hanya membutuhkan sedikit bahkan nyaris tidak sama sekali kemampuan coding. 
-                            TechTalk diadakan dalam serangkaian acara IT Day tanggal 18-19 April 2020. Adapun 
-                            topik utama TechTalk di tahun 2020 adalah IoT (Internet of Things) dengan sub-topik yaitu AI 
-                            (Artificial Intelligence) dan Big Data. 
+                            TechTalk merupakan seminar yang ditujukan untuk
+                            berbagi wawasan terkait beberapa bidang penting
+                            dalam dunia teknologi (IT) yang hanya membutuhkan
+                            sedikit bahkan nyaris tidak sama sekali kemampuan
+                            coding. TechTalk diadakan dalam serangkaian acara IT
+                            Day tanggal 18-19 April 2020. Adapun topik utama
+                            TechTalk di tahun 2020 adalah IoT (Internet of
+                            Things) dengan sub-topik yaitu AI (Artificial
+                            Intelligence) dan Big Data.
                         </p>
                         <br />
                         <b-button class="header-button" variant="primary">
@@ -102,7 +105,15 @@
                                 sit
                             </h2>
                             <p class="about-subtitle">
-                                Techtalk merupakan sebuah seminar yang ditujukan untuk berbagi wawasan terkait berbagai beberapa bidang penting dalam dunia teknologi (IT) yang hanya membutuhkan sedikit atau nyaris tidak sama sekali kemampuan coding. Dengan tujuan untuk menghapus stigma dan momok pada dunia teknologi (IT) sehingga dapat meningkatkan kesadaran, ketertarikan, dan antusiasme masyarakat pada dunia teknologi (IT).
+                                Techtalk merupakan sebuah seminar yang ditujukan
+                                untuk berbagi wawasan terkait berbagai beberapa
+                                bidang penting dalam dunia teknologi (IT) yang
+                                hanya membutuhkan sedikit atau nyaris tidak sama
+                                sekali kemampuan coding. Dengan tujuan untuk
+                                menghapus stigma dan momok pada dunia teknologi
+                                (IT) sehingga dapat meningkatkan kesadaran,
+                                ketertarikan, dan antusiasme masyarakat pada
+                                dunia teknologi (IT).
                             </p>
                             <b-button
                                 class="about-button"
@@ -137,9 +148,9 @@
                 ></path>
             </svg>
         </div>
-        
+
         <section id="timeline-talk">
-            <Timeline accessFrom="Talk" title="Timeline"></Timeline> 
+            <Timeline accessFrom="Talk" title="Timeline"></Timeline>
         </section>
         <Footer accessFrom="talk" footerKind="gradient-talk-footer"></Footer>
     </div>
@@ -241,7 +252,7 @@ export default {
 .about-button:hover {
     color: #82c9fb;
     background: white !important;
-    border: 1px solid white;
+    border: 1.5px solid white;
 }
 
 hr {
@@ -264,7 +275,7 @@ hr {
 }
 
 @media (max-width: 991.98px) {
-    .header{
+    .header {
         padding-top: 80px;
     }
     .about-pembicara {
@@ -274,8 +285,8 @@ hr {
     .about-desc {
         margin-top: 30px;
     }
-    
-    .header-subtitle{
+
+    .header-subtitle {
         font-size: 16px;
     }
 }
@@ -309,19 +320,18 @@ hr {
 }
 
 @media (max-width: 575.98px) {
-    .header-title{
+    .header-title {
         font-size: 50px;
     }
 
-    .header-button{
+    .header-button {
         font-size: 18px;
     }
 
-    .header-button:hover{
+    .header-button:hover {
         font-size: 20px;
     }
 }
-
 
 .about-talk-gradient path {
     fill: url('#about-talk-gradient');

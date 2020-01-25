@@ -6,7 +6,5 @@ module.exports = {
         public: 'kimac.joints.id',
         https: true
     },
-    transpileDependencies: ['vuetify'],
-        
-    
+    transpileDependencies: ['vuetify']
 };

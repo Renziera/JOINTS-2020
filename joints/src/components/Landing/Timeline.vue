@@ -9,13 +9,12 @@
                         {{ title }}
                     </h3>
                     <template>
-                        <v-timeline
-                                v-if="accessFrom == 'PCS'">
+                        <v-timeline v-if="accessFrom == 'PCS'">
                             <v-timeline-item
                                 small
                                 fillDot
                                 v-for="(timeline, i) in timelinePCS"
-                                 :key="i"
+                                :key="i"
                             >
                                 <div v-if="i % 2 == 0" class="text-left">
                                     <span class="timeline-date">{{
@@ -36,8 +35,7 @@
                             </v-timeline-item>
                         </v-timeline>
 
-                        <v-timeline
-                            v-if="accessFrom == 'CTF'">
+                        <v-timeline v-if="accessFrom == 'CTF'">
                             <v-timeline-item
                                 small
                                 fillDot
@@ -63,8 +61,7 @@
                             </v-timeline-item>
                         </v-timeline>
 
-                        <v-timeline
-                            v-if="accessFrom == 'DM'">
+                        <v-timeline v-if="accessFrom == 'DM'">
                             <v-timeline-item
                                 small
                                 fillDot
@@ -90,8 +87,7 @@
                             </v-timeline-item>
                         </v-timeline>
 
-                        <v-timeline
-                            v-if="accessFrom == 'UX'">
+                        <v-timeline v-if="accessFrom == 'UX'">
                             <v-timeline-item
                                 small
                                 fillDot
@@ -117,8 +113,7 @@
                             </v-timeline-item>
                         </v-timeline>
 
-                        <v-timeline
-                            v-if="accessFrom == 'GL'">
+                        <v-timeline v-if="accessFrom == 'GL'">
                             <v-timeline-item
                                 small
                                 fillDot
@@ -144,8 +139,7 @@
                             </v-timeline-item>
                         </v-timeline>
 
-                        <v-timeline
-                            v-if="accessFrom == 'Talk'">
+                        <v-timeline v-if="accessFrom == 'Talk'">
                             <v-timeline-item
                                 small
                                 fillDot
@@ -171,8 +165,7 @@
                             </v-timeline-item>
                         </v-timeline>
 
-                        <v-timeline
-                            v-if="accessFrom == 'Camp'">
+                        <v-timeline v-if="accessFrom == 'Camp'">
                             <v-timeline-item
                                 small
                                 fillDot
@@ -205,7 +198,6 @@
 </template>
 
 <script>
-
 export default {
     data() {
         return {
@@ -315,12 +307,12 @@ export default {
             ],
             timelineGL: [
                 {
-                    date: '18 Januari 2020',
-                    desc: 'Open Registrasi Grand Launching'
+                    date: '25 Januari 2020',
+                    desc: 'Open Registration Grand Launching'
                 },
                 {
                     date: '26 Februari 2020',
-                    desc: 'Close Registrasi Grand Launching'
+                    desc: 'Close Registration Grand Launching'
                 },
                 {
                     date: '29 Februari 2020',
@@ -329,28 +321,20 @@ export default {
             ],
             timelineTalk: [
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: 'TBA',
+                    desc: 'Open Registrasi IT Day'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '15 Maret 2020',
+                    desc: 'Close Registrasi IT DAY'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '18 April 2020',
+                    desc: 'IT Day day-1'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
-                },
-                {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
-                },
-                {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '19 April 2020',
+                    desc: 'IT Day day-2'
                 }
             ],
             timelineCamp: [
@@ -387,9 +371,7 @@ export default {
         title: String
     }
 };
-
 </script>
-
 
 <style scoped>
 .timeline .timeline-title {
@@ -416,8 +398,11 @@ export default {
     font-weight: 600;
 }
 
-@media (max-width: 991.98px){
-    #PCS, #CTF, #DM, #UX{
+@media (max-width: 991.98px) {
+    #PCS,
+    #CTF,
+    #DM,
+    #UX {
         padding-top: 50px;
         padding-bottom: 50px;
     }
@@ -425,7 +410,6 @@ export default {
 </style>
 
 <style>
-
 .timeline .v-timeline-item__inner-dot {
     border: 2px solid #707070 !important;
 }

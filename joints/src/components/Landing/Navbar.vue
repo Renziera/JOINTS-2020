@@ -2,25 +2,48 @@
     <div>
         <b-navbar id="navbar" fixed="top" toggleable="lg" :class="accessFrom">
             <b-navbar-brand to="/">
-                <img src="@/./assets/joints.png" alt="Image not found" class="d-none d-lg-block" />
+                <img
+                    src="@/assets/joints.png"
+                    alt="Image not found"
+                    class="d-none d-lg-block"
+                />
                 <span class="d-lg-none">JOINTS</span>
             </b-navbar-brand>
-            <b-navbar-toggle target="nav-collapse" class="custom-toggler"></b-navbar-toggle>
+            <b-navbar-toggle
+                target="nav-collapse"
+                class="custom-toggler"
+            ></b-navbar-toggle>
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav class="ml-auto">
                     <b-nav-item to="/">Home</b-nav-item>
-                    <b-nav-item to="/grandlaunching">Grand Launching</b-nav-item>
-                    <b-nav-item to="/jointstalk">IT Day</b-nav-item>
-                    <b-nav-item to="/competitions">Kompetisi</b-nav-item>
-                    <b-nav-item to="/jointscamp">Joints Camp</b-nav-item>
-                    <b-nav-item-dropdown v-if="$store.getters.user.loggedIn" class="nav-item-login" right>
-                        <template v-slot:button-content>
-                            {{ $store.getters.user.data.displayName.split(" ")[0] }}
-                        </template>
-                        <b-dropdown-item to="/dashboard">Dashboard</b-dropdown-item>
-                        <b-dropdown-item href="#">Log Out</b-dropdown-item>
+                    <b-nav-item to="/grandlaunching"
+                        >Grand Launching</b-nav-item
+                    >
+                    <b-nav-item disabled to="/jointscamp"
+                        >JointsCamp</b-nav-item
+                    >
+                    <b-nav-item disabled to="/competitions"
+                        >Competitions</b-nav-item
+                    >
+                    <b-nav-item disabled to="/techtalk">TechTalk</b-nav-item>
+                    <b-nav-item-dropdown
+                        v-if="$store.getters.user.loggedIn"
+                        class="nav-item-login"
+                        right
+                    >
+                        <template v-slot:button-content>{{
+                            $store.getters.user.data.displayName.split(' ')[0]
+                        }}</template>
+                        <b-dropdown-item to="/dashboard"
+                            >Dashboard</b-dropdown-item
+                        >
+                        <b-dropdown-item @click="logout()"
+                            >Log Out</b-dropdown-item
+                        >
                     </b-nav-item-dropdown>
-                    <b-nav-item v-else class="nav-item-login" to="/login">Login</b-nav-item>
+                    <b-nav-item v-else class="nav-item-login" to="/login"
+                        >Daftar/Masuk</b-nav-item
+                    >
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
@@ -48,13 +71,20 @@
 </template>
 
 <script>
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
 export default {
     props: {
         accessFrom: String,
         colorKind: String
     },
-
-    methods: {}
+    methods: {
+        async logout() {
+            await firebase.auth().signOut();
+            this.$router.push('/login');
+        }
+    }
 };
 </script>
 
@@ -112,14 +142,14 @@ export default {
 }
 
 #gradient-camp {
-    --color-stop-4: #6753A8;
-    --color-stop-5: #18C6BA;
+    --color-stop-4: #6753a8;
+    --color-stop-5: #18c6ba;
 }
 
 .gradient-dashboard {
     --color-stop-4: #bf5888;
     --color-stop-5: #18cebe;
-}   
+}
 
 .gradient-talk {
     --color-stop-4: #18cebe;
@@ -156,14 +186,14 @@ export default {
 }
 
 .camp {
-    background-image: linear-gradient(-90deg, #19c4b9, #6753A8);
+    background-image: linear-gradient(-90deg, #19c4b9, #6753a8);
 }
 
 .navbar .nav-link {
     color: white !important;
 }
 
-.navbar .navbar-brand img{
+.navbar .navbar-brand img {
     width: 70px;
 }
 
@@ -214,7 +244,7 @@ export default {
 .navbar .custom-toggler.navbar-toggler:focus {
     border: none;
     outline: none !important;
-    box-shadow:none;
+    box-shadow: none;
 }
 
 .custom-toggler .navbar-toggler-icon {
@@ -222,7 +252,7 @@ export default {
 }
 
 @media (max-width: 991.98px) {
-    .navbar{
+    .navbar {
         padding-top: 15px;
     }
 
@@ -241,7 +271,11 @@ export default {
     }
 }
 
-.navbar .dropdown-menu{
+.navbar .dropdown-menu {
     z-index: 1029;
+}
+
+a.nav-link {
+    padding-top: 0 !important;
 }
 </style>

@@ -13,12 +13,12 @@
                     </linearGradient>
                 </defs>
                 <path
-                    fill=""
+                    fill
                     fill-opacity="1"
                     d="M0,160L60,154.7C120,149,240,139,360,149.3C480,160,600,192,720,181.3C840,171,960,117,1080,112C1200,107,1320,149,1380,170.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-                    data-darkreader-inline-fill=""
+                    data-darkreader-inline-fill
                     style="--darkreader-inline-fill:#007acc;"
-                ></path>
+                />
             </svg>
         </div>
         <section :id="accessFrom" class="footer d-lg-block">
@@ -31,54 +31,96 @@
                         <div class="footer-content footer-contact">
                             <b-row>
                                 <b-col lg="6" md="12" class="footer-logo">
-                                    <img src="@/./assets/joints.png" alt="Image not found" />
+                                    <img
+                                        src="@/./assets/joints.png"
+                                        alt="Image not found"
+                                    />
                                 </b-col>
-                                <b-col lg="6" md="12" class="d-flex align-items-center footer-alamat-wrapper">
+                                <b-col
+                                    lg="6"
+                                    md="12"
+                                    class="d-flex align-items-center footer-alamat-wrapper"
+                                >
                                     <p class="footer-alamat">
-                                        Sekertariat Himakom
-                                        <br />
-                                        FMIPA Sekip Utara
-                                        <br />
-                                        PO BOX BLS 21 Bulaksumur,
-                                        <br />
-                                        Yogyakarta 55281
-                                        <br />
-                                        Phone: 12345678910 (ABCDE)
+                                        Sekretariat Himakom
+                                        <br />FMIPA Universitas Gadjah Mada
+                                        <br />Sekip Utara, Bulaksumur, PO BOX
+                                        BLS 21 <br />D.I. Yogyakarta 55281
+                                        <br />Phone: 087787592805 (Jevon)
                                     </p>
                                 </b-col>
                             </b-row>
                             <b-row>
-                                <b-col lg="6" cols="4" offset="4" offset-lg="0" class="d-flex justify-content-center align-items-center">
-                                    <div class="footer-contact-item ml-auto mr-auto">
-                                        <a href="/">I1</a>
+                                <b-col
+                                    lg="6"
+                                    cols="4"
+                                    offset="4"
+                                    offset-lg="0"
+                                    class="d-flex justify-content-center align-items-center"
+                                >
+                                    <div
+                                        class="footer-contact-item ml-auto mr-auto"
+                                    >
+                                        <a
+                                            href="https://www.facebook.com/jointsugm/"
+                                            target="_blank"
+                                        >
+                                            <font-awesome-icon
+                                                :icon="['fab', 'facebook']"
+                                            />
+                                        </a>
                                     </div>
-                                    <div class="footer-contact-item ml-auto mr-auto">
-                                        <a href="/">I2</a>
+                                    <div
+                                        class="footer-contact-item ml-auto mr-auto"
+                                    >
+                                        <a
+                                            href="https://www.instagram.com/jointsugm/"
+                                            target="_blank"
+                                        >
+                                            <font-awesome-icon
+                                                :icon="['fab', 'instagram']"
+                                            />
+                                        </a>
                                     </div>
-                                    <div class="footer-contact-item ml-auto mr-auto">
-                                        <a href="/">I3</a>
+                                    <div
+                                        class="footer-contact-item ml-auto mr-auto"
+                                    >
+                                        <a
+                                            href="https://www.linkedin.com/company/jogja-information-technology-session"
+                                            target="_blank"
+                                        >
+                                            <font-awesome-icon
+                                                :icon="['fab', 'linkedin']"
+                                            />
+                                        </a>
                                     </div>
-                                    <div class="footer-contact-item ml-auto mr-auto">
-                                        <a href="/">I4</a>
+                                    <div
+                                        class="footer-contact-item ml-auto mr-auto"
+                                    >
+                                        <a
+                                            href="https://line.me/R/ti/p/%40kpo1696z"
+                                            target="_blank"
+                                        >
+                                            <font-awesome-icon
+                                                :icon="['fab', 'line']"
+                                            />
+                                        </a>
                                     </div>
                                 </b-col>
                                 <b-col lg="6" md="12">
                                     <p class="footer-copyright">
-                                        &copy; Copyright JOINTS 2020. All Rights
-                                        Reserved
-                                        <br />
                                         <b-button
                                             to="/grandlaunching"
                                             class="footer-button"
                                             variant="light"
-                                            >Grand
-                                            Launching&nbsp;-&nbsp;</b-button
                                         >
+                                            Grand Launching&nbsp;-&nbsp;
+                                        </b-button>
                                         <b-button
-                                            to="/jointstalk"
+                                            to="/techtalk"
                                             class="footer-button"
                                             variant="light"
-                                            >IT Day&nbsp;-&nbsp;</b-button
+                                            >TechTalk&nbsp;-&nbsp;</b-button
                                         >
                                         <b-button
                                             to="/competitions"
@@ -90,8 +132,10 @@
                                             to="/jointscamp"
                                             class="footer-button"
                                             variant="light"
-                                            >Joints Camp</b-button
+                                            >JointsCamp</b-button
                                         >
+                                        <br />&copy;Copyright JOINTS UGM 2020.
+                                        All Rights Reserved.
                                     </p>
                                 </b-col>
                             </b-row>
@@ -214,29 +258,30 @@ export default {
     border: none;
 }
 
-.footer .footer-button:hover{
+.footer .footer-button:hover {
     background: transparent;
     color: #491fa7 !important;
 }
- 
-.footer .footer-button:focus, .footer .footer-button:active  .footer .footer-button:active:focus{
+
+.footer .footer-button:focus,
+.footer .footer-button:active .footer .footer-button:active:focus {
     background: transparent !important;
     border: none;
     outline: none !important;
     box-shadow: none;
 }
 
-.footer .footer-contact .footer-contact-item a{
+.footer .footer-contact .footer-contact-item a {
     color: white;
     text-decoration: none;
 }
 
-.footer .footer-contact .footer-contact-item a:hover{
-    color: #F0F0F0;
+.footer .footer-contact .footer-contact-item a:hover {
+    color: #f0f0f0;
     text-decoration: none;
 }
 
-.footer .footer-logo img{
+.footer .footer-logo img {
     width: 100%;
 }
 
@@ -249,7 +294,7 @@ export default {
         text-align: center !important;
     }
 
-    .footer .footer-alamat-wrapper{
+    .footer .footer-alamat-wrapper {
         justify-content: center;
         margin-bottom: 20px;
     }
@@ -258,7 +303,7 @@ export default {
         text-align: center !important;
     }
 
-    .footer .footer-logo img{
+    .footer .footer-logo img {
         width: 200px;
     }
 }

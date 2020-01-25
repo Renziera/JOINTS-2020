@@ -19,6 +19,7 @@
     "firebase-functions": "^3.3.0",
     "googleapis": "^46.0.0",
     "multer": "github:emadalam/multer#master",
+    "nodemailer": "^6.4.2",
     "uuid": "^3.3.3"
   },
   "devDependencies": {

@@ -11,10 +11,13 @@
                         </h1>
                         <br />
                         <p class="header-subtitle ml-auto mr-auto">
-                            Kompetisi JOINTS 2020 mengajak teman-teman pelajar/mahasiswa untuk mengukur 
-                            kemampuannya di beberapa bidang khusus seperti : Programming Competition 
-                            Session, Capture The Flag, Data Mining, dan UX Design. Pengen tau seberapa 
-                            hebat skill kamu dibanding teman-teman yang lain? Tunggu apa lagi, yuk ikut kompetisi JOINTS 2020!
+                            Kompetisi JOINTS 2020 mengajak teman-teman
+                            pelajar/mahasiswa untuk mengukur kemampuannya di
+                            beberapa bidang khusus seperti : Programming
+                            Competition Session, Capture The Flag, Data Mining,
+                            dan UX Design. Pengen tau seberapa hebat skill kamu
+                            dibanding teman-teman yang lain? Tunggu apa lagi,
+                            yuk ikut kompetisi JOINTS 2020!
                         </p>
                         <br />
                         <b-button class="header-button" variant="danger">
@@ -96,11 +99,17 @@
         </div>
 
         <section id="timeline-pcs">
-            <Timeline accessFrom="PCS" title="Timeline Programming Competition Session"></Timeline>
+            <Timeline
+                accessFrom="PCS"
+                title="Timeline Programming Competition Session"
+            ></Timeline>
         </section>
 
         <section id="timeline-ctf">
-            <Timeline accessFrom="CTF" title="Timeline Capture The Flag"></Timeline>
+            <Timeline
+                accessFrom="CTF"
+                title="Timeline Capture The Flag"
+            ></Timeline>
         </section>
 
         <section id="timeline-dm">
@@ -108,7 +117,10 @@
         </section>
 
         <section id="timeline-ux">
-            <Timeline accessFrom="UX" title="Timeline UX Design Competition"></Timeline>
+            <Timeline
+                accessFrom="UX"
+                title="Timeline UX Design Competition"
+            ></Timeline>
         </section>
 
         <div class="wave-container faq-top-wave">
@@ -258,43 +270,43 @@ export default {
     --color-stop-3: #e273b1;
 }
 
-@media (max-width: 991.98px){
-    .competition-page .header{
+@media (max-width: 991.98px) {
+    .competition-page .header {
         padding-top: 80px;
     }
 
-    .competition-page .header-subtitle{
+    .competition-page .header-subtitle {
         font-size: 16px;
     }
 }
 
 @media (max-width: 575.98px) {
-    .competition-page .header-title{
+    .competition-page .header-title {
         font-size: 50px;
     }
 
-    .competition-page .header-button{
+    .competition-page .header-button {
         font-size: 18px;
     }
 
-    .competition-page .header-button:hover{
+    .competition-page .header-button:hover {
         font-size: 20px;
     }
 }
 
-#timeline-pcs{
+#timeline-pcs {
     display: block;
 }
 
-#timeline-ctf{
+#timeline-ctf {
     display: none;
 }
 
-#timeline-dm{
+#timeline-dm {
     display: none;
 }
 
-#timeline-ux{
+#timeline-ux {
     display: none;
 }
 </style>

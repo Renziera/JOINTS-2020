@@ -23,7 +23,7 @@
                                         <b-card-text>
                                             <div class="card-image">
                                                 <img
-                                                    src="@/assets/logo.png"
+                                                    src="@/assets/pcs-dark.png"
                                                     alt="JOINTS 2020"
                                                 />
                                             </div>
@@ -43,7 +43,7 @@
                                         <b-card-text>
                                             <div class="card-image">
                                                 <img
-                                                    src="@/assets/logo.png"
+                                                    src="@/assets/ctf-dark.png"
                                                     alt="JOINTS 2020"
                                                 />
                                             </div>
@@ -63,7 +63,7 @@
                                         <b-card-text>
                                             <div class="card-image">
                                                 <img
-                                                    src="@/assets/logo.png"
+                                                    src="@/assets/dm-dark.png"
                                                     alt="JOINTS 2020"
                                                 />
                                             </div>
@@ -83,7 +83,7 @@
                                         <b-card-text>
                                             <div class="card-image">
                                                 <img
-                                                    src="@/assets/logo.png"
+                                                    src="@/assets/ux-dark.png"
                                                     alt="JOINTS 2020"
                                                 />
                                             </div>
@@ -109,10 +109,10 @@
                             Programming Competition Session
                         </h2>
                         <p class="competitions-subtitle">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit, sed do eiusmod tempor incididunt ut labore et
-                            dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco.
+                            Terbagi menjadi sesi logika dan pemrograman. Kedua materi ini menguji 
+                            kemampuan nalar dan pemahaman peserta dalam menyelesaikan suatu permasalahan 
+                            dalam waktu yang singkat dengan algoritma yang efisien dan tepat. Bahasa 
+                            pemrograman yang digunakan antara lain C/C++, Pascal, Java, atau Python. 
                         </p>
                         <h4 class="competition-detail-title">Prize: </h4>
                         <div class="competition-detail-wrapper d-flex">
@@ -149,12 +149,14 @@
                             Capture The Flag
                         </h2>
                         <p class="competitions-subtitle">
-                            Sed ut perspiciatis unde omnis iste natus error sit
-                            voluptatem accusantium doloremque laudantium, totam
-                            rem aperiam, eaque ipsa quae ab illo inventore
-                            veritatis et quasi architecto beatae vitae dicta
-                            sunt explicabo. Nemo enim ipsam voluptatem quia
-                            voluptas sit aspernatur aut odit aut fugit,
+                            Materi yang dilombakan:
+                            <ul>
+                                <li>Binary Exploitation, yaitu melakukan analisis binary dari suatu jaringan</li>
+                                <li>Cryptography, yaitu pemahaman kriptografi klasik maupun modern dari jaringan</li>
+                                <li>Forensic, yaitu menganalisa dan mengekstrak informasi dari file</li>
+                                <li>Reverse Engineering, yaitu membalik algoritma program yang ditentukan</li>
+                                <li>Web Exploitation, yaitu melakukan eksploitasi celah keamanan dari suatu aplikasi web</li>
+                            </ul>
                         </p>
                         <h4 class="competition-detail-title">Prize: </h4>
                         <div class="competition-detail-wrapper d-flex">
@@ -359,7 +361,8 @@ export default {
 }
 
 .competitionlist-component .carousel-card .card-image img {
-    width: 100px;
+    height: 80px;
+    opacity: .6;
 }
 
 .competitionlist-component .carousel-card .card {
@@ -393,7 +396,7 @@ export default {
 
 .competitionlist-component .carousel-card .carousel-card-button {
     background: transparent;
-    border: 2px solid rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(0, 0, 0, 1);
     color: rgba(0, 0, 0, 1);
     border-radius: 10px;
     width: 100%;
@@ -431,6 +434,11 @@ export default {
     background: #13cebb;
     border-radius: 10px;
     border: none;
+}
+
+.competitionlist-component #competitions-desc-ctf ul{
+    margin-top: 5px;
+    margin-left: 16px;
 }
 
 .competitions-gradient path {
