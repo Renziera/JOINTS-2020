@@ -38,7 +38,7 @@
                                     required
                                     outlined
                                     dense
-                                    placeholder="Nama"
+                                    placeholder="Nama...."
                                 ></v-text-field>
 
                                 <div class="subtitle">Email</div>
@@ -52,12 +52,14 @@
                                             'This field is required'
                                     ]"
                                     required
+                                    readonly
                                     outlined
                                     dense
-                                    placeholder="Nama"
+                                    placeholder="Email"
+                                    append-outer-icon=" mdi-checkbox-marked-circle "
                                 ></v-text-field>
 
-                                <div class="subtitle">Nomor HP:</div>
+                                <div class="subtitle">No. Handphone:</div>
                                 <div>
                                     <v-text-field
                                         class="mt-1 "
@@ -72,11 +74,11 @@
                                         required
                                         outlined
                                         dense
-                                        placeholder="Nama"
+                                        placeholder="No. Handphone....."
                                     ></v-text-field>
                                 </div>
 
-                                <div class="subtitle">Universitas/Sekolah:</div>
+                                <div class="subtitle">Instansi</div>
                                 <v-text-field
                                     class="mt-1"
                                     ref="instansi"
@@ -86,9 +88,11 @@
                                         v => !!v || 'This field is required'
                                     ]"
                                     required
+                                    
                                     outlined
                                     dense
-                                    placeholder="Universitas/ Sekolah ....."
+                                    placeholder="Instansi"
+                                     
                                 ></v-text-field>
 
                                 <div
@@ -153,10 +157,7 @@
                         >
                             <div class=" d-flex my-2">
                                 <div class="body-2 text-justify">
-                                    Dengan mengklik tombol ini, Anda mengakui
-                                    bahwa Anda telah membaca dan menyetujui
-                                    Syarat & Ketentuan dan Kebijakan Privasi
-                                    Joints
+                                    Dengan mengklik tombol di bawah ini, Anda setuju bahwa semua data yang Anda masukkan sudah benar dan bersedia untuk melanjutkan proses pendaftaran.
                                 </div>
                             </div>
 
@@ -409,6 +410,12 @@ export default {
     },
 
     methods: {
+        emailUser(){
+          this.profils.nama = this.$store.getters.profils.nama
+          this.profils.email = this.$store.state.user.data.email;
+          this.profils.nomor =  this.$store.getters.profils.nomor
+          this.profils.instansi = this.$store.getters.profils.instansi
+          },
         async getStatusData() {
             let token = await firebase.auth().currentUser.getIdToken(true);
             const config = {
@@ -512,6 +519,8 @@ export default {
                 nomor: this.profils.nomor,
                 instansi: this.profils.instansi
             };
+            this.$store.commit('SET_PROFIL', this.profils)
+            
             const BASE_URL = 'https://api.joints.id';
             Axios.post(BASE_URL + '/biodata', bodyParameters, config)
                 .then(response => {
@@ -559,7 +568,7 @@ export default {
                 .then(response => {
                     this.profils = {
                         nama: response.data.biodata.nama,
-                        email: response.data.biodata.email,
+                        email: this.$store.state.user.data.email,
                         nomor: response.data.biodata.nomor,
                         instansi: response.data.biodata.instansi
                     };
@@ -570,10 +579,13 @@ export default {
         }
     },
     mounted() {
+        this.$store.dispatch('getProfilData');
+        this.emailUser()
         this.getProfilData();
         this.getPriceData();
 
         this.intervalGetData();
+
     }
 };
 </script>

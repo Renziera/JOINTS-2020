@@ -66,7 +66,7 @@
                                             target="_blank"
                                         >
                                             <font-awesome-icon
-                                                :icon="['fab', 'facebook']"
+                                                :icon="['fab', 'facebook']" size="2x"
                                             />
                                         </a>
                                     </div>
@@ -78,7 +78,7 @@
                                             target="_blank"
                                         >
                                             <font-awesome-icon
-                                                :icon="['fab', 'instagram']"
+                                                :icon="['fab', 'instagram']" size="2x"
                                             />
                                         </a>
                                     </div>
@@ -90,7 +90,7 @@
                                             target="_blank"
                                         >
                                             <font-awesome-icon
-                                                :icon="['fab', 'linkedin']"
+                                                :icon="['fab', 'linkedin']" size="2x"
                                             />
                                         </a>
                                     </div>
@@ -102,7 +102,7 @@
                                             target="_blank"
                                         >
                                             <font-awesome-icon
-                                                :icon="['fab', 'line']"
+                                                :icon="['fab', 'line']" size="2x"
                                             />
                                         </a>
                                     </div>

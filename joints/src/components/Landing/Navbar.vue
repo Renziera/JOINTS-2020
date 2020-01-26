@@ -37,6 +37,9 @@
                         <b-dropdown-item to="/dashboard"
                             >Dashboard</b-dropdown-item
                         >
+                        <b-dropdown-item to="/panitia" v-if="$store.getters.user.isPanitia"
+                            >Panitia</b-dropdown-item
+                        >
                         <b-dropdown-item @click="logout()"
                             >Log Out</b-dropdown-item
                         >

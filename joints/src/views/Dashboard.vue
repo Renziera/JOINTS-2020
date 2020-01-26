@@ -81,6 +81,7 @@ export default {
     },
     async created() {
         let uid = this.$store.getters.user.data.uid;
+        // console.log(this.$store.getters.user.data)
     },
     methods: {
         async logout() {

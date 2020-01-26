@@ -435,11 +435,13 @@ app.post('/admin/approve_pembayaran', async (req, res) => {
     let { id_pembayaran } = req.body;
     let qs = await db.collectionGroup('pendaftaran').where('id_pembayaran', '==', id_pembayaran).get();
     if (qs.empty) return res.send({ status: 'fail' });
-    await qs.docs[0].ref.update({
+    let doc = qs.docs[0];
+    await doc.ref.update({
         status: 'lunas',
         dilunasi_admin: true,
         waktu_lunas: admin.firestore.FieldValue.serverTimestamp(),
     });
+    await kirimEmail(doc.get('event') || doc.get('competition'), (await doc.ref.parent.parent.get()).get('email'));
     return res.send({ status: 'ok' });
 });
 

@@ -12,6 +12,7 @@ import vuetify from '@/plugins/vuetify';
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
@@ -47,6 +48,7 @@ let loaded = false;
 firebase.auth().onAuthStateChanged(async user => {
     await store.dispatch('fetchUser', user);
     await store.dispatch('fetchIsPanitia');
+    await store.dispatch('getProfilData');
 
     if (loaded) return;
 

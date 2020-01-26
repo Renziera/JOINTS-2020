@@ -31,6 +31,9 @@ export default new Vuex.Store({
     getters: {
         user(state) {
             return state.user;
+        },
+        profils(state) {
+            return state.profils.profilData;
         }
     },
     mutations: {
@@ -43,8 +46,8 @@ export default new Vuex.Store({
         SET_PANITIA(state, value) {
             state.user.isPanitia = value;
         },
-        SET_PROFIL(state, value) {
-            state.profils = value;
+        SET_PROFIL(state, data) {
+            state.profils.profilData = data;
         },
         ADD_PROFIL(state, value) {
             let profil = state.profils.concat(value);
@@ -61,6 +64,34 @@ export default new Vuex.Store({
         }
     },
     actions: {
+        async getProfilData({ commit }) {
+            if (!firebase.auth().currentUser) return;
+            let token = await firebase.auth().currentUser.getIdToken(true);
+
+            const config = {
+                headers: { Authorization: 'Bearer ' + token }
+            };
+            const BASE_URL = 'https://api.joints.id';
+            Axios.get(BASE_URL + '/biodata', config)
+                .then(response => {
+                    // console.log(response);
+                    // console.log('data profil dari vuex')
+
+                    commit('SET_PROFIL', {
+                        nama: response.data.biodata.nama,
+                        email: response.data.biodata.email,
+                        nomor: response.data.biodata.nomor,
+                        instansi: response.data.biodata.instansi
+                    })
+
+                    // console.log(this.state.profils.profilData)
+                    // console.log('dari prifldata')
+                })
+
+                .catch(error => {
+                    console.log(error);
+                });
+        },
         async fetchIsPanitia({ commit }) {
             if (!firebase.auth().currentUser) return commit('SET_PANITIA', false);
             let token = await firebase.auth().currentUser.getIdToken(true);

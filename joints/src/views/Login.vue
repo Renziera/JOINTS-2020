@@ -159,6 +159,7 @@ export default {
             let googleLogin = new firebase.auth.GoogleAuthProvider();
             try {
                 await firebase.auth().signInWithPopup(googleLogin);
+                await this.$store.dispatch('fetchIsPanitia');
                 this.$router.push('/dashboard');
             } catch (error) {
                 console.log(error);

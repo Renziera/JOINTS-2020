@@ -133,9 +133,7 @@
                                                     outlined
                                                     dense
                                                     placeholder="Nama"
-                                                    @update:error="
-                                                        updateError()
-                                                    "
+                                                  
                                                 ></v-text-field>
                                             </div>
 
@@ -149,13 +147,18 @@
                                                         'This field is required'
                                                 ]"
                                                 v-model="dialogs.email"
-                                                counter="25"
+                                                readonly
+                                            
                                                 required
                                                 outlined
                                                 dense
+                                                
                                                 placeholder="Email"
-                                                @update:error="updateError()"
-                                            ></v-text-field>
+                                               
+                                              
+                                                append-outer-icon=" mdi-checkbox-marked-circle "
+                                            >
+                                            </v-text-field>
 
                                             <div class="subtitle">
                                                 Nomor Handphone: *
@@ -173,7 +176,7 @@
                                                 outlined
                                                 dense
                                                 placeholder="No. Handphone"
-                                                @update:error="updateError()"
+                                             
                                             ></v-text-field>
 
                                             <div class="subtitle">
@@ -191,8 +194,8 @@
                                                 required
                                                 outlined
                                                 dense
-                                                placeholder="Universitas/Sekolah"
-                                                @update:error="updateError()"
+                                                placeholder="Instansi"
+                                              
                                             ></v-text-field>
                                             <div>
                                                 <small
@@ -218,7 +221,8 @@
                                     <v-btn
                                         text
                                         color="blue darken-1"
-                                        @click="dialog = false"
+                                        v-on:click.native="close"
+                                        @click="dialog = false "
                                         >Close</v-btn
                                     >
                                     <v-btn
@@ -242,28 +246,65 @@ import Axios from 'axios';
 import firebase from 'firebase/app';
 import { mapGetters, mapState } from 'vuex';
 
+
 export default {
     data() {
         return {
             isAlert: false,
-            profilData: { nama: '', email: '', nomor: '', instansi: '' },
+          
             dialog: false,
             profils: {
                 nama: '',
                 email: '',
                 nomor: '',
-                instansi: ''
+                instansi: '',
+                
             },
             dialogs: {
                 nama: '',
                 email: '',
                 nomor: '',
                 instansi: ''
-            }
+            },
+           
         };
     },
-    computed: {},
+    computed: {
+     
+
+    },
     methods: {
+      close(){
+          this.dialogs = this.profils
+      },
+       emailUser(){
+
+        if(this.$store.getters.profils != null ) {
+        this.profils.nama = this.$store.getters.profils.nama
+        this.profils.email = this.$store.state.user.data.email;
+        this.profils.nomor =  this.$store.getters.profils.nomor
+        this.profils.instansi = this.$store.getters.profils.instansi
+        } else {
+          console.log('nama null');
+        }
+
+        // console.log('test suuu');
+        // console.log(this.$store.getters.profils.nama);
+        // console.log(this.profils);
+       
+        
+ 
+
+        // console.log(this.profils);
+
+        this.dialogs.nama = this.$store.getters.profils.nama
+        this.dialogs.email = this.$store.state.user.data.email;
+        this.dialogs.nomor =  this.$store.getters.profils.nomor
+        this.dialogs.instansi = this.$store.getters.profils.instansi
+
+
+        // console.log(this.profils.email);
+      },
         warningBeforeSend() {
             if (this.formIsFullfiled() == true) {
                 this.submitProfils();
@@ -319,6 +360,15 @@ export default {
                 nomor: this.dialogs.nomor,
                 instansi: this.dialogs.instansi
             };
+
+            this.$store.commit('SET_PROFIL', this.dialogs)
+            this.profils = {
+                        nama: this.dialogs.nama,
+                        email: this.dialogs.email,
+                        nomor: this.dialogs.nomor,
+                        instansi: this.dialogs.instansi
+                    };
+ 
             const BASE_URL = 'https://api.joints.id';
             Axios.post(BASE_URL + '/biodata', bodyParameters, config)
                 .then(response => {
@@ -348,13 +398,15 @@ export default {
 
                     this.profils = {
                         nama: response.data.biodata.nama,
-                        email: response.data.biodata.email,
+                        // email: response.data.biodata.email,
+                        email: this.$store.state.user.data.email,
                         nomor: response.data.biodata.nomor,
                         instansi: response.data.biodata.instansi
                     };
                     this.dialogs = {
                         nama: response.data.biodata.nama,
-                        email: response.data.biodata.email,
+                        // email: response.data.biodata.email,
+                        email: this.$store.state.user.data.email,
                         nomor: response.data.biodata.nomor,
                         instansi: response.data.biodata.instansi
                     };
@@ -366,6 +418,10 @@ export default {
     },
     created() {
         this.getProfilData();
+        // this.$store.dispatch('getProfilData');
+        this.emailUser()
+         
+        
     }
 };
 </script>

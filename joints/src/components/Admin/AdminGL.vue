@@ -3,7 +3,9 @@
         <v-app class="white">
             <v-container>
                 <v-row>
-                    <v-col> <h1>grand launching</h1> </v-col>
+                    <v-col>
+                        <h1>grand launching</h1>
+                    </v-col>
                 </v-row>
 
                 <v-row>
@@ -11,42 +13,30 @@
                         <v-data-table
                             :headers="headers"
                             :items="desserts"
-                            sort-by="nama"
+                            sort-by="status"
                             class="elevation-1"
                         >
                             <template v-slot:top>
                                 <v-toolbar flat color="white">
-                                    <v-toolbar-title
-                                        >Grand Loncing</v-toolbar-title
-                                    >
-                                    <v-divider
-                                        class="mx-4"
-                                        inset
-                                        vertical
-                                    ></v-divider>
+                                    <v-toolbar-title>Grand Loncing</v-toolbar-title>
+                                    <v-divider class="mx-4" inset vertical></v-divider>
                                     <v-spacer></v-spacer>
 
-                                    <v-dialog
-                                        v-model="dialog"
-                                        max-width="500px"
-                                    >
-                                        <template v-slot:activator="{ on }">
-                                        </template>
+                                    <v-dialog v-model="dialog" max-width="500px">
+                                        <template v-slot:activator="{ on }"></template>
 
                                         <v-card>
                                             <v-card-title>
-                                                <span class="headline">{{
+                                                <span class="headline">
+                                                    {{
                                                     formTitle
-                                                }}</span>
+                                                    }}
+                                                </span>
                                             </v-card-title>
                                             <v-card-text>
                                                 <v-container>
-                                                    <v-row class="d-flex ">
-                                                        <v-col
-                                                            cols="12"
-                                                            sm="12"
-                                                            md="6"
-                                                        >
+                                                    <v-row class="d-flex">
+                                                        <v-col cols="12" sm="12" md="6">
                                                             <v-text-field
                                                                 readonly
                                                                 v-model="
@@ -55,11 +45,7 @@
                                                                 label="No"
                                                             ></v-text-field>
                                                         </v-col>
-                                                        <v-col
-                                                            cols="12"
-                                                            sm="12"
-                                                            md="6"
-                                                        >
+                                                        <v-col cols="12" sm="12" md="6">
                                                             <v-text-field
                                                                 readonly
                                                                 v-model="
@@ -68,11 +54,7 @@
                                                                 label="Waktu Daftar"
                                                             ></v-text-field>
                                                         </v-col>
-                                                        <v-col
-                                                            cols="12"
-                                                            sm="12"
-                                                            md="6"
-                                                        >
+                                                        <v-col cols="12" sm="12" md="6">
                                                             <v-text-field
                                                                 readonly
                                                                 v-model="
@@ -81,11 +63,7 @@
                                                                 label="Nama"
                                                             ></v-text-field>
                                                         </v-col>
-                                                        <v-col
-                                                            cols="12"
-                                                            sm="12"
-                                                            md="6"
-                                                        >
+                                                        <v-col cols="12" sm="12" md="6">
                                                             <v-text-field
                                                                 readonly
                                                                 v-model="
@@ -94,11 +72,7 @@
                                                                 label="Nomor HP"
                                                             ></v-text-field>
                                                         </v-col>
-                                                        <v-col
-                                                            cols="12"
-                                                            sm="12"
-                                                            md="6"
-                                                        >
+                                                        <v-col cols="12" sm="12" md="6">
                                                             <v-text-field
                                                                 readonly
                                                                 v-model="
@@ -107,11 +81,7 @@
                                                                 label="Acara"
                                                             ></v-text-field>
                                                         </v-col>
-                                                        <v-col
-                                                            cols="12"
-                                                            sm="12"
-                                                            md="6"
-                                                        >
+                                                        <v-col cols="12" sm="12" md="6">
                                                             <v-text-field
                                                                 readonly
                                                                 v-model="
@@ -120,11 +90,7 @@
                                                                 label="Nominal"
                                                             ></v-text-field>
                                                         </v-col>
-                                                        <v-col
-                                                            cols="12"
-                                                            sm="12"
-                                                            md="6"
-                                                        >
+                                                        <v-col cols="12" sm="12" md="6">
                                                             <v-text-field
                                                                 readonly
                                                                 v-model="
@@ -152,14 +118,8 @@
                                                     color="blue darken-1"
                                                     text
                                                     @click="save()"
-                                                    >Confirm</v-btn
-                                                >
-                                                <v-btn
-                                                    color="blue darken-1"
-                                                    text
-                                                    @click="close"
-                                                    >NO</v-btn
-                                                >
+                                                >Confirm</v-btn>
+                                                <v-btn color="blue darken-1" text @click="close">NO</v-btn>
                                             </v-card-actions>
                                         </v-card>
                                     </v-dialog>
@@ -176,24 +136,29 @@
                                     dense
                                     text
                                     type="success"
-                                >
-                                    Confirmed
-                                </v-alert>
+                                >Confirmed</v-alert>
 
-                                <v-btn
-                                    v-else
-                                    class="mr-2"
-                                    small
-                                    @click="editItem(item)"
+                                <v-btn 
+                                v-else class="mr-2" 
+                                small 
+                                @click="editItem(item)"
+                                v-bind:disabled="item.isJanganKonfirmasi"
                                 >
-                                    Konfirmasi
+
+                                <div v-if="item.isJanganKonfirmasi">
+                                   Lom Bayar
+                                </div>
+                                
+                                
+                                <div v-else>
+                                   Konfirmasi
+                                </div>
+                                
                                 </v-btn>
                             </template>
 
                             <template v-slot:no-data>
-                                <v-btn color="primary" @click="initialize"
-                                    >Reset</v-btn
-                                >
+                                <v-btn color="primary" @click="initialize">Reset</v-btn>
                             </template>
                         </v-data-table>
                     </v-col>
@@ -209,6 +174,7 @@ import firebase from 'firebase/app';
 
 export default {
     data: () => ({
+        
         listKonfirmasi: [],
         dialog: false,
         headers: [
@@ -218,11 +184,12 @@ export default {
                 sortable: false,
                 value: 'nomor'
             },
+            // { text: 'Waktu Daftar', value: 'waktu_daftar' },
             { text: 'Nama', value: 'nama' },
-            { text: 'Waktu Daftar', value: 'waktu_daftar' },
-            { text: 'Nomor HP', value: 'nomorhp' },
-            { text: 'Acara', value: 'acara' },
-            { text: 'Nominal', value: 'nominal' },
+            { text: 'Email', value: 'email' },
+            { text: 'Nomor HP', value: 'nomorhp', sortable: false, },
+            { text: 'Acara', value: 'acara', sortable: false, },
+            { text: 'Nominal', value: 'nominal', sortable: false,},
             { text: 'Status', value: 'status' },
             { text: 'Aksi', value: 'action', sortable: false }
         ],
@@ -232,22 +199,26 @@ export default {
         editedItem: {
             nomor: 0,
             waktu_daftar: '',
+            email: '',
             nama: '',
             nomorhp: '',
             acara: '',
             nominal: '',
             status: '',
-            konfirmasiAdmin: false
+            konfirmasiAdmin: false,
+            isJanganKonfirmasi: null
         },
         defaultItem: {
             nomor: 0,
             waktu_daftar: '',
             nama: '',
+            email: '',
             nomorhp: '',
             acara: '',
             nominal: '',
             status: '',
-            konfirmasiAdmin: false
+            konfirmasiAdmin: false,
+            isJanganKonfirmasi: null
         }
     }),
 
@@ -265,10 +236,72 @@ export default {
 
     created() {
         this.initialize();
-        this.getGLData();
+        // this.getGLData();
+        this.getGLDataAll()
     },
 
     methods: {
+
+        async getGLDataAll() {
+            let token = await firebase.auth().currentUser.getIdToken(true);
+            let isKonfirmasi = null
+            let waktuDaftar = null
+            let statusBayar = null
+            let konfirmasiAdmin = null
+
+            const config = {
+                headers: { Authorization: 'Bearer ' + token }
+            };
+
+            const BASE_URL = 'https://api.joints.id';
+           
+            Axios.get(BASE_URL + '/admin/pembayaran', config)
+                .then(response => {
+           
+
+                    response.data.results.forEach((value, index) => {
+
+                          if(value.event == 'grand_launching') {
+                            // console.log(value);
+                          
+                          if(value.status == 'lunas' || value.dilunasi_admin == true ){
+                              konfirmasiAdmin = true
+                               isKonfirmasi = false  
+                          } else if ( value.status == 'menunggu_pembayaran'){
+                              konfirmasiAdmin = false
+                              isKonfirmasi = false  
+                          }
+
+                          // if (value.waktu_daftar._seconds == undefined ){
+                          //    console.log('ga ada cuk');
+                             
+                          // } else {
+                          //      waktuDaftar =   new Date(
+                          //         value.waktu_daftar._seconds * 1000
+                          //     ).toLocaleDateString()
+                          // }
+
+                          let editedItem = {
+                              nomor: value.id_pembayaran,
+                              // waktu_daftar: waktuDaftar,
+                              nama: value.nama,
+                              email: value.email,
+                              nomorhp: value.nomor,
+                              acara: value.event,
+                              nominal: value.harga,
+                              status: value.status,
+                              konfirmasiAdmin: konfirmasiAdmin,
+                              isJanganKonfirmasi : isKonfirmasi
+                          };
+                          this.desserts.push(editedItem);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+
         async confirmPeserta(value) {
             let token = await firebase.auth().currentUser.getIdToken(true);
             let id_pembayaran = null;
@@ -296,6 +329,9 @@ export default {
 
         async getGLData() {
             let token = await firebase.auth().currentUser.getIdToken(true);
+            let isKonfirmasi = null
+            let waktuDaftar = null
+            let statusBayar = null
             const config = {
                 headers: { Authorization: 'Bearer ' + token }
             };
@@ -304,24 +340,44 @@ export default {
             Axios.get(BASE_URL + '/admin/grand_launching', config)
                 .then(response => {
                     // console.log('berhasil');
-                    console.log(response);
+                    // console.log(response);
 
                     response.data.results.forEach((value, index) => {
-                        console.log(value);
-                        this.editedIndex = this.desserts.indexOf(value);
-                        let editedItem = {
-                            nomor: value.id_pembayaran,
-                            waktu_daftar: new Date(
-                                value.waktu_daftar._seconds * 1000
-                            ).toLocaleDateString(),
-                            nama: value.nama,
-                            nomorhp: value.nomor,
-                            acara: value.event,
-                            nominal: value.harga,
-                            status: value.status,
-                            konfirmasiAdmin: value.dilunasi_admin
-                        };
-                        this.desserts.push(editedItem);
+                        
+                         if(value.event == 'grand_launching') {
+                            console.log(value);
+                          
+                          if(value.status == 'menunggu_pembayaran'){
+                             isKonfirmasi = true
+                             statusBayar = 'Tunggu Bayar'
+
+                          } else {
+                             isKonfirmasi = false 
+                          }
+
+                          // if (value.waktu_daftar._seconds == undefined ){
+                          //    console.log('ga ada cuk');
+                             
+                          // } else {
+                          //      waktuDaftar =   new Date(
+                          //         value.waktu_daftar._seconds * 1000
+                          //     ).toLocaleDateString()
+                          // }
+
+                          let editedItem = {
+                              nomor: value.id_pembayaran,
+                              // waktu_daftar: waktuDaftar,
+                              nama: value.nama,
+                              email: value.email,
+                              nomorhp: value.nomor,
+                              acara: value.event,
+                              nominal: value.harga,
+                              status: statusBayar,
+                              konfirmasiAdmin: value.dilunasi_admin,
+                              isJanganKonfirmasi : isKonfirmasi
+                          };
+                          this.desserts.push(editedItem);
+                        }
                     });
                 })
                 .catch(error => {
@@ -332,27 +388,34 @@ export default {
             this.desserts = [
                 {
                     nomor: 'Dummy number',
-                    nama: ' Dummy Nurrizky ',
+                    nama: ' Dummy Nurrizky Imani',
                     nomorhp: '08323627323',
+                    waktu_daftar: '12/12/12',
                     acara: ' Dummy Grandlaunching',
+                    email: 'dog@mail.com',
+
                     nominal: 42909,
                     status: 'Lunas',
-                    konfirmasiAdmin: true
+                    konfirmasiAdmin: true,
+                    isJanganKonfirmasi: false
                 },
                 {
                     nomor: 'Dummy number',
-                    nama: ' Dummy Nurrizky Imani',
+                    nama: ' Dummy For Testing konfirmasi',
+                    email: 'dog@mail.com',
                     nomorhp: '08323627323',
+                    waktu_daftar: '12/12/12',
                     acara: ' Dummy Grandlaunching',
                     nominal: 42500,
                     status: 'Lunas',
-                    konfirmasiAdmin: true
+                    konfirmasiAdmin: true,
+                    isJanganKonfirmasi: true
                 }
             ];
         },
 
         editItem(item) {
-            console.log(item.nomor);
+            // console.log(item.nomor);
             this.listKonfirmasi[item.nominal] = null;
             this.idPembayaranItem = item.nomor;
             this.editedIndex = this.desserts.indexOf(item);
