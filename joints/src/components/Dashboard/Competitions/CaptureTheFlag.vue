@@ -12,25 +12,17 @@
                         </div>
                     </v-col>
 
-                    <v-col cols="12" class="pb-0 mb-0 profil-team-title">
-                        <h4 style="text-align: left" class="mb-0 pb-0">
-                            Profil Anda:
-                        </h4>
-                        <div class="subtitle mt-1 ml-0 subtitle-daftar">
-                            Lengkapi profil anda dibawah ini
-                        </div>
-                    </v-col>
-
                     <v-col
                         md="8"
                         lg="8"
                         xs="12"
                         sm="12"
+                        cols="12"
                         class="col-xs-12 align-self-start"
                     >
                         <v-card
                             outlined
-                            class="mx-auto pt-0 regis-card elevation-2 outlined-blue-card"
+                            class="mx-auto pt-0 regis-card elevation-4 outlined-blue-card"
                         >
                             <div class=" ma-4 d-flex flex-column">
                                 <div class="subtitle">Nama:</div>
@@ -46,7 +38,7 @@
                                     required
                                     outlined
                                     dense
-                                    placeholder="Nama"
+                                    placeholder="Nama...."
                                 ></v-text-field>
 
                                 <div class="subtitle">Email</div>
@@ -60,15 +52,17 @@
                                             'This field is required'
                                     ]"
                                     required
+                                    readonly
                                     outlined
                                     dense
-                                    placeholder="Nama"
+                                    placeholder="Email"
+                                    append-outer-icon=" mdi-checkbox-marked-circle "
                                 ></v-text-field>
 
-                                <div class="subtitle">Nomor HP:</div>
+                                <div class="subtitle">No. Handphone:</div>
                                 <div>
                                     <v-text-field
-                                        class="mt-1"
+                                        class="mt-1 "
                                         ref="name"
                                         v-model="profils.nomor"
                                         :rules="[
@@ -80,11 +74,11 @@
                                         required
                                         outlined
                                         dense
-                                        placeholder="Nama"
+                                        placeholder="No. Handphone....."
                                     ></v-text-field>
                                 </div>
 
-                                <div class="subtitle">Universitas/Sekolah:</div>
+                                <div class="subtitle">Instansi</div>
                                 <v-text-field
                                     class="mt-1"
                                     ref="instansi"
@@ -94,14 +88,27 @@
                                         v => !!v || 'This field is required'
                                     ]"
                                     required
+                                    
                                     outlined
                                     dense
-                                    placeholder="Universitas/ Sekolah ....."
+                                    placeholder="Instansi"
+                                     
                                 ></v-text-field>
 
                                 <div
                                     class="d-flex justify-content-end daftar-section "
                                 >
+                                    <v-alert
+                                        class="alert-card px-4"
+                                        type="success"
+                                        dense
+                                        v-model="isTersimpan"
+                                        transition="scale-transition"
+                                        dismissible
+                                    >
+                                        Yay Tersimpan
+                                    </v-alert>
+
                                     <v-alert
                                         class="alert-card px-4"
                                         type="error"
@@ -112,93 +119,36 @@
                                     >
                                         Form Harus Dilengkapi
                                     </v-alert>
-                                    <v-spacer></v-spacer>
 
-                                    <v-btn
-                                        color="white elevation-2"
-                                        rounded
-                                        class=" daftar-button "
-                                        max-width="100"
-                                        v-bind:disabled="false"
-                                        v-on:click.native="warningBeforeSend"
-                                        >Save
-                                    </v-btn>
-                                </div>
-                            </div>
-                        </v-card>
-
-                        <v-card
-                            outlined
-                            class="mx-auto pt-2 regis-card elevation-2 outlined-blue-card col-12 mt-4"
-                            height="50%"
-                        >
-                            <div class=" ma-4 d-flex flex-column">
-                                <div class="subtitle">Linkedin:</div>
-                                <v-text-field
-                                    class="mt-1 pb-0 "
-                                    v-model="daftarCamps.linked_in"
-                                    :rules="[
-                                        () =>
-                                            !!daftarCamps.linked_in ||
-                                            'This field is required'
-                                    ]"
-                                    required
-                                    outlined
-                                    dense
-                                    placeholder="Linkedin"
-                                ></v-text-field>
-
-                                <div class="subtitle">Upload resume/CV:</div>
-                                <v-file-input
-                                    v-if="!daftarCamps.linked_in"
-                                    v-model="daftarCamps.resume"
-                                    counter
-                                    dense
-                                    placeholder="Select your files"
-                                    prepend-icon="mdi-paperclip"
-                                    outlined
-                                    accept=".pdf"
-                                    :rules="[v => !!v || 'File is required']"
-                                    :show-size="1000"
-                                ></v-file-input>
-
-                                 <v-alert
-                                    v-if="daftarCamps.linked_in"
-                                    class=" px-2 "
-                                    dense
-                                    text
-                                    type="success"
-                                >Uploaded</v-alert>
-
-                                <div
-                                    class="d-flex justify-content-end daftar-section "
-                                >
-                                    <v-alert
-                                        class="alert-card px-4"
-                                        type="error"
-                                        dense
-                                        v-model="daftarCamps.isAlert"
-                                        transition="scale-transition"
-                                        dismissible
+                                    <div
+                                        class="d-flex justify-content-end daftar-section "
                                     >
-                                        Form Harus Dilengkapi
-                                    </v-alert>
-                                    <v-spacer></v-spacer>
+                                        <v-spacer></v-spacer>
 
-                                   
+                                        <v-btn
+                                            color="white elevation-2"
+                                            rounded
+                                            class=" daftar-button "
+                                            max-width="100"
+                                            v-bind:disabled="false"
+                                            v-on:click.native="
+                                                warningBeforeSend
+                                            "
+                                            >Save
+                                        </v-btn>
+                                    </div>
                                 </div>
-                     
-                                {{ this.daftarCamps.linked_in }}
                             </div>
                         </v-card>
                     </v-col>
+
                     <v-col
                         class="col-sm-12 col-lg-4 col-xs-12 col-md-4"
                         xs="12"
                         sm="12"
                         md="4"
                         lg="4"
-                        col="12"
+                        cols="12"
                     >
                         <v-card
                             outlined
@@ -207,10 +157,7 @@
                         >
                             <div class=" d-flex my-2">
                                 <div class="body-2 text-justify">
-                                    Dengan mengklik tombol ini, Anda mengakui
-                                    bahwa Anda telah membaca dan menyetujui
-                                    Syarat & Ketentuan dan Kebijakan Privasi
-                                    Joints
+                                    Dengan mengklik tombol di bawah ini, Anda setuju bahwa semua data yang Anda masukkan sudah benar dan bersedia untuk melanjutkan proses pendaftaran.
                                 </div>
                             </div>
 
@@ -221,11 +168,9 @@
                                     class="mt-0 daftar-payment btn-block text-white"
                                     v-bind:disabled="this.isDisabled"
                                     v-on:click.native="
-                                        submitProfils &&
-                                            (dialog = true) &&
-                                            (this.overlay = !this.overlay)
+                                        submitProfils && (dialog = true)
                                     "
-                                    >Daftar</v-btn
+                                    >BAYAR</v-btn
                                 >
                             </div>
 
@@ -261,26 +206,145 @@
                                     v-model="dialog"
                                     persistent
                                     max-width="600px"
+                                    class="payment-dialog"
                                 >
-                                    <v-card>
-                                       
-                                        <div class="pa-6 title font-weight-regular">
-                                           Apakah kamu ingin mendaftar ke Acara Ini? 
-                                        </div>
-
-                                        <v-card-actions>
-                                            <v-spacer></v-spacer>
-                                            <v-btn
-                                                text
-                                                color="blue darken-1"
-                                                @click="dialog = false"
-                                                >YA</v-btn
+                                    <v-card class="rounded-4 payment-dialog">
+                                        <v-card-title
+                                            class="card-title mb-0 pb-0"
+                                        >
+                                            <span
+                                                class="headline dialog-title mt-5 pb-1 font-weight-medium "
+                                                >Pembayaran</span
                                             >
+                                        </v-card-title>
+
+                                        <v-card-text>
+                                            <div
+                                                class="title text-left font-weight-regular title-biru-muda "
+                                            >
+                                                Yuk Lakukan Tranfer via OVO ke :
+                                            </div>
+                                            <div class="title subtitle-purple">
+                                                082112663311 an. Putri Rizki
+                                            </div>
+
+                                            <div>
+                                                <v-avatar
+                                                    class="compe-avatar"
+                                                    size="220"
+                                                    tile
+                                                >
+                                                    <v-img
+                                                        :src="
+                                                            require('@/assets/qrCodePNG.png')
+                                                        "
+                                                    >
+                                                    </v-img>
+                                                </v-avatar>
+
+                                                <div class=" pa-0 mb-0">
+                                                    <div
+                                                        class="d-flex flex-column "
+                                                    >
+                                                        <div
+                                                            class="title text-left font-weight-regular title-biru-muda"
+                                                        >
+                                                            Harap Lakukan
+                                                            Pembayaran dalam
+                                                        </div>
+                                                        <div
+                                                            class=" headline subtitle-purple"
+                                                        >
+                                                            3 x 24 Jam
+                                                        </div>
+
+                                                        <div
+                                                            class="title text-left font-weight-regular title-biru-muda"
+                                                        >
+                                                            Sebesar:
+                                                        </div>
+                                                        <div
+                                                            class="display-1 ml-3 subtitle-purple pb-0 mb-0"
+                                                        >
+                                                            Rp
+                                                            {{
+                                                                this.payment
+                                                                    .harga
+                                                            }}.00
+                                                        </div>
+
+                                                        <div
+                                                            class="col-12 mx-0 my-0 pb-0 "
+                                                        ></div>
+                                                        <v-container
+                                                            class=" d-flex flex-column justify-content-between py-0"
+                                                        >
+                                                            <v-row
+                                                                class="py-0 my-0"
+                                                            >
+                                                                <v-col
+                                                                    class="col-md-10 col-xs-12 my-0 py-0  px-0"
+                                                                >
+                                                                    <v-alert
+                                                                        v-if="
+                                                                            payment.isLunas
+                                                                        "
+                                                                        dense
+                                                                        type="success"
+                                                                        class="my-2 alert-card px-4  "
+                                                                    >
+                                                                        Lunas
+                                                                    </v-alert>
+
+                                                                    <v-alert
+                                                                        dense
+                                                                        type="info"
+                                                                        v-else
+                                                                        class="my-2 alert-card px-4 alert-biru elevation-1"
+                                                                    >
+                                                                        Menunggu
+                                                                        Pembayaran
+                                                                    </v-alert>
+                                                                </v-col>
+                                                                <v-col
+                                                                    class="col-md-2  col-xs-12 my-0 py-0"
+                                                                >
+                                                                    <div
+                                                                        class="text-center ma-2"
+                                                                    >
+                                                                        <v-progress-circular
+                                                                            v-if="
+                                                                                !payment.isLunas
+                                                                            "
+                                                                            :indeterminate="
+                                                                                true
+                                                                            "
+                                                                            :size="
+                                                                                30
+                                                                            "
+                                                                            :width="
+                                                                                5
+                                                                            "
+                                                                            color="light-blue my-2"
+                                                                        ></v-progress-circular>
+                                                                    </div>
+                                                                </v-col>
+                                                            </v-row>
+                                                        </v-container>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </v-card-text>
+                                        <v-card-actions class="pb-2">
+                                            <v-spacer></v-spacer>
+
                                             <v-btn
+                                                color="white"
                                                 text
-                                                color="blue darken-1"
+                                                rounded
+                                                class="biru-button elevation-1"
                                                 @click="dialog = false"
-                                                >Tidak</v-btn
+                                                >Tutup</v-btn
                                             >
                                         </v-card-actions>
                                     </v-card>
@@ -297,15 +361,15 @@
 <script>
 import Axios from 'axios';
 import firebase from 'firebase/app';
-import { mapGetters, mapState, mapActions } from 'vuex';
 
 export default {
     data: () => ({
+        isTersimpan: false,
         isAlert: false,
         isDisabled: true,
         dialog: false,
         absolute: true,
-        overlay: true,
+        overlay: false,
         opacity: 1,
 
         item: {
@@ -326,160 +390,103 @@ export default {
             nomor: null,
             instansi: null
         },
-        daftarCamps: {
-            linked_in: null,
-            resume: null,
-            status: '',
-            isAlert: false,
-            linkFiles: null
-        },
         payment: {
             harga: null,
             statusBayar: null,
-            event: null
+            event: null,
+            isLunas: false
         }
     }),
 
-    computed:{ 
-              // ...mapState(['profils']),
-              ...mapGetters(['profilsData'])}
-
-                ,
-     created() {
-      this.$store.dispatch('getProfilDataVuex'),
-      this.$store.watch(
-        (state, getters ) => getters.profilsData,
-        (newValue, oldValue) => {
-          console.log(`Updating from ${oldValue} to ${newValue}`);
-          this.getDataDiluarEmail()
+    computed: {
+        form() {
+            return {
+                nama: this.profils.nama,
+                email: this.profils.email,
+                nomor: this.profils.nomor,
+                instansi: this.profils.instansi
+            };
         }
-      ),
-      this.$store.dispatch('getEventDataVuex'),
-      this.$store.watch(
-        (state, getters ) => getters.events,
-        (newValue, oldValue) => {
-          console.log(`Updating from ${oldValue} to ${newValue}`);
-          this.getEventData()
-        },
-        
-      )
-    }, 
-      mounted() {
+    },
+        mounted() {
+
+        this.$store.dispatch('getProfilDataVuex')
+        this.getEmailVuex()
         this.getDataDiluarEmail()
-        this.getEmailVuex();
-      },
+ 
+    
+        // this.getProfilData();
+        this.getPriceData();
+        this.intervalGetData();
+
+
+    },
 
     methods: {
-       getEventData(){
-        if(this.$store.getters.events.joints_camp == null ||
-          this.$store.getters.events.joints_camp == undefined ){
-            console.log(' events harus di isi');
-          } else {
-            console.log(' C1 events ngefetch dulu; ');
-            // console.log(this.$store.getters.events);
-            this.daftarCamps.linked_in = this.$store.getters.events.joints_camp.linked_in
-            this.daftarCamps.resume = this.$store.getters.events.joints_camp.resume
-            this.daftarCamps.status = this.$store.getters.events.joints_camp.status
-            
-            console.log('clg this.daftarCamps');
-            console.log(this.daftarCamps);
-
-          }
-      },
-        getDataDiluarEmail(){
-        if(this.$store.getters.profilsData == null ||
-          this.$store.getters.profilsData == undefined ||
-          this.$store.getters.profilsData.nama == null  &&
-          this.$store.getters.profilsData.nomor == null &&
-          this.$store.getters.profilsData.instansi == null){
-            console.log(' biodata harus di isi');
-            //  this.getProfilData()
-          } else {
-            console.log(' data di profils ngefetch dulu; ');
-            this.profils.nama = this.$store.getters.profilsData.nama
-            this.profils.nomor =  this.$store.getters.profilsData.nomor
-            this.profils.instansi = this.$store.getters.profilsData.instansi
-
-          }
-      },
-      getEmailVuex(){
+        getEmailVuex(){
         this.profils.email = this.$store.state.user.data.email;
-
-      },
-      close(){
-          this.dialogs = this.profils
-      },
-        // async fetchEventsData() {
-        //     let token = await firebase.auth().currentUser.getIdToken(true);
-        //     const config = {
-        //         headers: { Authorization: 'Bearer ' + token }
-        //     };
-
-        //     const eventsBaru = {};
-
-        //     const BASE_URL = 'https://api.joints.id';
-        //     Axios.get(BASE_URL + '/event', config)
-        //         .then(response => {
-        //             response.data.events.forEach((value, index) => {
-        //                 eventsBaru[value.event] = value;
-        //             });
-        //             this.daftarcamp.linked_in =
-        //                 eventsBaru.joints_camp.linked_in;
-        //                 this.daftarcamp.linkFiles = eventsBaru.joints_camp.resume;
-        //             // console.log('ini adalah event ')
-        //             // console.log(this.daftarCamps)
-        //         })
-        //         .catch(error => {
-        //             console.log(error);
-        //         });
-        // },
-
-        fetchFilesAndLinkedin() {
-            this.daftarCamps.linked_in = this.$store.state.events;
+    
         },
-        async submitAndValidate() {
-            if (this.daftarCamps.resume && this.daftarCamps.linked_in) {
-                // console.log('file bisa dikirim');
-                // console.log(this.daftarCamps.files);
-                this.submitFilesAndLinkedin();
-            } else {
-                // console.log('tidak bisa dikirm');
-                this.daftarCamps.isAlert = true;
-                return false;
-            }
+        
+        getDataDiluarEmail(){
+
+        if(this.$store.getters.profils == null ||
+          this.$store.getters.profils.nama == null  &&
+          this.$store.getters.profils.nomor == null &&
+          this.$store.getters.profils.instansi == null ){
+            console.log(' biodata harus di isi');
+          } else {
+            this.profils.nama = this.$store.getters.profils.nama
+            this.profils.nomor =  this.$store.getters.profils.nomor
+            this.profils.instansi = this.$store.getters.profils.instansi
+        
+
+            
+            // console.log(' bio done');
+
+
+          }
         },
-
-        async submitFilesAndLinkedin() {
-            let formData = new FormData();
-            formData.append('resume', this.daftarCamps.resume);
-            formData.append('linked_in', this.daftarCamps.linked_in);
-
+        
+        async getStatusData() {
             let token = await firebase.auth().currentUser.getIdToken(true);
             const config = {
                 headers: { Authorization: 'Bearer ' + token }
             };
 
-           
             const BASE_URL = 'https://api.joints.id';
-            Axios.post(BASE_URL + '/daftar/joints_camp', formData, config)
+            Axios.get(BASE_URL + '/daftar/grand_launching', config)
                 .then(response => {
-                    console.log(response);
-                    console.log('berhasil');
+                    this.payment.statusBayar = response.data.status;
+                    // console.log(response);
+                    if (this.payment.statusBayar === 'menunggu_pembayaran') {
+                        this.overlay = false;
+                        this.payment.isLunas = false;
+                    } else if (this.payment.statusBayar === 'lunas') {
+                        // console.log('lunas dari === lunas');
+                        this.payment.isLunas = true;
+                        this.overlay = true;
+                    } else {
+                        // console.log('lunas dari else');
+                        this.payment.isLunas = true;
+                        this.overlay = true;
+                    }
+
+                    // console.log('ini status harga');
+                    // console.log('ini clg payment ' + this.payment.statusBayar);
+                    // console.log('ini clg isLunas ' + this.payment.isLunas);
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
-        overlayDanStatusBayar() {
-            if (this.payment.statusBayar == 'lunas') {
-                this.overlay = true;
-                this.isSudahDibayar = true;
-            } else if (this.payment.statusBayar == 'menunggu_pembayaran') {
-                this.overlay = true;
-                this.isSudahDibayar = false;
-                // console.log(this.overlay);
-            }
+
+        intervalGetData() {
+            setInterval(() => {
+                this.getStatusData();
+            }, 4000);
         },
+
         warningBeforePay() {
             // console.log(this.warningBeforeSend());
             if (this.formIsFullfiled() === true) {
@@ -492,9 +499,9 @@ export default {
         warningBeforeSend() {
             if (this.formIsFullfiled() == true) {
                 this.submitProfils();
+                this.isTersimpan = true;
                 return true;
             } else {
-                // console.log(' dari warning before send; harus diisni');
                 this.isAlert = true;
                 return false;
             }
@@ -544,6 +551,8 @@ export default {
                 nomor: this.profils.nomor,
                 instansi: this.profils.instansi
             };
+            this.$store.commit('SET_PROFIL', this.profils)
+            
             const BASE_URL = 'https://api.joints.id';
             Axios.post(BASE_URL + '/biodata', bodyParameters, config)
                 .then(response => {
@@ -572,6 +581,7 @@ export default {
                     this.payment.statusBayar = response.data.status;
                     this.payment.event = response.data.event;
 
+                    // console.log('harga dan status bayar ++ ');
                     // console.log(this.payment.statusBayar)
                     // console.log(response);
                 })
@@ -590,7 +600,7 @@ export default {
                 .then(response => {
                     this.profils = {
                         nama: response.data.biodata.nama,
-                        email: response.data.biodata.email,
+                        email: this.$store.state.user.data.email,
                         nomor: response.data.biodata.nomor,
                         instansi: response.data.biodata.instansi
                     };
@@ -600,11 +610,38 @@ export default {
                 });
         }
     },
-   
+
 };
 </script>
 
 <style>
+.blue-textform {
+    color: #12cebb;
+    border-color: #12cebb;
+}
+
+.biru-button {
+    background-image: linear-gradient(90deg, #92abfc, #3587e5) !important;
+    color: white;
+    border: none !important;
+}
+
+.alert-biru {
+    background-image: linear-gradient(90deg, #3587e5, #92abfc) !important;
+}
+
+.subtitle-purple {
+    color: #a51984 !important;
+}
+
+.title-biru-muda {
+    color: #12ceba !important;
+}
+
+.payment-dialog {
+    border-radius: 15px !important;
+}
+
 .inside-overlay {
     height: 100%;
     width: 100%;
@@ -612,7 +649,7 @@ export default {
 
 .outlined-blue-card {
     border: solid 3px !important;
-    border-color: #3b89e6 !important;
+    border-color: #e475b2 !important;
     border-radius: 22px !important;
 }
 

@@ -307,7 +307,7 @@ export default {
             ],
             timelineGL: [
                 {
-                    date: '25 Januari 2020',
+                    date: '26 Januari 2020',
                     desc: 'Open Registration Grand Launching'
                 },
                 {
@@ -339,8 +339,24 @@ export default {
             ],
             timelineCamp: [
                 {
-                    date: '23 Januari 2020',
+                    date: '31 Januari 2020',
                     desc: 'Open Registrasi Joints Camp'
+                },
+                {
+                    date: '1 Maret 2020',
+                    desc: 'Close Registrasi Joints Camp'
+                },
+                {
+                    date: '1 Maret 2020',
+                    desc: 'Close Registrasi Joints Camp'
+                },
+                {
+                    date: '1 Maret 2020',
+                    desc: 'Close Registrasi Joints Camp'
+                },
+                {
+                    date: '1 Maret 2020',
+                    desc: 'Close Registrasi Joints Camp'
                 },
                 {
                     date: '1 Maret 2020',

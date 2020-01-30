@@ -19,7 +19,7 @@
                     <b-nav-item to="/grandlaunching"
                         >Grand Launching</b-nav-item
                     >
-                    <b-nav-item disabled to="/jointscamp"
+                    <b-nav-item to="/jointscamp"
                         >JointsCamp</b-nav-item
                     >
                     <b-nav-item disabled to="/competitions"

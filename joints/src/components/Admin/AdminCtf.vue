@@ -4,7 +4,7 @@
             <v-container>
                 <v-row>
                     <v-col>
-                        <h1>grand launching</h1>
+                        <h1>Capture The Flag</h1>
                     </v-col>
                 </v-row>
 
@@ -13,12 +13,15 @@
                         <v-data-table
                             :headers="headers"
                             :items="desserts"
-                            sort-by="status"
+                            :single-expand="singleExpand"
+                            :expanded.sync="expanded"
+                            show-expand
+                            item-key="nama"
                             class="elevation-1"
                         >
                             <template v-slot:top>
                                 <v-toolbar flat color="white">
-                                    <v-toolbar-title>Grand Loncing</v-toolbar-title>
+                                    <v-toolbar-title>Ce Te Ep</v-toolbar-title>
                                     <v-divider class="mx-4" inset vertical></v-divider>
                                     <v-spacer></v-spacer>
 
@@ -126,6 +129,10 @@
                                 </v-toolbar>
                             </template>
 
+                            <template v-slot:expanded-item="{ headers }">
+                                <td :colspan="headers.length">Woeoeoee</td>
+                            </template>
+
                             <template v-slot:item.action="{ item }">
                                 <v-alert
                                     v-if="
@@ -168,20 +175,16 @@ import firebase from 'firebase/app';
 
 export default {
     data: () => ({
+        expanded: [],
+        singleExpand: false,
         listKonfirmasi: [],
         dialog: false,
         headers: [
-            {
-                text: 'Nomor',
-                align: 'left',
-                sortable: false,
-                value: 'nomor'
-            },
-            // { text: 'Waktu Daftar', value: 'waktu_daftar' },
+            { text: 'Waktu Daftar', value: 'waktu_daftar' },
             { text: 'Nama', value: 'nama' },
             { text: 'Email', value: 'email' },
             { text: 'Nomor HP', value: 'nomorhp', sortable: false },
-            { text: 'Acara', value: 'acara', sortable: false },
+            { text: 'Kompetisi', value: 'kompetisi', sortable: false },
             { text: 'Nominal', value: 'nominal', sortable: false },
             { text: 'Status', value: 'status' },
             { text: 'Aksi', value: 'action', sortable: false }
@@ -192,10 +195,10 @@ export default {
         editedItem: {
             nomor: 0,
             waktu_daftar: '',
-            email: '',
             nama: '',
+            email: '',
             nomorhp: '',
-            acara: '',
+            kompetisi: '',
             nominal: '',
             status: '',
             konfirmasiAdmin: false,
@@ -230,11 +233,11 @@ export default {
     created() {
         this.initialize();
         // this.getGLData();
-        this.getGLDataAll();
+        this.getCtfDataAll();
     },
 
     methods: {
-        async getGLDataAll() {
+        async getCtfDataAll() {
             let token = await firebase.auth().currentUser.getIdToken(true);
             let isKonfirmasi = null;
             let waktuDaftar = null;
@@ -247,22 +250,22 @@ export default {
 
             const BASE_URL = 'https://api.joints.id';
 
-            Axios.get(BASE_URL + '/admin/pembayaran', config)
+            Axios.get(BASE_URL + '/admin/ctf', config)
                 .then(response => {
                     response.data.results.forEach((value, index) => {
-                        if (value.event == 'grand_launching') {
-                            // console.log(value);
+                        // if (value.event == 'grand_launching') {
+                            console.log(value);
 
-                            if (
-                                value.status == 'lunas' ||
-                                value.dilunasi_admin == true
-                            ) {
-                                konfirmasiAdmin = true;
-                                isKonfirmasi = false;
-                            } else if (value.status == 'menunggu_pembayaran') {
-                                konfirmasiAdmin = false;
-                                isKonfirmasi = false;
-                            }
+                            // if (
+                            //     value.status == 'lunas' ||
+                            //     value.dilunasi_admin == true
+                            // ) {
+                            //     konfirmasiAdmin = true;
+                            //     isKonfirmasi = false;
+                            // } else if (value.status == 'menunggu_pembayaran') {
+                            //     konfirmasiAdmin = false;
+                            //     isKonfirmasi = false;
+                            // }
 
                             // if (value.waktu_daftar._seconds == undefined ){
                             //    console.log('ga ada cuk');
@@ -273,20 +276,20 @@ export default {
                             //     ).toLocaleDateString()
                             // }
 
-                            let editedItem = {
-                                nomor: value.id_pembayaran,
-                                // waktu_daftar: waktuDaftar,
-                                nama: value.nama,
-                                email: value.email,
-                                nomorhp: value.nomor,
-                                acara: value.event,
-                                nominal: value.harga,
-                                status: value.status,
-                                konfirmasiAdmin: konfirmasiAdmin,
-                                isJanganKonfirmasi: isKonfirmasi
-                            };
-                            this.desserts.push(editedItem);
-                        }
+                            // let editedItem = {
+                            //     nomor: value.id_pembayaran,
+                            //     // waktu_daftar: waktuDaftar,
+                            //     nama: value.nama,
+                            //     email: value.email,
+                            //     nomorhp: value.nomor,
+                            //     acara: value.event,
+                            //     nominal: value.harga,
+                            //     status: value.status,
+                            //     konfirmasiAdmin: konfirmasiAdmin,
+                            //     isJanganKonfirmasi: isKonfirmasi
+                            // };
+                            // this.desserts.push(editedItem);
+                        // }
                     });
                 })
                 .catch(error => {
@@ -381,9 +384,8 @@ export default {
                     nama: ' Dummy Nurrizky Imani',
                     nomorhp: '08323627323',
                     waktu_daftar: '12/12/12',
-                    acara: ' Dummy Grandlaunching',
+                    kompetisi: 'ctf',
                     email: 'dog@mail.com',
-
                     nominal: 42909,
                     status: 'Lunas',
                     konfirmasiAdmin: true,
@@ -395,7 +397,7 @@ export default {
                     email: 'dog@mail.com',
                     nomorhp: '08323627323',
                     waktu_daftar: '12/12/12',
-                    acara: ' Dummy Grandlaunching',
+                    kompetisi: 'ctf',
                     nominal: 42500,
                     status: 'Lunas',
                     konfirmasiAdmin: true,

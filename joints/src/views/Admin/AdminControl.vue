@@ -1,17 +1,12 @@
 <template>
     <div>
-        <Navbar
-            accessFrom="dashboardNavbar"
-            colorKind="gradient-dashboard"
-        ></Navbar>
+        <Navbar accessFrom="dashboardNavbar" colorKind="gradient-dashboard"></Navbar>
         <div class="container all-container">
             <div>
                 <div class="dashboard">
                     <h1 class="dashboard">Control</h1>
                     <h2>Welcome, {{ $store.getters.user.data.displayName }}</h2>
-                    <h2>
-                        Apakah panitia ? {{ $store.getters.user.isPanitia }}
-                    </h2>
+                    <h2>Apakah panitia ? {{ $store.getters.user.isPanitia }}</h2>
                 </div>
                 <v-app>
                     <v-tabs color="#94119F" slider-color="yellow" show-arrows>
@@ -21,19 +16,14 @@
                             :key="tab.id"
                             :to="tab.route"
                             exact
-                        >
-                            {{ tab.name }}</v-tab
-                        >
+                        >{{ tab.name }}</v-tab>
                     </v-tabs>
                     <router-view></router-view>
                 </v-app>
             </div>
         </div>
 
-        <Footer
-            accessFrom="dashboardNavbar"
-            footerKind="gradient-dashboard-footer"
-        ></Footer>
+        <Footer accessFrom="dashboardNavbar" footerKind="gradient-dashboard-footer"></Footer>
     </div>
 </template>
 
@@ -70,6 +60,16 @@ export default {
                     id: 3,
                     name: 'Joints Camp',
                     route: `/panitia/jointscampbyadmin`
+                },
+                {
+                    id: 4,
+                    name: 'CTF',
+                    route: `/panitia/ctfbyadmin`
+                },
+                {
+                    id: 5,
+                    name: 'PCS',
+                    route: `/panitia/pcsbyadmin`
                 }
             ]
         };

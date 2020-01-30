@@ -516,7 +516,7 @@ app.get('/admin/pcs', async (req, res) => {
 });
 
 app.get('/admin/ctf', async (req, res) => {
-    let qs = await db.collectionGroup('pendaftaran').where('competition', '==', 'pcs').where('status', '==', 'lunas').get();
+    let qs = await db.collectionGroup('pendaftaran').where('competition', '==', 'ctf').where('status', '==', 'lunas').get();
     let results = [];
 
     async function getUserData(doc) {

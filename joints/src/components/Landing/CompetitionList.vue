@@ -109,10 +109,7 @@
                             Programming Competition Session
                         </h2>
                         <p class="competitions-subtitle">
-                            Terbagi menjadi sesi logika dan pemrograman. Kedua materi ini menguji 
-                            kemampuan nalar dan pemahaman peserta dalam menyelesaikan suatu permasalahan 
-                            dalam waktu yang singkat dengan algoritma yang efisien dan tepat. Bahasa 
-                            pemrograman yang digunakan antara lain C/C++, Pascal, Java, atau Python. 
+                            Kompetisi ini terbagi menjadi sesi logika dan pemrograman. Kedua materi ini menguji kemampuan nalar dan pemahaman peserta dalam menyelesaikan suatu permasalahan dalam waktu yang singkat dengan algoritma yang efisien dan tepat. Bahasa pemrograman yang digunakan antara lain C/C++, Pascal, Java, atau Python. 
                         </p>
                         <h4 class="competition-detail-title">Prize: </h4>
                         <div class="competition-detail-wrapper d-flex">
@@ -120,17 +117,17 @@
                                 <div class="competition-prize-1 text-center">
                                     Juara 1
                                     <br>
-                                    Rp. 1000000
+                                    Rp 3.500.000,00
                                 </div>
                                 <div class="competition-prize-2 text-center">
                                     Juara 2
                                     <br>
-                                    Rp. 1000000
+                                    Rp 2.500.000,00
                                 </div>
                                 <div class="competition-prize-3 text-center">
                                     Juara 3
                                     <br>
-                                    Rp. 1000000
+                                    Rp 1.500.000,00
                                 </div>
                             </div>
                             <div class="competition-detail">    
@@ -149,14 +146,7 @@
                             Capture The Flag
                         </h2>
                         <p class="competitions-subtitle">
-                            Materi yang dilombakan:
-                            <ul>
-                                <li>Binary Exploitation, yaitu melakukan analisis binary dari suatu jaringan</li>
-                                <li>Cryptography, yaitu pemahaman kriptografi klasik maupun modern dari jaringan</li>
-                                <li>Forensic, yaitu menganalisa dan mengekstrak informasi dari file</li>
-                                <li>Reverse Engineering, yaitu membalik algoritma program yang ditentukan</li>
-                                <li>Web Exploitation, yaitu melakukan eksploitasi celah keamanan dari suatu aplikasi web</li>
-                            </ul>
+                            Kompetisi ini mengangkat isu-isu yang berkenaan dengan implementasi aspek analisis dan pemecahan masalah yang biasa dikaji dalam topik sistem keamanan komputer dan jaringan. Kompetisi memiliki mekanisme dimana setiap peserta diminta untuk mengumpulkan flag sebanyak-banyaknya dari masalah-masalah yang diberikan. Kompetisi ini dapat diikuti oleh tim yang terdiri dari 2 - 3 orang yang berasal dari instansi/lembaga pendidikan yang sama.
                         </p>
                         <h4 class="competition-detail-title">Prize: </h4>
                         <div class="competition-detail-wrapper d-flex">
@@ -164,17 +154,22 @@
                                 <div class="competition-prize-1 text-center">
                                     Juara 1
                                     <br>
-                                    Rp. 1000000
+                                    Rp 3.500.000,00
                                 </div>
                                 <div class="competition-prize-2 text-center">
                                     Juara 2
                                     <br>
-                                    Rp. 1000000
+                                    Rp 2.500.000,00
                                 </div>
                                 <div class="competition-prize-3 text-center">
                                     Juara 3
                                     <br>
-                                    Rp. 1000000
+                                    Rp 1.500.000,00
+                                </div>
+                                <div class="competition-prize-4 text-center">
+                                    SMA Terbaik
+                                    <br>
+                                    Rp 1.200.000,00
                                 </div>
                             </div>
                             <div class="competition-detail">    
@@ -193,13 +188,7 @@
                             Data Mining
                         </h2>
                         <p class="competitions-subtitle">
-                            At vero eos et accusamus et iusto odio dignissimos
-                            ducimus qui blanditiis praesentium voluptatum
-                            deleniti atque corrupti quos dolores et quas
-                            molestias excepturi sint occaecati cupiditate non
-                            provident, similique sunt in culpa qui officia
-                            deserunt mollitia animi, id est laborum et dolorum
-                            fuga.
+                            Data mining berfokus pada pengolahan data mentah (raw data) dengan cara menemukan pola menarik atau informasi dengan menggunakan metode tertentu yang kemudian divisualisasikan sehingga dapat digunakan sebagai solusi atau pengetahuan lebih lanjut dari sebuah permasalahan data. Lomba ini mengharapkan peserta dapat melakukan proses olah data (Data Mining) terhadap dataset yang diberikan dengan hasil yang memiliki tingkat akurasi setinggi-tingginya. 
                         </p>
                         <h4 class="competition-detail-title">Prize: </h4>
                         <div class="competition-detail-wrapper d-flex">
@@ -207,17 +196,17 @@
                                 <div class="competition-prize-1 text-center">
                                     Juara 1
                                     <br>
-                                    Rp. 1000000
+                                    Rp 3.500.000,00
                                 </div>
                                 <div class="competition-prize-2 text-center">
                                     Juara 2
                                     <br>
-                                    Rp. 1000000
+                                    Rp 2.500.000,00
                                 </div>
                                 <div class="competition-prize-3 text-center">
                                     Juara 3
                                     <br>
-                                    Rp. 1000000
+                                    Rp 1.500.000,00
                                 </div>
                             </div>
                             <div class="competition-detail">    
@@ -236,13 +225,7 @@
                             UX Design Competition
                         </h2>
                         <p class="competitions-subtitle">
-                            At vero eos et accusamus et iusto odio dignissimos
-                            ducimus qui blanditiis praesentium voluptatum
-                            deleniti atque corrupti quos dolores et quas
-                            molestias excepturi sint occaecati cupiditate non
-                            provident, similique sunt in culpa qui officia
-                            deserunt mollitia animi, id est laborum et dolorum
-                            fuga.
+                            Kompetisi UX (user experience) adalah kompetisi pembuatan desain pengalaman pengguna, baik dalam bentuk produk web, aplikasi, maupun PWA (Progressive Web App), yang mengutamakan pengalaman, kenyamanan, kepuasan, dan efisiensi saat pengguna (user) menggunakan produk tersebut.
                         </p>
                         <h4 class="competition-detail-title">Prize: </h4>
                         <div class="competition-detail-wrapper d-flex">
@@ -250,17 +233,17 @@
                                 <div class="competition-prize-1 text-center">
                                     Juara 1
                                     <br>
-                                    Rp. 1000000
+                                    Rp 3.500.000,00
                                 </div>
                                 <div class="competition-prize-2 text-center">
                                     Juara 2
                                     <br>
-                                    Rp. 1000000
+                                    Rp 2.500.000,00
                                 </div>
                                 <div class="competition-prize-3 text-center">
                                     Juara 3
                                     <br>
-                                    Rp. 1000000
+                                    Rp 1.500.000,00
                                 </div>
                             </div>
                             <div class="competition-detail">    
@@ -497,6 +480,18 @@ export default {
     margin-bottom: 5px;
 }
 
+.competition-prize-4{
+    background-image: linear-gradient(135deg, #FFFFFF, #FFFFFF);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 700;
+    border-radius: 15px;
+    margin-left: 15px;
+    padding: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .competition-detail-title{
     color: white;
 }
@@ -606,6 +601,11 @@ export default {
         margin-right: 10px;
     }
 
+    .competition-prize-4{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
     .competition-prize{
         text-align: center;
     }
@@ -624,6 +624,12 @@ export default {
         .carousel-card-button {
         padding-right: 5px;
         padding-left: 5px;
+    }
+}
+
+@media (max-width: 1800px) {
+    .competition-prize-4{
+        margin-left: 0px;
     }
 }
 </style>

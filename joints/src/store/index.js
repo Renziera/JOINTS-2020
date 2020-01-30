@@ -13,27 +13,28 @@ export default new Vuex.Store({
             isPanitia: false,
             data: null
         },
-        profils: {
-            profilData: null,
-            dialogIsOn: true,
-            isAlert: false
-        },
+        profilsData: {},
         payment: {
             isSudahLunas: null,
             isBelumLunas: null,
             paymentData: null
         },
         pengumumanDatas: null,
-        events: {
-            eventDatas: null
-        }
+        events: null,
+        competitions : null 
     },
     getters: {
         user(state) {
             return state.user;
         },
-        profils(state) {
-            return state.profils.profilData;
+        profilsData(state) {
+            return state.profilsData;
+        },
+        competitions(state){
+            return  state.competitions;
+        },
+        events(state){
+          return state.events;
         }
     },
     mutations: {
@@ -47,11 +48,11 @@ export default new Vuex.Store({
             state.user.isPanitia = value;
         },
         SET_PROFIL(state, data) {
-            state.profils.profilData = data;
+            state.profilsData = data;
         },
         ADD_PROFIL(state, value) {
-            let profil = state.profils.concat(value);
-            state.profils = profil;
+            let profil = state.profilsData.concat(value);
+            state.profilsData = profil;
         },
         SET_PENGUMUMAN(state, value) {
             state.pengumumanDatas = value;
@@ -60,14 +61,72 @@ export default new Vuex.Store({
             state.pengumumanDatas.push(value);
         },
         ADD_EVENTS(state, value) {
-            state.events.eventDatas = value;
+            state.events = value;
+        },
+        ADD_COMPETITIONS(state, value ){
+          state.competitions = value
         }
     },
     actions: {
-        async getProfilData({ commit }) {
-            if (!firebase.auth().currentUser) return;
-            let token = await firebase.auth().currentUser.getIdToken(true);
 
+        testActions({commits}) {
+          console.log('test action harusnya bisa su')
+        },
+        async getEventDataVuex({ commit }) {
+          let token = await firebase.auth().currentUser.getIdToken(true);
+          const config = {
+              headers: { Authorization: 'Bearer ' + token }
+          };
+
+          const eventsBaru = {};
+
+          const BASE_URL = 'https://api.joints.id';
+          Axios.get(BASE_URL + '/event', config)
+              .then(response => {
+                  response.data.events.forEach((value, index) => {
+                      eventsBaru[value.event] = value;
+                  });
+
+                  commit('ADD_EVENTS', eventsBaru);
+                  console.log('ini event data dari vuex')
+                  console.log(this.state.events)
+              })
+              .catch(error => {
+                  console.log(error);
+              });
+      },
+
+
+        async getTeamDataVuex({ commit }) {
+          // if (!firebase.auth().currentUser) return;
+          const competitions = {};
+          let token = await firebase.auth().currentUser.getIdToken(true);
+          const config = {
+              headers: { Authorization: 'Bearer ' + token }
+          };
+          const BASE_URL = 'https://api.joints.id';
+          Axios.get(BASE_URL + '/competition', config)
+              .then(response => {
+                  console.log(response);
+                  console.log('team dataa dari vuex')
+
+                  response.data.competitions.forEach((value, index) => {
+                    competitions[value.competition] = value;
+                    
+                });
+                  commit('ADD_COMPETITIONS', competitions);
+                  console.log('fetch item data vuex ini ')
+                  console.log(this.state.competitions)
+              })
+              .catch(error => {
+                  console.log(error);
+              });
+         },
+
+        async getProfilDataVuex({ commit }) {
+            // if (!firebase.auth().currentUser) return;
+          
+            let token = await firebase.auth().currentUser.getIdToken(true);
             const config = {
                 headers: { Authorization: 'Bearer ' + token }
             };
@@ -75,23 +134,26 @@ export default new Vuex.Store({
             Axios.get(BASE_URL + '/biodata', config)
                 .then(response => {
                     // console.log(response);
-                    // console.log('data profil dari vuex')
+                    
 
-                    commit('SET_PROFIL', {
+                     commit('SET_PROFIL', {
                         nama: response.data.biodata.nama,
                         email: response.data.biodata.email,
                         nomor: response.data.biodata.nomor,
                         instansi: response.data.biodata.instansi
                     })
 
-                    // console.log(this.state.profils.profilData)
-                    // console.log('dari prifldata')
-                })
+                    console.log('data profil dari vuex baru dateng ')
 
+                    // console.log(this.state.profils.profilData)
+                    // // console.log('dari prifldata')
+                })
                 .catch(error => {
                     console.log(error);
                 });
+              
         },
+
         async fetchIsPanitia({ commit }) {
             if (!firebase.auth().currentUser) return commit('SET_PANITIA', false);
             let token = await firebase.auth().currentUser.getIdToken(true);
@@ -103,29 +165,7 @@ export default new Vuex.Store({
             if (response.status !== 200) return;
             commit('SET_PANITIA', response.data.panitia);
         },
-        async fetchEventsData({ commit }) {
-            let token = await firebase.auth().currentUser.getIdToken(true);
-            const config = {
-                headers: { Authorization: 'Bearer ' + token }
-            };
-
-            const eventsBaru = {};
-
-            const BASE_URL = 'https://api.joints.id';
-            Axios.get(BASE_URL + '/event', config)
-                .then(response => {
-                    response.data.events.forEach((value, index) => {
-                        eventsBaru[value.event] = value;
-                        commit('ADD_EVENTS', eventsBaru);
-                    });
-
-                    // console.log(this.state.events.eventDatas)
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        },
-
+       
         async fetchPengumumans({ commit }) {
             let token = await firebase.auth().currentUser.getIdToken(true);
             const config = {

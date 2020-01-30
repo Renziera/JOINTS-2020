@@ -117,12 +117,14 @@
                                             Grand Launching&nbsp;-&nbsp;
                                         </b-button>
                                         <b-button
+                                            disabled
                                             to="/techtalk"
                                             class="footer-button"
                                             variant="light"
                                             >TechTalk&nbsp;-&nbsp;</b-button
                                         >
                                         <b-button
+                                            disabled
                                             to="/competitions"
                                             class="footer-button"
                                             variant="light"
@@ -285,6 +287,13 @@ export default {
     width: 100%;
 }
 
+.footer .btn.disabled{
+    opacity: 1 !important;
+    color: white !important;
+    background: transparent !important;
+    border: none !important;
+}
+
 @media (max-width: 991.98px) {
     .footer .footer-title {
         text-align: center !important;
@@ -307,4 +316,7 @@ export default {
         width: 200px;
     }
 }
+</style>
+
+<style scoped>
 </style>

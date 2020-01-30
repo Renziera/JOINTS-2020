@@ -361,6 +361,7 @@
 <script>
 import Axios from 'axios';
 import firebase from 'firebase/app';
+import { mapGetters, mapState, mapActions } from 'vuex';
 
 export default {
     data: () => ({
@@ -398,24 +399,54 @@ export default {
         }
     }),
 
-    computed: {
-        form() {
-            return {
-                nama: this.profils.nama,
-                email: this.profils.email,
-                nomor: this.profils.nomor,
-                instansi: this.profils.instansi
-            };
+
+
+      computed:{ 
+              // ...mapState(['profils']),
+              ...mapGetters(['profilsData'])},
+      created() {
+      this.$store.dispatch('getProfilDataVuex'),
+      this.$store.watch(
+        (state, getters ) => getters.profilsData,
+        (newValue, oldValue) => {
+          console.log(`Updating from ${oldValue} to ${newValue}`);
+          this.getDataDiluarEmail()
         }
+      )
     },
+      mounted() {
+        this.getDataDiluarEmail()
+        this.getEmailVuex();
+      },
 
     methods: {
-        emailUser(){
-          this.profils.nama = this.$store.getters.profils.nama
-          this.profils.email = this.$store.state.user.data.email;
-          this.profils.nomor =  this.$store.getters.profils.nomor
-          this.profils.instansi = this.$store.getters.profils.instansi
-          },
+        getEmailVuex(){
+        this.profils.email = this.$store.state.user.data.email;
+    
+        },
+        
+         getDataDiluarEmail(){
+        if(this.$store.getters.profilsData == null ||
+          this.$store.getters.profilsData == undefined ||
+          this.$store.getters.profilsData.nama == null  &&
+          this.$store.getters.profilsData.nomor == null &&
+          this.$store.getters.profilsData.instansi == null){
+            console.log(' biodata harus di isi');
+            //  this.getProfilData()
+          } else {
+            console.log(' data di profils ngefetch dulu; ');
+            this.profils.nama = this.$store.getters.profilsData.nama
+            this.profils.nomor =  this.$store.getters.profilsData.nomor
+            this.profils.instansi = this.$store.getters.profilsData.instansi
+            
+        
+
+           
+
+
+          }
+      },
+        
         async getStatusData() {
             let token = await firebase.auth().currentUser.getIdToken(true);
             const config = {
@@ -578,15 +609,7 @@ export default {
                 });
         }
     },
-    mounted() {
-        this.$store.dispatch('getProfilData');
-        this.emailUser()
-        this.getProfilData();
-        this.getPriceData();
 
-        this.intervalGetData();
-
-    }
 };
 </script>
 

@@ -29,6 +29,8 @@ Vue.use(vuetify);
 Vue.use(BootstrapVue);
 Vue.use(ElementUI);
 
+
+
 Vue.config.productionTip = false;
 
 const firebaseConfig = {
@@ -48,7 +50,7 @@ let loaded = false;
 firebase.auth().onAuthStateChanged(async user => {
     await store.dispatch('fetchUser', user);
     await store.dispatch('fetchIsPanitia');
-    await store.dispatch('getProfilData');
+  
 
     if (loaded) return;
 
@@ -56,6 +58,7 @@ firebase.auth().onAuthStateChanged(async user => {
         router,
         store,
         vuetify,
+        
         render: h => h(App)
     }).$mount('#app');
 

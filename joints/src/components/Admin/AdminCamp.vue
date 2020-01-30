@@ -3,7 +3,9 @@
         <v-app class="white">
             <v-container>
                 <v-row>
-                    <v-col> <h1>Joints Camp</h1> </v-col>
+                    <v-col>
+                        <h1>Joints Camp</h1>
+                    </v-col>
                 </v-row>
 
                 <v-row>
@@ -16,148 +18,27 @@
                         >
                             <template v-slot:top>
                                 <v-toolbar flat color="white">
-                                    <v-toolbar-title
-                                        >Joints Kemp</v-toolbar-title
-                                    >
-                                    <v-divider
-                                        class="mx-4"
-                                        inset
-                                        vertical
-                                    ></v-divider>
+                                    <v-toolbar-title>Joints Kemp</v-toolbar-title>
+                                    <v-divider class="mx-4" inset vertical></v-divider>
                                     <v-spacer></v-spacer>
-
-                                    <v-dialog
-                                        v-model="dialog"
-                                        max-width="500px"
-                                    >
-                                        <template v-slot:activator="{ on }">
-                                            <v-btn
-                                                color="primary"
-                                                dark
-                                                class="mb-2"
-                                                v-on="on"
-                                                >New Item</v-btn
-                                            >
-                                        </template>
-
-                                        <v-card>
-                                            <v-card-title>
-                                                <span class="headline">{{
-                                                    formTitle
-                                                }}</span>
-                                            </v-card-title>
-                                            <v-card-text>
-                                                <v-container>
-                                                    <v-row>
-                                                        <v-col
-                                                            cols="12"
-                                                            sm="6"
-                                                            md="4"
-                                                        >
-                                                            <v-text-field
-                                                                v-model="
-                                                                    editedItem.nomor
-                                                                "
-                                                                label="No"
-                                                            ></v-text-field>
-                                                        </v-col>
-                                                        <v-col
-                                                            cols="12"
-                                                            sm="6"
-                                                            md="4"
-                                                        >
-                                                            <v-text-field
-                                                                v-model="
-                                                                    editedItem.nama
-                                                                "
-                                                                label="Nama"
-                                                            ></v-text-field>
-                                                        </v-col>
-                                                        <v-col
-                                                            cols="12"
-                                                            sm="6"
-                                                            md="4"
-                                                        >
-                                                            <v-text-field
-                                                                v-model="
-                                                                    editedItem.acara
-                                                                "
-                                                                label="Acara"
-                                                            ></v-text-field>
-                                                        </v-col>
-                                                        <v-col
-                                                            cols="12"
-                                                            sm="6"
-                                                            md="4"
-                                                        >
-                                                            <v-text-field
-                                                                v-model="
-                                                                    editedItem.nominal
-                                                                "
-                                                                label="Nominal"
-                                                            ></v-text-field>
-                                                        </v-col>
-                                                        <v-col
-                                                            cols="12"
-                                                            sm="6"
-                                                            md="4"
-                                                        >
-                                                            <v-text-field
-                                                                v-model="
-                                                                    editedItem.status
-                                                                "
-                                                                label="Status"
-                                                            ></v-text-field>
-                                                        </v-col>
-                                                    </v-row>
-                                                </v-container>
-                                            </v-card-text>
-
-                                            <v-card-actions>
-                                                <v-spacer></v-spacer>
-
-                                                <v-btn
-                                                    color="blue darken-1"
-                                                    text
-                                                    @click="close"
-                                                    >Cancel</v-btn
-                                                >
-                                                <v-btn
-                                                    color="blue darken-1"
-                                                    text
-                                                    @click="save"
-                                                    >Save</v-btn
-                                                >
-                                            </v-card-actions>
-                                        </v-card>
-                                    </v-dialog>
                                 </v-toolbar>
                             </template>
-
-                            <template v-slot:item.action="{ item }">
-                                <v-icon
-                                    class="mr-2"
-                                    small
-                                    @click="editItem(item)"
-                                >
-                                    Konfirmasi
-                                </v-icon>
-                                <v-icon
-                                    small
-                                    class="mr-2"
-                                    @click="editItem(item)"
-                                >
-                                    edit
-                                </v-icon>
-                                <v-icon small @click="deleteItem(item)">
-                                    delete
-                                </v-icon>
+                            <template v-slot:item.resume="{ item }">
+                                <a :href="item.resume" target="_blank">
+                                    <v-btn
+                                        small
+                                        outlined
+                                        rounded
+                                        color="blue-grey darken-2"
+                                        dark
+                                    >klik</v-btn>
+                                </a>
                             </template>
 
-                            <template v-slot:no-data>
-                                <v-btn color="primary" @click="initialize"
-                                    >Reset</v-btn
-                                >
+                            <template v-slot:item.linked_in="{ item }">
+                                <a :href="item.linked_in" target="_blank">
+                                    <v-btn small outlined rounded color="primary" dark>klik</v-btn>
+                                </a>
                             </template>
                         </v-data-table>
                     </v-col>
@@ -175,35 +56,40 @@ export default {
     data: () => ({
         dialog: false,
         headers: [
-            {
-                text: 'Nomor',
-                align: 'left',
-                sortable: false,
-                value: 'nomor'
-            },
+            { text: 'Waktu Daftar', value: 'waktu_daftar' },
             { text: 'Nama', value: 'nama' },
-            { text: 'Acara', value: 'acara' },
-            { text: 'Nominal', value: 'nominal' },
-            { text: 'Status', value: 'status' },
-            { text: 'Linkedin', value: 'status' },
-            { text: 'Resume', value: 'status' },
-            { text: 'Aksi', value: 'action', sortable: false }
+            { text: 'No. HP', value: 'nomor', sortable: false },
+            { text: 'Email', value: 'email' },
+            { text: 'Instansi', value: 'instansi' },
+            { text: 'Resume', value: 'resume', sortable: false },
+            { text: 'Linkedin', value: 'linked_in', sortable: false },
+            { text: 'Acara', value: 'event', sortable: false }
+            // { text: 'Nominal', value: 'nominal' },
+            // { text: 'Status', value: 'status' },
+            // { text: 'Aksi', value: 'action', sortable: false }
         ],
         desserts: [],
         editedIndex: -1,
         editedItem: {
-            nomor: 0,
+            waktu_daftar: '',
             nama: '',
-            acara: '',
-            nominal: '',
-            status: ''
+            nomor: 0,
+            email: '',
+            instansi: '',
+            resume: '',
+            linked_in: '',
+            event: ''
+            // nominal: '',
+            // status: ''
         },
         defaultItem: {
-            nomor: 0,
             nama: '',
-            acara: '',
-            nominal: '',
-            status: ''
+            nomor: 0,
+            email: '',
+            instansi: '',
+            resume: '',
+            linked_in: '',
+            event: ''
         }
     }),
 
@@ -221,23 +107,64 @@ export default {
 
     created() {
         this.initialize();
-        this.getGLData();
+        this.getCampDataAll();
     },
 
     methods: {
-        async getGLData() {
+        async getCampDataAll() {
             let token = await firebase.auth().currentUser.getIdToken(true);
+            // let isKonfirmasi = null;
+            // let waktuDaftar = null;
+            // let statusBayar = null;
+            // let konfirmasiAdmin = null;
+
             const config = {
                 headers: { Authorization: 'Bearer ' + token }
             };
 
             const BASE_URL = 'https://api.joints.id';
+
+            // Axios.get(BASE_URL + '/admin/pembayaran', config)
             Axios.get(BASE_URL + '/admin/joints_camp', config)
                 .then(response => {
-                    console.log('berhasil');
-
                     response.data.results.forEach((value, index) => {
-                        console.log(value, index);
+                        // if (value.event == 'joints_camp') {
+                        console.log(value);
+
+                        // if (
+                        //     value.status == 'lunas' ||
+                        //     value.dilunasi_admin == true
+                        // ) {
+                        //     konfirmasiAdmin = true;
+                        //     isKonfirmasi = false;
+                        // } else if (value.status == 'menunggu_pembayaran') {
+                        //     konfirmasiAdmin = false;
+                        //     isKonfirmasi = false;
+                        // }
+
+                        // if (value.waktu_daftar._seconds == undefined ){
+                        //    console.log('ga ada cuk');
+
+                        // } else {
+                        //      waktuDaftar =   new Date(
+                        //         value.waktu_daftar._seconds * 1000
+                        //     ).toLocaleDateString()
+                        // }
+
+                        let editedItem = {
+                            waktu_daftar: new Date(
+                                value.waktu_daftar._seconds * 1000
+                            ).toLocaleDateString(),
+                            nama: value.nama,
+                            nomor: value.nomor,
+                            email: value.email,
+                            instansi: value.instansi,
+                            resume: value.resume,
+                            linked_in: value.linked_in,
+                            event: value.event
+                        };
+                        this.desserts.push(editedItem);
+                        // }
                     });
                 })
                 .catch(error => {
@@ -247,11 +174,26 @@ export default {
         initialize() {
             this.desserts = [
                 {
-                    nomor: 1,
-                    nama: ' Fake Nurrizky Imani',
-                    acara: ' Fake Grandlaunching',
-                    nominal: '42.500',
-                    status: 'Lunas'
+                    waktu_daftar: '01/01/2020',
+                    nama: 'Dummy Yusfi Abcde',
+                    nomor: '08123456',
+                    email: 'yusfiabcde@gmail.com',
+                    instansi: 'UGM',
+                    resume:
+                        'https://storage.googleapis.com/joints-ugm.appspot.com/993540de-48b5-4478-9c4d-dc505b71d638?GoogleAccessId=joints-ugm%40appspot.gserviceaccount.com&Expires=1578597975&Signature=bpsePHXeB8QWUsAE%2B2mkBdgO1uKgSUR7C490wwqLDktcBFxfCmv14mZCskZRACEQbP9LroXc1qC5dL8lrCEFeplRJta65o7GkRJIiP%2FLNU1%2Fsw3lpwSJ2BJAI9Kiic5RX7ob5ciwKU8xNnLo9hyKzPc8RclVFsfRlnIe2B7gCR4YH5H58Icogwxg%2FRYjSTbzOQd6sSZrP4rvJxdaC0uo4nK2QQhTF9gomZCD6W%2Fyx%2BqVcXie7cRZIxuEB5ly7C%2BhX7baQ%2FZTBoC3gmLUrhfjLOT9qOabNfSOBGYlNk4bMmWtUj0n0yVpo1goKXN80BqtsWU8CxbPjAao9tJKynRkAQ%3D%3D',
+                    linked_in: 'https://www.linkedin.com',
+                    event: 'joints_camp'
+                },
+                {
+                    waktu_daftar: '03/02/2020',
+                    nama: 'Dummy Yzabc Adi',
+                    nomor: '081111',
+                    email: 'abcde@gmail.com',
+                    instansi: 'UGM',
+                    resume:
+                        'https://storage.googleapis.com/joints-ugm.appspot.com/993540de-48b5-4478-9c4d-dc505b71d638?GoogleAccessId=joints-ugm%40appspot.gserviceaccount.com&Expires=1578597975&Signature=bpsePHXeB8QWUsAE%2B2mkBdgO1uKgSUR7C490wwqLDktcBFxfCmv14mZCskZRACEQbP9LroXc1qC5dL8lrCEFeplRJta65o7GkRJIiP%2FLNU1%2Fsw3lpwSJ2BJAI9Kiic5RX7ob5ciwKU8xNnLo9hyKzPc8RclVFsfRlnIe2B7gCR4YH5H58Icogwxg%2FRYjSTbzOQd6sSZrP4rvJxdaC0uo4nK2QQhTF9gomZCD6W%2Fyx%2BqVcXie7cRZIxuEB5ly7C%2BhX7baQ%2FZTBoC3gmLUrhfjLOT9qOabNfSOBGYlNk4bMmWtUj0n0yVpo1goKXN80BqtsWU8CxbPjAao9tJKynRkAQ%3D%3D',
+                    linked_in: 'https://www.linkedin.com',
+                    event: 'joints_camp'
                 }
             ];
         },

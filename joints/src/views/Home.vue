@@ -199,7 +199,6 @@
                                             </div>
                                         </b-card-text>
                                         <b-button
-                                            disabled
                                             to="/jointscamp"
                                             variant="primary"
                                             class="carousel-card-button"
@@ -296,11 +295,10 @@
                             lunak, hingga cara membangun sebuah produk digital.
                         </p>
                         <b-button
-                            disabled
                             class="events-button"
                             variant="success"
-                            to="/"
-                            >Coming Soon</b-button
+                            to="/login"
+                            >Yuk Daftar</b-button
                         >
                     </b-col>
                 </b-row>

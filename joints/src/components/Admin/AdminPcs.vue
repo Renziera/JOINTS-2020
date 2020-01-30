@@ -4,7 +4,7 @@
             <v-container>
                 <v-row>
                     <v-col>
-                        <h1>grand launching</h1>
+                        <h1>Programming Competition Session</h1>
                     </v-col>
                 </v-row>
 
@@ -13,12 +13,15 @@
                         <v-data-table
                             :headers="headers"
                             :items="desserts"
-                            sort-by="status"
+                            :single-expand="singleExpand"
+                            :expanded.sync="expanded"
+                            show-expand
+                            item-key="nama"
                             class="elevation-1"
                         >
                             <template v-slot:top>
                                 <v-toolbar flat color="white">
-                                    <v-toolbar-title>Grand Loncing</v-toolbar-title>
+                                    <v-toolbar-title>PCS</v-toolbar-title>
                                     <v-divider class="mx-4" inset vertical></v-divider>
                                     <v-spacer></v-spacer>
 
@@ -154,6 +157,34 @@
                             <template v-slot:no-data>
                                 <v-btn color="primary" @click="initialize">Reset</v-btn>
                             </template>
+                            <template v-slot:expanded-item="{ headers }">
+                               
+                                    <td :colspan="headers.length">Peek-a-boo!</td>
+                                    <!-- <td :colspan="headers.length/2">Nama Ketua : {{item.nama}}</td>
+                                    <td :colspan="headers.length/2">
+                                        Ktm :
+                                        <a :href="item.ktm_ketua" target="_blank">
+                                            <v-btn small outlined rounded color="primary" dark>klik</v-btn>
+                                        </a>
+                                    </td> -->
+                             
+                                    <!-- <td :colspan="headers.length/2">Anggota 1: {{ item.nama_1 }}</td>
+                                    <td :colspan="headers.length/2">
+                                        Ktm :
+                                        <a :href="item.ktm_1" target="_blank">
+                                            <v-btn small outlined rounded color="primary" dark>klik</v-btn>
+                                        </a>
+                                    </td> -->
+                            
+                                    <!-- <td :colspan="headers.length/2">Anggota 2: {{ item.nama_2 }}</td>
+                                    <td :colspan="headers.length/2">
+                                        Ktm :
+                                        <a :href="item.ktm_2" target="_blank">
+                                            <v-btn small outlined rounded color="primary" dark>klik</v-btn>
+                                        </a>
+                                    </td> -->
+                             
+                            </template>
                         </v-data-table>
                     </v-col>
                 </v-row>
@@ -168,20 +199,17 @@ import firebase from 'firebase/app';
 
 export default {
     data: () => ({
+        expanded: [],
+        singleExpand: false,
         listKonfirmasi: [],
         dialog: false,
         headers: [
-            {
-                text: 'Nomor',
-                align: 'left',
-                sortable: false,
-                value: 'nomor'
-            },
-            // { text: 'Waktu Daftar', value: 'waktu_daftar' },
+            { text: 'Waktu Daftar', value: 'waktu_daftar' },
+            { text: 'Nama Tim', value: 'nama_tim' },
             { text: 'Nama', value: 'nama' },
             { text: 'Email', value: 'email' },
             { text: 'Nomor HP', value: 'nomorhp', sortable: false },
-            { text: 'Acara', value: 'acara', sortable: false },
+            { text: 'Kompetisi', value: 'kompetisi', sortable: false },
             { text: 'Nominal', value: 'nominal', sortable: false },
             { text: 'Status', value: 'status' },
             { text: 'Aksi', value: 'action', sortable: false }
@@ -192,10 +220,16 @@ export default {
         editedItem: {
             nomor: 0,
             waktu_daftar: '',
+            nama_tim: '',
             email: '',
-            nama: '',
             nomorhp: '',
-            acara: '',
+            nama: '',
+            nama_1: '',
+            nama_2: '',
+            ktm_ketua: '',
+            ktm_1: '',
+            ktm_2: '',
+            kompetisi: '',
             nominal: '',
             status: '',
             konfirmasiAdmin: false,
@@ -205,8 +239,11 @@ export default {
             nomor: 0,
             waktu_daftar: '',
             nama: '',
+
             email: '',
             nomorhp: '',
+            ktm_ketua: '',
+
             acara: '',
             nominal: '',
             status: '',
@@ -230,11 +267,11 @@ export default {
     created() {
         this.initialize();
         // this.getGLData();
-        this.getGLDataAll();
+        this.getPcsDataAll();
     },
 
     methods: {
-        async getGLDataAll() {
+        async getPcsDataAll() {
             let token = await firebase.auth().currentUser.getIdToken(true);
             let isKonfirmasi = null;
             let waktuDaftar = null;
@@ -247,46 +284,46 @@ export default {
 
             const BASE_URL = 'https://api.joints.id';
 
-            Axios.get(BASE_URL + '/admin/pembayaran', config)
+            Axios.get(BASE_URL + '/admin/pcs', config)
                 .then(response => {
                     response.data.results.forEach((value, index) => {
-                        if (value.event == 'grand_launching') {
-                            // console.log(value);
+                        // if (value.event == 'grand_launching') {
+                        console.log(value);
 
-                            if (
-                                value.status == 'lunas' ||
-                                value.dilunasi_admin == true
-                            ) {
-                                konfirmasiAdmin = true;
-                                isKonfirmasi = false;
-                            } else if (value.status == 'menunggu_pembayaran') {
-                                konfirmasiAdmin = false;
-                                isKonfirmasi = false;
-                            }
+                        // if (
+                        //     value.status == 'lunas' ||
+                        //     value.dilunasi_admin == true
+                        // ) {
+                        //     konfirmasiAdmin = true;
+                        //     isKonfirmasi = false;
+                        // } else if (value.status == 'menunggu_pembayaran') {
+                        //     konfirmasiAdmin = false;
+                        //     isKonfirmasi = false;
+                        // }
 
-                            // if (value.waktu_daftar._seconds == undefined ){
-                            //    console.log('ga ada cuk');
+                        // if (value.waktu_daftar._seconds == undefined ){
+                        //    console.log('ga ada cuk');
 
-                            // } else {
-                            //      waktuDaftar =   new Date(
-                            //         value.waktu_daftar._seconds * 1000
-                            //     ).toLocaleDateString()
-                            // }
+                        // } else {
+                        //      waktuDaftar =   new Date(
+                        //         value.waktu_daftar._seconds * 1000
+                        //     ).toLocaleDateString()
+                        // }
 
-                            let editedItem = {
-                                nomor: value.id_pembayaran,
-                                // waktu_daftar: waktuDaftar,
-                                nama: value.nama,
-                                email: value.email,
-                                nomorhp: value.nomor,
-                                acara: value.event,
-                                nominal: value.harga,
-                                status: value.status,
-                                konfirmasiAdmin: konfirmasiAdmin,
-                                isJanganKonfirmasi: isKonfirmasi
-                            };
-                            this.desserts.push(editedItem);
-                        }
+                        // let editedItem = {
+                        //     nomor: value.id_pembayaran,
+                        //     // waktu_daftar: waktuDaftar,
+                        //     nama: value.nama,
+                        //     email: value.email,
+                        //     nomorhp: value.nomor,
+                        //     acara: value.event,
+                        //     nominal: value.harga,
+                        //     status: value.status,
+                        //     konfirmasiAdmin: konfirmasiAdmin,
+                        //     isJanganKonfirmasi: isKonfirmasi
+                        // };
+                        // this.desserts.push(editedItem);
+                        // }
                     });
                 })
                 .catch(error => {
@@ -378,12 +415,17 @@ export default {
             this.desserts = [
                 {
                     nomor: 'Dummy number',
+                    nama_tim: 'Nama tim',
                     nama: ' Dummy Nurrizky Imani',
-                    nomorhp: '08323627323',
-                    waktu_daftar: '12/12/12',
-                    acara: ' Dummy Grandlaunching',
                     email: 'dog@mail.com',
-
+                    nomorhp: '08323627323',
+                    nama_1: 'Adi',
+                    nama_2: 'Yusfi',
+                    ktm_ketua: 'https://google.com',
+                    ktm_1: 'https://google.com',
+                    ktm_2: 'https://google.com',
+                    waktu_daftar: '12/12/12',
+                    kompetisi: 'pcs',
                     nominal: 42909,
                     status: 'Lunas',
                     konfirmasiAdmin: true,
@@ -391,11 +433,17 @@ export default {
                 },
                 {
                     nomor: 'Dummy number',
+                    nama_tim: 'Tim name',
                     nama: ' Dummy For Testing konfirmasi',
                     email: 'dog@mail.com',
                     nomorhp: '08323627323',
+                    nama_1: 'Yusfi',
+                    nama_2: 'Adilaksa',
+                    ktm_ketua: 'https://google.com',
+                    ktm_1: 'https://google.com',
+                    ktm_2: 'https://google.com',
                     waktu_daftar: '12/12/12',
-                    acara: ' Dummy Grandlaunching',
+                    kompetisi: 'pcs',
                     nominal: 42500,
                     status: 'Lunas',
                     konfirmasiAdmin: true,

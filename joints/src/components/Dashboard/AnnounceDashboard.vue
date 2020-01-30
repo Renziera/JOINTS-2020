@@ -83,26 +83,41 @@ export default {
         }
     }),
 
+    mounted() {
+      this.initialize()
+    },
+
     methods: {
         async directFetchPengumuman() {
             let token = await firebase.auth().currentUser.getIdToken(true);
             const config = {
                 headers: { Authorization: 'Bearer ' + token }
             };
-            const pengumumanDatas = [];
+            const pengumumanDatas = null;
             const BASE_URL = 'https://api.joints.id';
             Axios.get(BASE_URL + '/announcement', config)
                 .then(response => {
                     // console.log('ini dari vuex which is fetchPengumuan is berhasil')
                     // console.log(response)
                     response.data.announcements.forEach((value, index) => {
-                        pengumumanDatas.push({
+                    
+                    if(value == null ) {
+                         console.log('no pengumuman');
+                          this.others.isNoPengumuman = true;
+                        
+                    } else {
+                       pengumumanDatas = {
                             eventsData: value,
                             isIndex: index,
                             isExpand: false
-                        });
+                        };
+                        this.pengumumans.push(pengumumanDatas)
+                        this.others.isNoPengumuman = false;
+                       
+                    }
+                       
                     });
-                    this.pengumumans = pengumumanDatas;
+                    
                     // console.log(this.pengumumans);
                     this.loading = false;
                 })
@@ -110,7 +125,7 @@ export default {
                     console.log(error);
                 })
                 .then(() => {
-                    if (this.pengumumans.length <= 0) {
+                    if (this.pengumumans == null) {
                         this.others.isNoPengumuman = true;
                         // console.log('pengumuman is null')
                     } else {
@@ -118,10 +133,24 @@ export default {
                         this.others.isNoPengumuman = false;
                     }
                 });
-        }
+        },
+         initialize() {
+            this.pengumumans = [
+                {
+                    eventsData : {
+                      judul : "Lengkapi Biodata Anda Terlebih Dahulu",
+                      konten: 'Kelengkapan biodata anda akan otomatis melengkapi berbagai form pada setiap pendaftaran acara Joints 2020.'
+                    },
+                    isIndex: '098',
+                    isExpand: false
+                },
+               
+            ];
+        },
     },
     created() {
         this.directFetchPengumuman();
+      
     }
 };
 </script>

@@ -21,17 +21,19 @@ import Registration from '@/components/Dashboard/RegistrationPage.vue';
 import PaymentDash from '@/components/Dashboard/PaymentDash.vue';
 import EventRegist from '@/components/Dashboard/EventRegist.vue';
 import JointsCampRegist from '@/components/Dashboard/CampRegist.vue';
+import CaptureTheFlag from '@/components/Dashboard/Competitions/CaptureTheFlag.vue'
 
 // AdminControl
 import AdminControl from '@/views/Admin/AdminControl.vue';
 import AdminPengumuman from '@/components/Admin/AdminPengumuman.vue';
 import AdminGL from '@/components/Admin/AdminGL.vue';
 import AdminCamp from '@/components/Admin/AdminCamp.vue';
+import AdminCtf from '@/components/Admin/AdminCtf.vue';
+import AdminPcs from '@/components/Admin/AdminPcs.vue';
 
 Vue.use(VueRouter);
 
-const routes = [
-    {
+const routes = [{
         path: '/',
         name: 'home',
         component: Home
@@ -44,21 +46,21 @@ const routes = [
 
     // Di uncomment saat udah mau open regis
 
-    // {
-    //     path: '/jointscamp',
-    //     name: 'jointscamp',
-    //     component: JointsCamp
-    // },
+    {
+        path: '/jointscamp',
+        name: 'jointscamp',
+        component: JointsCamp
+    },
     // {
     //     path: '/techtalk',
     //     name: 'techtalk',
     //     component: TechTalk
     // },
-    // {
-    //     path: '/competitions',
-    //     name: 'competitions',
-    //     component: Competitions
-    // },
+    {
+        path: '/competitions',
+        name: 'competitions',
+        component: Competitions
+    },
     {
         path: '/login',
         name: 'login',
@@ -78,8 +80,7 @@ const routes = [
                 return next('/dashboard');
             else next();
         },
-        children: [
-            {
+        children: [{
                 path: 'pengumumanbyadmin',
                 name: 'pengumumanbyadmin',
                 component: AdminPengumuman
@@ -93,6 +94,16 @@ const routes = [
                 path: 'jointscampbyadmin',
                 name: 'jointscampbyadmin',
                 component: AdminCamp
+            },
+            {
+                path: 'ctfbyadmin',
+                name: 'ctfbyadmin',
+                component: AdminCtf
+            },
+            {
+                path: 'pcsbyadmin',
+                name: 'pcsbyadmin',
+                component: AdminPcs
             }
         ]
     },
@@ -109,9 +120,10 @@ const routes = [
             else if (store.getters.user.isPanitia == true)
                 return next('/panitia');
             else next();
+
+
         },
-        children: [
-            {
+        children: [{
                 path: 'announcement',
                 name: 'announcement',
                 component: Announcement
@@ -122,17 +134,17 @@ const routes = [
                 component: CompetitionsDash
             },
             // Uncomment kalau udah mau open regis
-            // {
-            //     path: 'competitions/:section/register',
-            //     name: 'registration',
-            //     component: Registration,
-            //     props: true,
-            //     beforeEnter: (to, from, next) => {
-            //         const id = to.params.section;
-            //         if (!['datamining', 'ctf', 'uiux', 'pcs'].includes(id)) next('/not-found');
-            //         else next();
-            //     }
-            // },
+            {
+                path: 'competitions/:section/register',
+                name: 'registration',
+                component: Registration,
+                props: true,
+                beforeEnter: (to, from, next) => {
+                    const id = to.params.section;
+                    if (!['datamining', 'ctf', 'uiux', 'pcs'].includes(id)) next('/not-found');
+                    else next();
+                }
+            },
             // {
             //     path: 'competitions/:section/payment',
             //     name: 'payment',
@@ -151,11 +163,11 @@ const routes = [
             },
 
             // Uncomment kalo udah mau open regis
-            // {
-            //     path: 'events/jointscamp/register',
-            //     name: 'jointscampRegist',
-            //     component: JointsCampRegist
-            // },
+            {
+                path: 'events/jointscamp/register',
+                name: 'jointscampRegist',
+                component: JointsCampRegist
+            },
 
             {
                 path: 'events/:section/register',
@@ -179,7 +191,14 @@ const routes = [
             {
                 path: 'profile',
                 name: 'profile',
-                component: Profil
+                component: Profil,
+                //   beforeEnter: (to, from, next) => {
+
+                //       store.dispatch(getProfilDataVuex)
+                //       .then(next);
+                //       console.log('beforeenter done')
+
+                // },
             }
         ]
     },

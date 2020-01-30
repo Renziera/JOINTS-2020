@@ -11,7 +11,7 @@
                             <div class="title font-weight-black profil-title">
                                 Nama
                             </div>
-                            <div
+                            <div 
                                 class="title font-weight-medium profil-subtitle"
                             >
                                 {{ profils.nama }}
@@ -244,7 +244,7 @@
 <script>
 import Axios from 'axios';
 import firebase from 'firebase/app';
-import { mapGetters, mapState } from 'vuex';
+import { mapGetters, mapState, mapActions } from 'vuex';
 
 
 export default {
@@ -269,42 +269,61 @@ export default {
            
         };
     },
-    computed: {
+    computed:{ 
+              // ...mapState(['profils']),
+              ...mapGetters(['profilsData'])}
+
+                ,
+     created() {
+      this.$store.dispatch('getProfilDataVuex'),
+      this.$store.watch(
+        (state, getters ) => getters.profilsData,
+        (newValue, oldValue) => {
+          console.log(`Updating from ${oldValue} to ${newValue}`);
+          this.getDataDiluarEmail()
+        }
+      )
+    },
+      mounted() {
+        this.getDataDiluarEmail()
+        this.getEmailVuex();
+      },
+    
+    methods: {
      
 
-    },
-    methods: {
+      getDataDiluarEmail(){
+        if(this.$store.getters.profilsData == null ||
+          this.$store.getters.profilsData == undefined ||
+          this.$store.getters.profilsData.nama == null  &&
+          this.$store.getters.profilsData.nomor == null &&
+          this.$store.getters.profilsData.instansi == null){
+            console.log(' biodata harus di isi');
+            //  this.getProfilData()
+          } else {
+            console.log(' data di profils ngefetch dulu; ');
+            this.profils.nama = this.$store.getters.profilsData.nama
+            this.profils.nomor =  this.$store.getters.profilsData.nomor
+            this.profils.instansi = this.$store.getters.profilsData.instansi
+            
+        
+
+            this.dialogs.nama = this.$store.getters.profilsData.nama
+            this.dialogs.nomor =  this.$store.getters.profilsData.nomor
+            this.dialogs.instansi = this.$store.getters.profilsData.instansi
+           
+
+
+          }
+      },
+      getEmailVuex(){
+        this.profils.email = this.$store.state.user.data.email;
+        this.dialogs.email = this.$store.state.user.data.email;
+      },
       close(){
           this.dialogs = this.profils
       },
-       emailUser(){
-
-        if(this.$store.getters.profils != null ) {
-        this.profils.nama = this.$store.getters.profils.nama
-        this.profils.email = this.$store.state.user.data.email;
-        this.profils.nomor =  this.$store.getters.profils.nomor
-        this.profils.instansi = this.$store.getters.profils.instansi
-        } else {
-          console.log('nama null');
-        }
-
-        // console.log('test suuu');
-        // console.log(this.$store.getters.profils.nama);
-        // console.log(this.profils);
-       
-        
- 
-
-        // console.log(this.profils);
-
-        this.dialogs.nama = this.$store.getters.profils.nama
-        this.dialogs.email = this.$store.state.user.data.email;
-        this.dialogs.nomor =  this.$store.getters.profils.nomor
-        this.dialogs.instansi = this.$store.getters.profils.instansi
-
-
-        // console.log(this.profils.email);
-      },
+     
         warningBeforeSend() {
             if (this.formIsFullfiled() == true) {
                 this.submitProfils();
@@ -416,13 +435,7 @@ export default {
                 });
         }
     },
-    created() {
-        this.getProfilData();
-        // this.$store.dispatch('getProfilData');
-        this.emailUser()
-         
-        
-    }
+  
 };
 </script>
 

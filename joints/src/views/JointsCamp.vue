@@ -100,22 +100,26 @@
                     <h2 class="mentor-title">
                         Mentor
                     </h2>
-                    <b-row>
+                    <b-row class="mentor-row-top">
                         <b-col cols="12" lg="6" class="mentor-left">
                             <div class="mentor-profile-wrapper">
                                 <div class="mentor-image-wrapper">
                                     <img
-                                        src="@/assets/joints.png"
+                                        src="@/assets/Ardian-Franindo.jpg"
                                         class="mentor-image"
                                     />
                                 </div>
                                 <div class="mentor-profile">
+                                    <span class="mentor-week">
+                                        Minggu ke-1
+                                    </span>
+                                    <br>
                                     <span class="mentor-name">
-                                        Nama Mentor 1
+                                        Bapak Lorem Ipsum
                                     </span>
                                     <br />
                                     <span class="mentor-job">
-                                        Pekerjaan Mentor 1
+                                        "Apps Innovation"
                                     </span>
                                 </div>
                             </div>
@@ -124,17 +128,69 @@
                             <div class="mentor-profile-wrapper">
                                 <div class="mentor-image-wrapper">
                                     <img
-                                        src="@/assets/joints.png"
+                                        src="@/assets/Ardian-Franindo.jpg"
                                         class="mentor-image"
                                     />
                                 </div>
                                 <div class="mentor-profile">
+                                    <span class="mentor-week">
+                                        Minggu ke-2
+                                    </span>
+                                    <br>
                                     <span class="mentor-name">
-                                        Nama Mentor 2
+                                        Ibu Dolor Sit Amet
                                     </span>
                                     <br />
                                     <span class="mentor-job">
-                                        Pekerjaan Mentor 2
+                                        "UX Design Application"
+                                    </span>
+                                </div>
+                            </div>
+                        </b-col>
+                    </b-row>
+                    <b-row class="mentor-row-bottom">
+                        <b-col cols="12" lg="6" class="mentor-left">
+                            <div class="mentor-profile-wrapper">
+                                <div class="mentor-image-wrapper">
+                                    <img
+                                        src="@/assets/Ardian-Franindo.jpg"
+                                        class="mentor-image"
+                                    />
+                                </div>
+                                <div class="mentor-profile">
+                                    <span class="mentor-week">
+                                        Minggu ke-3
+                                    </span>
+                                    <br>
+                                    <span class="mentor-name">
+                                        Bapak Lorem Ipsum
+                                    </span>
+                                    <br />
+                                    <span class="mentor-job">
+                                        "Apps Innovation"
+                                    </span>
+                                </div>
+                            </div>
+                        </b-col>
+                        <b-col cols="12" lg="6" class="mentor-right">
+                            <div class="mentor-profile-wrapper">
+                                <div class="mentor-image-wrapper">
+                                    <img
+                                        src="@/assets/Ardian-Franindo.jpg"
+                                        class="mentor-image"
+                                    />
+                                </div>
+                                <div class="mentor-profile">
+                                    <span class="mentor-week">
+                                        Minggu ke-4
+                                    </span>
+                                    <br>
+                                    <span class="mentor-name">
+                                        Ibu Dolor Sit Amet
+                                    </span>
+                                    <br />
+                                    <span class="mentor-job">
+                                        "UX Design Application"
                                     </span>
                                 </div>
                             </div>
@@ -246,6 +302,10 @@ export default {
     background-image: linear-gradient(-90deg, #6753a8, #18c6ba);
 }
 
+.mentor-row-top{
+    margin-bottom: 50px;
+}
+
 .mentor-profile-wrapper {
     width: 200px;
 }
@@ -282,21 +342,24 @@ export default {
 
 .mentor-title {
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
-.mentor-name,
-.mentor-job {
-    font-size: 20px;
+.mentor-week{
     color: white;
+    font-size: 14px;
 }
 
 .mentor-name {
     font-weight: 500;
+    font-size: 22px;
+    color: white;
 }
 
 .mentor-job {
     font-weight: 300;
+    font-size: 18px;
+    color: #444444;
 }
 
 .faq {
@@ -333,6 +396,23 @@ export default {
 
     .faq {
         margin-top: 30px;
+    }
+
+    .mentor-title {
+        color: white;
+        margin-bottom: 20px;
+    }
+
+    .mentor-row-top .mentor-left{
+        margin-bottom: 10px;
+    }
+
+    .mentor-row-bottom .mentor-left{
+        margin-bottom: 10px;
+    }
+
+    .mentor-row-top{
+        margin-bottom: 10px;
     }
 }
 
