@@ -127,9 +127,10 @@ export default {
             // Axios.get(BASE_URL + '/admin/pembayaran', config)
             Axios.get(BASE_URL + '/admin/joints_camp', config)
                 .then(response => {
+                    console.log(response.data.results);
                     response.data.results.forEach((value, index) => {
                         // if (value.event == 'joints_camp') {
-                        console.log(value);
+                        // console.log(value);
 
                         // if (
                         //     value.status == 'lunas' ||
@@ -175,7 +176,7 @@ export default {
             this.desserts = [
                 {
                     waktu_daftar: '01/01/2020',
-                    nama: 'Dummy Yusfi Abcde',
+                    nama: 'DUMMY Yusfi Abcde',
                     nomor: '08123456',
                     email: 'yusfiabcde@gmail.com',
                     instansi: 'UGM',
@@ -185,8 +186,8 @@ export default {
                     event: 'joints_camp'
                 },
                 {
-                    waktu_daftar: '03/02/2020',
-                    nama: 'Dummy Yzabc Adi',
+                    waktu_daftar: '01/01/2020',
+                    nama: 'DUMMY Yzabc Adi',
                     nomor: '081111',
                     email: 'abcde@gmail.com',
                     instansi: 'UGM',

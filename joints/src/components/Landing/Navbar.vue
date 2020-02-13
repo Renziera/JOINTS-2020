@@ -22,7 +22,7 @@
                     <b-nav-item to="/jointscamp"
                         >JointsCamp</b-nav-item
                     >
-                    <b-nav-item disabled to="/competitions"
+                    <b-nav-item  to="/competitions"
                         >Competitions</b-nav-item
                     >
                     <b-nav-item disabled to="/techtalk">TechTalk</b-nav-item>
@@ -34,11 +34,11 @@
                         <template v-slot:button-content>{{
                             $store.getters.user.data.displayName.split(' ')[0]
                         }}</template>
-                        <b-dropdown-item to="/dashboard"
+                        <b-dropdown-item to="/dashboard" v-if="!$store.getters.user.isPanitia"
                             >Dashboard</b-dropdown-item
                         >
                         <b-dropdown-item to="/panitia" v-if="$store.getters.user.isPanitia"
-                            >Panitia</b-dropdown-item
+                            > Dash Panitia</b-dropdown-item
                         >
                         <b-dropdown-item @click="logout()"
                             >Log Out</b-dropdown-item

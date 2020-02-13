@@ -147,8 +147,7 @@
                                                         'This field is required'
                                                 ]"
                                                 v-model="dialogs.email"
-                                                readonly
-                                            
+                                                disabled
                                                 required
                                                 outlined
                                                 dense
@@ -279,7 +278,7 @@ export default {
       this.$store.watch(
         (state, getters ) => getters.profilsData,
         (newValue, oldValue) => {
-          console.log(`Updating from ${oldValue} to ${newValue}`);
+          // console.log(`Updating from ${oldValue} to ${newValue}`);
           this.getDataDiluarEmail()
         }
       )
@@ -298,10 +297,10 @@ export default {
           this.$store.getters.profilsData.nama == null  &&
           this.$store.getters.profilsData.nomor == null &&
           this.$store.getters.profilsData.instansi == null){
-            console.log(' biodata harus di isi');
+            // console.log(' biodata harus di isi');
             //  this.getProfilData()
           } else {
-            console.log(' data di profils ngefetch dulu; ');
+            // console.log(' data di profils ngefetch dulu; ');
             this.profils.nama = this.$store.getters.profilsData.nama
             this.profils.nomor =  this.$store.getters.profilsData.nomor
             this.profils.instansi = this.$store.getters.profilsData.instansi
@@ -449,7 +448,8 @@ export default {
 }
 
 .profil-divider {
-    border: 2px solid #13cebb !important;
+    border: 1px solid #13cebb !important;
+    background-color: #13cebb;
     border-radius: 5px;
 }
 

@@ -8,14 +8,8 @@
                         :key="i"
                         class="col-sm-12 col-lg-6 col-lg-6 col-xs-12"
                     >
-                        <v-card
-                            max-width="500"
-                            outlined
-                            class="the-container mb-6 elevation-1"
-                        >
-                            <div
-                                class="d-flex flex-no-wrap justify-content-start text-left"
-                            >
+                        <v-card max-width="500" outlined class="the-container mb-6 elevation-1">
+                            <div class="d-flex flex-no-wrap justify-content-start text-left">
                                 <div>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -29,33 +23,20 @@
                                         />
                                     </svg>
                                 </div>
-                                <v-avatar
-                                    class="compe-avatar ma-3 mr-0 mb-6"
-                                    size="115"
-                                    tile
-                                >
-                                    <v-img
-                                        class="border border-dark"
-                                        :src="getImgUrl(item.src)"
-                                    ></v-img>
+                                <v-avatar class="compe-avatar ma-3 mr-0 mb-6" size="115" tile>
+                                    <v-img class="border border-dark" :src="getImgUrl(item.src)"></v-img>
                                 </v-avatar>
 
                                 <div class="justify-content-start">
-                                    <v-card-title
-                                        class="pt-1 title"
-                                        v-text="item.title"
-                                    ></v-card-title>
+                                    <v-card-title class="pt-1 title" v-text="item.title"></v-card-title>
 
                                     <v-card-subtitle
                                         class="caption font-weight-medium text-justify"
-                                        >{{ item.artist }}</v-card-subtitle
-                                    >
+                                    >{{ item.artist }}</v-card-subtitle>
                                 </div>
                             </div>
 
-                            <v-divider
-                                class="mt-0 mb-0 card-divider"
-                            ></v-divider>
+                            <v-divider class="mt-0 mb-0 card-divider"></v-divider>
 
                             <v-card-actions>
                                 <v-alert
@@ -63,15 +44,13 @@
                                     dense
                                     type="success"
                                     class="alert-card px-5 ma-0"
-                                    >LUNAS</v-alert
-                                >
+                                >LUNAS</v-alert>
                                 <v-alert
                                     v-if="item.isBelumLunas"
                                     dense
                                     type="info"
                                     class="alert-card px-4 ma-0"
-                                    >Belum Lunas</v-alert
-                                >
+                                >Belum Lunas</v-alert>
                                 <v-spacer></v-spacer>
                                 <v-btn
                                     color="#13CEBB"
@@ -94,8 +73,14 @@
 </template>
 
 <script>
+import { mapGetters, mapState, mapActions } from 'vuex';
 export default {
     data: () => ({
+        eventsData: {
+            joints_camp: null,
+            grand_launch: null,
+            tech_talk: null
+        },
         disabled: 0,
         items: [
             {
@@ -125,14 +110,51 @@ export default {
                 title: 'JointsCamp',
                 artist:
                     'JointsCamp merupakan suatu pelatihan atau bootcamp dengan tema Web Development. Diselenggarakan selama 4 minggu dengan pertemuan intensif 1 kali di setiap minggu nya, pelatihan ini terkonsep dari pembentukan mindset, pemahaman alur, pengembangan perangkat lunak, hingga cara membangun sebuah produk digital.',
-                // link: '/dashboard/events/jointscamp/register',
+                link: '/dashboard/events/jointscamp/register',
                 isSudahLunas: false,
                 isBelumLunas: false,
-                isOpenRegis: false
+                isOpenRegis: true
             }
         ]
     }),
+    computed: {
+        // ...mapState(['profils']),
+        ...mapGetters(['profilsData', 'events'])
+    },
+
+    created() {
+        this.$store.dispatch('getEventDataVuex'),
+            this.$store.watch(
+                (state, getters) => getters.events,
+                (newValue, oldValue) => {
+                    // console.log(`Updating from ${oldValue} to ${newValue}`);
+                    this.getEventData();
+                }
+            );
+    },
+
     methods: {
+        getEventData() {
+            if (
+                this.$store.getters.events == null ||
+                this.$store.getters.events.joints == undefined
+            ) {
+                // console.log(' events harus di isi');
+            } else {
+                // console.log(' C1 events ngefetch dulu; ');
+                // console.log(this.$store.getters.events);
+                this.events.joints_camp = this.$store.getters.events.joints_camp.status;
+                this.events.grand_launch = this.$store.getters.events.grand_launching.status;
+                this.events.tech_talk = this.$store.getters.events.tech_talk.status;
+
+                if (this.$store.getters.events.joints_camp.status == 'lunas') {
+                    this.overlay = true;
+                }
+
+                // console.log('clg this.daftarCamps');
+                // console.log(this.daftarCamps);
+            }
+        },
         getImgUrl(img) {
             return require('../../assets/' + img);
         }

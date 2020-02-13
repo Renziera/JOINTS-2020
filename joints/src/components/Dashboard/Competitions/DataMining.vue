@@ -15,7 +15,7 @@
                     <v-col md="8" lg="8" xs="12" sm="12" class="col-xs-12">
                         <v-card
                             outlined
-                            class="mx-auto px-4 pt-4 mb-5 pt-0 regis-card"
+                            class="mx-auto px-4 pt-4 mb-5 pt-0 regis-card mb-4"
                         >
                             <div class="subtitle">Nama Tim:</div>
                             <v-text-field
@@ -26,7 +26,7 @@
                                     formValidation,
                                     () => !!team.nama_tim || 'This field is required'
                                 ]"
-                           
+                                 v-bind:disabled="this.isMemberKetua"
                                 required
                                 outlined
                                 dense
@@ -34,14 +34,15 @@
                                
                             ></v-text-field>
 
-                            <div class="subtitle">Universitas/Sekolah:</div>
+                        
+                            <div class="subtitle">Nama Perguruan Tinggi:</div>
                             <v-text-field
                                 class="mt-1"
-                               
+                                v-bind:disabled="this.isMemberKetua"
                                 v-model="profils.instansi"
                                 :rules="[
                                     formValidation,
-                                    () => !! profils.instansi || 'This field is required'
+                                    () => !!profils.instansi || 'This field is required'
                                 ]"
                              
                                 required
@@ -50,21 +51,24 @@
                                 placeholder="Nama"
                        
                             ></v-text-field>
+                            
+                            
 
                             <div class="subtitle">Jumlah Anggota:</div>
                             <div>
 
                            
                                   <v-slider
+                                    v-bind:disabled="this.isMemberOne || this.isMemberKetua || this.isMemberTwo"
                                     class="pa-0"
                                     v-model="jumlahAnggota"
                                     :tick-labels="[
-                                      1,
+                                      
                                       2,
                                       3,
                                     
                                     ]"
-                                    :min='1'
+                                    :min='2'
                                     :max="3"
                                     step="1"
                                     ticks="always"
@@ -74,41 +78,14 @@
                              
                             </div>
 
-                            <div
-                                    class="d-flex justify-content-end daftar-section "
-                                >
-                                    <v-alert
-                                        class="alert-card px-4"
-                                        type="error"
-                                        dense
-                                      
-                                        transition="scale-transition"
-                                        dismissible
-                                    >
-                                        Form Harus Dilengkapi
-                                    </v-alert>
-                                     <v-spacer></v-spacer>
-                                    <v-alert
-                                        class="alert-card px-4"
-                                        type="success"
-                                        dense
-                                      
-                                        transition="scale-transition"
-                                        dismissible
-                                    >
-                                        Form Telah Dilengkapi
-                                    </v-alert>
-                             
-
-                                    
-                                </div>
+                           
 
                             
                         </v-card>
 
-                        <h4 style="text-align: left">Data Ketua :</h4>
+                        <h4 class="mt-4" style="text-align: left">Data Ketua :</h4>
                         <div class="subtitle mt-1 ml-0 subtitle-daftar">
-                            Ketua merupakan pemegang akun utama ini
+                            Pastikan ketua/anggota 1 merupakan pemegang akun ini, data ini akan otomatis tersimpan di biodata anda
                         </div>
 
                         <v-card outlined class="mx-auto px-4 pt-4 mb-5">
@@ -116,7 +93,7 @@
                                 <div class="subtitle">Nama Ketua:</div>
                                 <v-text-field
                                     class="mt-1"
-                                 
+                                     v-bind:disabled="this.isMemberKetua"
                                     v-model="profils.nama"
                                     :rules="[
                                         formValidation,
@@ -131,26 +108,28 @@
                                 ></v-text-field>
 
                                 <div class="subtitle">Email Ketua:</div>
-                                <v-text-field
-                                    class="mt-1"
-                                    
+                               <v-text-field
+                                    class="mt-1 pb-0 mb-0"
                                     v-model="profils.email"
                                     :rules="[
                                         formValidation,
-                                        () => !!profils.email || 'This field is required'
+                                        () =>
+                                            !!profils.email ||
+                                            'This field is required'
                                     ]"
-                          
                                     required
+                                    readonly
                                     outlined
                                     dense
-                                    placeholder="Nama"
-                             
+                                    disabled
+                                    placeholder="Email"
+                                    append-outer-icon=" mdi-checkbox-marked-circle "
                                 ></v-text-field>
 
                                 <div class="subtitle">No Hp. Ketua:</div>
                                 <v-text-field
                                     class="mt-1"
-                                    
+                                    v-bind:disabled="this.isMemberKetua"
                                     v-model="profils.nomor"
                                     :rules="[
                                         formValidation,
@@ -164,11 +143,11 @@
                        
                                 ></v-text-field>
                                <div class="subtitle font-weigth-bold">
-                                    KTM/Kartu Pelajar Ketua:
+                                   Kartu Tanda Mahasiswa Ketua:
                                 </div>
                                <div class="d-flex">
                                    <v-file-input
-                                    v-if="!team.ktm_ketua"
+                                    v-if="!isMemberKetua"
                                     v-model="team.ktm_ketua"
                                     counter
                                     dense
@@ -176,11 +155,11 @@
                                     prepend-icon="mdi-paperclip"
                                     outlined
                                     accept=".pdf"
-                                    :rules="[v => !!v || 'File is required']"
+                                    :rules="[formValidation, v => !!v || 'File is required']"
                                     :show-size="1000"
                                 ></v-file-input>
                                 <v-alert
-                                    v-if="team.ktm_ketua"
+                                    v-if="isMemberKetua"
                                     class=" px-2 "
                                     dense
                                     text
@@ -189,34 +168,7 @@
                                 
                                   
                                 </div>
-                                <div
-                                    class="d-flex justify-content-end daftar-section "
-                                >
-                                    <v-alert
-                                        class="alert-card px-4"
-                                        type="error"
-                                        dense
-                                      
-                                        transition="scale-transition"
-                                        dismissible
-                                    >
-                                        Form Harus Dilengkapi
-                                    </v-alert>
-                                      <v-spacer></v-spacer>
-                                    <v-alert
-                                        class="alert-card px-4"
-                                        type="success"
-                                        dense
-                                      
-                                        transition="scale-transition"
-                                        dismissible
-                                    >
-                                        Form Telah Dilengkapi
-                                    </v-alert>
-                 
-
-                                   
-                                </div>
+                             
                             </div>
                         </v-card>
 
@@ -235,10 +187,10 @@
                            v-show="(this.jumlahAnggota == 2 || this.jumlahAnggota == 3 )"
                            outlined class="mx-auto px-4 pt-4">
                             <div>
-                                <div class="subtitle">Nama Anggota 1:</div>
+                                <div class="subtitle">Nama Anggota 2:</div>
                                 <v-text-field
                                     class="mt-1"
-                         
+                                    v-bind:disabled="this.isMemberOne"
                                     v-model="team.nama_1"
                                     :rules="[
                                       formValidation,
@@ -253,11 +205,11 @@
                                 ></v-text-field>
 
                                 <div class="subtitle font-weigth-bold">
-                                    KTM/Kartu Pelajar:
+                                    Kartu Tanda Mahasiswa:
                                 </div>
                                 <div class="d-flex">
                                    <v-file-input
-                                    v-if="!team.ktm_1"
+                                    v-if="!isMemberOne"
                                     v-model="team.ktm_1"
                                     counter
                                     dense
@@ -265,11 +217,11 @@
                                     prepend-icon="mdi-paperclip"
                                     outlined
                                     accept=".pdf"
-                                    :rules="[v => !!v || 'File is required']"
+                                    :rules="[formValidation, v => !!v || 'File is required']"
                                     :show-size="1000"
                                 ></v-file-input>
                                 <v-alert
-                                    v-if="team.ktm_1"
+                                    v-if="isMemberOne"
                                     class=" px-2 "
                                     dense
                                     text
@@ -279,35 +231,7 @@
                                   
                                 </div>
 
-                                 <div
-                                    class="d-flex justify-content-end daftar-section "
-                                >
-                                    <v-alert
-                                        class="alert-card px-4"
-                                        type="error"
-                                        dense
-                                      
-                                        transition="scale-transition"
-                                        dismissible
-                                    >
-                                        Form Harus Dilengkapi
-                                    </v-alert>
-                                     <v-spacer></v-spacer>
-                                    <v-alert
-                                        class="alert-card px-4"
-                                        type="success"
-                                        dense
-                                      
-                                        transition="scale-transition"
-                                        dismissible
-                                    >
-                                        Form Telah Dilengkapi
-                                    </v-alert>
-                              
-
-                                 
-                                 
-                                </div>
+                               
 
                                
                             </div>
@@ -319,11 +243,11 @@
                           outlined 
                           class="mt-4 mx-auto px-4 pt-4">
                             <div>
-                                <div class="subtitle">Nama Anggota 2:</div>
+                                <div class="subtitle">Nama Anggota 3:</div>
 
                                 <v-text-field
                                     class="mt-1"
-                                    
+                                    v-bind:disabled="this.isMemberTwo"
                                     v-model="team.nama_2"
                                     :rules="[
                                       formValidation,
@@ -338,23 +262,24 @@
                                 ></v-text-field>
 
                                 <div class="subtitle font-weigth-bold">
-                                    KTM/Kartu Pelajar:
+                                    Kartu Tanda Mahasiswa:
                                 </div>
                                 <div class="d-flex">
                                    <v-file-input
-                                    v-if="!team.ktm_2"
+                                    v-if="!isMemberTwo"
                                     v-model="team.ktm_2"
+                                    v-bind:disabled="this.isMemberTwo"
                                     counter
                                     dense
                                     placeholder="Select your files"
                                     prepend-icon="mdi-paperclip"
                                     outlined
                                     accept=".pdf"
-                                    :rules="[v => !!v || 'File is required']"
+                                    :rules="[formValidation, v => !!v || 'File is required']"
                                     :show-size="1000"
                                 ></v-file-input>
                                 <v-alert
-                                    v-if="team.ktm_2"
+                                    v-if="isMemberTwo"
                                     class=" px-2 "
                                     dense
                                     text
@@ -365,46 +290,19 @@
                                 </div>
                                 
 
-                                 <div
-                                    class="d-flex justify-content-end daftar-section "
-                                >
-                                    <v-alert
-                                        class="alert-card px-4"
-                                        type="error"
-                                        dense
-                                      
-                                        transition="scale-transition"
-                                        dismissible
-                                    >
-                                        Form Harus Dilengkapi
-                                    </v-alert>
-                                     <v-spacer></v-spacer>
-                                    <v-alert
-                                        class="alert-card px-4"
-                                        type="success"
-                                        dense
-                                      
-                                        transition="scale-transition"
-                                        dismissible
-                                    >
-                                        Form Telah Dilengkapi
-                                    </v-alert>
-                                   
-
-                                   
-                                </div>
                             </div>
                         </v-card>
                     </v-col>
 
                     <v-col
-                        class="col-sm-12 col-lg-4 col-xs-12 col-md-4"
-                        md="4"
+                        class="col-sm-12 col-lg-4 col-xs-12 "
+                        md="8"
                         lg="4"
                         xs="12"
                         sm="12"
+                        cols="12"
                     >
-                        <v-card outlined class="mx-4 ml-0 " min-width="300">
+                        <v-card outlined class="mx-4 ml-0 " >
                             <v-container class="">
                                 <v-card-title class="title pl-0 pt-0 ">
                                     Pembayaran
@@ -413,19 +311,64 @@
                                 <v-divider
                                     class="mt-0 mb-0 card-divider"
                                 ></v-divider>
-                                <p v-show="team.nama_tim" class="justify-left">Nama Tim: {{team.nama_tim}}</p>
-                                <p class="justify-left">Jumlah:  {{jumlahAnggota}}</p>
+                                <div  class="justify-left ">
+                                  <div class="subtitle mt-1 ml-0 subtitle-daftar">
+                                    Kompetisi: Data Mining
+                                  </div>
+                                  <div v-show="team.nama_tim" class="subtitle mt-1 ml-0 subtitle-daftar">
+                                      Nama Tim: {{team.nama_tim}}
+                                  </div>
+                                  <div class="subtitle mt-1 ml-0 subtitle-daftar">
+                                        Nama Perguruan Tinggi : {{profils.instansi}} 
+                                  </div>
+                                  <div class="subtitle mt-1 ml-0 subtitle-daftar">
+                                        Nama Ketua : {{this.profils.nama}} 
+                                  </div>
 
-                                <v-divider
-                                    class="mt-0 mb-0 card-divider"
-                                ></v-divider>
-                                <div class="d-flex flex-no-wrap">
-                                    <v-card-title class="title pl-0 "
-                                        >Total : </v-card-title
-                                    ><v-spacer></v-spacer>
-                                    <v-card-title class="title  "
-                                        >Rp {{team.harga}}</v-card-title
+                                  <div class="subtitle mt-1 ml-0 subtitle-daftar">
+                                        Jumlah Anggota : {{this.jumlahAnggota}} orang
+                                  </div>
+
+                                  
+                                </div>
+                                  
+                                <div
+                                    class="d-flex justify-content-end daftar-section "
+                                >
+                                    <v-snackbar
+                                       v-if="isBerhasil"
+                                      :timeout="4000"
+                                      vertical
+                                      color='error'
                                     >
+                                      Form Telah Dilengkap
+
+                                      <v-btn
+                                      
+                                        text
+                                        @click="snackbar = false"
+                                      >
+                                        Close
+                                      </v-btn>
+                                    </v-snackbar>
+                                    <v-snackbar
+                                      v-model="isTersimpan"
+                                
+                                      :timeout="4000"
+                                      vertical
+                                      color='success'
+                                    >
+                                      Form Telah Dilengkapi
+
+                                      <v-btn
+                                      
+                                        text
+                                        @click="snackbar = false"
+                                      >
+                                        Close
+                                      </v-btn>
+                                    </v-snackbar>
+
                                 </div>
 
                             
@@ -435,8 +378,20 @@
                                 ></v-divider>
                             </v-container>
                             <v-card-actions class="pt-0">
+                                 
                                 <v-btn
-                                    @click="submitTeamData()   && overlayAndDialog()" 
+                                    v-if="!isBelumBayar"
+                                    @click="dialogKonfirmasi = true  " 
+                                    color="#13CEBB"
+                                    rounded
+                                    outlined
+                                    class="mt-0 daftar-button btn-block"
+                                    min-width="150"
+                                    >DAFTAR</v-btn
+                                >
+                                <v-btn
+                                     v-if="isBelumBayar"
+                                    @click="dialog = true" 
                                     color="#13CEBB"
                                     rounded
                                     outlined
@@ -444,6 +399,37 @@
                                     min-width="150"
                                     >BAYAR</v-btn
                                 >
+                                  <div>
+                                    <v-dialog
+                                        v-model="dialogKonfirmasi"
+                                        persistent
+                                        max-width="600px"
+                                    >
+                                        <v-card>
+                                          
+                                            <div class="pa-6 title font-weight-regular">
+                                              Apakah Anda sudah yakin dengan data yang Anda masukkan dan bersedia mengikuti proses pendaftaran Kompetisi Data Mining JOINTS 2020? 
+                                            </div>
+
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn
+                                                    text
+                                                    color="blue darken-1"
+                                                    @click="dialogKonfirmasi = false"
+                                                    >Tidak</v-btn
+                                                >
+                                                <v-btn
+                                                    text
+                                                    color="blue darken-1"
+                                                    @click="submitAllFunc() "
+                                                    >YA</v-btn
+                                                >
+                                              
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-dialog>
+                                </div>
                             </v-card-actions>
                             
                             <v-overlay
@@ -557,7 +543,7 @@
                                                                     class="col-md-10 col-xs-12 my-0 py-0  px-0"
                                                                 >
                                                                     <v-alert
-                                                                       
+                                                                       v-if="this.isLunas"
                                                                         dense
                                                                         type="success"
                                                                         class="my-2 alert-card px-4  "
@@ -568,7 +554,7 @@
                                                                     <v-alert
                                                                         dense
                                                                         type="info"
-                                                                 
+                                                                         v-if="!this.isLunas"
                                                                         class="my-2 alert-card px-4 alert-biru elevation-1"
                                                                     >
                                                                         Menunggu
@@ -582,7 +568,7 @@
                                                                         class="text-center ma-2"
                                                                     >
                                                                         <v-progress-circular
-                                                                            
+                                                                             v-if="!this.isLunas"
                                                                             :indeterminate="
                                                                                 true
                                                                             "
@@ -614,11 +600,102 @@
                                                 >Tutup</v-btn
                                             >
                                         </v-card-actions>
+                                       
                                     </v-card>
                                 </v-dialog>
                             </div>
                         </v-card>
+
+                        <v-card v-if="isLunas" outlined class="mx-4 ml-0 mt-5" >
+                            <v-container class="">
+                                <v-card-title class="title pl-0 pt-0 ">
+                                    Upload Makalah Data Mining 
+                                </v-card-title>
+
+                                <v-divider
+                                    class="mt-0 mb-4 card-divider"
+                                ></v-divider>
+                               
+                               <div class="d-flex">
+                                   <v-file-input
+                                    v-if="!isMakalahUpload"
+                                    v-model="makalah"
+                                    counter
+                                    dense
+                                    placeholder="Select your files"
+                                    prepend-icon="mdi-paperclip"
+                                    outlined
+                                    accept=".pdf"
+                                    :rules="[formValidation, v => !!v || 'File is required']"
+                                    :show-size="1000"
+                                ></v-file-input>
+                                <v-alert
+                                    v-if="isMakalahUpload"
+                                    class=" px-2 "
+                                    dense
+                                    text
+                                    type="success"
+                                >Uploaded</v-alert>
+                                
+                                  
+                                </div>
+
+                                <v-divider
+                                    class="mt-0 mb-0 card-divider"
+                                ></v-divider>
+                            </v-container>
+                            <v-card-actions class="pt-0">
+                                 
+                                <v-btn
+                                    
+                                    @click="dialogKonfirmasiMakalah = true  " 
+                                    color="#13CEBB"
+                                    rounded
+                                    outlined
+                                    class="mt-0 daftar-button btn-block"
+                                    min-width="150"
+                                    v-bind:disabled="isMakalahUpload"
+                                    >UPLOAD</v-btn
+                                >
+                                
+                                  <div>
+                                    <v-dialog
+                                        v-model="dialogKonfirmasiMakalah"
+                                        persistent
+                                        max-width="600px"
+                                    >
+                                        <v-card>
+                                          
+                                            <div class="pa-6 title font-weight-regular">
+                                              Apakah Anda sudah yakin dengan file yang anda upload? upload file hanya dapat dilakukan satu kali
+                                            </div>
+
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn
+                                                    text
+                                                    color="blue darken-1"
+                                                    @click="dialogKonfirmasiMakalah = false"
+                                                    >Tidak</v-btn
+                                                >
+                                                <v-btn
+                                                    text
+                                                    color="blue darken-1"
+                                                    @click=" submitMakalah()"
+                                                    >YA</v-btn
+                                                >
+                                              
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-dialog>
+                                </div>
+                            </v-card-actions>
+
+                        </v-card>
                     </v-col>
+
+
+                    
                 </v-row>
               </v-container>
             </v-app>
@@ -637,7 +714,22 @@ export default {
 
     data() {
         return {
+            polling: null,
+            myInterval: null, 
+            dialogKonfirmasiMakalah: false,
+            isBerhasil: false,
+            isBelumBayar : false,
+            dialogKonfirmasi: false,
+            isTersimpan: false, 
+            isAlert: false, 
+            snackbar: false,
+            isDisabled : false,
+            absolute: true,
+            isMemberKetua: false,
+            isMemberOne: false,
+            isMemberTwo: false,
             overlay: false,
+            isLunas: false,
             dialog: false,
             components: [1, 2, 3],
             profils: {
@@ -647,22 +739,25 @@ export default {
               instansi: '',
                 
             },
+            makalah: null, 
+            isMakalahUpload: false,
             team: {
-              nama_1: 'Sudirman Boy',
+              nama_1: '',
               nama_2: '', 
               ktm_ketua: null,
               ktm_1: null,
               ktm_2: null,
               nama_tim: '',
               harga: '',
-              status_bayar: ''
+              status: '',
+              isSingle: false
             },
             
             jumlahAnggota: null
-            
-            
+ 
         };
     },
+    
     computed:{ 
               // ...mapState(['profils']),
               ...mapGetters(['profilsData', 'competitions'])}
@@ -689,40 +784,207 @@ export default {
         
       )
     },
-    watch: {
-      jumlahAnggota: function(newAnggota, oldAnggota){
-        // console.log('test');
-      }
-    },
+   
     mounted() {
       this.getDataDiluarEmail()
       this.getEmailVuex();
+      this.getStatusData();
+      this.intervalGetData()
     },
     methods: {
+          submitAllFunc(){
+          this.submitProfils()
+          this.submitTeamData()
+          this.getTeamData() 
+          this.dialog = true 
+          this.dialogKonfirmasi = false 
+        },
+          async submitMakalah () {
+            let formData = new FormData();
+            this.dialogKonfirmasiMakalah =  false;
+            formData.append('makalah', this.makalah);
+
+            // console.log(formData);
+            
+            let token = await firebase.auth().currentUser.getIdToken(true);
+            const config = {
+                headers: { Authorization: 'Bearer ' + token,
+                'Content-Type': 'multipart/form-data' }
+            };
+            
+            let URL_API = `daftar/data_mining/upload_makalah`
+            const BASE_URL = 'https://api.joints.id';
+            Axios.post(BASE_URL +  `/${URL_API}`, formData, config)
+                .then(response => {
+                   
+                    // console.log(response);
+                    // console.log('berhasil upload makalah');
+                    if(response.data.status == 'ok' || response.data.status == 'menunggu_pembayaran') {
+                      this.isMakalahUpload = true;
+                    }
+                    this.$store.dispatch('getTeamDataVuex')
+
+                })
+                
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+
+
+         async submitProfils() {
+            let token = await firebase.auth().currentUser.getIdToken(true);
+            const config = {
+                headers: { Authorization: 'Bearer ' + token }
+            };
+            const bodyParameters = {
+                nama: this.profils.nama,
+                email: this.$store.state.user.data.email,
+                nomor: this.profils.nomor,
+                instansi: this.profils.instansi
+            };
+            this.$store.commit('SET_PROFIL', this.profils)
+            this.intervalGetData();
+            const BASE_URL = 'https://api.joints.id';
+            Axios.post(BASE_URL + '/biodata', bodyParameters, config)
+                .then(response => {
+                 
+                    // console.log(response);
+                    // console.log('berhasil');
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            
+        },
+        async getStatusData() {
+        let token = await firebase.auth().currentUser.getIdToken(true);
+        const config = {
+            headers: { Authorization: 'Bearer ' + token }
+        };
+        const competitions = {};
+        const BASE_URL = 'https://api.joints.id';
+        Axios.get(BASE_URL + '/competition', config)
+            .then(response => {
+              // console.log(response);
+                 response.data.competitions.forEach((value, index) => {
+                    competitions[value.competition] = value;
+                    
+                    
+                });
+                // console.log(competitions);
+
+                if(competitions.data_mining != undefined){
+                  
+                // console.log('ini dari getstatusdata; ADA COMPETITION.data_mining');
+                  if (competitions.data_mining.status == 'menunggu_pembayaran') {
+                    //    console.log('ga lunas menunggu pembayaran');
+                      this.overlay = false;
+                      this.isLunas = false;
+                      this.isBelumBayar = true 
+
+                  } else if (competition.data_mining.status == 'lunas') {
+                      // console.log('lunas dari === lunas');
+                      this.isLunas = true;
+                      this.overlay = true;
+                      this.isBelumBayar = true;
+                        clearInterval(this.myInterval)
+                  } else {
+                      // console.log('lunas dari else');
+                      this.isLunas = true;
+                      // this.overlay = true;
+                  }
+                }
+
+              
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        },
+
+        stopIntervalGetData(){
+           clearInterval(this.myInterval)
+        },
+        pollData () {
+          this.polling = setInterval(() => {
+              this.getStatusData();
+          }, 4000)
+        },
+        intervalGetData() {
+          clearInterval(this.myInterval)
+        //  console.log('set interval dari competition ');
+            this.myInterval =  setInterval(() => {
+              this.getStatusData();
+          }, 4000);
+        },
         overlayAndDialog() {
             this.overlay = false;
             this.dialog = true;
+            this.submitTeamData()
         },
         getTeamData(){
-        if(this.$store.getters.competitions.pcs == null ||
-          this.$store.getters.competitions.pcs == undefined ){
-            console.log(' competitions harus di isi');
+
+        if(this.$store.getters.competitions.data_mining == null ||
+            this.$store.getters.competitions.data_mining  == undefined ){
+            // console.log(' competitions harus di isi');
             
           } else {
-            console.log(' C1 competitions ngefetch dulu; ');
-            console.log(this.$store.getters.competitions);
+            // console.log(' C1 competitions ngefetch dulu; ');
+            // console.log(this.$store.getters.competitions);
             
-                this.team.nama_tim= this.$store.getters.competitions.pcs.nama_tim,
-                this.team.nama_1= this.$store.getters.competitions.pcs.nama_1,
-                this.team.nama_2 = this.$store.getters.competitions.pcs.nama_2,
-                this.team.ktm_ketua = this.$store.getters.competitions.pcs.ktm_ketua,
-                this.team.ktm_1= this.$store.getters.competitions.pcs.ktm_1,
-                this.team.ktm_2= this.$store.getters.competitions.pcs.ktm_2,
-                this.team.harga=  this.formatHarga(this.$store.getters.competitions.pcs.harga),
-                this.team.status_bayar = this.$store.getters.competitions.pcs.status_bayar
-                
+                this.team.nama_tim= this.$store.getters.competitions.data_mining .nama_tim,
+                this.team.nama_1= this.$store.getters.competitions.data_mining .nama_1,
+                this.team.nama_2 = this.$store.getters.competitions.data_mining .nama_2,
+                this.team.ktm_ketua = this.$store.getters.competitions.data_mining .ktm_ketua,
+                this.team.ktm_1= this.$store.getters.competitions.data_mining .ktm_1,
+                this.team.ktm_2= this.$store.getters.competitions.data_mining .ktm_2,
+                this.team.harga=  this.formatHarga(this.$store.getters.competitions.data_mining .harga),
+                this.team.status = this.$store.getters.competitions.data_mining .status
+                this.team.isSingle = this.$store.getters.competitions.data_mining .single
+
+                if(this.$store.getters.competitions.data_mining .ktm_2 != undefined){
+                      this.isMemberTwo = true;
+                      this.isMemberOne = true;
+                      this.isMemberKetua = true
+                      this.jumlahAnggota = 3
+                } else if (this.$store.getters.competitions.data_mining .ktm_1 != undefined){
+                      this.isMemberOne = true;
+                      this.isMemberKetua = true
+                      this.jumlahAnggota = 2
+                } else if (this.$store.getters.competitions.data_mining .ktm_ketua != undefined){
+                      this.isMemberKetua = true;
+                      this.jumlahAnggota = 1
+                }
+
+                if (
+                      this.$store.getters.competitions.data_mining .status == 'menunggu_pembayaran'
+                  ) {
+                      // console.log('ga lunas menunggu pembayaran');
+                      this.overlay = false;
+                      this.isLunas = false;
+                      this.isBelumBayar = true;
+                  } else if (
+                      this.$store.getters.competitions.data_mining .status == 'lunas'
+                  ) {
+                      // console.log('lunas dari === lunas');
+                      this.isLunas = true;
+                      this.overlay = true;
+                      this.isBelumBayar = true;
+                      if(this.$store.getters.competitions.data_mining .makalah != undefined){
+                        this.makalah  = this.$store.getters.competitions.data_mining .makalah 
+                        this.isMakalahUpload = true ; 
+                      }
+                      clearInterval(this.myInterval)
+
+                  } else {
+                      // console.log('lunas dari else');
+                      this.isLunas = true;
+                      // this.overlay = true;
+                  }
+
             
-            console.log(this.team);
+            // console.log(this.team);
           }
       },
       formatHarga(number) {
@@ -735,10 +997,10 @@ export default {
           this.$store.getters.profilsData.nama == null  &&
           this.$store.getters.profilsData.nomor == null &&
           this.$store.getters.profilsData.instansi == null){
-            console.log(' biodata harus di isi');
+            // console.log(' biodata harus di isi');
             //  this.getProfilData()
           } else {
-            console.log(' data di profils ngefetch dulu; ');
+            // console.log(' data di profils ngefetch dulu; ');
             this.profils.nama = this.$store.getters.profilsData.nama
             this.profils.nomor =  this.$store.getters.profilsData.nomor
             this.profils.instansi = this.$store.getters.profilsData.instansi
@@ -750,66 +1012,44 @@ export default {
        
       },
       
-        assignTeamDict(v1, v2){ 
-            //this is works like this
-            // const target = { a: 1, b: 2 };
-            // const source = { b: 4, c: 5 };
-            // this.assignTeamDict(this.teamObject, source)
-
-            this.teamObject = Object.assign(v1, v2)
-            console.log(this.teamObject);
-            
-        },
+    
 
         async submitTeamData() {
             let formData = new FormData();
             for (let [key, value] of Object.entries(this.team)) {
-              console.log(key, value);
+              // console.log(key, value);
               formData.append(key, value);
               
             }
-            console.log(formData);
-            
+            // console.log(formData);
+            this.intervalGetData()
             let token = await firebase.auth().currentUser.getIdToken(true);
             const config = {
                 headers: { Authorization: 'Bearer ' + token,
                 'Content-Type': 'multipart/form-data' }
             };
             
-            let URL_API = `daftar/pcs`
+            let URL_API = `daftar/data_mining`
             const BASE_URL = 'https://api.joints.id';
             Axios.post(BASE_URL +  `/${URL_API}`, formData, config)
                 .then(response => {
-                    console.log(response);
-                    console.log('berhasil');
+                    // console.log(response);
+                    // console.log('berhasil');
+                    this.$store.dispatch('getTeamDataVuex')
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
 
-         async submitProfils() {
-            let token = await firebase.auth().currentUser.getIdToken(true);
-            const config = {
-                headers: { Authorization: 'Bearer ' + token }
-            };
-            const bodyParameters = {
-                nama: this.profils.nama,
-                email: this.profils.email,
-                nomor: this.profils.nomor,
-                instansi: this.profils.instansi
-            };
-            this.$store.commit('SET_PROFIL', this.profils)
-            
-            const BASE_URL = 'https://api.joints.id';
-            Axios.post(BASE_URL + '/biodata', bodyParameters, config)
-                .then(response => {
-                    // console.log(response);
-                    // console.log('berhasil');
-                })
-                .catch(error => {
-                    console.log(error);
-                });
+        warningBeforeSend() {
+            if (this.formIsFullfiled() == true) {
+                this.dialogKonfirmasi = true 
+                return true;
+            } else {
+                this.isAlert = true;
+                return false;
+            }
         },
         
        formValidation() {
@@ -818,7 +1058,13 @@ export default {
                 this.profils.nama &&
                 this.profils.email &&
                 this.profils.nomor &&
-                this.profils.instansi
+                this.profils.instansi &&
+                this.nama_1 &&
+                this.nama_2 && 
+                this.ktm_ketua &&
+                this.ktm_1 &&
+                this.ktm_2 &&
+                this.nama_tim 
             ) {
                 // console.log('ada nama ')
                 this.isDisabled = false;
@@ -834,6 +1080,9 @@ export default {
           let hargaIndo = Intl.NumberFormat(['ban', 'id']).format(number);
           return hargaIndo;
          }
+    },
+    beforeDestroy () {
+        clearInterval(this.myInterval)
     },
 };
 </script>

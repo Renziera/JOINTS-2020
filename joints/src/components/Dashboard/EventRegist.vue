@@ -54,6 +54,7 @@
                                     required
                                     readonly
                                     outlined
+                                    disabled
                                     dense
                                     placeholder="Email"
                                     append-outer-icon=" mdi-checkbox-marked-circle "
@@ -146,7 +147,7 @@
                         class="col-sm-12 col-lg-4 col-xs-12 col-md-4"
                         xs="12"
                         sm="12"
-                        md="4"
+                        md="8"
                         lg="4"
                         cols="12"
                     >
@@ -268,8 +269,7 @@
                                                         >
                                                             Rp
                                                             {{
-                                                                this.payment
-                                                                    .harga
+                                                                this.payment.harga
                                                             }}.00
                                                         </div>
 
@@ -398,9 +398,9 @@ export default {
             isLunas: false
         }
     }),
-
-
-
+     beforedestroy() {
+      clearInterval(this.intervalGetData);
+    },
       computed:{ 
               // ...mapState(['profils']),
               ...mapGetters(['profilsData'])},
@@ -409,7 +409,7 @@ export default {
       this.$store.watch(
         (state, getters ) => getters.profilsData,
         (newValue, oldValue) => {
-          console.log(`Updating from ${oldValue} to ${newValue}`);
+          // console.log(`Updating from ${oldValue} to ${newValue}`);
           this.getDataDiluarEmail()
         }
       )
@@ -417,6 +417,10 @@ export default {
       mounted() {
         this.getDataDiluarEmail()
         this.getEmailVuex();
+        this.getPriceData();
+        this.intervalGetData()
+
+       
       },
 
     methods: {
@@ -431,18 +435,14 @@ export default {
           this.$store.getters.profilsData.nama == null  &&
           this.$store.getters.profilsData.nomor == null &&
           this.$store.getters.profilsData.instansi == null){
-            console.log(' biodata harus di isi');
-            //  this.getProfilData()
+            // console.log(' biodata harus di isi');
+           
           } else {
-            console.log(' data di profils ngefetch dulu; ');
+            // console.log(' data di profils ngefetch dulu; ');
             this.profils.nama = this.$store.getters.profilsData.nama
             this.profils.nomor =  this.$store.getters.profilsData.nomor
             this.profils.instansi = this.$store.getters.profilsData.instansi
             
-        
-
-           
-
 
           }
       },
@@ -458,10 +458,10 @@ export default {
                 .then(response => {
                     this.payment.statusBayar = response.data.status;
                     // console.log(response);
-                    if (this.payment.statusBayar === 'menunggu_pembayaran') {
+                    if (this.payment.statusBayar == 'menunggu_pembayaran') {
                         this.overlay = false;
                         this.payment.isLunas = false;
-                    } else if (this.payment.statusBayar === 'lunas') {
+                    } else if (this.payment.statusBayar == 'lunas') {
                         // console.log('lunas dari === lunas');
                         this.payment.isLunas = true;
                         this.overlay = true;
@@ -471,9 +471,6 @@ export default {
                         this.overlay = true;
                     }
 
-                    // console.log('ini status harga');
-                    // console.log('ini clg payment ' + this.payment.statusBayar);
-                    // console.log('ini clg isLunas ' + this.payment.isLunas);
                 })
                 .catch(error => {
                     console.log(error);
@@ -481,6 +478,7 @@ export default {
         },
 
         intervalGetData() {
+           
             setInterval(() => {
                 this.getStatusData();
             }, 4000);
@@ -551,16 +549,18 @@ export default {
                 instansi: this.profils.instansi
             };
             this.$store.commit('SET_PROFIL', this.profils)
-            
+            this.intervalGetData();
             const BASE_URL = 'https://api.joints.id';
             Axios.post(BASE_URL + '/biodata', bodyParameters, config)
                 .then(response => {
+                 
                     // console.log(response);
                     // console.log('berhasil');
                 })
                 .catch(error => {
                     console.log(error);
                 });
+            
         },
 
         formatHarga(number) {
@@ -588,26 +588,26 @@ export default {
                     console.log(error);
                 });
         },
-        async getProfilData() {
-            let token = await firebase.auth().currentUser.getIdToken(true);
+        // async getProfilData() {
+        //     let token = await firebase.auth().currentUser.getIdToken(true);
 
-            const config = {
-                headers: { Authorization: 'Bearer ' + token }
-            };
-            const BASE_URL = 'https://api.joints.id';
-            Axios.get(BASE_URL + '/biodata', config)
-                .then(response => {
-                    this.profils = {
-                        nama: response.data.biodata.nama,
-                        email: this.$store.state.user.data.email,
-                        nomor: response.data.biodata.nomor,
-                        instansi: response.data.biodata.instansi
-                    };
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        }
+        //     const config = {
+        //         headers: { Authorization: 'Bearer ' + token }
+        //     };
+        //     const BASE_URL = 'https://api.joints.id';
+        //     Axios.get(BASE_URL + '/biodata', config)
+        //         .then(response => {
+        //             this.profils = {
+        //                 nama: response.data.biodata.nama,
+        //                 email: this.$store.state.user.data.email,
+        //                 nomor: response.data.biodata.nomor,
+        //                 instansi: response.data.biodata.instansi
+        //             };
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //         });
+        // }
     },
 
 };

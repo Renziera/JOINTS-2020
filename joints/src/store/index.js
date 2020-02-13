@@ -19,7 +19,7 @@ export default new Vuex.Store({
             isBelumLunas: null,
             paymentData: null
         },
-        pengumumanDatas: null,
+        pengumumanDatas: [],
         events: null,
         competitions : null 
     },
@@ -35,6 +35,15 @@ export default new Vuex.Store({
         },
         events(state){
           return state.events;
+        },
+        competitions(state){
+          return  state.competitions;
+        },
+        competitionsDataMining(state){
+          return state.competitions.data_mining
+        },
+        pengumumans(state){
+          return state.pengumumanDatas;
         }
     },
     mutations: {
@@ -69,8 +78,37 @@ export default new Vuex.Store({
     },
     actions: {
 
+      async getPengumumanDataVuex({ commit }) {
+            let token = await firebase.auth().currentUser.getIdToken(true);
+            const config = {
+                headers: { Authorization: 'Bearer ' + token }
+            };
+
+            const pengumumanBaru = [];
+
+            const BASE_URL = 'https://api.joints.id';
+            Axios.get(BASE_URL + '/announcement', config)
+                .then(response => {
+                    // console.log(response)
+                    response.data.announcements.forEach((value, index) => {
+                        pengumumanBaru.push({
+                          pengumumanData : value,
+                          isIndex: value.waktu._seconds,
+                          isExpand : false})
+                    });
+
+                    commit('SET_PENGUMUMAN', pengumumanBaru);
+
+                    // console.log('ini pengumuman dari data dari vuex')
+                    // console.log(this.state.pengumumanDatas)
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+
         testActions({commits}) {
-          console.log('test action harusnya bisa su')
+          // console.log('test action harusnya bisa su')
         },
         async getEventDataVuex({ commit }) {
           let token = await firebase.auth().currentUser.getIdToken(true);
@@ -88,8 +126,8 @@ export default new Vuex.Store({
                   });
 
                   commit('ADD_EVENTS', eventsBaru);
-                  console.log('ini event data dari vuex')
-                  console.log(this.state.events)
+                  // console.log('ini event data dari vuex')
+                  // console.log(this.state.events)
               })
               .catch(error => {
                   console.log(error);
@@ -107,16 +145,16 @@ export default new Vuex.Store({
           const BASE_URL = 'https://api.joints.id';
           Axios.get(BASE_URL + '/competition', config)
               .then(response => {
-                  console.log(response);
-                  console.log('team dataa dari vuex')
+                  // console.log(response);
+                  // console.log('team dataa dari vuex')
 
                   response.data.competitions.forEach((value, index) => {
                     competitions[value.competition] = value;
                     
                 });
                   commit('ADD_COMPETITIONS', competitions);
-                  console.log('fetch item data vuex ini ')
-                  console.log(this.state.competitions)
+                  // console.log('fetch item data vuex ini ')
+                  // console.log(this.state.competitions)
               })
               .catch(error => {
                   console.log(error);
@@ -143,7 +181,7 @@ export default new Vuex.Store({
                         instansi: response.data.biodata.instansi
                     })
 
-                    console.log('data profil dari vuex baru dateng ')
+                    // console.log('data profil dari vuex baru dateng ')
 
                     // console.log(this.state.profils.profilData)
                     // // console.log('dari prifldata')

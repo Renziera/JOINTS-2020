@@ -22,8 +22,8 @@
                                     <v-divider class="mx-4" inset vertical></v-divider>
                                     <v-spacer></v-spacer>
 
-                                    <v-dialog v-model="dialog" max-width="500px">
-                                        <template v-slot:activator="{ on }"></template>
+                                    <!-- <v-dialog v-model="dialog" max-width="500px">
+                                        <template v-slot:activator></template>
 
                                         <v-card>
                                             <v-card-title>
@@ -122,11 +122,11 @@
                                                 <v-btn color="blue darken-1" text @click="close">NO</v-btn>
                                             </v-card-actions>
                                         </v-card>
-                                    </v-dialog>
+                                    </v-dialog>-->
                                 </v-toolbar>
                             </template>
 
-                            <template v-slot:item.action="{ item }">
+                            <!-- <template v-slot:item.action="{ item }">
                                 <v-alert
                                     v-if="
                                         item.konfirmasiAdmin ||
@@ -153,7 +153,7 @@
 
                             <template v-slot:no-data>
                                 <v-btn color="primary" @click="initialize">Reset</v-btn>
-                            </template>
+                            </template>-->
                         </v-data-table>
                     </v-col>
                 </v-row>
@@ -171,20 +171,20 @@ export default {
         listKonfirmasi: [],
         dialog: false,
         headers: [
-            {
-                text: 'Nomor',
-                align: 'left',
-                sortable: false,
-                value: 'nomor'
-            },
-            // { text: 'Waktu Daftar', value: 'waktu_daftar' },
+            // {
+            //     text: 'Nomor',
+            //     align: 'left',
+            //     sortable: false,
+            //     value: 'nomor'
+            // },
+            { text: 'Waktu Daftar', value: 'waktu_daftar' },
             { text: 'Nama', value: 'nama' },
             { text: 'Email', value: 'email' },
             { text: 'Nomor HP', value: 'nomorhp', sortable: false },
             { text: 'Acara', value: 'acara', sortable: false },
             { text: 'Nominal', value: 'nominal', sortable: false },
-            { text: 'Status', value: 'status' },
-            { text: 'Aksi', value: 'action', sortable: false }
+            { text: 'Status', value: 'status' }
+            // { text: 'Aksi', value: 'action', sortable: false }
         ],
         desserts: [],
         idPembayaranItem: null,
@@ -197,9 +197,9 @@ export default {
             nomorhp: '',
             acara: '',
             nominal: '',
-            status: '',
-            konfirmasiAdmin: false,
-            isJanganKonfirmasi: null
+            status: ''
+            // konfirmasiAdmin: false,
+            // isJanganKonfirmasi: null
         },
         defaultItem: {
             nomor: 0,
@@ -209,9 +209,9 @@ export default {
             nomorhp: '',
             acara: '',
             nominal: '',
-            status: '',
-            konfirmasiAdmin: false,
-            isJanganKonfirmasi: null
+            status: ''
+            // konfirmasiAdmin: false,
+            // isJanganKonfirmasi: null
         }
     }),
 
@@ -236,10 +236,10 @@ export default {
     methods: {
         async getGLDataAll() {
             let token = await firebase.auth().currentUser.getIdToken(true);
-            let isKonfirmasi = null;
-            let waktuDaftar = null;
-            let statusBayar = null;
-            let konfirmasiAdmin = null;
+            // let isKonfirmasi = null;
+            // let waktuDaftar = null;
+            // let statusBayar = null;
+            // let konfirmasiAdmin = null;
 
             const config = {
                 headers: { Authorization: 'Bearer ' + token }
@@ -247,159 +247,104 @@ export default {
 
             const BASE_URL = 'https://api.joints.id';
 
-            Axios.get(BASE_URL + '/admin/pembayaran', config)
-                .then(response => {
-                    response.data.results.forEach((value, index) => {
-                        if (value.event == 'grand_launching') {
-                            // console.log(value);
-
-                            if (
-                                value.status == 'lunas' ||
-                                value.dilunasi_admin == true
-                            ) {
-                                konfirmasiAdmin = true;
-                                isKonfirmasi = false;
-                            } else if (value.status == 'menunggu_pembayaran') {
-                                konfirmasiAdmin = false;
-                                isKonfirmasi = false;
-                            }
-
-                            // if (value.waktu_daftar._seconds == undefined ){
-                            //    console.log('ga ada cuk');
-
-                            // } else {
-                            //      waktuDaftar =   new Date(
-                            //         value.waktu_daftar._seconds * 1000
-                            //     ).toLocaleDateString()
-                            // }
-
-                            let editedItem = {
-                                nomor: value.id_pembayaran,
-                                // waktu_daftar: waktuDaftar,
-                                nama: value.nama,
-                                email: value.email,
-                                nomorhp: value.nomor,
-                                acara: value.event,
-                                nominal: value.harga,
-                                status: value.status,
-                                konfirmasiAdmin: konfirmasiAdmin,
-                                isJanganKonfirmasi: isKonfirmasi
-                            };
-                            this.desserts.push(editedItem);
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        },
-
-        async confirmPeserta(value) {
-            let token = await firebase.auth().currentUser.getIdToken(true);
-            let id_pembayaran = null;
-            const config = {
-                headers: { Authorization: 'Bearer ' + token }
-            };
-
-            const bodyParameters = {
-                id_pembayaran: value
-            };
-            const BASE_URL = 'https://api.joints.id';
-            Axios.post(
-                BASE_URL + '/admin/approve_pembayaran',
-                bodyParameters,
-                config
-            )
-                .then(response => {
-                    // console.log('berhasil confirm pembayaran');
-                })
-                .catch(error => {
-                    console.log(error);
-                    // console.log(id_pembayaran);
-                });
-        },
-
-        async getGLData() {
-            let token = await firebase.auth().currentUser.getIdToken(true);
-            let isKonfirmasi = null;
-            let waktuDaftar = null;
-            let statusBayar = null;
-            const config = {
-                headers: { Authorization: 'Bearer ' + token }
-            };
-
-            const BASE_URL = 'https://api.joints.id';
             Axios.get(BASE_URL + '/admin/grand_launching', config)
                 .then(response => {
-                    // console.log('berhasil');
-                    // console.log(response);
-
+                    console.log(response.data.results);
                     response.data.results.forEach((value, index) => {
-                        if (value.event == 'grand_launching') {
-                            console.log(value);
+                        // console.log(value);
 
-                            if (value.status == 'menunggu_pembayaran') {
-                                isKonfirmasi = true;
-                                statusBayar = 'Tunggu Bayar';
-                            } else {
-                                isKonfirmasi = false;
-                            }
+                        // if (
+                        //     value.status == 'lunas' ||
+                        //     value.dilunasi_admin == true
+                        // ) {
+                        //     konfirmasiAdmin = true;
+                        //     isKonfirmasi = false;
+                        // } else if (value.status == 'menunggu_pembayaran') {
+                        //     konfirmasiAdmin = false;
+                        //     isKonfirmasi = false;
+                        // }
 
-                            // if (value.waktu_daftar._seconds == undefined ){
-                            //    console.log('ga ada cuk');
+                        // if (value.waktu_daftar._seconds == undefined ){
+                        //    console.log('ga ada cuk');
 
-                            // } else {
-                            //      waktuDaftar =   new Date(
-                            //         value.waktu_daftar._seconds * 1000
-                            //     ).toLocaleDateString()
-                            // }
+                        // } else {
+                        //      waktuDaftar =   new Date(
+                        //         value.waktu_daftar._seconds * 1000
+                        //     ).toLocaleDateString()
+                        // }
 
-                            let editedItem = {
-                                nomor: value.id_pembayaran,
-                                // waktu_daftar: waktuDaftar,
-                                nama: value.nama,
-                                email: value.email,
-                                nomorhp: value.nomor,
-                                acara: value.event,
-                                nominal: value.harga,
-                                status: statusBayar,
-                                konfirmasiAdmin: value.dilunasi_admin,
-                                isJanganKonfirmasi: isKonfirmasi
-                            };
-                            this.desserts.push(editedItem);
-                        }
+                        let editedItem = {
+                            // nomor: value.id_pembayaran,
+                            waktu_daftar: new Date(
+                                value.waktu_daftar._seconds * 1000
+                            ).toLocaleDateString(),
+                            nama: value.nama,
+                            email: value.email,
+                            nomorhp: value.nomor,
+                            acara: value.event,
+                            nominal: value.harga,
+                            status: value.status
+                            // konfirmasiAdmin: konfirmasiAdmin,
+                            // isJanganKonfirmasi: isKonfirmasi
+                        };
+                        this.desserts.push(editedItem);
                     });
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
+
+        // async confirmPeserta(value) {
+        //     let token = await firebase.auth().currentUser.getIdToken(true);
+        //     let id_pembayaran = null;
+        //     const config = {
+        //         headers: { Authorization: 'Bearer ' + token }
+        //     };
+
+        //     const bodyParameters = {
+        //         id_pembayaran: value
+        //     };
+        //     const BASE_URL = 'https://api.joints.id';
+        //     Axios.post(
+        //         BASE_URL + '/admin/approve_pembayaran',
+        //         bodyParameters,
+        //         config
+        //     )
+        //         .then(response => {
+        //             // console.log('berhasil confirm pembayaran');
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //             // console.log(id_pembayaran);
+        //         });
+        // },
+
         initialize() {
             this.desserts = [
                 {
                     nomor: 'Dummy number',
                     nama: ' Dummy Nurrizky Imani',
                     nomorhp: '08323627323',
-                    waktu_daftar: '12/12/12',
+                    waktu_daftar: '01/01/2020',
                     acara: ' Dummy Grandlaunching',
                     email: 'dog@mail.com',
-
                     nominal: 42909,
-                    status: 'Lunas',
-                    konfirmasiAdmin: true,
-                    isJanganKonfirmasi: false
+                    status: 'Lunas'
+                    // konfirmasiAdmin: true,
+                    // isJanganKonfirmasi: false
                 },
                 {
                     nomor: 'Dummy number',
                     nama: ' Dummy For Testing konfirmasi',
                     email: 'dog@mail.com',
                     nomorhp: '08323627323',
-                    waktu_daftar: '12/12/12',
+                    waktu_daftar: '01/01/2020',
                     acara: ' Dummy Grandlaunching',
                     nominal: 42500,
-                    status: 'Lunas',
-                    konfirmasiAdmin: true,
-                    isJanganKonfirmasi: true
+                    status: 'Lunas'
+                    // konfirmasiAdmin: true,
+                    // isJanganKonfirmasi: true
                 }
             ];
         },

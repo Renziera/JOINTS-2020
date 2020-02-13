@@ -2,12 +2,8 @@
     <div>
         <section class="timeline" :id="accessFrom">
             <b-container>
-                <div
-                    class="d-flex justify-content-center align-items-center flex-column"
-                >
-                    <h3 class="timeline-title">
-                        {{ title }}
-                    </h3>
+                <div class="d-flex justify-content-center align-items-center flex-column">
+                    <h3 class="timeline-title">{{ title }}</h3>
                     <template>
                         <v-timeline v-if="accessFrom == 'PCS'">
                             <v-timeline-item
@@ -17,20 +13,20 @@
                                 :key="i"
                             >
                                 <div v-if="i % 2 == 0" class="text-left">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                                 <div v-else-if="i % 2 == 1" class="text-right">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                             </v-timeline-item>
                         </v-timeline>
@@ -43,20 +39,20 @@
                                 :key="i"
                             >
                                 <div v-if="i % 2 == 0" class="text-left">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                                 <div v-else-if="i % 2 == 1" class="text-right">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                             </v-timeline-item>
                         </v-timeline>
@@ -69,20 +65,20 @@
                                 :key="i"
                             >
                                 <div v-if="i % 2 == 0" class="text-left">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                                 <div v-else-if="i % 2 == 1" class="text-right">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                             </v-timeline-item>
                         </v-timeline>
@@ -95,20 +91,20 @@
                                 :key="i"
                             >
                                 <div v-if="i % 2 == 0" class="text-left">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                                 <div v-else-if="i % 2 == 1" class="text-right">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                             </v-timeline-item>
                         </v-timeline>
@@ -121,20 +117,20 @@
                                 :key="i"
                             >
                                 <div v-if="i % 2 == 0" class="text-left">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                                 <div v-else-if="i % 2 == 1" class="text-right">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                             </v-timeline-item>
                         </v-timeline>
@@ -147,20 +143,20 @@
                                 :key="i"
                             >
                                 <div v-if="i % 2 == 0" class="text-left">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                                 <div v-else-if="i % 2 == 1" class="text-right">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                             </v-timeline-item>
                         </v-timeline>
@@ -173,20 +169,20 @@
                                 :key="i"
                             >
                                 <div v-if="i % 2 == 0" class="text-left">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                                 <div v-else-if="i % 2 == 1" class="text-right">
-                                    <span class="timeline-date">{{
+                                    <span class="timeline-date">
+                                        {{
                                         timeline.date
-                                    }}</span>
-                                    <div class="timeline-desc">
-                                        {{ timeline.desc }}
-                                    </div>
+                                        }}
+                                    </span>
+                                    <div class="timeline-desc">{{ timeline.desc }}</div>
                                 </div>
                             </v-timeline-item>
                         </v-timeline>
@@ -203,106 +199,120 @@ export default {
         return {
             timelinePCS: [
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '4 Februari 2020',
+                    desc: 'Registrasi Dibuka'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '22 Maret 2020',
+                    desc: 'Registrasi Ditutup'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '28 Maret 2020',
+                    desc: 'Warm Up'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '29 Maret 2020',
+                    desc: 'Penyisihan'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '4 April 2020',
+                    desc: 'Pengumuman Semifinalis'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '18 April 2020',
+                    desc: 'Technical Meeting Semifinalis'
+                },
+                {
+                    date: '18 April 2020',
+                    desc: 'Semifinal'
+                },
+                {
+                    date: '19 April 2020',
+                    desc: 'Final'
                 }
             ],
             timelineCTF: [
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '4 Februari 2020',
+                    desc: 'Registrasi Dibuka'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '22 Maret 2020',
+                    desc: 'Registrasi Ditutup'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '28 Maret 2020',
+                    desc: 'Warm Up'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '29 Maret 2020',
+                    desc: 'Penyisihan'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '4 April 2020',
+                    desc: 'Pengumuman Finalis'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '19 April 2020',
+                    desc: 'Final'
                 }
             ],
             timelineDM: [
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '4 Februari 2020',
+                    desc: 'Registrasi Dibuka'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '20 Maret 2020',
+                    desc: 'Registrasi Ditutup'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '23 Maret 2020',
+                    desc: 'Pembagian Dataset dan Soal (Babak Penyisihan)'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '23-29 Maret 2020',
+                    desc: 'Submisi dan Pengumpulan Makalah (Babak Penyisihan)'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '4 April 2020',
+                    desc: 'Pengumuman Finalis'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '18 April 2020',
+                    desc: 'Pengerjaan Dataset dan Soal (Babak Final)'
+                },
+                {
+                    date: '19 April 2020',
+                    desc: 'Presentasi Hasil Pengerjaan (Babak Final)'
                 }
             ],
             timelineUX: [
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '4 Februari 2020',
+                    desc: 'Registrasi Dibuka'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '22 Maret 2020',
+                    desc:
+                        'Registrasi Ditutup dan Batas Pengumpulan Proposal + Video'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '4 April 2020',
+                    desc: 'Pengumuman Finalis'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '5-17 April 2020',
+                    desc:
+                        'Finishing Desain UX, Pembuatan Prototype, dan Penyusunan Bahan Presentasi oleh Finalis'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '17 April 2020',
+                    desc: 'Pengumpulan Bahan Presentasi oleh Finalis'
                 },
                 {
-                    date: '11 Desember 2019',
-                    desc: 'But I must explain to you how all this mistaken idea'
+                    date: '19 April 2020',
+                    desc: 'Presentasi Hasil Pengerjaan (Babak Final)'
                 }
             ],
             timelineGL: [
@@ -343,40 +353,40 @@ export default {
                     desc: 'Open Registrasi Joints Camp'
                 },
                 {
-                    date: '1 Maret 2020',
+                    date: '14 Februari 2020',
                     desc: 'Close Registrasi Joints Camp'
                 },
                 {
-                    date: '1 Maret 2020',
-                    desc: 'Close Registrasi Joints Camp'
+                    date: '15 Februari 2020',
+                    desc: 'Pengumuman Seleksi Pertama'
+                },
+                {
+                    date: '16 Februari 2020',
+                    desc: 'Tahap Seleksi Kedua Dimulai'
+                },
+                {
+                    date: '29 Februari 2020',
+                    desc: 'Tahap Seleksi Kedua Selesai'
                 },
                 {
                     date: '1 Maret 2020',
-                    desc: 'Close Registrasi Joints Camp'
-                },
-                {
-                    date: '1 Maret 2020',
-                    desc: 'Close Registrasi Joints Camp'
-                },
-                {
-                    date: '1 Maret 2020',
-                    desc: 'Close Registrasi Joints Camp'
+                    desc: 'Pengumuman Akhir Peserta JointsCamp'
                 },
                 {
                     date: '14 Maret 2020',
-                    desc: 'Bootcamp'
+                    desc: 'JointsCamp Week 1 (Frontend)'
                 },
                 {
                     date: '21 Maret 2020',
-                    desc: 'Bootcamp'
+                    desc: 'JointsCamp Week 2 (Frontend)'
                 },
                 {
                     date: '28 Maret 2020',
-                    desc: 'Bootcamp'
+                    desc: 'JointsCamp Week 3 (Backend)'
                 },
                 {
                     date: '4 April 2020',
-                    desc: 'Bootcamp'
+                    desc: 'JointsCamp Week 4 (Backend)'
                 }
             ]
         };

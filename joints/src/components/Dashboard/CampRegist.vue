@@ -8,18 +8,11 @@
                             Profil Anda:
                         </h4>
                         <div class="subtitle mt-1 ml-0 subtitle-daftar">
-                            Lengkapi profil anda dibawah ini
+                            Lengkapi profil anda untuk mendaftar JointsCamp: 
                         </div>
                     </v-col>
 
-                    <v-col cols="12" class="pb-0 mb-0 profil-team-title">
-                        <h4 style="text-align: left" class="mb-0 pb-0">
-                            Profil Anda:
-                        </h4>
-                        <div class="subtitle mt-1 ml-0 subtitle-daftar">
-                            Lengkapi profil anda dibawah ini
-                        </div>
-                    </v-col>
+                   
 
                     <v-col
                         md="8"
@@ -30,7 +23,7 @@
                     >
                         <v-card
                             outlined
-                            class="mx-auto pt-0 regis-card elevation-2 outlined-blue-card"
+                            class="mx-auto pt-0 regis-card elevation-1 outlined-blue-card mb-4"
                         >
                             <div class=" ma-4 d-flex flex-column">
                                 <div class="subtitle">Nama:</div>
@@ -46,11 +39,11 @@
                                     required
                                     outlined
                                     dense
-                                    placeholder="Nama"
+                                    placeholder="Nama Anda"
                                 ></v-text-field>
 
                                 <div class="subtitle">Email</div>
-                                <v-text-field
+                                 <v-text-field
                                     class="mt-1 pb-0 mb-0"
                                     v-model="profils.email"
                                     :rules="[
@@ -60,9 +53,11 @@
                                             'This field is required'
                                     ]"
                                     required
+                                    readonly
                                     outlined
                                     dense
-                                    placeholder="Nama"
+                                    placeholder="example@gmail.com"
+                                    append-outer-icon=" mdi-checkbox-marked-circle "
                                 ></v-text-field>
 
                                 <div class="subtitle">Nomor HP:</div>
@@ -80,7 +75,7 @@
                                         required
                                         outlined
                                         dense
-                                        placeholder="Nama"
+                                        placeholder="081234567890"
                                     ></v-text-field>
                                 </div>
 
@@ -102,6 +97,17 @@
                                 <div
                                     class="d-flex justify-content-end daftar-section "
                                 >
+                                     <v-alert
+                                        class="alert-card px-4"
+                                        type="success"
+                                        dense
+                                        v-model="isTersimpan"
+                                        transition="scale-transition"
+                                        dismissible
+                                    >
+                                        Yay Tersimpan
+                                    </v-alert>
+
                                     <v-alert
                                         class="alert-card px-4"
                                         type="error"
@@ -119,25 +125,42 @@
                                         rounded
                                         class=" daftar-button "
                                         max-width="100"
-                                        v-bind:disabled="false"
+                                        v-bind:disabled="!formIsFullfiled"
                                         v-on:click.native="warningBeforeSend"
                                         >Save
                                     </v-btn>
                                 </div>
                             </div>
                         </v-card>
-
+                        <h4 style="text-align: left">Linkedin & Resume  :</h4>
+                        <div class="subtitle mt-1 ml-0 subtitle-daftar">
+                            Cantumkan Profil LinkedIn serta Upload Resume Anda
+                        </div>
                         <v-card
                             outlined
-                            class="mx-auto pt-2 regis-card elevation-2 outlined-blue-card col-12 mt-4"
+                            class="mx-auto pt-2 regis-card elevation-1 outlined-blue-card col-12 mt-4"
                             height="50%"
                         >
-                            <div class=" ma-4 d-flex flex-column">
+                              <div 
+                                class=" ma-4 d-flex flex-column">
                                 <div class="subtitle">Linkedin:</div>
+
+                                <div 
+                                  v-if="isSudahDaftar"
+                                  class="d-flex flex-column col-12 pl-2 pr-0">
+                                  <div 
+                                    class="title font-weight-medium profil-subtitle text-left  "
+                                  >
+                                      {{ daftarCamps.linked_in }}
+                                  </div>
+                                  <v-divider class="ma-0 camp-divider"></v-divider>
+                              </div>
+
                                 <v-text-field
+                                    v-if="!isSudahDaftar"
                                     class="mt-1 pb-0 "
                                     v-model="daftarCamps.linked_in"
-                                    :rules="[
+                                    :rules="[formValidation,
                                         () =>
                                             !!daftarCamps.linked_in ||
                                             'This field is required'
@@ -145,12 +168,13 @@
                                     required
                                     outlined
                                     dense
-                                    placeholder="Linkedin"
+                                    v-bind:readonly="false"
+                                    placeholder="https://www.linkedin.com/in/contohlinkedin/"
                                 ></v-text-field>
 
                                 <div class="subtitle">Upload resume/CV:</div>
                                 <v-file-input
-                                    v-if="!daftarCamps.linked_in"
+                                    v-if="!isSudahDaftar"
                                     v-model="daftarCamps.resume"
                                     counter
                                     dense
@@ -158,12 +182,13 @@
                                     prepend-icon="mdi-paperclip"
                                     outlined
                                     accept=".pdf"
-                                    :rules="[v => !!v || 'File is required']"
+                                    :rules="[formValidation,
+                                      v => !!v || 'File is required']"
                                     :show-size="1000"
                                 ></v-file-input>
 
                                  <v-alert
-                                    v-if="daftarCamps.linked_in"
+                                    v-if="isSudahDaftar"
                                     class=" px-2 "
                                     dense
                                     text
@@ -188,29 +213,26 @@
                                    
                                 </div>
                      
-                                {{ this.daftarCamps.linked_in }}
+                                
                             </div>
                         </v-card>
                     </v-col>
                     <v-col
-                        class="col-sm-12 col-lg-4 col-xs-12 col-md-4"
+                        class="col-sm-12  col-xs-12 col-12"
                         xs="12"
                         sm="12"
-                        md="4"
+                        md="8"
                         lg="4"
                         col="12"
                     >
                         <v-card
                             outlined
-                            class="ml-0 elevation-2 outlined-blue-card  d-flex flex-column justify-content-between pa-3 payment-card"
+                            class="ml-0 elevation-1 outlined-blue-card  d-flex flex-column justify-content-between pa-3 payment-card"
                             max-height="200"
                         >
                             <div class=" d-flex my-2">
                                 <div class="body-2 text-justify">
-                                    Dengan mengklik tombol ini, Anda mengakui
-                                    bahwa Anda telah membaca dan menyetujui
-                                    Syarat & Ketentuan dan Kebijakan Privasi
-                                    Joints
+                                    Dengan mengklik tombol di bawah ini, Anda setuju bahwa semua data yang Anda masukkan sudah benar dan bersedia untuk mengikuti proses seleksi JointsCamp.
                                 </div>
                             </div>
 
@@ -221,9 +243,7 @@
                                     class="mt-0 daftar-payment btn-block text-white"
                                     v-bind:disabled="this.isDisabled"
                                     v-on:click.native="
-                                        submitProfils &&
-                                            (dialog = true) &&
-                                            (this.overlay = !this.overlay)
+                                       dialog = true
                                     "
                                     >Daftar</v-btn
                                 >
@@ -248,7 +268,7 @@
                                                     type="success"
                                                     class="my-2 alert-card px-6 py-2 font-weight-bold "
                                                 >
-                                                    LUNAS
+                                                    ANDA SUDAH TERDAFTAR
                                                 </v-alert>
                                             </v-card>
                                         </v-col>
@@ -265,23 +285,24 @@
                                     <v-card>
                                        
                                         <div class="pa-6 title font-weight-regular">
-                                           Apakah kamu ingin mendaftar ke Acara Ini? 
+                                           Apakah Anda sudah yakin dengan data yang Anda masukkan dan bersedia mengikuti proses seleksi JointsCamp? 
                                         </div>
 
                                         <v-card-actions>
                                             <v-spacer></v-spacer>
-                                            <v-btn
-                                                text
-                                                color="blue darken-1"
-                                                @click="dialog = false"
-                                                >YA</v-btn
-                                            >
-                                            <v-btn
+                                             <v-btn
                                                 text
                                                 color="blue darken-1"
                                                 @click="dialog = false"
                                                 >Tidak</v-btn
                                             >
+                                            <v-btn
+                                                text
+                                                color="blue darken-1"
+                                                @click="submitFilesAndLinkedin() && (dialog = false)"
+                                                >YA</v-btn
+                                            >
+                                           
                                         </v-card-actions>
                                     </v-card>
                                 </v-dialog>
@@ -301,12 +322,15 @@ import { mapGetters, mapState, mapActions } from 'vuex';
 
 export default {
     data: () => ({
+        isReadOnly: false, 
         isAlert: false,
         isDisabled: true,
         dialog: false,
         absolute: true,
-        overlay: true,
+        overlay: false,
         opacity: 1,
+        isSudahDaftar: false,
+        isTersimpan: false,
 
         item: {
             link: '/dashboard/events/grandlaunching/payment',
@@ -315,9 +339,6 @@ export default {
             image: null,
             src: '@/assets/qrCodePNG.png',
             isAgree: false,
-            isSudahLunas: false,
-            SyaratIsAccept: false,
-            isSudahDibayar: false,
             isCheckbox: false
         },
         profils: {
@@ -342,7 +363,7 @@ export default {
 
     computed:{ 
               // ...mapState(['profils']),
-              ...mapGetters(['profilsData'])}
+              ...mapGetters(['profilsData', 'events'])}
 
                 ,
      created() {
@@ -350,7 +371,7 @@ export default {
       this.$store.watch(
         (state, getters ) => getters.profilsData,
         (newValue, oldValue) => {
-          console.log(`Updating from ${oldValue} to ${newValue}`);
+          // console.log(`Updating from ${oldValue} to ${newValue}`);
           this.getDataDiluarEmail()
         }
       ),
@@ -358,7 +379,9 @@ export default {
       this.$store.watch(
         (state, getters ) => getters.events,
         (newValue, oldValue) => {
-          console.log(`Updating from ${oldValue} to ${newValue}`);
+          // console.log(`Updating from ${oldValue} to ${newValue}`);
+
+          
           this.getEventData()
         },
         
@@ -367,22 +390,30 @@ export default {
       mounted() {
         this.getDataDiluarEmail()
         this.getEmailVuex();
+    
       },
 
     methods: {
+      formInputReadOnly(){
+        
+      },
        getEventData(){
         if(this.$store.getters.events.joints_camp == null ||
           this.$store.getters.events.joints_camp == undefined ){
-            console.log(' events harus di isi');
+            // console.log(' events harus di isi');
+            this.overlay = false
+            
           } else {
-            console.log(' C1 events ngefetch dulu; ');
+            // console.log(' C1 events ngefetch dulu; ');
             // console.log(this.$store.getters.events);
             this.daftarCamps.linked_in = this.$store.getters.events.joints_camp.linked_in
             this.daftarCamps.resume = this.$store.getters.events.joints_camp.resume
             this.daftarCamps.status = this.$store.getters.events.joints_camp.status
+            this.overlay = true
+            this.isSudahDaftar = true
             
-            console.log('clg this.daftarCamps');
-            console.log(this.daftarCamps);
+            // console.log('clg this.daftarCamps');
+            // console.log(this.daftarCamps);
 
           }
       },
@@ -392,10 +423,10 @@ export default {
           this.$store.getters.profilsData.nama == null  &&
           this.$store.getters.profilsData.nomor == null &&
           this.$store.getters.profilsData.instansi == null){
-            console.log(' biodata harus di isi');
+            // console.log(' biodata harus di isi');
             //  this.getProfilData()
           } else {
-            console.log(' data di profils ngefetch dulu; ');
+            // console.log(' data di profils ngefetch dulu; ');
             this.profils.nama = this.$store.getters.profilsData.nama
             this.profils.nomor =  this.$store.getters.profilsData.nomor
             this.profils.instansi = this.$store.getters.profilsData.instansi
@@ -409,39 +440,15 @@ export default {
       close(){
           this.dialogs = this.profils
       },
-        // async fetchEventsData() {
-        //     let token = await firebase.auth().currentUser.getIdToken(true);
-        //     const config = {
-        //         headers: { Authorization: 'Bearer ' + token }
-        //     };
-
-        //     const eventsBaru = {};
-
-        //     const BASE_URL = 'https://api.joints.id';
-        //     Axios.get(BASE_URL + '/event', config)
-        //         .then(response => {
-        //             response.data.events.forEach((value, index) => {
-        //                 eventsBaru[value.event] = value;
-        //             });
-        //             this.daftarcamp.linked_in =
-        //                 eventsBaru.joints_camp.linked_in;
-        //                 this.daftarcamp.linkFiles = eventsBaru.joints_camp.resume;
-        //             // console.log('ini adalah event ')
-        //             // console.log(this.daftarCamps)
-        //         })
-        //         .catch(error => {
-        //             console.log(error);
-        //         });
-        // },
+ 
 
         fetchFilesAndLinkedin() {
             this.daftarCamps.linked_in = this.$store.state.events;
         },
         async submitAndValidate() {
             if (this.daftarCamps.resume && this.daftarCamps.linked_in) {
-                // console.log('file bisa dikirim');
-                // console.log(this.daftarCamps.files);
-                this.submitFilesAndLinkedin();
+                  this.dialog = true
+                  this.overlay = true
             } else {
                 // console.log('tidak bisa dikirm');
                 this.daftarCamps.isAlert = true;
@@ -463,8 +470,14 @@ export default {
             const BASE_URL = 'https://api.joints.id';
             Axios.post(BASE_URL + '/daftar/joints_camp', formData, config)
                 .then(response => {
-                    console.log(response);
-                    console.log('berhasil');
+                    // console.log(response);
+                    // console.log('berhasil');
+                    if(response.data.status == 'lunas'){
+                      this.overlay = true; 
+                      this.isSudahDaftar = true;
+                    }
+
+                    
                 })
                 .catch(error => {
                     console.log(error);
@@ -473,10 +486,10 @@ export default {
         overlayDanStatusBayar() {
             if (this.payment.statusBayar == 'lunas') {
                 this.overlay = true;
-                this.isSudahDibayar = true;
+
             } else if (this.payment.statusBayar == 'menunggu_pembayaran') {
                 this.overlay = true;
-                this.isSudahDibayar = false;
+   
                 // console.log(this.overlay);
             }
         },
@@ -507,9 +520,11 @@ export default {
                 this.profils.instansi
             ) {
                 return true;
+                this.isTersimpan = true; 
             } else {
                 // console.log(' murni form isfullfiled harus diisni');
                 this.isAlert = true;
+                
                 return false;
             }
         },
@@ -520,7 +535,11 @@ export default {
                 this.profils.nama &&
                 this.profils.email &&
                 this.profils.nomor &&
-                this.profils.instansi
+                this.profils.instansi &&
+                this.daftarCamps.linked_in &&
+                this.daftarCamps.resume
+                
+
             ) {
                 // console.log('ada nama ')
                 this.isDisabled = false;
@@ -544,6 +563,8 @@ export default {
                 nomor: this.profils.nomor,
                 instansi: this.profils.instansi
             };
+
+            this.$store.commit('SET_PROFIL', this.profils)
             const BASE_URL = 'https://api.joints.id';
             Axios.post(BASE_URL + '/biodata', bodyParameters, config)
                 .then(response => {
@@ -605,13 +626,25 @@ export default {
 </script>
 
 <style>
+
+.profil-subtitle {
+    line-height: 1.4rem !important;
+    padding-top: 3px;
+    margin-bottom: 0px !important;
+}
+
+.camp-divider {
+    border: 1px solid #13cebb !important;
+    border-radius: 5px;
+}
+
 .inside-overlay {
     height: 100%;
     width: 100%;
 }
 
 .outlined-blue-card {
-    border: solid 3px !important;
+    border: solid 1px !important;
     border-color: #3b89e6 !important;
     border-radius: 22px !important;
 }

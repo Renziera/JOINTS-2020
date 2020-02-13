@@ -4,7 +4,7 @@
             <v-container>
                 <v-row>
                     <v-col>
-                        <h1>Capture The Flag</h1>
+                        <h1>UX Design Competition</h1>
                     </v-col>
                 </v-row>
 
@@ -21,7 +21,7 @@
                         >
                             <template v-slot:top>
                                 <v-toolbar flat color="white">
-                                    <v-toolbar-title>CeTeEp</v-toolbar-title>
+                                    <v-toolbar-title>Yu Eks Desain</v-toolbar-title>
                                     <v-divider class="mx-4" inset vertical></v-divider>
                                     <v-spacer></v-spacer>
 
@@ -79,15 +79,6 @@
                                                             <v-text-field
                                                                 readonly
                                                                 v-model="
-                                                                    editedItem.sma
-                                                                "
-                                                                label="is SMA?"
-                                                            ></v-text-field>
-                                                        </v-col>
-                                                        <v-col cols="12" sm="12" md="6">
-                                                            <v-text-field
-                                                                readonly
-                                                                v-model="
                                                                     editedItem.instansi
                                                                 "
                                                                 label="Instansi"
@@ -134,7 +125,7 @@
                                                 <v-btn color="blue darken-1" text @click="close">NO</v-btn>
                                             </v-card-actions>
                                         </v-card>
-                                    </v-dialog>-->
+                                    </v-dialog> -->
                                 </v-toolbar>
                             </template>
 
@@ -165,7 +156,7 @@
 
                             <template v-slot:no-data>
                                 <v-btn color="primary" @click="initialize">Reset</v-btn>
-                            </template>-->
+                            </template> -->
                             <template v-slot:expanded-item="{ headers, item }">
                                 <td :colspan="headers.length/4">
                                     Nama Ketua : {{item.nama}}
@@ -187,6 +178,16 @@
                                     Anggota 2: {{ item.nama_2 }}
                                     <br />Ktm :
                                     <a :href="item.ktm_2" target="_blank">
+                                        <v-btn small outlined rounded color="primary" dark>klik</v-btn>
+                                    </a>
+                                </td>
+                                <td :colspan="headers.length/3">
+                                    Proposal :
+                                    <a :href="item.proposal" target="_blank">
+                                        <v-btn small outlined rounded color="primary" dark>klik</v-btn>
+                                    </a>
+                                    <br />Link Video :
+                                    <a :href="item.link_video" target="_blank">
                                         <v-btn small outlined rounded color="primary" dark>klik</v-btn>
                                     </a>
                                 </td>
@@ -215,11 +216,10 @@ export default {
             { text: 'Nama Ketua', value: 'nama' },
             { text: 'Email', value: 'email' },
             { text: 'Nomor HP', value: 'nomorhp', sortable: false },
-            // { text: 'Kompetisi', value: 'kompetisi', sortable: false },
-            { text: 'is SMA?', value: 'sma' },
-            { text: 'Instansi', value: 'instansi' },
+            // { text: 'Kompetisi', value: 'kompetisi', sortable: false},
+            { text: 'Instansi', value: 'instansi', sortable: false },
             { text: 'Nominal', value: 'nominal', sortable: false },
-            { text: 'Status', value: 'status' }
+            { text: 'Status', value: 'status' },
             // { text: 'Aksi', value: 'action', sortable: false }
         ],
         desserts: [],
@@ -237,11 +237,11 @@ export default {
             ktm_ketua: '',
             ktm_1: '',
             ktm_2: '',
-            kompetisi: '',
+            proposal: '',
+            link_video: '',
             instansi: '',
-            sma: '',
             nominal: '',
-            status: ''
+            status: '',
             // konfirmasiAdmin: false,
             // isJanganKonfirmasi: null
         },
@@ -257,11 +257,12 @@ export default {
             ktm_ketua: '',
             ktm_1: '',
             ktm_2: '',
-            kompetisi: '',
+            proposal: '',
+            link_video: '',
             instansi: '',
-            sma: '',
+            kompetisi: '',
             nominal: '',
-            status: ''
+            status: '',
             // konfirmasiAdmin: false,
             // isJanganKonfirmasi: null
         }
@@ -282,11 +283,11 @@ export default {
     created() {
         this.initialize();
         // this.getGLData();
-        this.getCtfDataAll();
+        this.getUxDataAll();
     },
 
     methods: {
-        async getCtfDataAll() {
+        async getUxDataAll() {
             let token = await firebase.auth().currentUser.getIdToken(true);
             // let isKonfirmasi = null;
             // let waktuDaftar = null;
@@ -299,7 +300,7 @@ export default {
 
             const BASE_URL = 'https://api.joints.id';
 
-            Axios.get(BASE_URL + '/admin/ctf', config)
+            Axios.get(BASE_URL + '/admin/apps_innovation', config)
                 .then(response => {
                     console.log(response.data.results);
                     response.data.results.forEach((value, index) => {
@@ -315,6 +316,7 @@ export default {
                         // } else if (value.status == 'menunggu_pembayaran') {
                         //     konfirmasiAdmin = false;
                         //     isKonfirmasi = false;
+                        //     sma;
                         // }
 
                         // if (value.waktu_daftar._seconds == undefined ){
@@ -340,11 +342,12 @@ export default {
                             ktm_ketua: value.ktm_ketua,
                             ktm_1: value.ktm_1,
                             ktm_2: value.ktm_2,
+                            proposal: value.proposal,
+                            link_video: value.link_video,
                             kompetisi: value.competition,
                             instansi: value.instansi,
-                            sma: value.sma,
                             nominal: value.harga,
-                            status: value.status
+                            status: value.status,
                             // konfirmasiAdmin: konfirmasiAdmin,
                             // isJanganKonfirmasi: isKonfirmasi
                         };
@@ -396,11 +399,12 @@ export default {
                     ktm_1: 'https://facebook.com',
                     ktm_2: 'https://instagram.com',
                     waktu_daftar: '12/12/12',
-                    kompetisi: 'ctf',
-                    instansi: 'UGM',
-                    sma: false,
+                    proposal: 'https://google.com',
+                    link_video: 'https://youtube.com',
+                    kompetisi: 'pcs',
+                    instansi: 'UGama',
                     nominal: 42909,
-                    status: 'Lunas'
+                    status: 'Lunas',
                     // konfirmasiAdmin: true
                 },
                 {
@@ -415,11 +419,11 @@ export default {
                     ktm_1: 'https://facebook.com',
                     ktm_2: 'https://instagram.com',
                     waktu_daftar: '12/12/12',
-                    kompetisi: 'ctf',
-                    instansi: 'SMAN 11 Yogyakarta',
-                    sma: true,
-                    nominal: 22500,
-                    status: 'lunas'
+                    proposal: 'https://google.com',
+                    link_video: 'https://youtube.com',
+                    instansi: 'UGM',
+                    nominal: 42500,
+                    status: 'lunas',
                     // konfirmasiAdmin: false
                 }
             ];

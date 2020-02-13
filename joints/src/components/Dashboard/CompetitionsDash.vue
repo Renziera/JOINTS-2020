@@ -9,36 +9,21 @@
                         class="col-sm-12 col-lg-6 col-lg-6 col-xs-12"
                     >
                         <v-card max-width="500" outlined class="mb-6">
-                            <div
-                                class="d-flex flex-no-wrap justify-content-start text-left"
-                            >
-                                <v-avatar
-                                    class="compe-avatar ma-3 mr-0 mb-6"
-                                    size="115"
-                                    tile
-                                >
-                                    <v-img
-                                        class="border border-dark"
-                                        :src="getImgUrl(item.src)"
-                                    ></v-img>
+                            <div class="d-flex flex-no-wrap justify-content-start text-left">
+                                <v-avatar class="compe-avatar ma-3 mr-0 mb-6" size="115" tile>
+                                    <v-img class="border border-dark" :src="getImgUrl(item.src)"></v-img>
                                 </v-avatar>
 
                                 <div class="justify-content-start">
-                                    <v-card-title
-                                        class="pt-1 title"
-                                        v-text="item.title"
-                                    ></v-card-title>
+                                    <v-card-title class="pt-1 title" v-text="item.title"></v-card-title>
 
                                     <v-card-subtitle
                                         class="caption font-weight-medium text-justify"
-                                        >{{ item.artist }}</v-card-subtitle
-                                    >
+                                    >{{ item.artist }}</v-card-subtitle>
                                 </div>
                             </div>
 
-                            <v-divider
-                                class="mt-0 mb-0 card-divider"
-                            ></v-divider>
+                            <v-divider class="mt-0 mb-0 card-divider"></v-divider>
 
                             <v-card-actions>
                                 <div class="d-flex flex-row col-12 pa-0 ma-0">
@@ -47,21 +32,21 @@
                                             color="#13CEBB"
                                             rounded
                                             outlined
-                                            class="mr-2 daftar-button px-3 btn-block"
-                                            disabled
-                                            >Guide Book</v-btn
-                                        >
+                                            :href="item.guidebook"
+                                            target="_blank"
+                                            class="mr-2 daftar-button px-7 elevation-1"
+                                        >Guide Book</v-btn>
                                     </div>
                                     <v-spacer></v-spacer>
                                     <div class="col-6 pa-0 px-2">
                                         <v-btn
                                             color="#13CEBB"
                                             rounded
+                                            :to="item.link"
                                             outlined
-                                            class="mr-2 daftar-button px-5 btn-block"
-                                            disabled
-                                            >Coming Soon</v-btn
-                                        >
+                                            class="mr-2 daftar-button px-7 elevation-1"
+                                           
+                                        >Daftar</v-btn>
                                     </div>
                                 </div>
                             </v-card-actions>
@@ -78,8 +63,11 @@ export default {
     data: () => ({
         items: [
             {
+                color: '#952175',
                 src: 'ctf-dark.png',
                 title: 'Capture The Flag',
+                guidebook: 'http://ugm.id/GuidebookCTF2020',
+                link: '/dashboard/competitions/ctf/register',
                 artist:
                     'Kompetisi ini mengangkat isu-isu yang berkenaan dengan implementasi aspek analisis dan pemecahan masalah yang biasa dikaji dalam topik sistem keamanan komputer dan jaringan. Kompetisi memiliki mekanisme dimana setiap peserta diminta untuk mengumpulkan flag sebanyak-banyaknya dari masalah-masalah yang diberikan. Kompetisi ini dapat diikuti oleh tim yang terdiri dari 2 - 3 orang yang berasal dari instansi/lembaga pendidikan yang sama.'
             },
@@ -87,6 +75,8 @@ export default {
                 color: '#952175',
                 src: 'dm-dark.png',
                 title: 'Data Mining',
+                guidebook: 'http://ugm.id/GuidebookDM2020',
+                link: '/dashboard/competitions/datamining/register',
                 artist:
                     'Data mining berfokus pada pengolahan data mentah (raw data) dengan cara menemukan pola menarik atau informasi dengan menggunakan metode tertentu yang kemudian divisualisasikan sehingga dapat digunakan sebagai solusi atau pengetahuan lebih lanjut dari sebuah permasalahan data. Lomba ini mengharapkan peserta dapat melakukan proses olah data (Data Mining) terhadap dataset yang diberikan dengan hasil yang memiliki tingkat akurasi setinggi-tingginya.'
             },
@@ -94,6 +84,8 @@ export default {
                 color: '#952175',
                 src: 'pcs-dark.png',
                 title: 'Programming Competition Session',
+                guidebook: 'http://ugm.id/GuidebookPCS2020',
+                link: '/dashboard/competitions/pcs/register',
                 artist:
                     'Kompetisi ini terbagi menjadi sesi logika dan pemrograman. Kedua materi ini menguji kemampuan nalar dan pemahaman peserta dalam menyelesaikan suatu permasalahan dalam waktu yang singkat dengan algoritma yang efisien dan tepat. Bahasa pemrograman yang digunakan antara lain C/C++, Pascal, Java, atau Python.'
             },
@@ -101,6 +93,8 @@ export default {
                 color: '#952175',
                 src: 'ux-dark.png',
                 title: 'UX Design',
+                guidebook: 'http://ugm.id/GuidebookUXDesign2020',
+                link: '/dashboard/competitions/uiux/register',
                 artist:
                     'Kompetisi UX (user experience) adalah kompetisi pembuatan desain pengalaman pengguna, baik dalam bentuk produk web, aplikasi, maupun PWA (Progressive Web App), yang mengutamakan pengalaman, kenyamanan, kepuasan, dan efisiensi saat pengguna (user) menggunakan produk tersebut.'
             }

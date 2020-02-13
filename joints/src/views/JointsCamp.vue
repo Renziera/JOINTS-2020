@@ -9,7 +9,7 @@
                             Joints Camp
                         </h1>
                         <br />
-                        <b-button class="header-button" variant="primary">
+                        <b-button to="/login" class="header-button" variant="primary">
                             Yuk Daftar
                         </b-button>
                     </b-col>
@@ -100,26 +100,29 @@
                     <h2 class="mentor-title">
                         Mentor
                     </h2>
-                    <b-row class="mentor-row-top">
+                    <!--<b-row class="mentor-row-top"> -->
+                    <b-row>
                         <b-col cols="12" lg="6" class="mentor-left">
                             <div class="mentor-profile-wrapper">
                                 <div class="mentor-image-wrapper">
                                     <img
-                                        src="@/assets/Ardian-Franindo.jpg"
+                                        src="@/assets/pembicara/Giga-Prakosa.jpg"
                                         class="mentor-image"
                                     />
                                 </div>
                                 <div class="mentor-profile">
+                                    <!--
                                     <span class="mentor-week">
                                         Minggu ke-1
                                     </span>
                                     <br>
+                                    -->
                                     <span class="mentor-name">
-                                        Bapak Lorem Ipsum
+                                        Giga Prakosa Hikmata
                                     </span>
                                     <br />
                                     <span class="mentor-job">
-                                        "Apps Innovation"
+                                        Engineering Manager at Mamikos
                                     </span>
                                 </div>
                             </div>
@@ -128,26 +131,29 @@
                             <div class="mentor-profile-wrapper">
                                 <div class="mentor-image-wrapper">
                                     <img
-                                        src="@/assets/Ardian-Franindo.jpg"
+                                        src="@/assets/pembicara/Ahsan-Anwar.jpg"
                                         class="mentor-image"
                                     />
                                 </div>
                                 <div class="mentor-profile">
+                                    <!--
                                     <span class="mentor-week">
                                         Minggu ke-2
                                     </span>
                                     <br>
+                                    -->
                                     <span class="mentor-name">
-                                        Ibu Dolor Sit Amet
+                                        Ahsan Anwar Sandiah
                                     </span>
                                     <br />
                                     <span class="mentor-job">
-                                        "UX Design Application"
+                                        Backend Engineer at Mamikos
                                     </span>
                                 </div>
                             </div>
                         </b-col>
                     </b-row>
+                    <!--
                     <b-row class="mentor-row-bottom">
                         <b-col cols="12" lg="6" class="mentor-left">
                             <div class="mentor-profile-wrapper">
@@ -196,6 +202,7 @@
                             </div>
                         </b-col>
                     </b-row>
+                    -->
                 </div>
             </b-container>
         </section>
@@ -225,6 +232,7 @@
             <Timeline accessFrom="Camp" title="Timeline"></Timeline>
         </section>
 
+        <!--
         <section class="faq">
             <b-container class="d-flex justify-content-center flex-column">
                 <h3 class="faq-title">
@@ -235,6 +243,7 @@
                 </div>
             </b-container>
         </section>
+        -->
 
         <Footer
             accessFrom="dashboardNavbar"
@@ -247,14 +256,14 @@
 import Navbar from '@/components/Landing/Navbar.vue';
 import Footer from '@/components/Landing/Footer.vue';
 import Timeline from '@/components/Landing/Timeline.vue';
-import Faq from '@/components/Landing/Faq.vue';
+//import Faq from '@/components/Landing/Faq.vue';
 
 export default {
     components: {
         Navbar,
         Footer,
-        Timeline,
-        Faq
+        Timeline
+        //Faq
     }
 };
 </script>

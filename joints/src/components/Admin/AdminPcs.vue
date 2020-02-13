@@ -25,8 +25,8 @@
                                     <v-divider class="mx-4" inset vertical></v-divider>
                                     <v-spacer></v-spacer>
 
-                                    <v-dialog v-model="dialog" max-width="500px">
-                                        <template v-slot:activator="{ on }"></template>
+                                    <!-- <v-dialog v-model="dialog" max-width="500px">
+                                        <template v-slot:activator></template>
 
                                         <v-card>
                                             <v-card-title>
@@ -52,9 +52,9 @@
                                                             <v-text-field
                                                                 readonly
                                                                 v-model="
-                                                                    editedItem.waktu_daftar
+                                                                    editedItem.nama_tim
                                                                 "
-                                                                label="Waktu Daftar"
+                                                                label="Nama Tim"
                                                             ></v-text-field>
                                                         </v-col>
                                                         <v-col cols="12" sm="12" md="6">
@@ -63,7 +63,7 @@
                                                                 v-model="
                                                                     editedItem.nama
                                                                 "
-                                                                label="Nama"
+                                                                label="Nama Ketua"
                                                             ></v-text-field>
                                                         </v-col>
                                                         <v-col cols="12" sm="12" md="6">
@@ -79,9 +79,9 @@
                                                             <v-text-field
                                                                 readonly
                                                                 v-model="
-                                                                    editedItem.acara
+                                                                    editedItem.instansi
                                                                 "
-                                                                label="Acara"
+                                                                label="Instansi"
                                                             ></v-text-field>
                                                         </v-col>
                                                         <v-col cols="12" sm="12" md="6">
@@ -125,11 +125,11 @@
                                                 <v-btn color="blue darken-1" text @click="close">NO</v-btn>
                                             </v-card-actions>
                                         </v-card>
-                                    </v-dialog>
+                                    </v-dialog> -->
                                 </v-toolbar>
                             </template>
 
-                            <template v-slot:item.action="{ item }">
+                            <!-- <template v-slot:item.action="{ item }">
                                 <v-alert
                                     v-if="
                                         item.konfirmasiAdmin ||
@@ -156,34 +156,31 @@
 
                             <template v-slot:no-data>
                                 <v-btn color="primary" @click="initialize">Reset</v-btn>
-                            </template>
-                            <template v-slot:expanded-item="{ headers }">
-                               
-                                    <td :colspan="headers.length">Peek-a-boo!</td>
-                                    <!-- <td :colspan="headers.length/2">Nama Ketua : {{item.nama}}</td>
-                                    <td :colspan="headers.length/2">
-                                        Ktm :
-                                        <a :href="item.ktm_ketua" target="_blank">
-                                            <v-btn small outlined rounded color="primary" dark>klik</v-btn>
-                                        </a>
-                                    </td> -->
-                             
-                                    <!-- <td :colspan="headers.length/2">Anggota 1: {{ item.nama_1 }}</td>
-                                    <td :colspan="headers.length/2">
-                                        Ktm :
-                                        <a :href="item.ktm_1" target="_blank">
-                                            <v-btn small outlined rounded color="primary" dark>klik</v-btn>
-                                        </a>
-                                    </td> -->
-                            
-                                    <!-- <td :colspan="headers.length/2">Anggota 2: {{ item.nama_2 }}</td>
-                                    <td :colspan="headers.length/2">
-                                        Ktm :
-                                        <a :href="item.ktm_2" target="_blank">
-                                            <v-btn small outlined rounded color="primary" dark>klik</v-btn>
-                                        </a>
-                                    </td> -->
-                             
+                            </template> -->
+                            <template v-slot:expanded-item="{ headers, item }">
+                                <td :colspan="headers.length/4">
+                                    Nama Ketua : {{item.nama}}
+                                    <br />Ktm :
+                                    <a :href="item.ktm_ketua" target="_blank">
+                                        <v-btn small outlined rounded color="primary" dark>klik</v-btn>
+                                    </a>
+                                </td>
+
+                                <td :colspan="headers.length/4">
+                                    Anggota 1: {{ item.nama_1 }}
+                                    <br />Ktm :
+                                    <a :href="item.ktm_1" target="_blank">
+                                        <v-btn small outlined rounded color="primary" dark>klik</v-btn>
+                                    </a>
+                                </td>
+
+                                <td :colspan="headers.length/4">
+                                    Anggota 2: {{ item.nama_2 }}
+                                    <br />Ktm :
+                                    <a :href="item.ktm_2" target="_blank">
+                                        <v-btn small outlined rounded color="primary" dark>klik</v-btn>
+                                    </a>
+                                </td>
                             </template>
                         </v-data-table>
                     </v-col>
@@ -206,13 +203,14 @@ export default {
         headers: [
             { text: 'Waktu Daftar', value: 'waktu_daftar' },
             { text: 'Nama Tim', value: 'nama_tim' },
-            { text: 'Nama', value: 'nama' },
+            { text: 'Nama Ketua', value: 'nama' },
             { text: 'Email', value: 'email' },
             { text: 'Nomor HP', value: 'nomorhp', sortable: false },
-            { text: 'Kompetisi', value: 'kompetisi', sortable: false },
+            // { text: 'Kompetisi', value: 'kompetisi', sortable: false},
+            { text: 'Instansi', value: 'instansi', sortable: false },
             { text: 'Nominal', value: 'nominal', sortable: false },
             { text: 'Status', value: 'status' },
-            { text: 'Aksi', value: 'action', sortable: false }
+            // { text: 'Aksi', value: 'action', sortable: false }
         ],
         desserts: [],
         idPembayaranItem: null,
@@ -229,26 +227,30 @@ export default {
             ktm_ketua: '',
             ktm_1: '',
             ktm_2: '',
-            kompetisi: '',
+            instansi: '',
             nominal: '',
             status: '',
-            konfirmasiAdmin: false,
-            isJanganKonfirmasi: null
+            // konfirmasiAdmin: false,
+            // isJanganKonfirmasi: null
         },
         defaultItem: {
             nomor: 0,
             waktu_daftar: '',
-            nama: '',
-
+            nama_tim: '',
             email: '',
             nomorhp: '',
+            nama: '',
+            nama_1: '',
+            nama_2: '',
             ktm_ketua: '',
-
-            acara: '',
+            ktm_1: '',
+            ktm_2: '',
+            instansi: '',
+            kompetisi: '',
             nominal: '',
             status: '',
-            konfirmasiAdmin: false,
-            isJanganKonfirmasi: null
+            // konfirmasiAdmin: false,
+            // isJanganKonfirmasi: null
         }
     }),
 
@@ -273,10 +275,10 @@ export default {
     methods: {
         async getPcsDataAll() {
             let token = await firebase.auth().currentUser.getIdToken(true);
-            let isKonfirmasi = null;
-            let waktuDaftar = null;
-            let statusBayar = null;
-            let konfirmasiAdmin = null;
+            // let isKonfirmasi = null;
+            // let waktuDaftar = null;
+            // let statusBayar = null;
+            // let konfirmasiAdmin = null;
 
             const config = {
                 headers: { Authorization: 'Bearer ' + token }
@@ -286,9 +288,10 @@ export default {
 
             Axios.get(BASE_URL + '/admin/pcs', config)
                 .then(response => {
+                    console.log(response.data.results);
                     response.data.results.forEach((value, index) => {
                         // if (value.event == 'grand_launching') {
-                        console.log(value);
+                        // console.log(value);
 
                         // if (
                         //     value.status == 'lunas' ||
@@ -299,6 +302,7 @@ export default {
                         // } else if (value.status == 'menunggu_pembayaran') {
                         //     konfirmasiAdmin = false;
                         //     isKonfirmasi = false;
+                        //     sma;
                         // }
 
                         // if (value.waktu_daftar._seconds == undefined ){
@@ -310,19 +314,28 @@ export default {
                         //     ).toLocaleDateString()
                         // }
 
-                        // let editedItem = {
-                        //     nomor: value.id_pembayaran,
-                        //     // waktu_daftar: waktuDaftar,
-                        //     nama: value.nama,
-                        //     email: value.email,
-                        //     nomorhp: value.nomor,
-                        //     acara: value.event,
-                        //     nominal: value.harga,
-                        //     status: value.status,
-                        //     konfirmasiAdmin: konfirmasiAdmin,
-                        //     isJanganKonfirmasi: isKonfirmasi
-                        // };
-                        // this.desserts.push(editedItem);
+                        let editedItem = {
+                            nomor: value.id_pembayaran,
+                            waktu_daftar: new Date(
+                                value.waktu_daftar._seconds * 1000
+                            ).toLocaleDateString(),
+                            nama_tim: value.nama_tim,
+                            email: value.email,
+                            nomorhp: value.nomor,
+                            nama: value.nama,
+                            nama_1: value.nama_1,
+                            nama_2: value.nama_2,
+                            ktm_ketua: value.ktm_ketua,
+                            ktm_1: value.ktm_1,
+                            ktm_2: value.ktm_2,
+                            kompetisi: value.competition,
+                            instansi: value.instansi,
+                            nominal: value.harga,
+                            status: value.status,
+                            // konfirmasiAdmin: konfirmasiAdmin,
+                            // isJanganKonfirmasi: isKonfirmasi
+                        };
+                        this.desserts.push(editedItem);
                         // }
                     });
                 })
@@ -331,86 +344,31 @@ export default {
                 });
         },
 
-        async confirmPeserta(value) {
-            let token = await firebase.auth().currentUser.getIdToken(true);
-            let id_pembayaran = null;
-            const config = {
-                headers: { Authorization: 'Bearer ' + token }
-            };
+        // async confirmPeserta(value) {
+        //     let token = await firebase.auth().currentUser.getIdToken(true);
+        //     let id_pembayaran = null;
+        //     const config = {
+        //         headers: { Authorization: 'Bearer ' + token }
+        //     };
 
-            const bodyParameters = {
-                id_pembayaran: value
-            };
-            const BASE_URL = 'https://api.joints.id';
-            Axios.post(
-                BASE_URL + '/admin/approve_pembayaran',
-                bodyParameters,
-                config
-            )
-                .then(response => {
-                    // console.log('berhasil confirm pembayaran');
-                })
-                .catch(error => {
-                    console.log(error);
-                    // console.log(id_pembayaran);
-                });
-        },
+        //     const bodyParameters = {
+        //         id_pembayaran: value
+        //     };
+        //     const BASE_URL = 'https://api.joints.id';
+        //     Axios.post(
+        //         BASE_URL + '/admin/approve_pembayaran',
+        //         bodyParameters,
+        //         config
+        //     )
+        //         .then(response => {
+        //             // console.log('berhasil confirm pembayaran');
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //             // console.log(id_pembayaran);
+        //         });
+        // },
 
-        async getGLData() {
-            let token = await firebase.auth().currentUser.getIdToken(true);
-            let isKonfirmasi = null;
-            let waktuDaftar = null;
-            let statusBayar = null;
-            const config = {
-                headers: { Authorization: 'Bearer ' + token }
-            };
-
-            const BASE_URL = 'https://api.joints.id';
-            Axios.get(BASE_URL + '/admin/grand_launching', config)
-                .then(response => {
-                    // console.log('berhasil');
-                    // console.log(response);
-
-                    response.data.results.forEach((value, index) => {
-                        if (value.event == 'grand_launching') {
-                            console.log(value);
-
-                            if (value.status == 'menunggu_pembayaran') {
-                                isKonfirmasi = true;
-                                statusBayar = 'Tunggu Bayar';
-                            } else {
-                                isKonfirmasi = false;
-                            }
-
-                            // if (value.waktu_daftar._seconds == undefined ){
-                            //    console.log('ga ada cuk');
-
-                            // } else {
-                            //      waktuDaftar =   new Date(
-                            //         value.waktu_daftar._seconds * 1000
-                            //     ).toLocaleDateString()
-                            // }
-
-                            let editedItem = {
-                                nomor: value.id_pembayaran,
-                                // waktu_daftar: waktuDaftar,
-                                nama: value.nama,
-                                email: value.email,
-                                nomorhp: value.nomor,
-                                acara: value.event,
-                                nominal: value.harga,
-                                status: statusBayar,
-                                konfirmasiAdmin: value.dilunasi_admin,
-                                isJanganKonfirmasi: isKonfirmasi
-                            };
-                            this.desserts.push(editedItem);
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        },
         initialize() {
             this.desserts = [
                 {
@@ -422,14 +380,14 @@ export default {
                     nama_1: 'Adi',
                     nama_2: 'Yusfi',
                     ktm_ketua: 'https://google.com',
-                    ktm_1: 'https://google.com',
-                    ktm_2: 'https://google.com',
+                    ktm_1: 'https://facebook.com',
+                    ktm_2: 'https://instagram.com',
                     waktu_daftar: '12/12/12',
                     kompetisi: 'pcs',
+                    instansi: 'UGama',
                     nominal: 42909,
                     status: 'Lunas',
-                    konfirmasiAdmin: true,
-                    isJanganKonfirmasi: false
+                    // konfirmasiAdmin: true
                 },
                 {
                     nomor: 'Dummy number',
@@ -440,14 +398,13 @@ export default {
                     nama_1: 'Yusfi',
                     nama_2: 'Adilaksa',
                     ktm_ketua: 'https://google.com',
-                    ktm_1: 'https://google.com',
-                    ktm_2: 'https://google.com',
+                    ktm_1: 'https://facebook.com',
+                    ktm_2: 'https://instagram.com',
                     waktu_daftar: '12/12/12',
-                    kompetisi: 'pcs',
+                    instansi: 'UGM',
                     nominal: 42500,
-                    status: 'Lunas',
-                    konfirmasiAdmin: true,
-                    isJanganKonfirmasi: true
+                    status: 'lunas',
+                    // konfirmasiAdmin: false
                 }
             ];
         },

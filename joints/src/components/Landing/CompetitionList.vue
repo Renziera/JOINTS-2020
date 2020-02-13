@@ -131,7 +131,7 @@
                                 </div>
                             </div>
                             <div class="competition-detail">    
-                                <b-button class="competition-detail-button">Guidebook</b-button>
+                                <b-button class="competition-detail-button" target="_blank" href="http://ugm.id/GuidebookPCS2020">Guidebook</b-button>
                                 <b-button href="#timeline-pcs" class="competition-detail-button">Timeline</b-button>
                             </div>
                         </div>
@@ -173,7 +173,7 @@
                                 </div>
                             </div>
                             <div class="competition-detail">    
-                                <b-button class="competition-detail-button">Guidebook</b-button>
+                                <b-button class="competition-detail-button" target="_blank" href="http://ugm.id/GuidebookCTF2020">Guidebook</b-button>
                                 <b-button href="#timeline-ctf" class="competition-detail-button">Timeline</b-button>
                             </div>
                         </div>
@@ -210,7 +210,7 @@
                                 </div>
                             </div>
                             <div class="competition-detail">    
-                                <b-button class="competition-detail-button">Guidebook</b-button>
+                                <b-button class="competition-detail-button" target="_blank" href="http://ugm.id/GuidebookDM2020">Guidebook</b-button>
                                 <b-button href="#timeline-dm" class="competition-detail-button">Timeline</b-button>
                             </div>
                         </div>
@@ -247,7 +247,7 @@
                                 </div>
                             </div>
                             <div class="competition-detail">    
-                                <b-button class="competition-detail-button">Guidebook</b-button>
+                                <b-button class="competition-detail-button" target="_blank" href="http://ugm.id/GuidebookUXDesign2020">Guidebook</b-button>
                                 <b-button href="#timeline-ux" class="competition-detail-button">Timeline</b-button>
                             </div>
                         </div>
@@ -285,6 +285,11 @@ export default {
             let timelineDM =  document.getElementById('timeline-dm');
             let timelineUX =  document.getElementById('timeline-ux');
 
+            let faqPCS =  document.getElementById('faq-pcs');
+            let faqCTF =  document.getElementById('faq-ctf');
+            let faqDM =  document.getElementById('faq-dm');
+            let faqUX =  document.getElementById('faq-ux');
+
             if (newIndex == 0) {
                 pcs.style.display = 'flex';
                 ctf.style.display = 'none';
@@ -295,6 +300,11 @@ export default {
                 timelineCTF.style.display = "none";
                 timelineDM.style.display = "none";
                 timelineUX.style.display = "none";
+
+                faqPCS.style.display = "block";
+                faqCTF.style.display = "none";
+                faqDM.style.display = "none";
+                faqUX.style.display = "none";
             } else if (newIndex == 1) {
                 pcs.style.display = 'none';
                 ctf.style.display = 'flex';
@@ -305,6 +315,11 @@ export default {
                 timelineCTF.style.display = "block";
                 timelineDM.style.display = "none";
                 timelineUX.style.display = "none";
+
+                faqPCS.style.display = "none";
+                faqCTF.style.display = "block";
+                faqDM.style.display = "none";
+                faqUX.style.display = "none";
             } else if(newIndex == 2) {
                 pcs.style.display = 'none';
                 ctf.style.display = 'none';
@@ -315,6 +330,11 @@ export default {
                 timelineCTF.style.display = "none";
                 timelineDM.style.display = "block";
                 timelineUX.style.display = "none";
+
+                faqPCS.style.display = "none";
+                faqCTF.style.display = "none";
+                faqDM.style.display = "block";
+                faqUX.style.display = "none";
             }
             else{
                 pcs.style.display = 'none';
@@ -326,6 +346,11 @@ export default {
                 timelineCTF.style.display = "none";
                 timelineDM.style.display = "none";
                 timelineUX.style.display = "block";
+
+                faqPCS.style.display = "none";
+                faqCTF.style.display = "none";
+                faqDM.style.display = "none";
+                faqUX.style.display = "block";
             }
         }
     }

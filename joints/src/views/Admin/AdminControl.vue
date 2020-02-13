@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import Axios from 'axios';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import Announcement from '@/components/Dashboard/AnnounceDashboard.vue';
@@ -44,44 +45,80 @@ export default {
     },
     data() {
         return {
+            // linkSpreadsheet: [],
             tabs: [
                 {
                     id: 1,
                     name: 'Announcement',
                     route: `/panitia/pengumumanbyadmin`
                 },
-
                 {
                     id: 2,
+                    name: 'List Pembayaran',
+                    route: `/panitia/paymentbyadmin`
+                },
+                {
+                    id: 3,
                     name: 'Grand Launching',
                     route: `/panitia/grandlaunchingbyadmin`
                 },
                 {
-                    id: 3,
-                    name: 'Joints Camp',
-                    route: `/panitia/jointscampbyadmin`
-                },
-                {
                     id: 4,
-                    name: 'CTF',
-                    route: `/panitia/ctfbyadmin`
+                    name: 'Joints Camp',
+                    route: '/panitia/jointscampbyadmin'
                 },
                 {
                     id: 5,
+                    name: 'CTF',
+                    route: '/panitia/ctfbyadmin'
+                },
+                {
+                    id: 6,
                     name: 'PCS',
-                    route: `/panitia/pcsbyadmin`
+                    route: '/panitia/pcsbyadmin'
+                },
+                {
+                    id: 7,
+                    name: 'Data Mining',
+                    route: '/panitia/datminbyadmin'
+                },
+                {
+                    id: 8,
+                    name: 'UX Design',
+                    route: '/panitia/uxbyadmin'
                 }
             ]
         };
     },
     async created() {
         let uid = this.$store.getters.user.data.uid;
+        // this.getExportData();
     },
     methods: {
-        async logout() {
-            await firebase.auth().signOut();
-            this.$router.push('/login');
-        }
+        // async logout() {
+        //     await firebase.auth().signOut();
+        //     this.$router.push('/login');
+        // }
+        // async getExportData() {
+        //     let token = await firebase.auth().currentUser.getIdToken(true);
+        //     const config = {
+        //         headers: { Authorization: 'Bearer ' + token }
+        //     };
+        //     const BASE_URL = 'https://api.joints.id';
+        //     Axios.get(BASE_URL + '/admin/export', config)
+        //         .then(response => {
+        //             console.log(response);
+        //             // response.data.forEach((value, index) => {
+        //             //     let linkSpreadsheet = {
+        //             //         sheet: value.sheet
+        //             //     };
+        //             //     this.desserts.push(linkSpreadsheet);
+        //             // });
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //         });
+        // }
     }
 };
 </script>

@@ -178,7 +178,6 @@
                                             </div>
                                         </b-card-text>
                                         <b-button
-                                            disabled
                                             to="/competitions"
                                             variant="primary"
                                             class="carousel-card-button"
@@ -272,11 +271,10 @@
                             yuk ikut kompetisi JOINTS UGM 2020!
                         </p>
                         <b-button
-                            disabled
                             class="events-button"
                             variant="success"
-                            to="/"
-                            >Coming Soon</b-button
+                            to="/login"
+                            >Yuk Daftar</b-button
                         >
                     </b-col>
                     <b-col

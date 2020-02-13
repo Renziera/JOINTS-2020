@@ -194,7 +194,7 @@ export default {
                 .then(response => {
                     this.payment.harga = this.formatHarga(response.data.harga);
                     this.payment.lunas = response.data.status;
-                    console.log(response);
+                    // console.log(response);
                 })
                 .catch(error => {
                     console.log(error);

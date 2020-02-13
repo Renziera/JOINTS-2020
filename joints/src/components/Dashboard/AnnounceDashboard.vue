@@ -21,7 +21,8 @@
                                         <v-card-title
                                             class="py-0 my-0  subtitle-1 font-weight-bold  px-0  pb-0 "
                                         >
-                                            {{ pengumuman.eventsData.judul }}
+                                            {{ pengumuman.pengumumanData.judul }}
+                                            
                                         </v-card-title>
 
                                         <v-spacer></v-spacer>
@@ -50,7 +51,7 @@
                                             class="my-0 ml-4"
                                         ></v-divider>
                                         <v-card-text class="text-justify ml-5">
-                                            {{ pengumuman.eventsData.konten }}
+                                            {{ pengumuman.pengumumanData.konten }}
                                         </v-card-text>
                                     </div>
                                 </v-expand-transition>
@@ -76,68 +77,102 @@ import Axios from 'axios';
 
 export default {
     data: () => ({
-        pengumumans: null,
+        pengumumans: [],
         loading: false,
         others: {
             isNoPengumuman: false
         }
     }),
 
-    mounted() {
-      this.initialize()
+    created() {
+      // this.initialize()
+      this.$store.dispatch('getPengumumanDataVuex')
+      this.$store.watch(
+        (state, getters ) => getters.pengumumans,
+        (newValue, oldValue) => {
+          // console.log(`Updating from ${oldValue} to ${newValue}`);
+        this.directFetchPengumuman()
+        }
+      )
+    },
+      mounted() {
+        this.directFetchPengumuman();
+      
     },
 
     methods: {
-        async directFetchPengumuman() {
-            let token = await firebase.auth().currentUser.getIdToken(true);
-            const config = {
-                headers: { Authorization: 'Bearer ' + token }
-            };
-            const pengumumanDatas = null;
-            const BASE_URL = 'https://api.joints.id';
-            Axios.get(BASE_URL + '/announcement', config)
-                .then(response => {
-                    // console.log('ini dari vuex which is fetchPengumuan is berhasil')
-                    // console.log(response)
-                    response.data.announcements.forEach((value, index) => {
-                    
-                    if(value == null ) {
-                         console.log('no pengumuman');
-                          this.others.isNoPengumuman = true;
-                        
-                    } else {
-                       pengumumanDatas = {
-                            eventsData: value,
-                            isIndex: index,
-                            isExpand: false
-                        };
-                        this.pengumumans.push(pengumumanDatas)
-                        this.others.isNoPengumuman = false;
-                       
-                    }
-                       
-                    });
-                    
-                    // console.log(this.pengumumans);
-                    this.loading = false;
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-                .then(() => {
-                    if (this.pengumumans == null) {
-                        this.others.isNoPengumuman = true;
-                        // console.log('pengumuman is null')
-                    } else {
-                        // console.log('pengumuman  is  ada ');
-                        this.others.isNoPengumuman = false;
-                    }
-                });
+        directFetchPengumuman(){
+          const pengumumanBaru = [];
+          if(this.$store.getters.pengumumans == null ||
+            this.$store.getters.pengumumans == undefined  ){
+              // console.log(' PENGUMUMAN HARUS DIISI');
+              
+            } else {
+              // console.log(' data di profils ngefetch dulu; ');
+              this.$store.getters.pengumumans .forEach((value, index) => {
+                // console.log(this.$store.getters.pengumumans);
+                pengumumanBaru.push(value); 
+                // console.log('ini dari vuex pengumuman berhasil');
+                
+              })
+
+              this.pengumumans = pengumumanBaru;
+              // console.log('ini dari vuex pengumuman berhasil');
+              // console.log(this.pengumumans);
+              
+
+            }
         },
+        // async directFetchPengumuman() {
+        //     let token = await firebase.auth().currentUser.getIdToken(true);
+        //     const config = {
+        //         headers: { Authorization: 'Bearer ' + token }
+        //     };
+        //     const pengumumanDatas = null;
+        //     const BASE_URL = 'https://api.joints.id';
+        //     Axios.get(BASE_URL + '/announcement', config)
+        //         .then(response => {
+        //             console.log('ini dari vuex which is fetchPengumuan is berhasil')
+        //             console.log(response)
+        //             response.data.announcements.forEach((value, index) => {
+                    
+        //             if(value == null ) {
+        //                 //  console.log('no pengumuman');
+        //                   this.others.isNoPengumuman = true;
+                        
+        //             } else {
+        //                pengumumanDatas = {
+        //                     eventsData: value,
+        //                     isIndex: index,
+        //                     isExpand: false
+        //                 };
+        //                 this.pengumumans.push(pengumumanDatas)
+        //                 this.others.isNoPengumuman = false;
+                       
+        //             }
+                       
+        //             });
+                    
+        //             // console.log(this.pengumumans);
+        //             this.loading = false;
+        //         })
+        //         .catch(error => {
+        //             console.log(error);
+        //         })
+        //         .then(() => {
+        //             if (this.pengumumans == null) {
+        //                 this.others.isNoPengumuman = true;
+        //                 // console.log('pengumuman is null')
+        //             } else {
+        //                 // console.log('pengumuman  is  ada ');
+        //                 this.others.isNoPengumuman = false;
+        //             }
+        //         });
+        // },
          initialize() {
             this.pengumumans = [
                 {
-                    eventsData : {
+                    pengumumanData : {
                       judul : "Lengkapi Biodata Anda Terlebih Dahulu",
                       konten: 'Kelengkapan biodata anda akan otomatis melengkapi berbagai form pada setiap pendaftaran acara Joints 2020.'
                     },
@@ -148,10 +183,7 @@ export default {
             ];
         },
     },
-    created() {
-        this.directFetchPengumuman();
-      
-    }
+  
 };
 </script>
 

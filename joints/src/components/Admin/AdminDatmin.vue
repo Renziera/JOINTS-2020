@@ -4,7 +4,7 @@
             <v-container>
                 <v-row>
                     <v-col>
-                        <h1>Capture The Flag</h1>
+                        <h1>Data Mining</h1>
                     </v-col>
                 </v-row>
 
@@ -21,7 +21,7 @@
                         >
                             <template v-slot:top>
                                 <v-toolbar flat color="white">
-                                    <v-toolbar-title>CeTeEp</v-toolbar-title>
+                                    <v-toolbar-title>Data Maining</v-toolbar-title>
                                     <v-divider class="mx-4" inset vertical></v-divider>
                                     <v-spacer></v-spacer>
 
@@ -79,15 +79,6 @@
                                                             <v-text-field
                                                                 readonly
                                                                 v-model="
-                                                                    editedItem.sma
-                                                                "
-                                                                label="is SMA?"
-                                                            ></v-text-field>
-                                                        </v-col>
-                                                        <v-col cols="12" sm="12" md="6">
-                                                            <v-text-field
-                                                                readonly
-                                                                v-model="
                                                                     editedItem.instansi
                                                                 "
                                                                 label="Instansi"
@@ -134,7 +125,7 @@
                                                 <v-btn color="blue darken-1" text @click="close">NO</v-btn>
                                             </v-card-actions>
                                         </v-card>
-                                    </v-dialog>-->
+                                    </v-dialog> -->
                                 </v-toolbar>
                             </template>
 
@@ -190,6 +181,12 @@
                                         <v-btn small outlined rounded color="primary" dark>klik</v-btn>
                                     </a>
                                 </td>
+                                <td :colspan="headers.length/4">
+                                    Makalah :
+                                    <a :href="item.makalah" target="_blank">
+                                        <v-btn small outlined rounded color="primary" dark>klik</v-btn>
+                                    </a>
+                                </td>
                             </template>
                         </v-data-table>
                     </v-col>
@@ -215,9 +212,8 @@ export default {
             { text: 'Nama Ketua', value: 'nama' },
             { text: 'Email', value: 'email' },
             { text: 'Nomor HP', value: 'nomorhp', sortable: false },
-            // { text: 'Kompetisi', value: 'kompetisi', sortable: false },
-            { text: 'is SMA?', value: 'sma' },
-            { text: 'Instansi', value: 'instansi' },
+            // { text: 'Kompetisi', value: 'kompetisi', sortable: false},
+            { text: 'Instansi', value: 'instansi', sortable: false },
             { text: 'Nominal', value: 'nominal', sortable: false },
             { text: 'Status', value: 'status' }
             // { text: 'Aksi', value: 'action', sortable: false }
@@ -237,9 +233,8 @@ export default {
             ktm_ketua: '',
             ktm_1: '',
             ktm_2: '',
-            kompetisi: '',
+            makalah: '',
             instansi: '',
-            sma: '',
             nominal: '',
             status: ''
             // konfirmasiAdmin: false,
@@ -257,9 +252,9 @@ export default {
             ktm_ketua: '',
             ktm_1: '',
             ktm_2: '',
-            kompetisi: '',
+            makalah: '',
             instansi: '',
-            sma: '',
+            kompetisi: '',
             nominal: '',
             status: ''
             // konfirmasiAdmin: false,
@@ -278,15 +273,18 @@ export default {
             val || this.close();
         }
     },
+    // mounted() {
+    //     this.getDatminDataAll();
+    // },
 
     created() {
         this.initialize();
         // this.getGLData();
-        this.getCtfDataAll();
+        this.getDatminDataAll();
     },
 
     methods: {
-        async getCtfDataAll() {
+        async getDatminDataAll() {
             let token = await firebase.auth().currentUser.getIdToken(true);
             // let isKonfirmasi = null;
             // let waktuDaftar = null;
@@ -297,9 +295,11 @@ export default {
                 headers: { Authorization: 'Bearer ' + token }
             };
 
+            // console.log('ini dari getDataminingAll');
+
             const BASE_URL = 'https://api.joints.id';
 
-            Axios.get(BASE_URL + '/admin/ctf', config)
+            Axios.get(BASE_URL + '/admin/data_mining', config)
                 .then(response => {
                     console.log(response.data.results);
                     response.data.results.forEach((value, index) => {
@@ -315,6 +315,7 @@ export default {
                         // } else if (value.status == 'menunggu_pembayaran') {
                         //     konfirmasiAdmin = false;
                         //     isKonfirmasi = false;
+                        //     sma;
                         // }
 
                         // if (value.waktu_daftar._seconds == undefined ){
@@ -340,9 +341,9 @@ export default {
                             ktm_ketua: value.ktm_ketua,
                             ktm_1: value.ktm_1,
                             ktm_2: value.ktm_2,
+                            makalah: value.makalah,
                             kompetisi: value.competition,
                             instansi: value.instansi,
-                            sma: value.sma,
                             nominal: value.harga,
                             status: value.status
                             // konfirmasiAdmin: konfirmasiAdmin,
@@ -396,9 +397,9 @@ export default {
                     ktm_1: 'https://facebook.com',
                     ktm_2: 'https://instagram.com',
                     waktu_daftar: '12/12/12',
-                    kompetisi: 'ctf',
-                    instansi: 'UGM',
-                    sma: false,
+                    makalah: 'https://google.com',
+                    kompetisi: 'pcs',
+                    instansi: 'UGama',
                     nominal: 42909,
                     status: 'Lunas'
                     // konfirmasiAdmin: true
@@ -415,10 +416,9 @@ export default {
                     ktm_1: 'https://facebook.com',
                     ktm_2: 'https://instagram.com',
                     waktu_daftar: '12/12/12',
-                    kompetisi: 'ctf',
-                    instansi: 'SMAN 11 Yogyakarta',
-                    sma: true,
-                    nominal: 22500,
+                    makalah: 'https://google.com',
+                    instansi: 'UGM',
+                    nominal: 42500,
                     status: 'lunas'
                     // konfirmasiAdmin: false
                 }

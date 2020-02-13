@@ -586,7 +586,7 @@ app.get('/admin/export', async (req, res) => {
     const auth = await google.auth.getClient({ scopes: ['https://www.googleapis.com/auth/spreadsheets'] });
     const sheets = google.sheets({ version: 'v4', auth });
 
-    async function pembarayan() {
+    async function pembayaran() {
         let qs = await db.collectionGroup('pendaftaran').orderBy('waktu_daftar', 'desc').get();
         let results = [
             ['Nama', 'Email', 'Nomor', 'Instansi', 'Event', 'Kompetisi', 'Nominal', 'Status'],
@@ -795,7 +795,7 @@ app.get('/admin/export', async (req, res) => {
     }
 
     await Promise.all([
-        pembarayan(),
+        pembayaran(),
         grand_launching(),
         it_day(),
         joints_camp(),

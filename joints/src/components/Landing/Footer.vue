@@ -117,24 +117,23 @@
                                             Grand Launching&nbsp;-&nbsp;
                                         </b-button>
                                         <b-button
-                                            disabled
-                                            to="/techtalk"
+                                            to="/jointscamp"
                                             class="footer-button"
                                             variant="light"
-                                            >TechTalk&nbsp;-&nbsp;</b-button
+                                            >JointsCamp</b-button
                                         >
                                         <b-button
-                                            disabled
                                             to="/competitions"
                                             class="footer-button"
                                             variant="light"
                                             >Kompetisi&nbsp;-&nbsp;</b-button
                                         >
                                         <b-button
-                                            to="/jointscamp"
+                                            disabled
+                                            to="/techtalk"
                                             class="footer-button"
                                             variant="light"
-                                            >JointsCamp</b-button
+                                            >TechTalk&nbsp;-&nbsp;</b-button
                                         >
                                         <br />&copy;Copyright JOINTS UGM 2020.
                                         All Rights Reserved.

@@ -17,19 +17,24 @@ import Announcement from '@/components/Dashboard/AnnounceDashboard.vue';
 import CompetitionsDash from '@/components/Dashboard/CompetitionsDash.vue';
 import Events from '@/components/Dashboard/Events.vue';
 import Profil from '@/components/Dashboard/Profil.vue';
-import Registration from '@/components/Dashboard/RegistrationPage.vue';
+import CompetitionPCS from '@/components/Dashboard/Competitions/PCS.vue';
 import PaymentDash from '@/components/Dashboard/PaymentDash.vue';
 import EventRegist from '@/components/Dashboard/EventRegist.vue';
 import JointsCampRegist from '@/components/Dashboard/CampRegist.vue';
-import CaptureTheFlag from '@/components/Dashboard/Competitions/CaptureTheFlag.vue'
+import CompetitionDatMin from '@/components/Dashboard/Competitions/DataMining.vue'
+import CompetitionUIUX from '@/components/Dashboard/Competitions/UIUX.vue'
+import CompetitionCTF from '@/components/Dashboard/Competitions/CTF.vue'
 
 // AdminControl
 import AdminControl from '@/views/Admin/AdminControl.vue';
 import AdminPengumuman from '@/components/Admin/AdminPengumuman.vue';
+import AdminPayment from '@/components/Admin/AdminPayment.vue';
 import AdminGL from '@/components/Admin/AdminGL.vue';
 import AdminCamp from '@/components/Admin/AdminCamp.vue';
 import AdminCtf from '@/components/Admin/AdminCtf.vue';
 import AdminPcs from '@/components/Admin/AdminPcs.vue';
+import AdminDatmin from '@/components/Admin/AdminDatmin';
+import AdminUx from '@/components/Admin/AdminUx';
 
 Vue.use(VueRouter);
 
@@ -86,6 +91,11 @@ const routes = [{
                 component: AdminPengumuman
             },
             {
+                path: 'paymentbyadmin',
+                name: 'paymentbyadmin',
+                component: AdminPayment
+            },
+            {
                 path: 'grandlaunchingbyadmin',
                 name: 'grandlaunchingbyadmin',
                 component: AdminGL
@@ -104,7 +114,17 @@ const routes = [{
                 path: 'pcsbyadmin',
                 name: 'pcsbyadmin',
                 component: AdminPcs
-            }
+            },
+            {
+                path: 'datminbyadmin',
+                name: 'datminbyadmin',
+                component: AdminDatmin
+            },
+            {
+                path: 'uxbyadmin',
+                name: 'uxbyadmin',
+                component: AdminUx
+            },
         ]
     },
     {
@@ -133,29 +153,37 @@ const routes = [{
                 name: 'competition',
                 component: CompetitionsDash
             },
+            {
+                path: 'competitions/ctf/register',
+                name: 'CompetitionCTF',
+                component: CompetitionCTF,
+                props: true,
+            },
+            {
+                path: 'competitions/uiux/register',
+                name: 'CompetitionUIUX',
+                component: CompetitionUIUX,
+                props: true,
+            },
+            {
+                path: 'competitions/datamining/register',
+                name: 'CompetitionDatMin',
+                component: CompetitionDatMin,
+                props: true,
+            },
             // Uncomment kalau udah mau open regis
             {
-                path: 'competitions/:section/register',
-                name: 'registration',
-                component: Registration,
+                path: 'competitions/pcs/register',
+                name: 'CompetitionPCS',
+                component: CompetitionPCS,
                 props: true,
-                beforeEnter: (to, from, next) => {
-                    const id = to.params.section;
-                    if (!['datamining', 'ctf', 'uiux', 'pcs'].includes(id)) next('/not-found');
-                    else next();
-                }
+                // beforeEnter: (to, from, next) => {
+                //     const id = to.params.section;
+                //     if (!['datamining', 'ctf','pcs'].includes(id)) next('/not-found');
+                //     else next();
+                // }
             },
-            // {
-            //     path: 'competitions/:section/payment',
-            //     name: 'payment',
-            //     component: PaymentDash,
-            //     props: true,
-            //     beforeEnter: (to, from, next) => {
-            //         const id = to.params.section;
-            //         if (!['datamining', 'ctf', 'uiux', 'pcs'].includes(id)) next('/not-found');
-            //         else next();
-            //     }
-            // },
+
             {
                 path: 'events',
                 name: 'events',
@@ -192,13 +220,7 @@ const routes = [{
                 path: 'profile',
                 name: 'profile',
                 component: Profil,
-                //   beforeEnter: (to, from, next) => {
 
-                //       store.dispatch(getProfilDataVuex)
-                //       .then(next);
-                //       console.log('beforeenter done')
-
-                // },
             }
         ]
     },
