@@ -1,15 +1,13 @@
 <template>
     <div>
-        <v-app class="white ">
+        <v-app class="white">
             <v-container>
                 <v-row class="d-flex align-content-start">
                     <v-col cols="12" class="pb-0 mb-0 profil-team-title">
-                        <h4 style="text-align: left" class="mb-0 pb-0">
-                            Profil Anda:
-                        </h4>
-                        <div class="subtitle mt-1 ml-0 subtitle-daftar">
-                            Lengkapi profil anda dibawah ini
-                        </div>
+                        <h4 style="text-align: left" class="mb-0 pb-0">Profil Anda:</h4>
+                        <div
+                            class="subtitle mt-1 ml-0 subtitle-daftar"
+                        >Lengkapi profil anda dibawah ini</div>
                     </v-col>
 
                     <v-col
@@ -24,10 +22,10 @@
                             outlined
                             class="mx-auto pt-0 regis-card elevation-4 outlined-blue-card"
                         >
-                            <div class=" ma-4 d-flex flex-column">
+                            <div class="ma-4 d-flex flex-column">
                                 <div class="subtitle">Nama:</div>
                                 <v-text-field
-                                    class="mt-1 pb-0 "
+                                    class="mt-1 pb-0"
                                     v-model="profils.nama"
                                     :rules="[
                                         formValidation,
@@ -63,7 +61,7 @@
                                 <div class="subtitle">No. Handphone:</div>
                                 <div>
                                     <v-text-field
-                                        class="mt-1 "
+                                        class="mt-1"
                                         ref="name"
                                         v-model="profils.nomor"
                                         :rules="[
@@ -89,16 +87,12 @@
                                         v => !!v || 'This field is required'
                                     ]"
                                     required
-                                    
                                     outlined
                                     dense
                                     placeholder="Instansi"
-                                     
                                 ></v-text-field>
 
-                                <div
-                                    class="d-flex justify-content-end daftar-section "
-                                >
+                                <div class="d-flex justify-content-end daftar-section">
                                     <v-alert
                                         class="alert-card px-4"
                                         type="success"
@@ -106,9 +100,7 @@
                                         v-model="isTersimpan"
                                         transition="scale-transition"
                                         dismissible
-                                    >
-                                        Yay Tersimpan
-                                    </v-alert>
+                                    >Yay Tersimpan</v-alert>
 
                                     <v-alert
                                         class="alert-card px-4"
@@ -117,26 +109,21 @@
                                         v-model="isAlert"
                                         transition="scale-transition"
                                         dismissible
-                                    >
-                                        Form Harus Dilengkapi
-                                    </v-alert>
+                                    >Form Harus Dilengkapi</v-alert>
 
-                                    <div
-                                        class="d-flex justify-content-end daftar-section "
-                                    >
+                                    <div class="d-flex justify-content-end daftar-section">
                                         <v-spacer></v-spacer>
 
                                         <v-btn
                                             color="white elevation-2"
                                             rounded
-                                            class=" daftar-button "
+                                            class="daftar-button"
                                             max-width="100"
                                             v-bind:disabled="false"
                                             v-on:click.native="
                                                 warningBeforeSend
                                             "
-                                            >Save
-                                        </v-btn>
+                                        >Save</v-btn>
                                     </div>
                                 </div>
                             </div>
@@ -153,16 +140,16 @@
                     >
                         <v-card
                             outlined
-                            class="ml-0 elevation-2 outlined-blue-card  d-flex flex-column justify-content-between pa-3 payment-card"
+                            class="ml-0 elevation-2 outlined-blue-card d-flex flex-column justify-content-between pa-3 payment-card"
                             max-height="200"
                         >
-                            <div class=" d-flex my-2">
-                                <div class="body-2 text-justify">
-                                    Dengan mengklik tombol di bawah ini, Anda setuju bahwa semua data yang Anda masukkan sudah benar dan bersedia untuk melanjutkan proses pendaftaran.
-                                </div>
+                            <div class="d-flex my-2">
+                                <div
+                                    class="body-2 text-justify"
+                                >Dengan mengklik tombol di bawah ini, Anda setuju bahwa semua data yang Anda masukkan sudah benar dan bersedia untuk melanjutkan proses pendaftaran.</div>
                             </div>
 
-                            <div class="card-action mt-auto ">
+                            <div class="card-action mt-auto">
                                 <v-btn
                                     color="white elevation-2"
                                     rounded
@@ -171,8 +158,7 @@
                                     v-on:click.native="
                                         submitProfils && (dialog = true)
                                     "
-                                    >BAYAR</v-btn
-                                >
+                                >BAYAR</v-btn>
                             </div>
 
                             <v-overlay
@@ -182,7 +168,7 @@
                                 color="white"
                                 :opacity="1"
                             >
-                                <v-container class=" d-flex py-0 ">
+                                <v-container class="d-flex py-0">
                                     <v-row class="py-0 my-0">
                                         <v-col>
                                             <v-card
@@ -192,10 +178,8 @@
                                             >
                                                 <v-alert
                                                     type="success"
-                                                    class="my-2 alert-card px-6 py-2 font-weight-bold "
-                                                >
-                                                    LUNAS
-                                                </v-alert>
+                                                    class="my-2 alert-card px-6 py-2 font-weight-bold"
+                                                >LUNAS</v-alert>
                                             </v-card>
                                         </v-col>
                                     </v-row>
@@ -210,43 +194,31 @@
                                     class="payment-dialog"
                                 >
                                     <v-card class="rounded-4 payment-dialog">
-                                        <v-card-title
-                                            class="card-title mb-0 pb-0"
-                                        >
+                                        <v-card-title class="card-title mb-0 pb-0">
                                             <span
-                                                class="headline dialog-title mt-5 pb-1 font-weight-medium "
-                                                >Pembayaran</span
-                                            >
+                                                class="headline dialog-title mt-5 pb-1 font-weight-medium"
+                                            >Pembayaran</span>
                                         </v-card-title>
 
                                         <v-card-text>
                                             <div
-                                                class="title text-left font-weight-regular title-biru-muda "
-                                            >
-                                                Yuk Lakukan Tranfer via OVO ke :
-                                            </div>
-                                            <div class="title subtitle-purple">
-                                                082112663311 an. Putri Rizki
-                                            </div>
+                                                class="title text-left font-weight-regular title-biru-muda"
+                                            >Yuk Lakukan Tranfer/Top up ke nomor OVO berikut :</div>
+                                            <div
+                                                class="title subtitle-purple"
+                                            >082112663311 an. Putri Rizki</div>
 
                                             <div>
-                                                <v-avatar
-                                                    class="compe-avatar"
-                                                    size="220"
-                                                    tile
-                                                >
+                                                <v-avatar class="compe-avatar" size="220" tile>
                                                     <v-img
                                                         :src="
                                                             require('@/assets/qrCodePNG.png')
                                                         "
-                                                    >
-                                                    </v-img>
+                                                    ></v-img>
                                                 </v-avatar>
 
-                                                <div class=" pa-0 mb-0">
-                                                    <div
-                                                        class="d-flex flex-column "
-                                                    >
+                                                <div class="pa-0 mb-0">
+                                                    <div class="d-flex flex-column">
                                                         <div
                                                             class="title text-left font-weight-regular title-biru-muda"
                                                         >
@@ -254,36 +226,28 @@
                                                             Pembayaran dalam
                                                         </div>
                                                         <div
-                                                            class=" headline subtitle-purple"
-                                                        >
-                                                            3 x 24 Jam
-                                                        </div>
+                                                            class="headline subtitle-purple"
+                                                        >3 x 24 Jam</div>
 
                                                         <div
                                                             class="title text-left font-weight-regular title-biru-muda"
-                                                        >
-                                                            Sebesar:
-                                                        </div>
+                                                        >Sebesar:</div>
                                                         <div
                                                             class="display-1 ml-3 subtitle-purple pb-0 mb-0"
                                                         >
                                                             Rp
                                                             {{
-                                                                this.payment.harga
+                                                            this.payment.harga
                                                             }}.00
                                                         </div>
 
-                                                        <div
-                                                            class="col-12 mx-0 my-0 pb-0 "
-                                                        ></div>
+                                                        <div class="col-12 mx-0 my-0 pb-0"></div>
                                                         <v-container
-                                                            class=" d-flex flex-column justify-content-between py-0"
+                                                            class="d-flex flex-column justify-content-between py-0"
                                                         >
-                                                            <v-row
-                                                                class="py-0 my-0"
-                                                            >
+                                                            <v-row class="py-0 my-0">
                                                                 <v-col
-                                                                    class="col-md-10 col-xs-12 my-0 py-0  px-0"
+                                                                    class="col-md-10 col-xs-12 my-0 py-0 px-0"
                                                                 >
                                                                     <v-alert
                                                                         v-if="
@@ -291,10 +255,8 @@
                                                                         "
                                                                         dense
                                                                         type="success"
-                                                                        class="my-2 alert-card px-4  "
-                                                                    >
-                                                                        Lunas
-                                                                    </v-alert>
+                                                                        class="my-2 alert-card px-4"
+                                                                    >Lunas</v-alert>
 
                                                                     <v-alert
                                                                         dense
@@ -307,11 +269,9 @@
                                                                     </v-alert>
                                                                 </v-col>
                                                                 <v-col
-                                                                    class="col-md-2  col-xs-12 my-0 py-0"
+                                                                    class="col-md-2 col-xs-12 my-0 py-0"
                                                                 >
-                                                                    <div
-                                                                        class="text-center ma-2"
-                                                                    >
+                                                                    <div class="text-center ma-2">
                                                                         <v-progress-circular
                                                                             v-if="
                                                                                 !payment.isLunas
@@ -344,8 +304,7 @@
                                                 rounded
                                                 class="biru-button elevation-1"
                                                 @click="dialog = false"
-                                                >Tutup</v-btn
-                                            >
+                                            >Tutup</v-btn>
                                         </v-card-actions>
                                     </v-card>
                                 </v-dialog>
@@ -398,55 +357,52 @@ export default {
             isLunas: false
         }
     }),
-     beforedestroy() {
-      clearInterval(this.intervalGetData);
+    beforedestroy() {
+        clearInterval(this.intervalGetData);
     },
-      computed:{ 
-              // ...mapState(['profils']),
-              ...mapGetters(['profilsData'])},
-      created() {
-      this.$store.dispatch('getProfilDataVuex'),
-      this.$store.watch(
-        (state, getters ) => getters.profilsData,
-        (newValue, oldValue) => {
-          // console.log(`Updating from ${oldValue} to ${newValue}`);
-          this.getDataDiluarEmail()
-        }
-      )
+    computed: {
+        // ...mapState(['profils']),
+        ...mapGetters(['profilsData'])
     },
-      mounted() {
-        this.getDataDiluarEmail()
+    created() {
+        this.$store.dispatch('getProfilDataVuex'),
+            this.$store.watch(
+                (state, getters) => getters.profilsData,
+                (newValue, oldValue) => {
+                    // console.log(`Updating from ${oldValue} to ${newValue}`);
+                    this.getDataDiluarEmail();
+                }
+            );
+    },
+    mounted() {
+        this.getDataDiluarEmail();
         this.getEmailVuex();
         this.getPriceData();
-        this.intervalGetData()
-
-       
-      },
+        this.intervalGetData();
+    },
 
     methods: {
-        getEmailVuex(){
-        this.profils.email = this.$store.state.user.data.email;
-    
+        getEmailVuex() {
+            this.profils.email = this.$store.state.user.data.email;
         },
-        
-         getDataDiluarEmail(){
-        if(this.$store.getters.profilsData == null ||
-          this.$store.getters.profilsData == undefined ||
-          this.$store.getters.profilsData.nama == null  &&
-          this.$store.getters.profilsData.nomor == null &&
-          this.$store.getters.profilsData.instansi == null){
-            // console.log(' biodata harus di isi');
-           
-          } else {
-            // console.log(' data di profils ngefetch dulu; ');
-            this.profils.nama = this.$store.getters.profilsData.nama
-            this.profils.nomor =  this.$store.getters.profilsData.nomor
-            this.profils.instansi = this.$store.getters.profilsData.instansi
-            
 
-          }
-      },
-        
+        getDataDiluarEmail() {
+            if (
+                this.$store.getters.profilsData == null ||
+                this.$store.getters.profilsData == undefined ||
+                (this.$store.getters.profilsData.nama == null &&
+                    this.$store.getters.profilsData.nomor == null &&
+                    this.$store.getters.profilsData.instansi == null)
+            ) {
+                // console.log(' biodata harus di isi');
+            } else {
+                // console.log(' data di profils ngefetch dulu; ');
+                this.profils.nama = this.$store.getters.profilsData.nama;
+                this.profils.nomor = this.$store.getters.profilsData.nomor;
+                this.profils.instansi = this.$store.getters.profilsData.instansi;
+            }
+        },
+
         async getStatusData() {
             let token = await firebase.auth().currentUser.getIdToken(true);
             const config = {
@@ -470,7 +426,6 @@ export default {
                         this.payment.isLunas = true;
                         this.overlay = true;
                     }
-
                 })
                 .catch(error => {
                     console.log(error);
@@ -478,7 +433,6 @@ export default {
         },
 
         intervalGetData() {
-           
             setInterval(() => {
                 this.getStatusData();
             }, 4000);
@@ -548,19 +502,17 @@ export default {
                 nomor: this.profils.nomor,
                 instansi: this.profils.instansi
             };
-            this.$store.commit('SET_PROFIL', this.profils)
+            this.$store.commit('SET_PROFIL', this.profils);
             this.intervalGetData();
             const BASE_URL = 'https://api.joints.id';
             Axios.post(BASE_URL + '/biodata', bodyParameters, config)
                 .then(response => {
-                 
                     // console.log(response);
                     // console.log('berhasil');
                 })
                 .catch(error => {
                     console.log(error);
                 });
-            
         },
 
         formatHarga(number) {
@@ -587,7 +539,7 @@ export default {
                 .catch(error => {
                     console.log(error);
                 });
-        },
+        }
         // async getProfilData() {
         //     let token = await firebase.auth().currentUser.getIdToken(true);
 
@@ -608,8 +560,7 @@ export default {
         //             console.log(error);
         //         });
         // }
-    },
-
+    }
 };
 </script>
 

@@ -808,6 +808,24 @@ app.get('/admin/export', async (req, res) => {
     res.send({ status: 'ok', sheet: 'https://docs.google.com/spreadsheets/d/1UyIheoyez5pJrJFNebzUhFbi8C6zvpNxuJ8HJrbicQ4' });
 });
 
+app.get('/admin/update_price', async (req, res) => {
+    let qs = await db.collectionGroup('pendaftaran').where('status', '==', 'menunggu_pembayaran').get();
+    let results = [];
+
+    async function renewPrice(doc) {
+        let { event, competition, single, sma } = doc.data();
+        let e = (event || competition);
+        if (single) e = 'pcs_single';
+        if (sma) e = 'ctf_sma';
+        let harga = getHarga(e) + Math.floor(Math.random() * 1000);
+        await doc.ref.update({ harga });
+    }
+
+    qs.forEach(doc => results.push(renewPrice(doc)));
+    await Promise.all(results);
+    res.send({ status: 'ok' });
+});
+
 app.all('*', (req, res) => res.send('INVALID ROUTE'));
 
 exports.api = functions.https.onRequest(app);

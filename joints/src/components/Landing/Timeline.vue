@@ -350,27 +350,31 @@ export default {
             timelineCamp: [
                 {
                     date: '31 Januari 2020',
-                    desc: 'Open Registrasi Joints Camp'
+                    desc: 'Buka Pendaftaran Joints Camp'
                 },
                 {
-                    date: '14 Februari 2020',
-                    desc: 'Close Registrasi Joints Camp'
+                    date: '21 Februari 2020',
+                    desc: 'Tutup Pendaftaran Joints Camp'
                 },
                 {
-                    date: '15 Februari 2020',
+                    date: '22 Februari 2020',
                     desc: 'Pengumuman Seleksi Pertama'
                 },
                 {
-                    date: '16 Februari 2020',
-                    desc: 'Tahap Seleksi Kedua Dimulai'
-                },
-                {
-                    date: '29 Februari 2020',
-                    desc: 'Tahap Seleksi Kedua Selesai'
+                    date: '23 Februari 2020',
+                    desc: 'Tahap Seleksi Technical Test Dimulai'
                 },
                 {
                     date: '1 Maret 2020',
-                    desc: 'Pengumuman Akhir Peserta JointsCamp'
+                    desc: 'Tahap Seleksi Technical Test Selesai'
+                },
+                {
+                    date: '5 Maret 2020',
+                    desc: 'Pengumuman Final Peserta JointsCamp'
+                },
+                {
+                    date: '8 Maret 2020',
+                    desc: 'Technical Meeting Peserta JointsCamp'
                 },
                 {
                     date: '14 Maret 2020',

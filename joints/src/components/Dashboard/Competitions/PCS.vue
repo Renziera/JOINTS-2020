@@ -477,7 +477,7 @@
                                             <div
                                                 class="title text-left font-weight-regular title-biru-muda "
                                             >
-                                                Yuk Lakukan Tranfer via OVO :
+                                                Yuk Lakukan Tranfer/Top up ke nomor OVO berikut :
                                             </div>
                                             <div class="title subtitle-purple">
                                                 082112663311 an. Putri Rizki

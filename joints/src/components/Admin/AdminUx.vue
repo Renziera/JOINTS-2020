@@ -125,7 +125,7 @@
                                                 <v-btn color="blue darken-1" text @click="close">NO</v-btn>
                                             </v-card-actions>
                                         </v-card>
-                                    </v-dialog> -->
+                                    </v-dialog>-->
                                 </v-toolbar>
                             </template>
 
@@ -156,7 +156,7 @@
 
                             <template v-slot:no-data>
                                 <v-btn color="primary" @click="initialize">Reset</v-btn>
-                            </template> -->
+                            </template>-->
                             <template v-slot:expanded-item="{ headers, item }">
                                 <td :colspan="headers.length/4">
                                     Nama Ketua : {{item.nama}}
@@ -219,7 +219,7 @@ export default {
             // { text: 'Kompetisi', value: 'kompetisi', sortable: false},
             { text: 'Instansi', value: 'instansi', sortable: false },
             { text: 'Nominal', value: 'nominal', sortable: false },
-            { text: 'Status', value: 'status' },
+            { text: 'Status', value: 'status' }
             // { text: 'Aksi', value: 'action', sortable: false }
         ],
         desserts: [],
@@ -241,7 +241,7 @@ export default {
             link_video: '',
             instansi: '',
             nominal: '',
-            status: '',
+            status: ''
             // konfirmasiAdmin: false,
             // isJanganKonfirmasi: null
         },
@@ -262,7 +262,7 @@ export default {
             instansi: '',
             kompetisi: '',
             nominal: '',
-            status: '',
+            status: ''
             // konfirmasiAdmin: false,
             // isJanganKonfirmasi: null
         }
@@ -347,7 +347,7 @@ export default {
                             kompetisi: value.competition,
                             instansi: value.instansi,
                             nominal: value.harga,
-                            status: value.status,
+                            status: value.status
                             // konfirmasiAdmin: konfirmasiAdmin,
                             // isJanganKonfirmasi: isKonfirmasi
                         };
@@ -404,7 +404,7 @@ export default {
                     kompetisi: 'pcs',
                     instansi: 'UGama',
                     nominal: 42909,
-                    status: 'Lunas',
+                    status: 'Lunas'
                     // konfirmasiAdmin: true
                 },
                 {
@@ -423,7 +423,7 @@ export default {
                     link_video: 'https://youtube.com',
                     instansi: 'UGM',
                     nominal: 42500,
-                    status: 'lunas',
+                    status: 'lunas'
                     // konfirmasiAdmin: false
                 }
             ];

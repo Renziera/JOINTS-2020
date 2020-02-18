@@ -399,7 +399,7 @@
                                         <v-card-text>
                                             <div
                                                 class="title text-left font-weight-regular title-biru-muda"
-                                            >Yuk Lakukan Tranfer via OVO :</div>
+                                            >Yuk Lakukan Tranfer/Top up ke nomor OVO berikut :</div>
                                             <div
                                                 class="title subtitle-purple"
                                             >082112663311 an. Putri Rizki</div>
@@ -497,21 +497,18 @@
                                                 class="biru-button elevation-1"
                                                 @click="dialog = false"
                                             >Tutup</v-btn>
-
                                         </v-card-actions>
                                     </v-card>
                                 </v-dialog>
                             </div>
                         </v-card>
-                         <v-card v-if="isLunas" outlined class="mx-4 ml-0 mt-5" >
-                            <v-container class="">
-                                <v-card-title class="title pl-0 pt-0 ">
-                                    Upload Proposal & Youtube URL UX Design
-                                </v-card-title>
+                        <v-card v-if="isLunas" outlined class="mx-4 ml-0 mt-5">
+                            <v-container class>
+                                <v-card-title
+                                    class="title pl-0 pt-0"
+                                >Upload Proposal & Youtube URL UX Design</v-card-title>
 
-                                <v-divider
-                                    class="mt-0 mb-4 card-divider"
-                                ></v-divider>
+                                <v-divider class="mt-0 mb-4 card-divider"></v-divider>
 
                                 <div class="subtitle">Youtube Link</div>
 
@@ -528,60 +525,52 @@
                                     dense
                                     placeholder="Youtube URL"
                                 ></v-text-field>
-                               
-                               <div class="d-flex">
-                                   <v-file-input
-                                    v-if="!isMakalahUpload"
-                                    v-model="makalah"
-                                    counter
-                                    dense
-                                    placeholder="Select your files"
-                                    prepend-icon="mdi-paperclip"
-                                    outlined
-                                    accept=".pdf"
-                                    :rules="[formValidation, v => !!v || 'File is required']"
-                                    :show-size="1000"
-                                ></v-file-input>
-                                <v-alert
-                                    v-if="isMakalahUpload"
-                                    class=" px-2 "
-                                    dense
-                                    text
-                                    type="success"
-                                >Uploaded</v-alert>
-                                
-                                  
+
+                                <div class="d-flex">
+                                    <v-file-input
+                                        v-if="!isMakalahUpload"
+                                        v-model="makalah"
+                                        counter
+                                        dense
+                                        placeholder="Select your files"
+                                        prepend-icon="mdi-paperclip"
+                                        outlined
+                                        accept=".pdf"
+                                        :rules="[formValidation, v => !!v || 'File is required']"
+                                        :show-size="1000"
+                                    ></v-file-input>
+                                    <v-alert
+                                        v-if="isMakalahUpload"
+                                        class="px-2"
+                                        dense
+                                        text
+                                        type="success"
+                                    >Uploaded</v-alert>
                                 </div>
 
-                                <v-divider
-                                    class="mt-0 mb-0 card-divider"
-                                ></v-divider>
+                                <v-divider class="mt-0 mb-0 card-divider"></v-divider>
                             </v-container>
                             <v-card-actions class="pt-0">
-                                 
                                 <v-btn
-                                    
-                                    @click="dialogKonfirmasiMakalah = true  " 
+                                    @click="dialogKonfirmasiMakalah = true  "
                                     color="#13CEBB"
                                     rounded
                                     outlined
                                     class="mt-0 daftar-button btn-block"
                                     min-width="150"
                                     v-bind:disabled="isMakalahUpload"
-                                    >UPLOAD</v-btn
-                                >
-                                
-                                  <div>
+                                >UPLOAD</v-btn>
+
+                                <div>
                                     <v-dialog
                                         v-model="dialogKonfirmasiMakalah"
                                         persistent
                                         max-width="600px"
                                     >
                                         <v-card>
-                                          
-                                            <div class="pa-6 title font-weight-regular">
-                                              Apakah Anda sudah yakin dengan file yang anda upload? upload file hanya dapat dilakukan satu kali
-                                            </div>
+                                            <div
+                                                class="pa-6 title font-weight-regular"
+                                            >Apakah Anda sudah yakin dengan file yang anda upload? upload file hanya dapat dilakukan satu kali</div>
 
                                             <v-card-actions>
                                                 <v-spacer></v-spacer>
@@ -589,21 +578,17 @@
                                                     text
                                                     color="blue darken-1"
                                                     @click="dialogKonfirmasiMakalah = false"
-                                                    >Tidak</v-btn
-                                                >
+                                                >Tidak</v-btn>
                                                 <v-btn
                                                     text
                                                     color="blue darken-1"
                                                     @click=" submitMakalah() "
-                                                    >YA</v-btn
-                                                >
-                                              
+                                                >YA</v-btn>
                                             </v-card-actions>
                                         </v-card>
                                     </v-dialog>
                                 </div>
                             </v-card-actions>
-
                         </v-card>
                     </v-col>
                 </v-row>
@@ -624,8 +609,8 @@ export default {
     data() {
         return {
             myInterval: null,
-            isMakalahUpload : false, 
-            dialogKonfirmasiMakalah: false, 
+            isMakalahUpload: false,
+            dialogKonfirmasiMakalah: false,
             isBerhasil: false,
             isBelumBayar: false,
             dialogKonfirmasi: false,
@@ -664,13 +649,13 @@ export default {
             jumlahAnggota: null
         };
     },
-    
+
     computed: {
         // ...mapState(['profils']),
         ...mapGetters(['profilsData', 'competitions'])
     },
-    beforeDestroy () {
-        clearInterval(this.myInterval)
+    beforeDestroy() {
+        clearInterval(this.myInterval);
     },
 
     created() {
@@ -701,34 +686,37 @@ export default {
         this.intervalGetData();
     },
     methods: {
-        async submitMakalah () {
+        async submitMakalah() {
             let formData = new FormData();
-            this.dialogKonfirmasiMakalah =  false;
+            this.dialogKonfirmasiMakalah = false;
             formData.append('proposal', this.makalah);
             formData.append('link_video', this.youtubeLink);
 
             // console.log(formData);
-            
+
             let token = await firebase.auth().currentUser.getIdToken(true);
             const config = {
-                headers: { Authorization: 'Bearer ' + token,
-                'Content-Type': 'multipart/form-data' }
+                headers: {
+                    Authorization: 'Bearer ' + token,
+                    'Content-Type': 'multipart/form-data'
+                }
             };
-            
-            let URL_API = `daftar/apps_innovation/upload_proposal`
+
+            let URL_API = `daftar/apps_innovation/upload_proposal`;
             const BASE_URL = 'https://api.joints.id';
-            Axios.post(BASE_URL +  `/${URL_API}`, formData, config)
+            Axios.post(BASE_URL + `/${URL_API}`, formData, config)
                 .then(response => {
-                   
                     // console.log(response);
                     // console.log('berhasil upload makalah');
-                    if(response.data.status == 'ok' || response.data.status == 'menunggu_pembayaran') {
-                      this.isMakalahUpload = true;
+                    if (
+                        response.data.status == 'ok' ||
+                        response.data.status == 'menunggu_pembayaran'
+                    ) {
+                        this.isMakalahUpload = true;
                     }
-                    this.$store.dispatch('getTeamDataVuex')
-
+                    this.$store.dispatch('getTeamDataVuex');
                 })
-                
+
                 .catch(error => {
                     console.log(error);
                 });
@@ -796,7 +784,7 @@ export default {
                             this.isLunas = true;
                             this.overlay = true;
                             this.isBelumBayar = true;
-                            clearInterval(this.myInterval)
+                            clearInterval(this.myInterval);
                         } else {
                             // console.log('lunas dari else');
                             this.isLunas = true;
@@ -809,10 +797,8 @@ export default {
                 });
         },
 
-      
-
         intervalGetData() {
-            clearInterval(this.myInterval)
+            clearInterval(this.myInterval);
             //  console.log('set interval dari competition ');
             this.myInterval = setInterval(() => {
                 this.getStatusData();
@@ -885,7 +871,7 @@ export default {
                     this.isLunas = true;
                     this.overlay = true;
                     this.isBelumBayar = true;
-                    clearInterval(this.myInterval)
+                    clearInterval(this.myInterval);
                 } else {
                     // console.log('lunas dari else');
                     this.isLunas = true;
@@ -983,8 +969,7 @@ export default {
             }
             return returnValue;
         }
-    },
-    
+    }
 };
 </script>
 

@@ -125,7 +125,7 @@
                                                 <v-btn color="blue darken-1" text @click="close">NO</v-btn>
                                             </v-card-actions>
                                         </v-card>
-                                    </v-dialog> -->
+                                    </v-dialog>-->
                                 </v-toolbar>
                             </template>
 
