@@ -58,10 +58,11 @@
                                     outlined
                                     class="mr-2 daftar-button px-7 elevation-1"
                                     :to="item.link"
-                                    :disabled="!item.isOpenRegis"
+                                    :disabled="item.isOpenRegis == 0 || item.isOpenRegis == 2"
                                 >
-                                    <div v-if="item.isOpenRegis">Daftar</div>
-                                    <div v-else>Coming Soon</div>
+                                    <div v-if="item.isOpenRegis == 0">Coming Soon</div>
+                                    <div v-else-if="item.isOpenRegis == 1">Daftar</div>
+                                    <div v-else>Pendaftaran Tutup</div>
                                 </v-btn>
                             </v-card-actions>
                         </v-card>
@@ -91,7 +92,10 @@ export default {
                 link: '/dashboard/events/grandlaunching/register',
                 isSudahLunas: false,
                 isBelumLunas: false,
-                isOpenRegis: true
+                // 0 : Belum open regis
+                // 1 : Sudah open regis
+                // 2 : close regis
+                isOpenRegis: 1
             },
             {
                 color: '#952175',
@@ -102,7 +106,10 @@ export default {
                 // link: '/dashboard/events/techtalk/register',
                 isSudahLunas: false,
                 isBelumLunas: false,
-                isOpenRegis: false
+                // 0 : Belum open regis
+                // 1 : Sudah open regis
+                // 2 : close regis
+                isOpenRegis: 0
             },
             {
                 color: '#952175',
@@ -113,7 +120,10 @@ export default {
                 link: '/dashboard/events/jointscamp/register',
                 isSudahLunas: false,
                 isBelumLunas: false,
-                isOpenRegis: true
+                // 0 : Belum open regis
+                // 1 : Sudah open regis
+                // 2 : close regis
+                isOpenRegis: 2
             }
         ]
     }),

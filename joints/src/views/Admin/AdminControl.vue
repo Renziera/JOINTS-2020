@@ -6,7 +6,21 @@
                 <div class="dashboard">
                     <h1 class="dashboard">Control</h1>
                     <h2>Welcome, {{ $store.getters.user.data.displayName }}</h2>
+                    <div class="d-flex justify-content-between">
                     <h2>Apakah panitia ? {{ $store.getters.user.isPanitia }}</h2>
+                    <v-btn
+
+                      color="primary"
+                      class="sheet-button"
+                      rounded
+                   
+                      max-width="200"
+                      v-bind:disabled="!linkSpreadsheet"
+                      v-on:click.native="openNewWindow"
+                      >Excel data
+                  </v-btn>
+                    </div>
+                    
                 </div>
                 <v-app>
                     <v-tabs color="#94119F" slider-color="yellow" show-arrows>
@@ -45,7 +59,7 @@ export default {
     },
     data() {
         return {
-            // linkSpreadsheet: [],
+            linkSpreadsheet: null,
             tabs: [
                 {
                     id: 1,
@@ -92,33 +106,31 @@ export default {
     },
     async created() {
         let uid = this.$store.getters.user.data.uid;
-        // this.getExportData();
+        this.$store.dispatch('getExportSheet'),
+        this.$store.watch (
+                (state, getters) => getters.sheetData,
+                (newValue, oldValue) => {
+                    console.log(`Updating from ${oldValue} to ${newValue}`);
+                    this.sheetDataFetch();
+                }
+            )
+    },
+    mounted() {
+      this.sheetDataFetch()
     },
     methods: {
-        // async logout() {
-        //     await firebase.auth().signOut();
-        //     this.$router.push('/login');
-        // }
-        // async getExportData() {
-        //     let token = await firebase.auth().currentUser.getIdToken(true);
-        //     const config = {
-        //         headers: { Authorization: 'Bearer ' + token }
-        //     };
-        //     const BASE_URL = 'https://api.joints.id';
-        //     Axios.get(BASE_URL + '/admin/export', config)
-        //         .then(response => {
-        //             console.log(response);
-        //             // response.data.forEach((value, index) => {
-        //             //     let linkSpreadsheet = {
-        //             //         sheet: value.sheet
-        //             //     };
-        //             //     this.desserts.push(linkSpreadsheet);
-        //             // });
-        //         })
-        //         .catch(error => {
-        //             console.log(error);
-        //         });
-        // }
+      openNewWindow(){
+          window.open(this.linkSpreadsheet, "_blank");
+      },
+      sheetDataFetch(){
+        if(this.$store.getters.sheetData == null ){
+          // console.log('link belom the fetch');
+        } else {
+          this.linkSpreadsheet = this.$store.getters.sheetData 
+          // console.log('link akhirnya ke fetch');
+        }
+      }
+      
     }
 };
 </script>
@@ -126,6 +138,13 @@ export default {
 <style>
 .dashboard {
     text-align: left;
+}
+
+.sheet-button {
+    background-image: linear-gradient(90deg, #92abfc, #3587e5) !important;
+    color: white;
+    background-color : white;
+    border: none !important;
 }
 
 .all-container {

@@ -21,7 +21,8 @@ export default new Vuex.Store({
         },
         pengumumanDatas: [],
         events: null,
-        competitions : null 
+        competitions : null,
+        sheetLink: null
     },
     getters: {
         user(state) {
@@ -44,6 +45,9 @@ export default new Vuex.Store({
         },
         pengumumans(state){
           return state.pengumumanDatas;
+        },
+        sheetData(state){
+          return state.sheetLink
         }
     },
     mutations: {
@@ -74,9 +78,32 @@ export default new Vuex.Store({
         },
         ADD_COMPETITIONS(state, value ){
           state.competitions = value
+        },
+        SET_SHEET(state, value){
+          state.sheetLink = value
         }
     },
     actions: {
+
+      async getExportSheet({commit}){
+        let token = await firebase.auth().currentUser.getIdToken(true);
+            const config = {
+                headers: { Authorization: 'Bearer ' + token }
+            };
+
+            const BASE_URL = 'https://api.joints.id';
+            Axios.get(BASE_URL + '/admin/export', config)
+                .then(response => {
+                    // console.log(response)
+                    commit('SET_SHEET', response.data.sheet)
+                    // console.log('after SET_SHEET')
+                    // console.log(this.state.sheetLink)
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+      },
+
 
       async getPengumumanDataVuex({ commit }) {
             let token = await firebase.auth().currentUser.getIdToken(true);

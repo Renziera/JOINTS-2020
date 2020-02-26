@@ -337,7 +337,7 @@
                                         <v-card>
                                             <div
                                                 class="pa-6 title font-weight-regular"
-                                            >Apakah Anda sudah yakin dengan data yang Anda masukkan dan bersedia mengikuti proses pendaftaran Kompetisi Capture The Flag JOINTS 2020?</div>
+                                            >Apakah Anda sudah yakin dengan data yang Anda masukkan dan bersedia mengikuti proses pendaftaran Kompetisi UX Design JOINTS 2020?</div>
 
                                             <v-card-actions>
                                                 <v-spacer></v-spacer>

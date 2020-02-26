@@ -190,12 +190,12 @@ const routes = [{
                 component: Events
             },
 
-            // Uncomment kalo udah mau open regis
-            {
-                path: 'events/jointscamp/register',
-                name: 'jointscampRegist',
-                component: JointsCampRegist
-            },
+
+            // {
+            //     path: 'events/jointscamp/register',
+            //     name: 'jointscampRegist',
+            //     component: JointsCampRegist
+            // },
 
             {
                 path: 'events/:section/register',

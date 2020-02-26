@@ -838,7 +838,7 @@ exports.api = functions.https.onRequest(app);
 function getHarga(event) {
     const IT_DAY_REG = 1585587600000;
     const EARLY_2 = 1581699600000;
-    const REG = 1582390800000;
+    const REG = 1582909200000;
 
     let now = Date.now();
 
