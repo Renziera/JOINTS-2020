@@ -502,6 +502,7 @@
                                 </v-dialog>
                             </div>
                         </v-card>
+                        
                         <v-card v-if="isLunas" outlined class="mx-4 ml-0 mt-5">
                             <v-container class>
                                 <v-card-title
@@ -590,6 +591,9 @@
                                 </div>
                             </v-card-actions>
                         </v-card>
+
+
+                        
                     </v-col>
                 </v-row>
             </v-container>
@@ -765,20 +769,18 @@ export default {
                     response.data.competitions.forEach((value, index) => {
                         competitions[value.competition] = value;
                     });
+                    // console.log('dari get status data')
                     // console.log(competitions);
 
                     if (competitions.apps_innovation != undefined) {
                         // console.log('ini dari getstatusdata; ADA COMPETITION.apps_innovation');
-                        if (
-                            competitions.apps_innovation.status ==
-                            'menunggu_pembayaran'
-                        ) {
+                        if (competitions.apps_innovation.status == 'menunggu_pembayaran') {
                             // console.log('ga lunas menunggu pembayaran');
                             this.overlay = false;
                             this.isLunas = false;
                             this.isBelumBayar = true;
                         } else if (
-                            competition.apps_innovation.status == 'lunas'
+                            competitions.apps_innovation.status == 'lunas'
                         ) {
                             // console.log('lunas dari === lunas');
                             this.isLunas = true;
@@ -816,9 +818,7 @@ export default {
             ) {
                 // console.log(' competitions harus di isi');
             } else {
-                // console.log(' C1 competitions ngefetch dulu; ');
-                // console.log(this.$store.getters.competitions.apps_innovation);
-                // console.log('ada apps_innovation');
+               
 
                 (this.team.nama_tim = this.$store.getters.competitions.apps_innovation.nama_tim),
                     (this.team.nama_1 = this.$store.getters.competitions.apps_innovation.nama_1),
@@ -832,6 +832,16 @@ export default {
                     (this.team.status = this.$store.getters.competitions.apps_innovation.status);
 
                 // console.log(this.team);
+
+
+                if(this.$store.getters.competitions.apps_innovation.link_video != undefined || 
+                  this.$store.getters.competitions.apps_innovation.proposal != undefined
+                ) {
+                  this.isMakalahUpload = true
+                  this.youtubeLink = this.$store.getters.competitions.apps_innovation.link_video
+                  this.makalah = this.$store.getters.competitions.apps_innovation.proposal
+
+                }
 
                 if (
                     this.$store.getters.competitions.apps_innovation.ktm_2 !=
@@ -864,7 +874,7 @@ export default {
                     this.isLunas = false;
                     this.isBelumBayar = true;
                 } else if (
-                    this.$store.getters.competition.apps_innovation.status ==
+                    this.$store.getters.competitions.apps_innovation.status ==
                     'lunas'
                 ) {
                     // console.log('lunas dari === lunas');
