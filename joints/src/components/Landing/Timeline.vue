@@ -203,31 +203,27 @@ export default {
                     desc: 'Registrasi Dibuka'
                 },
                 {
-                    date: '22 Maret 2020',
+                    date: '25 April 2020',
                     desc: 'Registrasi Ditutup'
                 },
                 {
-                    date: '28 Maret 2020',
+                    date: '2 Mei 2020',
                     desc: 'Warm Up'
                 },
                 {
-                    date: '29 Maret 2020',
+                    date: '3 Mei 2020',
                     desc: 'Penyisihan'
                 },
                 {
-                    date: '4 April 2020',
+                    date: '13 Mei',
                     desc: 'Pengumuman Semifinalis'
                 },
                 {
-                    date: '18 April 2020',
-                    desc: 'Technical Meeting Semifinalis'
-                },
-                {
-                    date: '18 April 2020',
+                    date: '6 Juni',
                     desc: 'Semifinal'
                 },
                 {
-                    date: '19 April 2020',
+                    date: '7 Juni',
                     desc: 'Final'
                 }
             ],
@@ -237,23 +233,23 @@ export default {
                     desc: 'Registrasi Dibuka'
                 },
                 {
-                    date: '22 Maret 2020',
+                    date: '25 April 2020',
                     desc: 'Registrasi Ditutup'
                 },
                 {
-                    date: '28 Maret 2020',
+                    date: '2 Mei 2020',
                     desc: 'Warm Up'
                 },
                 {
-                    date: '29 Maret 2020',
+                    date: '3 Mei 2020',
                     desc: 'Penyisihan'
                 },
                 {
-                    date: '4 April 2020',
+                    date: '13 Mei 2020',
                     desc: 'Pengumuman Finalis'
                 },
                 {
-                    date: '19 April 2020',
+                    date: '7 Juni 2020',
                     desc: 'Final'
                 }
             ],
@@ -263,27 +259,27 @@ export default {
                     desc: 'Registrasi Dibuka'
                 },
                 {
-                    date: '20 Maret 2020',
+                    date: '22 April 2020',
                     desc: 'Registrasi Ditutup'
                 },
                 {
-                    date: '23 Maret 2020',
+                    date: '26 April',
                     desc: 'Pembagian Dataset dan Soal (Babak Penyisihan)'
                 },
                 {
-                    date: '23-29 Maret 2020',
+                    date: '26 April - 3 Mei 2020',
                     desc: 'Submisi dan Pengumpulan Makalah (Babak Penyisihan)'
                 },
                 {
-                    date: '4 April 2020',
+                    date: '13 Mei 2020',
                     desc: 'Pengumuman Finalis'
                 },
                 {
-                    date: '18 April 2020',
+                    date: '13 Mei - 6 Juni 2020',
                     desc: 'Pengerjaan Dataset dan Soal (Babak Final)'
                 },
                 {
-                    date: '19 April 2020',
+                    date: '7 Juni 2020',
                     desc: 'Presentasi Hasil Pengerjaan (Babak Final)'
                 }
             ],
@@ -293,25 +289,20 @@ export default {
                     desc: 'Registrasi Dibuka'
                 },
                 {
-                    date: '22 Maret 2020',
-                    desc:
-                        'Registrasi Ditutup dan Batas Pengumpulan Proposal + Video'
+                    date: '25 April 2020',
+                    desc: 'Registrasi Ditutup dan Batas Pengumpulan Proposal + Video'
                 },
                 {
-                    date: '4 April 2020',
+                    date: '13 Mei 2020',
                     desc: 'Pengumuman Finalis'
                 },
                 {
-                    date: '5-17 April 2020',
+                    date: '13 Mei - 6 Juni 2020',
                     desc:
                         'Finishing Desain UX, Pembuatan Prototype, dan Penyusunan Bahan Presentasi oleh Finalis'
                 },
                 {
-                    date: '17 April 2020',
-                    desc: 'Pengumpulan Bahan Presentasi oleh Finalis'
-                },
-                {
-                    date: '19 April 2020',
+                    date: '7 Juni 2020',
                     desc: 'Presentasi Hasil Pengerjaan (Babak Final)'
                 }
             ],
@@ -335,15 +326,15 @@ export default {
                     desc: 'Open Registrasi IT Day'
                 },
                 {
-                    date: '15 Maret 2020',
+                    date: 'TBA',
                     desc: 'Close Registrasi IT DAY'
                 },
                 {
-                    date: '18 April 2020',
+                    date: 'TBA',
                     desc: 'IT Day day-1'
                 },
                 {
-                    date: '19 April 2020',
+                    date: 'TBA',
                     desc: 'IT Day day-2'
                 }
             ],

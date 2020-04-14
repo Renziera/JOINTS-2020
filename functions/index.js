@@ -700,7 +700,7 @@ app.get('/admin/export', async (req, res) => {
             let userDoc = await doc.ref.parent.parent.get();
             let data = { ...doc.data(), ...userDoc.data() };
             return [
-                data.nama, data.email, data.nomor, data.instansi, data.nama_tim, data.nama_1, data.nama_2,
+                data.nama, data.email, data.nomor, data.instansi, data.nama_tim, data.nama_1 || '', data.nama_2 || '',
             ];
         }
 
@@ -726,7 +726,7 @@ app.get('/admin/export', async (req, res) => {
             let userDoc = await doc.ref.parent.parent.get();
             let data = { ...doc.data(), ...userDoc.data() };
             return [
-                data.nama, data.email, data.nomor, data.instansi, data.nama_tim, data.nama_1, data.nama_2, data.sma,
+                data.nama, data.email, data.nomor, data.instansi, data.nama_tim, data.nama_1 || '', data.nama_2 || '', data.sma,
             ];
         }
 
@@ -752,7 +752,7 @@ app.get('/admin/export', async (req, res) => {
             let userDoc = await doc.ref.parent.parent.get();
             let data = { ...doc.data(), ...userDoc.data() };
             return [
-                data.nama, data.email, data.nomor, data.instansi, data.nama_tim, data.nama_1, data.nama_2,
+                data.nama, data.email, data.nomor, data.instansi, data.nama_tim, data.nama_1 || '', data.nama_2 || '',
             ];
         }
 
@@ -778,7 +778,7 @@ app.get('/admin/export', async (req, res) => {
             let userDoc = await doc.ref.parent.parent.get();
             let data = { ...doc.data(), ...userDoc.data() };
             return [
-                data.nama, data.email, data.nomor, data.instansi, data.nama_tim, data.nama_1, data.nama_2,
+                data.nama, data.email, data.nomor, data.instansi, data.nama_tim, data.nama_1 || '', data.nama_2 || '',
             ];
         }
 

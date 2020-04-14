@@ -95,7 +95,7 @@ export default {
                 // 0 : Belum open regis
                 // 1 : Sudah open regis
                 // 2 : close regis
-                isOpenRegis: 1
+                isOpenRegis: 2
             },
             {
                 color: '#952175',

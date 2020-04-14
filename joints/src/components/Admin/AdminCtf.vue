@@ -176,7 +176,7 @@
                                 </td>
 
                                 <td :colspan="headers.length/4">
-                                    Anggota 1: {{ item.nama_1 }}
+                                    Anggota 2: {{ item.nama_1 }}
                                     <br />Ktm :
                                     <a :href="item.ktm_1" target="_blank">
                                         <v-btn small outlined rounded color="primary" dark>klik</v-btn>
@@ -184,7 +184,7 @@
                                 </td>
 
                                 <td :colspan="headers.length/4">
-                                    Anggota 2: {{ item.nama_2 }}
+                                    Anggota 3: {{ item.nama_2 }}
                                     <br />Ktm :
                                     <a :href="item.ktm_2" target="_blank">
                                         <v-btn small outlined rounded color="primary" dark>klik</v-btn>
