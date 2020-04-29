@@ -45,8 +45,12 @@
                                             :to="item.link"
                                             outlined
                                             class="mr-2 daftar-button px-7 elevation-1"
-                                           
-                                        >Daftar</v-btn>
+                                            :disabled="item.isOpenRegis == 0 || item.isOpenRegis == 2"
+                                        >
+                                            <div v-if="item.isOpenRegis == 0">Coming Soon</div>
+                                            <div v-else-if="item.isOpenRegis == 1">Daftar</div>
+                                            <div v-else>Pendaftaran Tutup</div>
+                                        </v-btn>
                                     </div>
                                 </div>
                             </v-card-actions>
@@ -66,37 +70,57 @@ export default {
                 color: '#952175',
                 src: 'ctf-dark.png',
                 title: 'Capture The Flag',
-                guidebook: 'http://ugm.id/GuidebookCTF2020',
+                guidebook:
+                    'https://drive.google.com/file/d/1LznxAnn9LlOI3eGyrUJBgYfdqTMp7_Vu/view',
                 link: '/dashboard/competitions/ctf/register',
                 artist:
-                    'Kompetisi ini mengangkat isu-isu yang berkenaan dengan implementasi aspek analisis dan pemecahan masalah yang biasa dikaji dalam topik sistem keamanan komputer dan jaringan. Kompetisi memiliki mekanisme dimana setiap peserta diminta untuk mengumpulkan flag sebanyak-banyaknya dari masalah-masalah yang diberikan. Kompetisi ini dapat diikuti oleh tim yang terdiri dari 2 - 3 orang yang berasal dari instansi/lembaga pendidikan yang sama.'
+                    'Kompetisi ini mengangkat isu-isu yang berkenaan dengan implementasi aspek analisis dan pemecahan masalah yang biasa dikaji dalam topik sistem keamanan komputer dan jaringan. Kompetisi memiliki mekanisme dimana setiap peserta diminta untuk mengumpulkan flag sebanyak-banyaknya dari masalah-masalah yang diberikan. Kompetisi ini dapat diikuti oleh tim yang terdiri dari 2 - 3 orang yang berasal dari instansi/lembaga pendidikan yang sama.',
+                // 0 : Belum open regis
+                // 1 : Sudah open regis
+                // 2 : close regis
+                isOpenRegis: 2
             },
             {
                 color: '#952175',
                 src: 'dm-dark.png',
                 title: 'Data Mining',
-                guidebook: 'http://ugm.id/GuidebookDM2020',
+                guidebook:
+                    'https://drive.google.com/file/d/1-I2lNwVKWsXI94uDrwf4gffkXuP4Bad0/view',
                 link: '/dashboard/competitions/datamining/register',
                 artist:
-                    'Data mining berfokus pada pengolahan data mentah (raw data) dengan cara menemukan pola menarik atau informasi dengan menggunakan metode tertentu yang kemudian divisualisasikan sehingga dapat digunakan sebagai solusi atau pengetahuan lebih lanjut dari sebuah permasalahan data. Lomba ini mengharapkan peserta dapat melakukan proses olah data (Data Mining) terhadap dataset yang diberikan dengan hasil yang memiliki tingkat akurasi setinggi-tingginya.'
+                    'Data mining berfokus pada pengolahan data mentah (raw data) dengan cara menemukan pola menarik atau informasi dengan menggunakan metode tertentu yang kemudian divisualisasikan sehingga dapat digunakan sebagai solusi atau pengetahuan lebih lanjut dari sebuah permasalahan data. Lomba ini mengharapkan peserta dapat melakukan proses olah data (Data Mining) terhadap dataset yang diberikan dengan hasil yang memiliki tingkat akurasi setinggi-tingginya.',
+                // 0 : Belum open regis
+                // 1 : Sudah open regis
+                // 2 : close regis
+                isOpenRegis: 1
             },
             {
                 color: '#952175',
                 src: 'pcs-dark.png',
                 title: 'Programming Competition Session',
-                guidebook: 'http://ugm.id/GuidebookPCS2020',
+                guidebook:
+                    'https://drive.google.com/file/d/1Y-nm-FWB1E3wI3feYTYDm2aGA7-r24Xy/view',
                 link: '/dashboard/competitions/pcs/register',
                 artist:
-                    'Kompetisi ini terbagi menjadi sesi logika dan pemrograman. Kedua materi ini menguji kemampuan nalar dan pemahaman peserta dalam menyelesaikan suatu permasalahan dalam waktu yang singkat dengan algoritma yang efisien dan tepat. Bahasa pemrograman yang digunakan antara lain C/C++, Pascal, Java, atau Python.'
+                    'Kompetisi ini terbagi menjadi sesi logika dan pemrograman. Kedua materi ini menguji kemampuan nalar dan pemahaman peserta dalam menyelesaikan suatu permasalahan dalam waktu yang singkat dengan algoritma yang efisien dan tepat. Bahasa pemrograman yang digunakan antara lain C/C++, Pascal, Java, atau Python.',
+                // 0 : Belum open regis
+                // 1 : Sudah open regis
+                // 2 : close regis
+                isOpenRegis: 2
             },
             {
                 color: '#952175',
                 src: 'ux-dark.png',
                 title: 'UX Design',
-                guidebook: 'http://ugm.id/GuidebookUXDesign2020',
+                guidebook:
+                    'https://drive.google.com/file/d/1pb_mIpXGbdSqj5iuv7dT3L08GUSObq7x/view',
                 link: '/dashboard/competitions/uiux/register',
                 artist:
-                    'Kompetisi UX (user experience) adalah kompetisi pembuatan desain pengalaman pengguna, baik dalam bentuk produk web, aplikasi, maupun PWA (Progressive Web App), yang mengutamakan pengalaman, kenyamanan, kepuasan, dan efisiensi saat pengguna (user) menggunakan produk tersebut.'
+                    'Kompetisi UX (user experience) adalah kompetisi pembuatan desain pengalaman pengguna, baik dalam bentuk produk web, aplikasi, maupun PWA (Progressive Web App), yang mengutamakan pengalaman, kenyamanan, kepuasan, dan efisiensi saat pengguna (user) menggunakan produk tersebut.',
+                // 0 : Belum open regis
+                // 1 : Sudah open regis
+                // 2 : close regis
+                isOpenRegis: 2
             }
         ]
     }),

@@ -311,10 +311,10 @@
                             <v-card-actions class="pt-0">
                                 <v-btn
                                     v-if="!isBelumBayar"
-                                    @click="dialogKonfirmasi = true  "
                                     color="#13CEBB"
                                     rounded
                                     outlined
+                                    disabled
                                     class="mt-0 daftar-button btn-block"
                                     min-width="150"
                                 >DAFTAR</v-btn>
